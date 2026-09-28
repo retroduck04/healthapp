@@ -1,5 +1,21 @@
 import { createRoot } from "react-dom/client";
+import { GLIB } from "./magi/glib";
 import { App } from "./ui/app";
+import { readDisplayPrefs, setDestructiveHook } from "./ui/kit";
+import { alertBand, setDensity, setFlicker, startClock } from "./ui/raster";
+
+// Indexed palette → CSS variables, then the single 12 fps frame clock that drives every blink and instrument.
+GLIB.paletteToCSS();
+startClock();
+const applyDisplayPrefs = () => {
+  const p = readDisplayPrefs();
+  setFlicker(p.flicker);
+  setDensity(p.density);
+};
+applyDisplayPrefs();
+window.addEventListener("janos-display", applyDisplayPrefs);
+// Destructive confirmations (discard workout, restore backup) raise the alert band.
+setDestructiveHook((o) => alertBand(o.message));
 
 const root = document.getElementById("root");
 if (root) createRoot(root).render(<App />);

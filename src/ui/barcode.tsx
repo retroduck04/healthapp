@@ -14,10 +14,10 @@ function loadZXing(): Promise<any> {
       const s = document.createElement("script");
       s.src = ZXING_URL;
       s.async = true;
-      s.onload = () => (w.ZXing ? resolve(w.ZXing) : reject(new Error("Scanner library failed to load")));
+      s.onload = () => (w.ZXing ? resolve(w.ZXing) : reject(new Error("SCANNER LIBRARY FAILED TO LOAD")));
       s.onerror = () => {
         zxingPromise = null;
-        reject(new Error("Couldn't load the scanner (offline?)"));
+        reject(new Error("SCANNER LIBRARY UNREACHABLE (OFFLINE?)"));
       };
       document.head.appendChild(s);
     });
@@ -28,7 +28,7 @@ function loadZXing(): Promise<any> {
 export function BarcodeScanner(props: { onCode: (code: string) => void; onCancel: () => void }) {
   const video = useRef<HTMLVideoElement | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [status, setStatus] = useState("Starting camera…");
+  const [status, setStatus] = useState("INITIALIZING CAMERA...");
 
   useEffect(() => {
     let stopped = false;
@@ -50,7 +50,7 @@ export function BarcodeScanner(props: { onCode: (code: string) => void; onCancel
           video.current.srcObject = stream;
           await video.current.play();
           const detector = new Detector({ formats: ["ean_13", "ean_8", "upc_a", "upc_e"] });
-          setStatus("Point the camera at the barcode");
+          setStatus("CAMERA ONLINE · AIM AT THE BARCODE");
           const tick = async () => {
             if (stopped || !video.current) return;
             try {
@@ -63,7 +63,7 @@ export function BarcodeScanner(props: { onCode: (code: string) => void; onCancel
           };
           raf = requestAnimationFrame(tick);
         } else {
-          setStatus("Loading scanner…");
+          setStatus("LOADING SCANNER...");
           const ZXing = await loadZXing();
           if (stopped) return;
           const hints = new Map();
@@ -74,13 +74,13 @@ export function BarcodeScanner(props: { onCode: (code: string) => void; onCancel
             ZXing.BarcodeFormat.UPC_E,
           ]);
           reader = new ZXing.BrowserMultiFormatReader(hints);
-          setStatus("Point the camera at the barcode");
+          setStatus("CAMERA ONLINE · AIM AT THE BARCODE");
           await reader.decodeFromConstraints({ video: { facingMode: "environment" } }, video.current, (result: any) => {
             if (result) finish(result.getText());
           });
         }
       } catch (e) {
-        setError((e as Error).message || "Camera unavailable");
+        setError((e as Error).message || "CAMERA UNAVAILABLE");
       }
     })();
 
@@ -104,14 +104,18 @@ export function BarcodeScanner(props: { onCode: (code: string) => void; onCancel
         <div className="guide" />
       </div>
       {error ? (
-        <div className="notice warn">
-          {error}. You can type the number instead. Tip: tap the number field, then use iPhone's “Scan Text” to read the digits under the barcode.
+        <div className="notice err">
+          <span className="msg">{error}</span>
+          <span className="act">TYPE THE NUMBER INSTEAD · TIP: TAP THE NUMBER FIELD, THEN USE THE IPHONE &quot;SCAN TEXT&quot; KEY TO READ THE DIGITS UNDER THE BARCODE.</span>
         </div>
       ) : (
-        <div className="muted small" style={{ textAlign: "center", marginBottom: 10 }}>{status}</div>
+        <div className="empty" style={{ textAlign: "center", marginBottom: 10 }}>
+          {status}
+          <span className="mg-cursor" />
+        </div>
       )}
       <button className="btn plain block" onClick={props.onCancel}>
-        Type the number instead
+        TYPE THE NUMBER INSTEAD
       </button>
     </div>
   );

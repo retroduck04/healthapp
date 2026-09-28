@@ -1,0 +1,222 @@
+/* =====================================================================
+   MAGI CONSOLE STYLE: portable base (all classes prefixed mg-)
+   Adapted for JANOS from the MAGI kit (magi-base.css, protocol rev 1.0).
+   ENGLISH ONLY: the kanji rules of the kit are removed; the "display" role
+   (--disp, alias --jp) is a Latin serif used for English display words.
+   Laws L1-L11: flat indexed colour, hard edges, instant inverse on
+   press/focus, all motion on the 12 fps frame clock (glib.js).
+   Fonts (Google Fonts, linked from index.html; cached by the service worker):
+   Arimo 700, Noto Serif 900, Roboto Condensed 400/700, Share Tech Mono.
+   ===================================================================== */
+:root{
+  /* palette (glib.js paletteToCSS() rewrites these from PAL at boot, so both stay in sync) */
+  --k:#000000; --ink:#100a04; --or:#ff8000; --orb:#ffa31f; --am:#ffb800; --yel:#ffe000; --grn:#3ce07a; --red:#ff2000;
+  --wht:#f2eee2; --gry:#8a877c; --dgy:#34322c; --dim:#4d2600; --dim2:#241200; --blu:#8cc8f0; --cya:#30b8e0; --dbl:#2f6be0; --tea:#00c8b4;
+  --dred:#2a0600; --dgrn:#0c3a1e; --dcya:#0a3040; --dblu:#0c1c44; --bdim:#1c3848;
+  /* type roles (each falls back to an installed DejaVu face, then the platform) */
+  --sys:"Roboto Condensed","Arial Narrow","Avenir Next Condensed","DejaVu Sans Condensed","Liberation Sans Narrow","Helvetica Neue",Arimo,sans-serif; /* system labels */
+  --diag:"Share Tech Mono","DejaVu Sans Mono",Menlo,"SF Mono",ui-monospace,Consolas,monospace;                                            /* data, logs, inputs */
+  --gro:"Arimo","Liberation Sans","Helvetica Neue",Helvetica,Arial,"DejaVu Sans",sans-serif;                                             /* display English, squeezed */
+  --disp:"Noto Serif","Noto Serif Display","DejaVu Serif","Times New Roman",Georgia,serif;                                               /* display serif (brand, verdict words), squeezed */
+  --jp:var(--disp);
+  --mg-hdrH:48px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;border-radius:0 !important}
+html,body{margin:0;background:var(--k);color:var(--am);font-family:var(--sys);font-size:15px;line-height:18px}
+body{min-height:100vh;overflow-x:hidden}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--am);color:var(--k)}
+:focus{outline:none}
+.mg-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+
+/* integrated scrollbars: ruled track, block thumb, pixel arrow keys */
+::-webkit-scrollbar{width:14px;height:14px;background:var(--k)}
+::-webkit-scrollbar-track{background:var(--k);border-left:1px solid var(--dim)}
+::-webkit-scrollbar-track:horizontal{border-left:none;border-top:1px solid var(--dim)}
+::-webkit-scrollbar-thumb{background:var(--or);border:3px solid var(--k);border-left-width:4px}
+::-webkit-scrollbar-thumb:horizontal{border-left-width:3px;border-top-width:4px}
+::-webkit-scrollbar-corner{background:var(--k)}
+::-webkit-scrollbar-button:single-button{display:block;width:14px;height:14px;background:var(--k) no-repeat center;border-left:1px solid var(--dim)}
+::-webkit-scrollbar-button:single-button:vertical:decrement{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='4' shape-rendering='crispEdges'%3E%3Cpath d='M3 0h1v1h1v1h1v1h1v1H0V3h1V2h1V1h1z' fill='%23ff8000'/%3E%3C/svg%3E")}
+::-webkit-scrollbar-button:single-button:vertical:increment{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='4' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h7v1H6v1H5v1H4v1H3V3H2V2H1V1H0z' fill='%23ff8000'/%3E%3C/svg%3E")}
+@supports not selector(::-webkit-scrollbar){*{scrollbar-color:var(--or) var(--k);scrollbar-width:thin}}
+
+/* ---------- type roles ---------- */
+.mg-sq{display:inline-block;font-family:var(--gro);font-weight:700;transform:scaleX(.8);transform-origin:0 50%;white-space:nowrap}   /* squeezed grotesque */
+.mg-mx{display:inline-block;font-family:var(--disp);font-weight:900;transform:scaleX(.78);transform-origin:0 50%;white-space:nowrap} /* squeezed display serif (English) */
+.mg-dg{font-family:var(--diag);font-size:15px;line-height:18px}
+
+/* ---------- frame-clock blinks (glib.js toggles html.b2off at 2 Hz and html.b4off at 4 Hz) ---------- */
+html.b2off .mg-bl2, html.b2off .mg-cursor{visibility:hidden}
+html.b4off .mg-bl4, html.b4off .mg-alert.show{visibility:hidden}
+
+/* ---------- corner brackets (flat fills; the one allowed gradient use) ---------- */
+.mg-brk{background:
+  linear-gradient(var(--or),var(--or)) left top/16px 2px no-repeat, linear-gradient(var(--or),var(--or)) left top/2px 16px no-repeat,
+  linear-gradient(var(--or),var(--or)) right top/16px 2px no-repeat, linear-gradient(var(--or),var(--or)) right top/2px 16px no-repeat,
+  linear-gradient(var(--or),var(--or)) left bottom/16px 2px no-repeat, linear-gradient(var(--or),var(--or)) left bottom/2px 16px no-repeat,
+  linear-gradient(var(--or),var(--or)) right bottom/16px 2px no-repeat, linear-gradient(var(--or),var(--or)) right bottom/2px 16px no-repeat,
+  var(--k)}
+
+/* ---------- keys: instant inverse on press / keyboard focus, nothing on hover ---------- */
+.mg-key{font-family:var(--sys);font-size:15px;line-height:16px;background:var(--k);color:var(--or);border:1px solid var(--or);padding:3px 8px;cursor:pointer;text-transform:uppercase;white-space:nowrap}
+.mg-key:active,.mg-key:focus-visible{background:var(--or);color:var(--k)}
+.mg-key.solid{background:var(--or);color:var(--k)}
+.mg-key.solid:active,.mg-key.solid:focus-visible{background:var(--wht);border-color:var(--wht)}
+.mg-key.danger{background:var(--red);border-color:var(--red);color:var(--k)}
+.mg-key.danger:active,.mg-key.danger:focus-visible{background:var(--wht);border-color:var(--wht)}
+.mg-key.small{padding:1px 8px}
+.mg-key[disabled]{border-color:var(--dim);color:var(--dim);cursor:not-allowed;background:var(--k)}
+.mg-key[aria-pressed=true]{background:var(--am);border-color:var(--am);color:var(--k)}
+
+/* ---------- header: brand, process state machine, readout, lamp, keys ---------- */
+.mg-hdr{height:var(--mg-hdrH);display:flex;align-items:center;gap:16px;padding:0 16px;border-bottom:2px solid var(--or);background:var(--k)}
+.mg-brand{font-size:30px;line-height:30px;color:var(--or);flex:none}
+.mg-steps{display:flex;gap:14px;margin:0;padding:0;list-style:none;flex:none}
+.mg-steps li{position:relative;display:flex;align-items:stretch;height:26px;line-height:24px;border:1px solid var(--dim);color:var(--or);white-space:nowrap}
+.mg-steps li b{font-weight:400;padding:0 5px;border-right:1px solid var(--dim)}
+.mg-steps li .en{padding:0 7px 0 4px}
+.mg-steps li:not(:last-child)::after{content:"";position:absolute;right:-11px;top:8px;width:5px;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='9' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v1h1v1h1v1h1v1h1v1H4v1H3v1H2v1H1v1H0z' fill='%234d2600'/%3E%3C/svg%3E")}
+.mg-steps li.done{border-color:var(--or)}
+.mg-steps li.done b{background:var(--or);color:var(--k);border-color:var(--or)}
+.mg-steps li.done::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='9' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v1h1v1h1v1h1v1h1v1H4v1H3v1H2v1H1v1H0z' fill='%23ff8000'/%3E%3C/svg%3E")}
+.mg-steps li.active{background:var(--or);border-color:var(--or);color:var(--k)}
+.mg-steps li.active b{background:var(--k);color:var(--or);border-color:var(--k)}
+.mg-proc{display:flex;flex-direction:column;justify-content:center;min-width:0;margin-left:auto;padding:0 10px;border-left:1px solid var(--or);height:36px;white-space:nowrap;overflow:hidden}
+.mg-proc small{font-size:11px;line-height:12px;color:var(--or)}
+.mg-proc span{font-size:18px;line-height:20px;color:var(--am)}
+.mg-proc span b{font-weight:400;background:var(--am);color:var(--k);padding:0 4px;margin-right:6px}
+.mg-proc.run span b{background:var(--red)}
+.mg-lamp{display:flex;align-items:center;gap:6px;flex:none;background:var(--k);border:1px solid var(--dim);color:var(--or);font-family:var(--sys);font-size:13px;line-height:16px;padding:3px 8px;white-space:nowrap}
+.mg-lamp i{display:inline-block;width:8px;height:8px;background:var(--dim)}
+.mg-lamp.on i{background:var(--grn)} .mg-lamp.warn i{background:var(--am)} .mg-lamp.off i{background:var(--red)}
+.mg-lamp.off{border-color:var(--red);color:var(--red)}
+.mg-hkeys{display:flex;gap:6px;flex:none}
+
+/* ---------- panels ("subsystems") ---------- */
+.mg-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:8px 10px;padding:8px}
+.mg-panel{position:relative;display:grid;grid-template-rows:24px minmax(0,1fr);min-width:0;min-height:0;overflow:hidden;padding:2px}
+.mg-bar{display:flex;gap:10px;align-items:center;padding:0 12px 0 0;line-height:24px;color:var(--or);border-bottom:1px solid var(--or);white-space:nowrap;overflow:hidden}
+.mg-bar .tag{background:var(--or);color:var(--k);padding:0 6px;font-weight:400}
+.mg-bar .st{color:var(--am);margin-left:auto}
+.mg-panel.dbl .mg-bar{border-bottom-style:double;border-bottom-width:3px}
+.mg-panel.red .mg-bar{color:var(--red);border-color:var(--red)}
+.mg-panel.red .mg-bar .tag{background:var(--red)}
+.mg-ptitle{display:flex;justify-content:space-between;gap:16px;line-height:24px;padding:0 16px;color:var(--or);border-bottom:1px solid var(--or);white-space:nowrap;overflow:hidden}
+.mg-ptitle .st{color:var(--am)}
+
+/* raster hosts (glib.js creates .mg-fb canvases + .mg-hits inside) */
+.mg-fbhost{position:relative;min-height:0;overflow:hidden}
+.mg-fb{position:absolute;left:0;top:0;display:block;image-rendering:crisp-edges;image-rendering:pixelated}
+.mg-fb.hi{pointer-events:none}
+.mg-hits{position:absolute;left:0;top:0;pointer-events:none}
+.mg-hit{position:absolute;margin:0;padding:0;border:0;background:none;cursor:pointer;color:var(--k);pointer-events:auto}
+.mg-hit:disabled{cursor:default}
+
+/* ---------- alert band: raster hex field (glib hexField) under a text plate ---------- */
+.mg-alert{position:fixed;left:0;right:0;top:30%;height:136px;transform:translateY(-50%);display:none;z-index:80;background:var(--k)}
+.mg-alert.show{display:block}
+.mg-alert .afb{position:absolute;inset:0;overflow:hidden}
+.mg-alert .plate{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:16px;padding:8px 24px;background:var(--k);border:3px solid var(--red);white-space:nowrap;max-width:calc(100vw - 16px)}
+.mg-alert .plate .k{font-family:var(--disp);font-weight:900;font-size:48px;line-height:56px;color:var(--red);display:inline-block;transform:scaleX(.78)}
+.mg-alert .plate .e{display:flex;flex-direction:column;color:var(--red);line-height:24px;min-width:0}
+.mg-alert .plate .e b{font-family:var(--gro);font-weight:700;font-size:34px;line-height:40px;display:inline-block;transform:scaleX(.8);transform-origin:0 50%}
+.mg-alert .plate .e span{font-family:var(--diag);font-size:16px;line-height:20px;white-space:normal}
+
+/* ---------- notice bar ---------- */
+.mg-notice{position:fixed;left:16px;right:16px;top:calc(var(--mg-hdrH) + 8px);display:none;gap:8px 12px;align-items:center;flex-wrap:wrap;padding:6px 12px;background:var(--k);border:1px solid var(--or);color:var(--wht);z-index:40;font-family:var(--diag);font-size:15px;line-height:18px}
+.mg-notice.show,.mg-notice.static{display:flex}
+.mg-notice.static{position:static}
+.mg-notice::before{content:"SYS>";font-family:var(--sys);font-size:13px;background:var(--or);color:var(--k);padding:0 6px}
+.mg-notice.err{border-color:var(--red)}
+.mg-notice.err::before{content:"FAULT>";background:var(--red)}
+.mg-notice .x{margin-left:auto}
+
+/* ---------- command prompt bar ---------- */
+.mg-prompt{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:stretch;padding:8px 16px;background:var(--k);border-top:2px solid var(--or)}
+.mg-prompt .lab{font-family:var(--disp);font-weight:900;font-size:24px;line-height:32px;color:var(--or);white-space:nowrap}
+.mg-prompt textarea,.mg-prompt input{resize:none;background:var(--k);border:none;border-bottom:1px solid var(--or);color:var(--wht);font-family:var(--diag);font-size:17px;line-height:22px;padding:4px 8px;caret-color:var(--am);min-width:0}
+.mg-prompt ::placeholder{color:var(--dim)}
+
+/* ---------- terminals ---------- */
+.mg-term{min-width:0;display:flex;flex-direction:column;padding:2px}
+.mg-term-h{display:flex;align-items:center;gap:8px;padding:0 8px;line-height:24px;border-bottom:1px solid var(--or);white-space:nowrap}
+.mg-term-h .id{color:var(--blu)} .mg-term-h .a{flex:1;min-width:0;overflow:hidden;color:var(--or)} .mg-term-h .st{color:var(--am)}
+.mg-term-b{flex:1;overflow:auto;padding:6px 8px;font-family:var(--diag);font-size:13.5px;line-height:17px;white-space:pre-wrap;word-break:break-word;color:var(--am)}
+.mg-term-b .sys{color:var(--or)} .mg-term-b .err{color:var(--red)} .mg-term-b .ok{color:var(--grn)} .mg-term-b .dim{color:var(--dim)}
+.mg-term-b .sep{display:block;color:var(--or);margin:8px 0 0;white-space:nowrap;overflow:hidden}
+.mg-cursor{display:inline-block;width:7px;height:14px;background:var(--am);vertical-align:text-bottom}
+
+/* ---------- log / table rows ---------- */
+.mg-logh{display:flex;flex-wrap:wrap;gap:8px 24px;padding:0 16px;line-height:24px;border-bottom:1px solid var(--dim);color:var(--or)}
+.mg-logh b{color:var(--am);font-weight:400}
+.mg-log{font-family:var(--diag);font-size:14px;overflow:auto}
+.mg-row{display:grid;gap:8px;padding:0 16px;line-height:22px;white-space:nowrap;cursor:pointer}
+.mg-row:focus-visible,.mg-row:active,.mg-row.sel{background:var(--or);color:var(--k)}
+.mg-row .who{color:var(--blu)} .mg-row .kind{color:var(--or)}
+.mg-empty{padding:8px 16px;color:var(--or)}
+
+/* ---------- printout (fixed-column system record) ---------- */
+.mg-po{margin:0;max-width:calc(80ch + 8px);font-family:var(--diag);font-size:14px;line-height:17px;color:var(--am);white-space:pre;overflow-x:auto}
+.mg-po .ln{visibility:hidden} .mg-po .ln.on{visibility:visible}
+.mg-po .b{background:var(--am);color:var(--k)} .mg-po .h{color:var(--wht)} .mg-po .r{color:var(--or)} .mg-po .c{color:var(--blu)} .mg-po .g{color:var(--grn)} .mg-po .x{color:var(--red)}
+
+/* ---------- verdict hero ---------- */
+.mg-verdict{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;border:2px solid var(--or)}
+.mg-verdict.pass{border-color:var(--grn)} .mg-verdict.fail{border-color:var(--red)}
+.mg-verdict .vk{font-size:72px;line-height:80px}
+.mg-verdict .vk .mg-mx,.mg-verdict .vk .mg-sq{transform-origin:50% 50%}
+.mg-verdict.pass .vk{color:var(--grn)} .mg-verdict.fail .vk{color:var(--red)}
+.mg-verdict .ve{padding:0 8px;line-height:24px;background:var(--wht);color:var(--k)}
+.mg-verdict .tally{font-family:var(--diag);font-size:52px;line-height:56px;color:var(--am)}
+
+/* ---------- full-screen terminal screens (settings, inspectors) ---------- */
+/* <dialog class="mg-screen"> (kit) and <div class="mg-screen" role="dialog"> (React sheets) share the look */
+dialog.mg-screen{position:fixed;inset:0;width:100vw;height:100vh;max-width:none;max-height:none;margin:0;padding:0;border:none;background:var(--k);color:var(--am);overflow:hidden}
+dialog.mg-screen::backdrop{background:var(--k)}
+dialog.mg-screen[open]{display:grid;grid-template-rows:40px minmax(0,1fr) 24px}
+.mg-scr-h{display:flex;align-items:center;gap:16px;padding:0 16px;border-bottom:2px solid var(--or);color:var(--or);white-space:nowrap}
+.mg-scr-h .mg-mx{font-size:22px} .mg-scr-h .sp{flex:1}
+.mg-scr-b{overflow:auto;padding:16px}
+.mg-keys{display:flex;gap:24px;padding:0 16px;line-height:24px;background:var(--or);color:var(--k);white-space:nowrap;overflow:hidden}
+.mg-fs{border:none;margin:0 0 16px;padding:8px 16px 16px;min-width:0}
+.mg-fs legend{padding:0 8px;margin-left:-8px;color:var(--k);background:var(--or)}
+.mg-fl{display:grid;grid-template-columns:208px minmax(0,1fr);gap:8px;align-items:center;min-height:32px;color:var(--or)}
+.mg-fl input,.mg-fl select,.mg-fl textarea{width:100%;min-width:0;background:var(--k);border:none;border-bottom:1px solid var(--or);color:var(--wht);font-family:var(--diag);font-size:15px;line-height:24px;height:28px;padding:0 4px;appearance:none;-webkit-appearance:none}
+.mg-fl textarea{height:auto;min-height:56px;resize:vertical;line-height:17px;padding:4px}
+.mg-fl input:focus,.mg-fl select:focus,.mg-fl textarea:focus{border-bottom-color:var(--wht)}
+.mg-selw{position:relative;display:block}
+.mg-selw::after{content:"▼";position:absolute;right:4px;top:6px;color:var(--or);pointer-events:none}
+.mg-fl select option{background:var(--k);color:var(--am)}
+input.mg-chk,.mg-chkl input[type=checkbox]{appearance:none;-webkit-appearance:none;margin:0;border:none;background:none;cursor:pointer;font-family:var(--diag);font-size:15px;color:var(--am)}
+input.mg-chk::before,.mg-chkl input[type=checkbox]::before{content:"[ ]"}
+input.mg-chk:checked::before,.mg-chkl input[type=checkbox]:checked::before{content:"[X]"}
+input.mg-chk:focus-visible,.mg-chkl input[type=checkbox]:focus-visible{background:var(--am);color:var(--k)}
+.mg-chkl{display:flex;align-items:center;gap:8px;min-height:32px;color:var(--am);cursor:pointer}
+.mg-hint{color:var(--or);margin:8px 0} .mg-hint b{color:var(--wht);font-weight:400}
+.mg-vol{white-space:pre;font-family:var(--diag);color:var(--am);cursor:pointer;user-select:none}
+.mg-vol:focus-visible{background:var(--am);color:var(--k)}
+
+/* ---------- system hint (replaces tooltips; position it next to the pointer) ---------- */
+.mg-tip{position:fixed;z-index:90;padding:2px 6px;background:var(--k);border:1px solid var(--wht);color:var(--wht);font-family:var(--diag);font-size:14px;line-height:18px;white-space:nowrap;pointer-events:none;display:none}
+.mg-tip.show{display:block}
+
+/* ---------- responsive: progressive hiding, never overlap, never horizontal scroll ---------- */
+@media (max-width:1640px){.mg-steps li .en{display:none}}
+@media (max-width:1180px){.mg-proc small{display:none}}
+@media (max-width:900px){
+  .mg-grid{grid-template-columns:minmax(0,1fr)}
+  .mg-panel{grid-template-rows:24px auto}
+  .mg-panel .mg-fbhost{aspect-ratio:16/9}
+  .mg-steps{display:none}
+  .mg-proc{margin-left:0;flex:1;border-left:none}
+  .mg-fl{grid-template-columns:1fr}
+  .mg-alert{height:96px} .mg-alert .plate .k{font-size:32px;line-height:36px} .mg-alert .plate .e b{font-size:22px;line-height:24px} .mg-alert .plate{padding:4px 8px;gap:8px}
+}
+@media (max-width:560px){
+  .mg-hdr{gap:8px;padding:0 8px}
+  .mg-brand{font-size:24px}
+  .mg-proc span{font-size:15px}
+  .mg-ptitle{padding:0 8px;gap:8px;font-size:13px}
+}

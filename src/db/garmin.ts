@@ -1,7 +1,7 @@
 // Garmin data: decrypts the files written by the GitHub sync job and merges them into the app.
 
 import { getAll, get, put, putMany } from "./db";
-import type { CardioModality, CardioSession, CardioType, GarminDay, WeightEntry } from "./types";
+import type { CardioModality, CardioSession, CardioType, GarminActivityRecord, GarminDay, WeightEntry } from "./types";
 
 const AAD = new TextEncoder().encode("janos-v1");
 
@@ -258,6 +258,27 @@ export async function mergeSummary(summary: GarminSummary): Promise<void> {
   const days = Object.values(summary.days ?? {});
   if (days.length) await putMany("garminDays", days);
 
+  const records: GarminActivityRecord[] = [];
+  for (const a of Object.values(summary.activities ?? {})) {
+    const start = parseGarminTime(a.startGMT);
+    if (start === null || a.id === null || a.id === undefined) continue;
+    records.push({
+      id: String(a.id),
+      start,
+      minutes: a.durationSec ? Math.round(a.durationSec / 60) : 0,
+      type: a.type,
+      name: a.name,
+      trainingLoad: a.trainingLoad ?? null,
+      avgHR: a.avgHR,
+      maxHR: a.maxHR,
+      kcal: a.kcal,
+      aerobicTE: a.aerobicTE,
+      anaerobicTE: a.anaerobicTE,
+      zonesSec: a.zonesSec,
+    });
+  }
+  if (records.length) await putMany("garminActivities", records);
+
   const existing = new Map((await getAll<CardioSession>("cardio")).map((c) => [c.id, c]));
   const cardio = Object.values(summary.activities ?? {})
     .map((a) => activityToCardio(a, existing.get(`garmin-${a.id}`)))
@@ -273,4 +294,8 @@ export async function mergeSummary(summary: GarminSummary): Promise<void> {
 
 export async function listGarminDays(): Promise<GarminDay[]> {
   return (await getAll<GarminDay>("garminDays")).sort((a, b) => (a.date < b.date ? -1 : 1));
+}
+
+export async function listGarminActivities(): Promise<GarminActivityRecord[]> {
+  return (await getAll<GarminActivityRecord>("garminActivities")).sort((a, b) => a.start - b.start);
 }

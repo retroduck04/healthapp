@@ -2,6 +2,7 @@
 
 import type { CheckIn, GarminDay } from "../db/types";
 import { addDays, type ISODate } from "../engine/dates";
+import type { HrvStatus } from "../engine/hrv";
 import { median, robustSD } from "../engine/stats";
 
 export type Level = "good" | "normal" | "watch" | "unknown";
@@ -18,7 +19,14 @@ export interface Recovery {
   contributors: Contributor[];
 }
 
-export function assessRecovery(day: ISODate, garmin: readonly GarminDay[], checkins: readonly CheckIn[], needHours: number, debtHours: number | null): Recovery {
+export function assessRecovery(
+  day: ISODate,
+  garmin: readonly GarminDay[],
+  checkins: readonly CheckIn[],
+  needHours: number,
+  debtHours: number | null,
+  hrvTrend?: HrvStatus,
+): Recovery {
   const byDate = new Map(garmin.map((g) => [g.date, g]));
   const g = byDate.get(day);
   const c = checkins.find((x) => x.day === day);
@@ -26,7 +34,16 @@ export function assessRecovery(day: ISODate, garmin: readonly GarminDay[], check
 
   // HRV against Garmin's own personal baseline range.
   const hrv = g?.hrv.lastNight ?? c?.hrv ?? null;
-  if (hrv !== null) {
+  if (hrvTrend && hrvTrend.status !== "insufficient" && hrvTrend.avg7 !== null && hrvTrend.low !== null && hrvTrend.high !== null) {
+    // Preferred: 7-day ln-rMSSD average against your own 60-day normal band (one bad night doesn't flip it).
+    const level: Level = hrvTrend.status === "low" ? "watch" : hrvTrend.status === "high" ? "good" : "normal";
+    out.push({
+      label: "HRV 7-day",
+      value: `${Math.round(hrvTrend.avg7)} ms`,
+      level,
+      note: `Normal ${Math.round(hrvTrend.low)}–${Math.round(hrvTrend.high)} ms${hrv !== null ? ` · last night ${Math.round(hrv)}` : ""}.`,
+    });
+  } else if (hrv !== null) {
     const lo = g?.hrv.baselineLow ?? null;
     const hi = g?.hrv.baselineHigh ?? null;
     let level: Level = "unknown";

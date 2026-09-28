@@ -22,6 +22,10 @@ export interface Settings {
   dayBoundaryHour: number;
   lastBackupAt: number | null;
   phase: "cut" | "maintain" | "bulk";
+  /** calorie/macro targets follow the adaptive expenditure estimate, updated at a weekly check-in */
+  autoTargets: boolean;
+  /** goal rate in % of bodyweight per week; null = the phase default (cut −0.5, maintain 0, bulk +0.25) */
+  goalRatePct: number | null;
   caffeinePresets: { label: string; mg: number }[];
 }
 
@@ -42,6 +46,8 @@ export const defaultSettings: Settings = {
   dayBoundaryHour: 4,
   lastBackupAt: null,
   phase: "maintain",
+  autoTargets: true,
+  goalRatePct: null,
   caffeinePresets: [
     { label: "Coffee", mg: 95 },
     { label: "Espresso", mg: 65 },
@@ -272,4 +278,34 @@ export interface EventTag {
   start: ISODate;
   end?: ISODate | null;
   note?: string;
+}
+
+/** One Garmin activity of any type (strength included), kept for training-load tracking. */
+export interface GarminActivityRecord {
+  id: string; // Garmin activity id
+  start: number; // ms
+  minutes: number;
+  type: string | null;
+  name: string | null;
+  trainingLoad: number | null; // Garmin's EPOC-based load
+  avgHR: number | null;
+  maxHR: number | null;
+  kcal: number | null;
+  aerobicTE: number | null;
+  anaerobicTE: number | null;
+  zonesSec: (number | null)[] | null;
+}
+
+/** Weekly check-in result: the targets the app is currently using (MacroFactor-style). */
+export interface EnergyCheckIn {
+  key: "energyCheckIn";
+  day: string; // ISO date of the check-in
+  tdee: number;
+  kcal: number;
+  proteinG: number;
+  carbG: number;
+  fatG: number;
+  confidence: string;
+  goalSig?: string; // phase|rate|protein when set; a change forces a new check-in
+  history: { day: string; tdee: number; kcal: number }[];
 }

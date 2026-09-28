@@ -25,7 +25,80 @@ import { addDays } from "../engine/dates";
 import { fmt } from "../engine/units";
 import { BarcodeScanner } from "./barcode";
 import { dayLabel, longDate } from "./format";
-import { Card, Chips, Field, fmtKcal, NumInput, ProgressBar, Segmented, Sheet, useUI } from "./kit";
+import { Card, Chips, Field, fmtKcal, NumInput, PageTitle, promptScreen, Segmented, Sheet, Stat, useUI } from "./kit";
+import { loadEnergyModel, pad, runWeeklyCheckIn, signed, type EnergyModel } from "./models";
+import { MeterPanel, type MeterRow } from "./raster";
+
+/** One intake meter row; `capped` macros turn red when more than 3 % over target (protein never does). */
+function macroRow(id2: string, name: string, value: number, target: number | null, unit: string, capped: boolean): MeterRow {
+  const v = Math.round(value);
+  if (!target) return { id2, name, value: v, max: Math.max(v, 1), line: `${name} ${pad(v, unit === "KCAL" ? 4 : 3)} ${unit} · NO TARGET`, right: "---", tone: "dim" };
+  const pct = Math.round((value / target) * 100);
+  const overBy = value > target * 1.03;
+  return {
+    id2,
+    name,
+    value: Math.min(value, target * 1.2),
+    max: target,
+    line: `${name} ${pad(v, unit === "KCAL" ? 4 : 3)}/${pad(target, unit === "KCAL" ? 4 : 3)} ${unit}${overBy && capped ? " · OVER" : ""}`,
+    right: `${pad(pct, 3)}%`,
+    tone: overBy ? (capped ? "red" : "grn") : pct >= 97 ? "grn" : "bands",
+  };
+}
+
+const CONF: Record<string, string> = { prior: "PRIOR ONLY", low: "LOW", medium: "MEDIUM", high: "HIGH" };
+
+/** Adaptive expenditure (MacroFactor-style) and the weekly check-in that sets the targets. */
+function ExpenditureCard(props: { m: EnergyModel }) {
+  const { settings, toast, open } = useUI();
+  const m = props.m;
+  const cur = m.current;
+  const est = Math.round(cur?.kcal ?? m.prior);
+  const half = cur ? Math.round((cur.high - cur.low) / 2) : Math.round(m.prior * 0.15);
+  const ci = m.checkIn;
+  const next = ci ? addDays(ci.day, 7) : null;
+  return (
+    <Card title="JANOS-SYS/EXPENDITURE" status={cur ? `CONFIDENCE ${CONF[cur.confidence]}` : "PRIOR ONLY"}>
+      <div className="grid-2">
+        <Stat label="MAINTENANCE ≈" value={`${pad(est, 4)} KCAL`} sub={`±${half} (80 % RANGE)${cur?.paused ? " · HELD" : ""}`} />
+        <Stat
+          label={settings.autoTargets ? "AUTO TARGET" : "TARGET"}
+          value={m.targets.kcal ? `${pad(m.targets.kcal, 4)} KCAL` : "---"}
+          sub={
+            m.targets.kcal
+              ? `${signed(m.targets.kcal - est)} VS MAINTENANCE · ${settings.phase.toUpperCase()}`
+              : "NO TARGET SET"
+          }
+        />
+      </div>
+      <div className="desc">
+        {cur && cur.confidence !== "prior"
+          ? `FROM ${cur.completeDays} COMPLETE FOOD DAYS AND YOUR TREND WEIGHT (LAST 21 D). `
+          : `WARN 031 LEARNING · ${cur?.completeDays ?? 0}/7 COMPLETE DAYS · STARTING GUESS FROM ${m.priorSource === "GARMIN" ? "GARMIN CALORIES" : "HEIGHT, WEIGHT AND AGE"}. `}
+        {settings.autoTargets
+          ? ci
+            ? `CHECK-IN ${ci.day} · NEXT ${next}${m.checkInState.due && !m.checkInState.ready ? ` · WAITING: ${m.checkInState.missing}` : ""}.`
+            : "FIRST TARGETS ARRIVE WITH YOUR FIRST WEIGH-IN."
+          : "AUTO TARGETS ARE OFF (CONFIG → TARGETS)."}
+      </div>
+      <div className="rowbar">
+        {settings.autoTargets ? (
+          <button
+            className="link"
+            onClick={async () => {
+              const rec = await runWeeklyCheckIn(settings, true);
+              toast(rec ? `>> 096 CHECK-IN · TARGET ${rec.kcal} KCAL · P ${rec.proteinG} · C ${rec.carbG} · F ${rec.fatG} G` : "WARN 031 NO WEIGH-IN YET");
+            }}
+          >
+            RUN CHECK-IN NOW
+          </button>
+        ) : null}
+        <div className="grow" />
+        <button className="link" onClick={() => open({ kind: "settings" })}>GOAL SETTINGS</button>
+      </div>
+    </Card>
+  );
+}
 
 const mealName: Record<Meal, string> = { breakfast: "Breakfast", lunch: "Lunch", dinner: "Dinner", snacks: "Snacks" };
 
@@ -37,123 +110,98 @@ export function FoodScreen() {
   const status = useLive(() => dayStatus(day), [day], { day, complete: null } as DayStatus);
   const totals = sumNutrients(entries);
   const [editing, setEditing] = useState<FoodEntry | null>(null);
+  const energy = useLive(() => loadEnergyModel(settings), [settings], null as EnergyModel | null);
+  const t = energy?.targets ?? { kcal: settings.kcalTarget, proteinG: settings.proteinTarget, carbG: settings.carbTarget, fatG: settings.fatTarget, source: "NONE" as const };
+  const over = t.kcal !== null && totals.kcal > t.kcal * 1.03;
 
   const saveMealPrompt = async (meal: Meal) => {
     const items = entries.filter((e) => e.meal === meal);
     if (!items.length) return;
-    const name = prompt("Name this saved meal", `${mealName[meal]} usual`);
+    const name = await promptScreen({ title: "SAVE MEAL", label: "NAME THIS SAVED MEAL", initial: `${mealName[meal]} usual` });
     if (!name) return;
     await saveMealFrom(name, items);
-    toast(`Saved "${name}"`);
+    toast(`MEAL SAVED · "${name}"`);
   };
 
   return (
     <div className="page">
-      <div className="page-title">
-        <button className="icon-btn" aria-label="previous day" onClick={() => setDay(addDays(day, -1))}>‹</button>
-        <div style={{ textAlign: "center" }}>
-          <h1 style={{ fontSize: 24 }}>{dayLabel(day, todayISO, addDays(todayISO, -1))}</h1>
-          <div className="sub">{longDate(Date.parse(`${day}T12:00:00`))}</div>
+      <PageTitle sys="FOOD" status={`${entries.length} ${entries.length === 1 ? "ENTRY" : "ENTRIES"}`} />
+      <div className="daynav">
+        <button className="icon-btn" aria-label="previous day" onClick={() => setDay(addDays(day, -1))}>◀</button>
+        <div className="day">
+          <b>{dayLabel(day, todayISO, addDays(todayISO, -1))}</b>
+          <span>{longDate(Date.parse(`${day}T12:00:00`))}</span>
         </div>
-        <button className="icon-btn" aria-label="next day" disabled={day >= todayISO} onClick={() => setDay(addDays(day, 1))}>›</button>
+        <button className="icon-btn" aria-label="next day" disabled={day >= todayISO} onClick={() => setDay(addDays(day, 1))}>▶</button>
       </div>
 
-      <Card>
-        <div className="card-head">
-          <div>
-            <div className="big-number">{fmtKcal(totals.kcal)}</div>
-            <div className="muted small">kcal eaten{settings.kcalTarget ? ` of ${fmtKcal(settings.kcalTarget)}` : ""}</div>
-          </div>
-          {settings.kcalTarget ? (
-            <div style={{ textAlign: "right" }}>
-              <div className="stat">
-                <div className="value">{fmtKcal(settings.kcalTarget - totals.kcal)}</div>
-                <div className="label">{settings.kcalTarget - totals.kcal >= 0 ? "remaining" : "over"}</div>
-              </div>
-            </div>
-          ) : (
-            <button className="link" onClick={() => open({ kind: "settings" })}>Set target</button>
-          )}
-        </div>
-        {settings.kcalTarget ? <ProgressBar value={totals.kcal} max={settings.kcalTarget} /> : null}
-        <div className="grid-3" style={{ marginTop: 12 }}>
-          <Macro label="Protein" value={totals.protein} target={settings.proteinTarget} />
-          <Macro label="Carbs" value={totals.carbs} target={settings.carbTarget} />
-          <Macro label="Fat" value={totals.fat} target={settings.fatTarget} />
-        </div>
+      <Card title="JANOS-SYS/INTAKE" status={t.source === "NONE" ? <button className="link" onClick={() => open({ kind: "settings" })}>SET TARGET</button> : `${t.source} TARGETS`} flush>
+        <MeterPanel
+          id="food-intake"
+          title="INTAKE LEVEL"
+          right={`TOTAL ${pad(totals.kcal, 4)} KCAL`}
+          rev="SUPPLY MOD 2.2"
+          stamp={over ? { text: "OVER TARGET", tone: "red", blink: day === todayISO } : undefined}
+          rows={[
+            macroRow("01", "KCAL", totals.kcal, t.kcal, "KCAL", true),
+            macroRow("02", "PROTEIN", totals.protein, t.proteinG, "G", false),
+            macroRow("03", "CARBS", totals.carbs, t.carbG, "G", true),
+            macroRow("04", "FAT", totals.fat, t.fatG, "G", true),
+          ]}
+          srText={`Eaten ${Math.round(totals.kcal)} kcal${t.kcal ? ` of ${t.kcal}` : ""}. Protein ${Math.round(totals.protein)} g, carbs ${Math.round(totals.carbs)} g, fat ${Math.round(totals.fat)} g.`}
+        />
       </Card>
+
+      {energy ? <ExpenditureCard m={energy} /> : null}
 
       {MEALS.map((meal) => {
         const items = entries.filter((e) => e.meal === meal);
         const kcal = sumNutrients(items).kcal;
         return (
-          <div key={meal}>
-            <h2 style={{ display: "flex", justifyContent: "space-between" }}>
-              <span>{mealName[meal]}</span>
-              <span className="num">{items.length ? `${fmtKcal(kcal)} kcal` : ""}</span>
-            </h2>
-            <div className="card tight">
-              {items.map((e) => (
-                <button className="row" key={e.id} onClick={() => setEditing(e)}>
-                  <div className="grow">
-                    <div className="name">{e.name}</div>
-                    <div className="muted small">
-                      {e.amountLabel ? `${e.amountLabel} · ` : ""}P {Math.round(e.protein)} · C {Math.round(e.carbs)} · F {Math.round(e.fat)}
-                    </div>
+          <Card key={meal} title={mealName[meal]} aside={items.length ? `${fmtKcal(kcal)} KCAL` : "EMPTY"} flush>
+            {items.map((e) => (
+              <button className="row" key={e.id} onClick={() => setEditing(e)}>
+                <div className="grow">
+                  <div className="name uc">{e.name}</div>
+                  <div className="muted small">
+                    {e.amountLabel ? `${e.amountLabel} · ` : ""}P {Math.round(e.protein)} · C {Math.round(e.carbs)} · F {Math.round(e.fat)}
                   </div>
-                  <div className="num">{fmtKcal(e.kcal)}</div>
+                </div>
+                <div className="num">{fmtKcal(e.kcal)}</div>
+              </button>
+            ))}
+            <div className="rowbar">
+              <button className="link" onClick={() => open({ kind: "food", day, meal })}>[+] ADD FOOD</button>
+              <div className="grow" />
+              {items.length ? (
+                <button className="link" onClick={() => saveMealPrompt(meal)}>SAVE MEAL</button>
+              ) : (
+                <button
+                  className="link"
+                  onClick={async () => {
+                    const n = await copyMeal(addDays(day, -1), day, meal);
+                    toast(n ? `COPIED ${n} ITEM${n > 1 ? "S" : ""} FROM YESTERDAY` : "NOTHING TO COPY FROM YESTERDAY");
+                  }}
+                >
+                  COPY YESTERDAY
                 </button>
-              ))}
-              <div className="row">
-                <button className="link" onClick={() => open({ kind: "food", day, meal })}>+ Add food</button>
-                <div className="grow" />
-                {items.length ? (
-                  <button className="link" style={{ color: "var(--muted)" }} onClick={() => saveMealPrompt(meal)}>Save meal</button>
-                ) : (
-                  <button
-                    className="link"
-                    style={{ color: "var(--muted)" }}
-                    onClick={async () => {
-                      const n = await copyMeal(addDays(day, -1), day, meal);
-                      toast(n ? `Copied ${n} item${n > 1 ? "s" : ""} from yesterday` : "Nothing to copy from yesterday");
-                    }}
-                  >
-                    Copy yesterday
-                  </button>
-                )}
-              </div>
+              )}
             </div>
-          </div>
+          </Card>
         );
       })}
 
-      <h2>Is this day's log complete?</h2>
-      <Card>
+      <Card title="LOG COMPLETE?" aside={status.complete === null ? "UNSET" : status.complete ? "COMPLETE" : "PARTIAL"}>
         <Chips
-          options={[{ value: "yes", label: "Yes, everything logged" }, { value: "no", label: "No, partial" }]}
+          options={[{ value: "yes", label: "YES · ALL LOGGED" }, { value: "no", label: "NO · PARTIAL" }]}
           value={status.complete === null ? null : status.complete ? "yes" : "no"}
           onChange={(v) => setDayComplete(day, v === null ? null : v === "yes")}
           allowNone
         />
-        <div className="muted small" style={{ marginTop: 8 }}>
-          Partial days are left out when the app learns your maintenance calories, so a half-logged day never looks like a big deficit.
-        </div>
+        <div className="desc">PARTIAL DAYS ARE LEFT OUT WHEN MAINTENANCE CALORIES ARE LEARNED, SO A HALF-LOGGED DAY NEVER READS AS A DEFICIT.</div>
       </Card>
 
       {editing ? <EntryEditor entry={editing} onClose={() => setEditing(null)} /> : null}
-    </div>
-  );
-}
-
-function Macro(props: { label: string; value: number; target: number | null }) {
-  return (
-    <div>
-      <div className="small muted">{props.label}</div>
-      <div className="num" style={{ fontWeight: 600 }}>
-        {Math.round(props.value)}
-        {props.target ? <span className="muted small"> / {props.target} g</span> : " g"}
-      </div>
-      {props.target ? <ProgressBar value={props.value} max={props.target} /> : null}
     </div>
   );
 }
@@ -179,38 +227,40 @@ function EntryEditor(props: { entry: FoodEntry; onClose: () => void }) {
   };
   return (
     <Sheet
-      title="Edit entry"
+      title="EDIT ENTRY"
       onClose={props.onClose}
       footer={
         <div className="grid-2">
           <button
-            className="btn plain"
-            style={{ color: "var(--danger)" }}
+            className="btn danger"
             onClick={async () => {
               await deleteEntry(e.id);
-              toast("Entry deleted", () => void put("entries", e));
+              toast("PROC 093 ENTRY DELETED", () => void put("entries", e));
               props.onClose();
             }}
           >
-            Delete
+            DELETE
           </button>
-          <button className="btn" onClick={save}>Save</button>
+          <button className="btn" onClick={save}>SAVE</button>
         </div>
       }
     >
-      <Card>
-        <div style={{ fontWeight: 600 }}>{e.name}</div>
+      <Card title="ENTRY" aside={mealName[meal]}>
+        <div className="ex-title uc">{e.name}</div>
         <div className="muted small">{e.amountLabel}</div>
-        <div className="big-number" style={{ marginTop: 6 }}>{fmtKcal(e.kcal * f)} kcal</div>
-        <div className="muted small">P {Math.round(e.protein * f)} g · C {Math.round(e.carbs * f)} g · F {Math.round(e.fat * f)} g</div>
+        <div className="big-number" style={{ marginTop: 6 }}>
+          {fmtKcal(e.kcal * f)}
+          <span className="unit"> KCAL</span>
+        </div>
+        <div className="small num">P {Math.round(e.protein * f)} G · C {Math.round(e.carbs * f)} G · F {Math.round(e.fat * f)} G</div>
       </Card>
-      <Field label="Portion multiplier">
+      <Field label="PORTION MULTIPLIER">
         <Chips options={[0.5, 0.75, 1, 1.5, 2].map((v) => ({ value: v, label: `× ${v}` }))} value={factor} onChange={(v) => setFactor(v)} />
       </Field>
-      <Field label="Or type a multiplier">
-        <NumInput value={factor} onChange={setFactor} />
+      <Field label="OR TYPE A MULTIPLIER">
+        <NumInput value={factor} onChange={setFactor} ariaLabel="multiplier" />
       </Field>
-      <Field label="Meal">
+      <Field label="MEAL">
         <Chips options={MEALS.map((m) => ({ value: m, label: mealName[m] }))} value={meal} onChange={(v) => v && setMeal(v)} />
       </Field>
     </Sheet>
@@ -243,16 +293,16 @@ export function FoodAddSheet(props: { day: string; meal: string }) {
   }
 
   return (
-    <Sheet title={`Add to ${mealName[meal]}`} onClose={close}>
+    <Sheet title={`ADD → ${mealName[meal]}`} onClose={close}>
       <div style={{ marginBottom: 10 }}>
         <Chips options={MEALS.map((m) => ({ value: m, label: mealName[m] }))} value={meal} onChange={(v) => v && setMeal(v)} />
       </div>
       <Segmented
         options={[
-          { value: "recent", label: "Foods" },
-          { value: "barcode", label: "Barcode" },
-          { value: "saved", label: "Meals" },
-          { value: "quick", label: "Quick" },
+          { value: "recent", label: "FOODS" },
+          { value: "barcode", label: "BARCODE" },
+          { value: "saved", label: "MEALS" },
+          { value: "quick", label: "QUICK" },
         ]}
         value={mode}
         onChange={setMode}
@@ -264,7 +314,7 @@ export function FoodAddSheet(props: { day: string; meal: string }) {
         <SavedMeals
           onAdd={async (m) => {
             await addSavedMeal(m, props.day, meal);
-            toast(`Added ${m.name}`);
+            toast(`ADDED · ${m.name}`);
             close();
           }}
         />
@@ -273,7 +323,7 @@ export function FoodAddSheet(props: { day: string; meal: string }) {
         <QuickAdd
           onAdd={async (q) => {
             await addEntry({ ...q, day: props.day, meal, method: "quick" });
-            toast(`Added ${Math.round(q.kcal)} kcal`);
+            toast(`ADDED · ${Math.round(q.kcal)} KCAL`);
             close();
           }}
         />
@@ -291,27 +341,31 @@ function FoodList(props: { onPick: (f: Food) => void; onCreate: () => void }) {
   }, [foods, q]);
   return (
     <>
-      <input className="input" placeholder="Search your foods" value={q} onChange={(e: any) => setQ(e.target.value)} />
+      <input className="input" placeholder="SEARCH YOUR FOODS" aria-label="search your foods" value={q} onChange={(e: any) => setQ(e.target.value)} />
       <div style={{ height: 10 }} />
-      <button className="btn secondary block" onClick={props.onCreate}>+ New food from a label</button>
-      <h2>{q ? "Matches" : "Recent"}</h2>
-      <div className="card tight">
+      <button className="btn secondary block" onClick={props.onCreate}>[+] NEW FOOD FROM A LABEL</button>
+      <div style={{ height: 12 }} />
+      <Card title={q ? "MATCHES" : "RECENT FOODS"} aside={shown.length ? `${shown.length}` : null} flush>
         {shown.length === 0 ? (
-          <div className="empty">{foods.length ? "No match." : "Foods you add or scan appear here, most recent first."}</div>
+          <div className="empty">{foods.length ? "NO MATCH." : "NO RECORDS YET. FOODS YOU ADD OR SCAN ARE FILED HERE, MOST RECENT FIRST."}</div>
         ) : null}
         {shown.map((f) => (
           <button className="row" key={f.id} onClick={() => props.onPick(f)}>
             <div className="grow">
-              <div className="name">{f.name}</div>
+              <div className="name uc">{f.name}</div>
               <div className="muted small">
-                {f.brand ? `${f.brand} · ` : ""}
-                {Math.round(f.per100g.kcal)} kcal / 100 g
+                {f.brand ? (
+                  <>
+                    <span className="uc">{f.brand}</span> ·{" "}
+                  </>
+                ) : null}
+                {Math.round(f.per100g.kcal)} KCAL / 100 G
               </div>
             </div>
-            <span className="muted">›</span>
+            <span className="go">▶</span>
           </button>
         ))}
-      </div>
+      </Card>
     </>
   );
 }
@@ -324,7 +378,7 @@ function BarcodePanel(props: { onFound: (f: Food) => void; onCreate: (partial: P
   const look = async (c: string) => {
     const clean = c.replace(/\D/g, "");
     if (clean.length < 6) {
-      setMessage("That doesn't look like a full barcode number.");
+      setMessage("BARCODE INCOMPLETE · 6+ DIGITS REQUIRED");
       return;
     }
     setBusy(true);
@@ -335,7 +389,7 @@ function BarcodePanel(props: { onFound: (f: Food) => void; onCreate: (partial: P
       await saveFood(r.food);
       props.onFound(r.food);
     } else {
-      setMessage(r.error ?? "Not found.");
+      setMessage(r.error ?? "NOT FOUND");
       setCode(clean);
       if (r.partial) props.onCreate({ ...r.partial, barcode: clean });
     }
@@ -354,23 +408,23 @@ function BarcodePanel(props: { onFound: (f: Food) => void; onCreate: (partial: P
   }
   return (
     <>
-      <button className="btn block xl" onClick={() => setScanning(true)}>Scan barcode with camera</button>
-      <h2>Or type the number</h2>
-      <input className="input" inputMode="numeric" placeholder="e.g. 0 55653 68500 1" value={code} onChange={(e: any) => setCode(e.target.value)} />
+      <button className="btn block xl" onClick={() => setScanning(true)}>▶ SCAN BARCODE WITH CAMERA</button>
+      <h2>OR TYPE THE NUMBER</h2>
+      <input className="input" inputMode="numeric" placeholder="0 55653 68500 1" aria-label="barcode number" value={code} onChange={(e: any) => setCode(e.target.value)} />
       <div style={{ height: 10 }} />
       <button className="btn secondary block" disabled={busy || !code.trim()} onClick={() => look(code)}>
-        {busy ? "Looking up…" : "Look up"}
+        {busy ? "LOOKING UP…" : "LOOK UP"}
       </button>
       {message ? (
         <div className="notice warn" style={{ marginTop: 12 }}>
-          {message}
-          <div style={{ marginTop: 8 }}>
-            <button className="btn sm" onClick={() => props.onCreate({ barcode: code.replace(/\D/g, "") })}>Enter it from the label</button>
+          <span className="msg">{message}</span>
+          <div className="chips">
+            <button className="btn sm" onClick={() => props.onCreate({ barcode: code.replace(/\D/g, "") })}>ENTER IT FROM THE LABEL</button>
           </div>
         </div>
       ) : null}
-      <div className="muted small" style={{ marginTop: 12 }}>
-        Product data comes from Open Food Facts, a free crowd-sourced database. Always glance at the numbers; you can correct them.
+      <div className="desc" style={{ marginTop: 12 }}>
+        PRODUCT DATA: <span className="blu">OPEN FOOD FACTS</span>, A FREE CROWD-SOURCED DATABASE. CHECK THE NUMBERS; YOU CAN CORRECT THEM.
       </div>
     </>
   );
@@ -379,21 +433,21 @@ function BarcodePanel(props: { onFound: (f: Food) => void; onCreate: (partial: P
 function SavedMeals(props: { onAdd: (m: SavedMeal) => void }) {
   const meals = useLive(listSavedMeals, [], [] as SavedMeal[]);
   return (
-    <div className="card tight">
-      {meals.length === 0 ? <div className="empty">No saved meals yet. On the Food tab, log a meal and tap “Save meal”.</div> : null}
+    <Card title="SAVED MEALS" aside={meals.length ? `${meals.length}` : null} flush>
+      {meals.length === 0 ? <div className="empty">NO SAVED MEALS YET. LOG A MEAL ON THE FOOD TAB, THEN [SAVE MEAL].</div> : null}
       {meals.map((m) => {
         const t = sumNutrients(m.items);
         return (
           <button className="row" key={m.id} onClick={() => props.onAdd(m)}>
             <div className="grow">
-              <div className="name">{m.name}</div>
-              <div className="muted small">{m.items.length} items · P {Math.round(t.protein)} g</div>
+              <div className="name uc">{m.name}</div>
+              <div className="muted small">{m.items.length} ITEMS · P {Math.round(t.protein)} G</div>
             </div>
             <div className="num">{fmtKcal(t.kcal)}</div>
           </button>
         );
       })}
-    </div>
+    </Card>
   );
 }
 
@@ -405,19 +459,19 @@ function QuickAdd(props: { onAdd: (q: { name: string; kcal: number; protein: num
   const [f, setF] = useState<number | null>(null);
   return (
     <>
-      <Field label="What was it? (optional)">
-        <input className="input" value={name} onChange={(e: any) => setName(e.target.value)} placeholder="Quick add" />
+      <Field label="WHAT WAS IT (OPTIONAL)">
+        <input className="input" value={name} onChange={(e: any) => setName(e.target.value)} placeholder="QUICK ADD" />
       </Field>
-      <Field label="Calories (kcal)">
+      <Field label="CALORIES (KCAL)">
         <NumInput value={kcal} onChange={setKcal} big decimals={false} ariaLabel="calories" />
       </Field>
       <div className="grid-3">
-        <Field label="Protein g"><NumInput value={p} onChange={setP} /></Field>
-        <Field label="Carbs g"><NumInput value={c} onChange={setC} /></Field>
-        <Field label="Fat g"><NumInput value={f} onChange={setF} /></Field>
+        <Field label="PROTEIN G"><NumInput value={p} onChange={setP} ariaLabel="protein" /></Field>
+        <Field label="CARBS G"><NumInput value={c} onChange={setC} ariaLabel="carbs" /></Field>
+        <Field label="FAT G"><NumInput value={f} onChange={setF} ariaLabel="fat" /></Field>
       </div>
       <button className="btn block xl" disabled={kcal === null} onClick={() => kcal !== null && props.onAdd({ name: name.trim() || "Quick add", kcal, protein: p ?? 0, carbs: c ?? 0, fat: f ?? 0 })}>
-        Add
+        [+] ADD
       </button>
     </>
   );
@@ -435,7 +489,7 @@ function AmountSheet(props: { food: Food; day: string; meal: Meal; onBack: () =>
   const label = s.label === "grams" ? `${fmt(grams)} g` : `${fmt(qty ?? 0, 2)} × ${s.label}`;
   return (
     <Sheet
-      title="Amount"
+      title="AMOUNT"
       onClose={props.onBack}
       footer={
         <button
@@ -443,24 +497,24 @@ function AmountSheet(props: { food: Food; day: string; meal: Meal; onBack: () =>
           disabled={!qty}
           onClick={async () => {
             await addFoodEntry(f, grams, label, props.day, props.meal, f.barcode ? "barcode" : "search");
-            toast(`Added ${f.name}`);
+            toast(`ADDED · ${f.name}`);
             close();
           }}
         >
-          Add {fmtKcal(n.kcal)} kcal
+          [+] ADD {fmtKcal(n.kcal)} KCAL
         </button>
       }
     >
-      <Card>
-        <div style={{ fontWeight: 600 }}>{f.name}</div>
-        <div className="muted small">{f.brand ?? (f.source === "custom" ? "Your food" : "")}</div>
+      <Card title="FOOD" aside={f.source === "custom" ? "YOUR FOOD" : f.barcode ? `EAN ${f.barcode}` : null}>
+        <div className="ex-title uc">{f.name}</div>
+        {f.brand ? <div className="muted small uc">{f.brand}</div> : null}
         <div className="grid-3" style={{ marginTop: 10 }}>
-          <div><div className="small muted">Protein</div><div className="num">{fmt(n.protein)} g</div></div>
-          <div><div className="small muted">Carbs</div><div className="num">{fmt(n.carbs)} g</div></div>
-          <div><div className="small muted">Fat</div><div className="num">{fmt(n.fat)} g</div></div>
+          <div className="stat"><div className="label">PROTEIN</div><div className="value" style={{ fontSize: 18 }}>{fmt(n.protein)} G</div></div>
+          <div className="stat"><div className="label">CARBS</div><div className="value" style={{ fontSize: 18 }}>{fmt(n.carbs)} G</div></div>
+          <div className="stat"><div className="label">FAT</div><div className="value" style={{ fontSize: 18 }}>{fmt(n.fat)} G</div></div>
         </div>
       </Card>
-      <Field label="Unit">
+      <Field label="UNIT">
         <Chips
           options={options.map((o, i) => ({ value: i, label: o.label === "grams" ? "grams" : `${o.label}${o.label.includes("g") ? "" : ` (${fmt(o.grams)} g)`}` }))}
           value={serving}
@@ -471,13 +525,13 @@ function AmountSheet(props: { food: Food; day: string; meal: Meal; onBack: () =>
           }}
         />
       </Field>
-      <Field label={s.label === "grams" ? "Grams" : "How many"}>
+      <Field label={s.label === "grams" ? "GRAMS" : "HOW MANY"}>
         <NumInput value={qty} onChange={setQty} big ariaLabel="amount" />
       </Field>
       {s.label !== "grams" ? (
         <Chips options={[0.5, 1, 1.5, 2].map((v) => ({ value: v, label: String(v) }))} value={qty} onChange={(v) => v !== null && setQty(v)} />
       ) : null}
-      {f.attribution ? <div className="muted small" style={{ marginTop: 14 }}>Source: {f.attribution}</div> : null}
+      {f.attribution ? <div className="desc" style={{ marginTop: 14 }}>SOURCE: {f.attribution}</div> : null}
     </Sheet>
   );
 }
@@ -515,21 +569,21 @@ function CustomFoodSheet(props: { initial: Partial<Food>; onBack: () => void; on
     props.onSaved(food);
   };
   return (
-    <Sheet title="New food" onClose={props.onBack} footer={<button className="btn block xl" disabled={!valid} onClick={save}>Save food</button>}>
-      <div className="muted small" style={{ marginBottom: 12 }}>Copy the numbers from the nutrition label, per serving.</div>
-      <Field label="Name"><input className="input" value={name} onChange={(e: any) => setName(e.target.value)} placeholder="e.g. Greek yogurt 0%" /></Field>
-      <Field label="Brand (optional)"><input className="input" value={brand} onChange={(e: any) => setBrand(e.target.value)} /></Field>
+    <Sheet title="NEW FOOD" onClose={props.onBack} footer={<button className="btn block xl" disabled={!valid} onClick={save}>SAVE FOOD</button>}>
+      <div className="desc" style={{ margin: "0 0 12px" }}>COPY THE NUMBERS FROM THE NUTRITION LABEL, PER SERVING.</div>
+      <Field label="NAME"><input className="input" value={name} onChange={(e: any) => setName(e.target.value)} placeholder="GREEK YOGURT 0%" /></Field>
+      <Field label="BRAND (OPTIONAL)"><input className="input" value={brand} onChange={(e: any) => setBrand(e.target.value)} /></Field>
       <div className="grid-2">
-        <Field label="Serving (as on label)"><input className="input" value={servingLabel} onChange={(e: any) => setServingLabel(e.target.value)} placeholder="3/4 cup" /></Field>
-        <Field label="Serving size (g or ml)"><NumInput value={servingGrams} onChange={setServingGrams} /></Field>
+        <Field label="SERVING (AS ON LABEL)"><input className="input" value={servingLabel} onChange={(e: any) => setServingLabel(e.target.value)} placeholder="3/4 CUP" /></Field>
+        <Field label="SERVING SIZE (G OR ML)"><NumInput value={servingGrams} onChange={setServingGrams} /></Field>
       </div>
-      <Field label="Calories per serving"><NumInput value={kcal} onChange={setKcal} decimals={false} /></Field>
+      <Field label="CALORIES PER SERVING"><NumInput value={kcal} onChange={setKcal} decimals={false} /></Field>
       <div className="grid-3">
-        <Field label="Protein g"><NumInput value={p} onChange={setP} /></Field>
-        <Field label="Carbs g"><NumInput value={c} onChange={setC} /></Field>
-        <Field label="Fat g"><NumInput value={fat} onChange={setFat} /></Field>
+        <Field label="PROTEIN G"><NumInput value={p} onChange={setP} /></Field>
+        <Field label="CARBS G"><NumInput value={c} onChange={setC} /></Field>
+        <Field label="FAT G"><NumInput value={fat} onChange={setFat} /></Field>
       </div>
-      <Field label="Barcode (optional)"><input className="input" inputMode="numeric" value={barcode} onChange={(e: any) => setBarcode(e.target.value)} /></Field>
+      <Field label="BARCODE (OPTIONAL)"><input className="input" inputMode="numeric" value={barcode} onChange={(e: any) => setBarcode(e.target.value)} /></Field>
     </Sheet>
   );
 }

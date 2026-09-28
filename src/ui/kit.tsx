@@ -1,8 +1,18 @@
-// Shared UI building blocks.
+// Shared UI building blocks, drawn in the MAGI console language (see src/magi/base.css).
+//
+// Conventions for screens:
+//   - Card = a subsystem panel (.mg-panel.mg-brk): inverse S# tag (CSS counter per page), uppercase
+//     title, amber status on the right. `tone` = "red" (one diagnostic panel) | "dbl" (decision panel).
+//     `flush` removes the body padding (raster hosts, log rows).
+//   - Class "uc" (user case) marks anything the user typed or owns (food, meal, exercise and template
+//     names, notes): it keeps its case and is set in white. Everything else is uppercase system voice.
+//   - toast(): SYS> notice under the header; a message starting with "ERR" becomes a FAULT> notice.
+//   - confirmScreen()/promptScreen() replace window.confirm/alert/prompt with full-screen terminals.
 
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-import { fmt } from "../engine/units";
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import type { GarminStatus } from "../db/garmin";
 import type { Settings } from "../db/types";
+import { fmt } from "../engine/units";
 
 // ---- app context ------------------------------------------------------------
 
@@ -34,47 +44,175 @@ export function useUI(): UI {
   return ui;
 }
 
+// ---- screen stack -----------------------------------------------------------
+// Full-screen terminal screens can stack (a confirm over a sheet). Escape/Enter go to the topmost only.
+
+const screenStack: object[] = [];
+const isTopScreen = (tok: object) => screenStack[screenStack.length - 1] === tok;
+let keyboardUser = false;
+if (typeof window !== "undefined") {
+  window.addEventListener("keydown", () => (keyboardUser = true), true);
+  window.addEventListener("pointerdown", () => (keyboardUser = false), true);
+}
+
+/** Registers a screen: body scroll lock, focus into the screen, focus back on close (keyboard users). */
+function enterScreen(el: HTMLElement | null, tok: object): () => void {
+  screenStack.push(tok);
+  const prevFocus = document.activeElement as HTMLElement | null;
+  const prevOverflow = document.body.style.overflow;
+  document.body.style.overflow = "hidden";
+  if (el && !el.contains(document.activeElement)) el.focus({ preventScroll: true });
+  return () => {
+    const i = screenStack.indexOf(tok);
+    if (i >= 0) screenStack.splice(i, 1);
+    document.body.style.overflow = prevOverflow;
+    if (keyboardUser && prevFocus && prevFocus !== document.body && document.contains(prevFocus)) prevFocus.focus({ preventScroll: true });
+  };
+}
+
+/** Enter in a field (not a textarea, button or select) presses the screen's primary key. */
+function enterPressesPrimary(e: KeyboardEvent, primary: () => HTMLElement | null | undefined): boolean {
+  if (e.key !== "Enter" || e.shiftKey || e.altKey || e.metaKey || e.ctrlKey || e.isComposing) return false;
+  const t = e.target as HTMLElement | null;
+  if (t && /^(TEXTAREA|BUTTON|SELECT|A)$/.test(t.tagName)) return false;
+  const p = primary();
+  if (!p) return false;
+  e.preventDefault();
+  p.click();
+  return true;
+}
+
 // ---- layout -----------------------------------------------------------------
 
-export function Sheet(props: { title: string; onClose: () => void; right?: ReactNode; footer?: ReactNode; children?: ReactNode }) {
+/**
+ * Full-screen terminal screen (protocol §8.16): 40 px header "▶ JANOS-SYS/<TITLE>" with [ESC] BACK,
+ * scrolling body, optional footer (its LAST enabled button is the [ENTER] key), 24 px key-hint strip.
+ */
+export function Sheet(props: {
+  title: string;
+  onClose: () => void;
+  right?: ReactNode;
+  footer?: ReactNode;
+  children?: ReactNode;
+  /** Amber status in the header (e.g. "AUTO-SAVE"). */
+  status?: ReactNode;
+  /** Replaces the key-hint strip. */
+  keys?: string[];
+  /** Word after [ENTER] in the hint strip when there is a footer (default "SAVE"). */
+  enterLabel?: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const foot = useRef<HTMLDivElement | null>(null);
+  const closeRef = useRef(props.onClose);
+  closeRef.current = props.onClose;
   useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const tok = {};
+    const leave = enterScreen(ref.current, tok);
+    const onKey = (e: KeyboardEvent) => {
+      if (!isTopScreen(tok)) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeRef.current();
+        return;
+      }
+      enterPressesPrimary(e, () => {
+        const btns = foot.current?.querySelectorAll<HTMLElement>("button:not([disabled])");
+        return btns && btns.length ? btns[btns.length - 1] : null;
+      });
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+      leave();
     };
   }, []);
+  const keys = props.keys ?? (props.footer ? ["[ESC] BACK", `[ENTER] ${props.enterLabel ?? "SAVE"}`] : ["[ESC] BACK"]);
   return (
-    <>
-      <div className="sheet-backdrop" onClick={props.onClose} />
-      <div className="sheet" role="dialog" aria-label={props.title}>
-        <div className="sheet-head">
-          <div>
-            <button className="link" onClick={props.onClose}>
-              Close
-            </button>
-          </div>
-          <div className="title">{props.title}</div>
-          <div className="right">{props.right}</div>
-        </div>
-        <div className="sheet-body">{props.children}</div>
-        {props.footer ? <div className="sheet-foot">{props.footer}</div> : null}
+    <div className={`mg-screen sheet${props.className ? ` ${props.className}` : ""}`} role="dialog" aria-modal="true" aria-label={props.title} tabIndex={-1} ref={ref}>
+      <div className="mg-scr-h sheet-head">
+        <span className="ttl">▶ JANOS-SYS/{props.title}</span>
+        {props.status ? <span className="st">{props.status}</span> : null}
+        <span className="sp" />
+        {props.right}
+        <button type="button" className="mg-key" onClick={props.onClose}>
+          [ESC] BACK
+        </button>
       </div>
-    </>
+      <div className="mg-scr-b sheet-body">{props.children}</div>
+      {props.footer ? (
+        <div className="sheet-foot" ref={foot}>
+          {props.footer}
+        </div>
+      ) : null}
+      <div className="mg-keys sheet-keys" aria-hidden="true">
+        {keys.map((k) => (
+          <span key={k}>{k}</span>
+        ))}
+      </div>
+    </div>
   );
 }
 
-export function Card(props: { title?: ReactNode; aside?: ReactNode; children?: ReactNode; tight?: boolean; onClick?: () => void }) {
+/** Page title strip: "▶ JANOS-SYS/<SYS>" with an amber status on the right. */
+export function PageTitle(props: { sys: string; status?: ReactNode; children?: ReactNode }) {
   return (
-    <div className={props.tight ? "card tight" : "card"} onClick={props.onClick} style={props.onClick ? { cursor: "pointer" } : undefined}>
-      {props.title || props.aside ? (
-        <div className="card-head">
-          <div className="title">{props.title}</div>
-          <div className="muted small">{props.aside}</div>
-        </div>
-      ) : null}
+    <div className="page-title">
+      <h1>▶ JANOS-SYS/{props.sys}</h1>
+      {props.status != null && props.status !== false ? <span className="st">{props.status}</span> : null}
       {props.children}
     </div>
+  );
+}
+
+/**
+ * Subsystem panel (protocol §8.2). Backward compatible with the old card: title, aside, tight, onClick.
+ * New: tone ("red" diagnostic identity, "dbl" double rule), status (alias of aside), flush (no body
+ * padding; use it for raster hosts and log rows), rev (micro revision label, e.g. "BODYMASS MOD 1.04").
+ */
+export function Card(props: {
+  title?: ReactNode;
+  aside?: ReactNode;
+  status?: ReactNode;
+  children?: ReactNode;
+  tight?: boolean;
+  flush?: boolean;
+  onClick?: () => void;
+  tone?: "red" | "dbl";
+  rev?: ReactNode;
+  className?: string;
+  id?: string;
+  ariaLabel?: string;
+}) {
+  const aside = props.status ?? props.aside;
+  const cls = ["card", "mg-panel", "mg-brk", props.tone, props.tight || props.flush ? "flush" : "", props.onClick ? "click" : "", props.className]
+    .filter(Boolean)
+    .join(" ");
+  const click = props.onClick
+    ? {
+        role: "button",
+        tabIndex: 0,
+        onClick: props.onClick,
+        onKeyDown: (e: any) => {
+          if ((e.key === "Enter" || e.key === " ") && e.target === e.currentTarget) {
+            e.preventDefault();
+            props.onClick?.();
+          }
+        },
+      }
+    : {};
+  return (
+    <section className={cls} id={props.id} aria-label={props.ariaLabel} {...click}>
+      {props.title || aside ? (
+        <div className="mg-bar">
+          <b className="tag" aria-hidden="true" />
+          <span className="t">{props.title}</span>
+          {aside ? <span className="st">{aside}</span> : null}
+        </div>
+      ) : null}
+      <div className="card-body">{props.children}</div>
+      {props.rev ? <div className="rev">{props.rev}</div> : null}
+    </section>
   );
 }
 
@@ -83,16 +221,17 @@ export function Stat(props: { label: string; value: ReactNode; sub?: ReactNode }
     <div className="stat">
       <div className="label">{props.label}</div>
       <div className="value">{props.value}</div>
-      {props.sub ? <div className="muted small">{props.sub}</div> : null}
+      {props.sub ? <div className="sub">{props.sub}</div> : null}
     </div>
   );
 }
 
-export function Field(props: { label: string; children?: ReactNode }) {
+export function Field(props: { label: ReactNode; children?: ReactNode; hint?: ReactNode }) {
   return (
     <label className="field">
       <span>{props.label}</span>
       {props.children}
+      {props.hint ? <em className="hint">{props.hint}</em> : null}
     </label>
   );
 }
@@ -160,8 +299,8 @@ export function Stepper(props: {
   };
   return (
     <div className="stepper" aria-label={props.label}>
-      <button aria-label={`decrease ${props.label ?? ""}`} onClick={() => move(-1)}>
-        −
+      <button type="button" aria-label={`decrease ${props.label ?? ""}`} onClick={() => move(-1)}>
+        [−]
       </button>
       <div className="value">
         <input
@@ -176,13 +315,14 @@ export function Stepper(props: {
         />
         {props.unit ? <div className="unit">{props.unit}</div> : null}
       </div>
-      <button aria-label={`increase ${props.label ?? ""}`} onClick={() => move(1)}>
-        +
+      <button type="button" aria-label={`increase ${props.label ?? ""}`} onClick={() => move(1)}>
+        [+]
       </button>
     </div>
   );
 }
 
+/** Toggle keys; the selected key is amber (aria-pressed). */
 export function Chips<T extends string | number>(props: {
   options: { value: T; label: string }[];
   value: T | null | undefined;
@@ -193,8 +333,10 @@ export function Chips<T extends string | number>(props: {
     <div className="chips">
       {props.options.map((o) => (
         <button
+          type="button"
           key={String(o.value)}
           className={o.value === props.value ? "chip on" : "chip"}
+          aria-pressed={o.value === props.value}
           onClick={() => props.onChange(o.value === props.value && props.allowNone ? null : o.value)}
         >
           {o.label}
@@ -204,11 +346,12 @@ export function Chips<T extends string | number>(props: {
   );
 }
 
+/** Key row; the active key is inverse. */
 export function Segmented<T extends string>(props: { options: { value: T; label: string }[]; value: T; onChange: (v: T) => void }) {
   return (
-    <div className="segmented">
+    <div className="segmented" role="group">
       {props.options.map((o) => (
-        <button key={o.value} className={o.value === props.value ? "on" : ""} onClick={() => props.onChange(o.value)}>
+        <button type="button" key={o.value} className={o.value === props.value ? "on" : ""} aria-pressed={o.value === props.value} onClick={() => props.onChange(o.value)}>
           {o.label}
         </button>
       ))}
@@ -216,11 +359,35 @@ export function Segmented<T extends string>(props: { options: { value: T; label:
   );
 }
 
-export function ProgressBar(props: { value: number; max: number }) {
-  const pct = props.max > 0 ? Math.min(100, (props.value / props.max) * 100) : 0;
+/** Text checkbox: [X] / [ ]. */
+export function Check(props: { checked: boolean; onChange: (v: boolean) => void; label: ReactNode }) {
   return (
-    <div className={props.max > 0 && props.value > props.max * 1.03 ? "bar over" : "bar"}>
-      <div style={{ width: `${pct}%` }} />
+    <button type="button" role="checkbox" aria-checked={props.checked} className="mg-cbx" onClick={() => props.onChange(!props.checked)}>
+      <span className="box" aria-hidden="true">
+        {props.checked ? "[X]" : "[ ]"}
+      </span>
+      <span className="lab">{props.label}</span>
+    </button>
+  );
+}
+
+/** Segmented cell meter: hollow cells, lit cells amber, all red when over (value > 103 % of max). */
+export function ProgressBar(props: { value: number; max: number; cells?: number }) {
+  const n = props.cells ?? 20;
+  const frac = props.max > 0 ? Math.max(0, props.value / props.max) : 0;
+  const over = props.max > 0 && props.value > props.max * 1.03;
+  const lit = frac > 0 ? Math.max(1, Math.min(n, Math.round(Math.min(1, frac) * n))) : 0;
+  return (
+    <div
+      className={over ? "bar over" : "bar"}
+      role="meter"
+      aria-valuemin={0}
+      aria-valuemax={Math.round(props.max)}
+      aria-valuenow={Math.round(props.value)}
+    >
+      {Array.from({ length: n }, (_, i) => (
+        <i key={i} className={i < lit ? "on" : undefined} />
+      ))}
     </div>
   );
 }
@@ -344,24 +511,221 @@ export function BarChart(props: { bars: { label: string; value: number }[]; heig
   );
 }
 
-// ---- icons ------------------------------------------------------------------
-
-const icon = (d: string) => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-    <path d={d} />
-  </svg>
-);
+// ---- glyphs -----------------------------------------------------------------
+// The SVG icon set is gone: the console uses text glyphs only.
 
 export const Icons = {
-  today: icon("M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"),
-  food: icon("M7 3v8a2 2 0 0 0 2 2v8M11 3v8M7 7h4M17 3c-1.7 0-3 2-3 5s1 4 3 4v9"),
-  train: icon("M3 10v4M6 7v10M18 7v10M21 10v4M6 12h12"),
-  sleep: icon("M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"),
-  progress: icon("M4 19h16M6 16l4-5 3 3 5-7"),
-  gear: icon("M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 13a7.9 7.9 0 0 0 0-2l2-1.5-2-3.4-2.4 1a7.7 7.7 0 0 0-1.7-1L15 3.5h-4l-.3 2.6a7.7 7.7 0 0 0-1.7 1l-2.4-1-2 3.4L6.6 11a7.9 7.9 0 0 0 0 2l-2 1.5 2 3.4 2.4-1a7.7 7.7 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7.7 7.7 0 0 0 1.7-1l2.4 1 2-3.4z"),
-  chevron: icon("M9 6l6 6-6 6"),
-  back: icon("M15 6l-6 6 6 6"),
+  today: "01",
+  food: "02",
+  train: "03",
+  sleep: "04",
+  progress: "05",
+  gear: "CONFIG",
+  chevron: "▶",
+  back: "◀",
 };
 
 export const fmtKcal = (v: number) => Math.round(v).toLocaleString("en-CA");
 export const fmtG = (v: number) => `${Math.round(v)} g`;
+
+// ---- full-screen confirm / alert / prompt ------------------------------------
+
+export interface ConfirmOptions {
+  title: string;
+  message: string;
+  /** Word on the confirm key (default "CONFIRM"). */
+  confirmLabel?: string;
+  /** Destructive: red WARNING plate and red confirm key; the destructive hook fires (the alert band). */
+  danger?: boolean;
+  /** With danger: set false to keep the red key but NOT fire the destructive hook (alert band budget). */
+  alarm?: boolean;
+  /** Word on the cancel key (default "CANCEL"); false = acknowledge-only screen (replaces alert()). */
+  cancelLabel?: string | false;
+}
+
+let destructiveHook: ((info: ConfirmOptions) => void) | null = null;
+
+/** Called by confirmScreen() whenever `danger` is true and `alarm` is not false (wire the alert band here). */
+export function setDestructiveHook(fn: ((info: ConfirmOptions) => void) | null): void {
+  destructiveHook = fn;
+}
+
+function h(tag: string, cls?: string, text?: string): HTMLElement {
+  const el = document.createElement(tag);
+  if (cls) el.className = cls;
+  if (text !== undefined) el.textContent = text;
+  return el;
+}
+
+/** Builds a terminal screen in plain DOM (usable from any handler, outside React). */
+function domScreen(title: string, backLabel: string, strip: string[], role = "dialog") {
+  const root = h("div", "mg-screen sheet top-screen");
+  root.setAttribute("role", role);
+  root.setAttribute("aria-modal", "true");
+  root.setAttribute("aria-label", title);
+  root.tabIndex = -1;
+  const head = h("div", "mg-scr-h sheet-head");
+  head.append(h("span", "ttl", `▶ JANOS-SYS/${title}`), h("span", "sp"));
+  const back = h("button", "mg-key", backLabel) as HTMLButtonElement;
+  back.type = "button";
+  head.append(back);
+  const body = h("div", "mg-scr-b sheet-body");
+  const foot = h("div", "sheet-foot");
+  const keys = h("div", "mg-keys sheet-keys");
+  keys.setAttribute("aria-hidden", "true");
+  for (const k of strip) keys.append(h("span", undefined, k));
+  root.append(head, body, foot, keys);
+  return { root, back, body, foot };
+}
+
+function runScreen<T>(
+  build: (done: (v: T) => void) => { root: HTMLElement; focus?: HTMLElement | null; onEnter: () => void; onEscape: () => void },
+): Promise<T> {
+  return new Promise<T>((resolve) => {
+    const tok = {};
+    let leave: () => void = () => {};
+    let finished = false;
+    const done = (v: T) => {
+      if (finished) return;
+      finished = true;
+      window.removeEventListener("keydown", onKey);
+      s.root.remove();
+      leave();
+      resolve(v);
+    };
+    const s = build(done);
+    const onKey = (e: KeyboardEvent) => {
+      if (!isTopScreen(tok)) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        s.onEscape();
+      } else enterPressesPrimary(e, () => ({ click: s.onEnter }) as unknown as HTMLElement);
+    };
+    document.body.append(s.root);
+    leave = enterScreen(s.root, tok);
+    if (s.focus) s.focus.focus({ preventScroll: true });
+    // Listen after the current event (the click or key that opened this screen) has finished.
+    window.setTimeout(() => !finished && window.addEventListener("keydown", onKey), 0);
+  });
+}
+
+/** MAGI replacement for window.confirm (and, with cancelLabel: false, window.alert). */
+export function confirmScreen(opts: ConfirmOptions): Promise<boolean> {
+  if (opts.danger && opts.alarm !== false) {
+    try {
+      destructiveHook?.(opts);
+    } catch (e) {
+      console.warn("destructive hook failed", e);
+    }
+  }
+  const okWord = opts.confirmLabel ?? "CONFIRM";
+  const cancelWord = opts.cancelLabel === false ? null : opts.cancelLabel ?? "CANCEL";
+  const strip = cancelWord ? [`[ESC] ${cancelWord}`, `[ENTER] ${okWord}`] : [`[ENTER] ${okWord}`];
+  return runScreen<boolean>((done) => {
+    const s = domScreen(opts.title, cancelWord ? `[ESC] ${cancelWord}` : "[ESC] CLOSE", strip, "alertdialog");
+    s.root.classList.add("confirm-screen");
+    // Plate word: WARNING (destructive), FAULT (an ERR message), NOTICE (acknowledge-only), CONFIRM.
+    const fault = /^ERR/.test(opts.message);
+    const plate = h("div", `warn-plate${opts.danger || fault ? " danger" : ""}`);
+    const word = h("b", "mg-sq", opts.danger ? "WARNING" : fault ? "FAULT" : cancelWord ? "CONFIRM" : "NOTICE");
+    const msg = h("p", "msg", opts.message);
+    msg.id = `cf-${Date.now()}`;
+    s.root.setAttribute("aria-describedby", msg.id);
+    plate.append(word, msg);
+    const wait = h("p", "await", "AWAITING OPERATOR INPUT ");
+    wait.append(h("span", "mg-cursor"));
+    s.body.append(plate, wait);
+    const grid = h("div", cancelWord ? "grid-2" : "keycol");
+    const ok = h("button", `${opts.danger ? "btn danger fill" : "btn"}${cancelWord ? "" : " block"}`, `[ENTER] ${okWord}`) as HTMLButtonElement;
+    ok.type = "button";
+    ok.onclick = () => done(true);
+    if (cancelWord) {
+      const no = h("button", "btn plain", `[ESC] ${cancelWord}`) as HTMLButtonElement;
+      no.type = "button";
+      no.onclick = () => done(false);
+      grid.append(no);
+    }
+    grid.append(ok);
+    s.foot.append(grid);
+    s.back.onclick = () => done(!cancelWord);
+    return { root: s.root, onEnter: () => done(true), onEscape: () => done(!cancelWord) };
+  });
+}
+
+/** MAGI replacement for window.prompt: resolves to the typed text, or null when cancelled. */
+export function promptScreen(opts: { title: string; label: string; initial?: string; confirmLabel?: string }): Promise<string | null> {
+  const okWord = opts.confirmLabel ?? "SAVE";
+  return runScreen<string | null>((done) => {
+    const s = domScreen(opts.title, "[ESC] CANCEL", ["[ESC] CANCEL", `[ENTER] ${okWord}`]);
+    const label = h("label", "field");
+    const input = h("input", "input") as HTMLInputElement;
+    input.value = opts.initial ?? "";
+    input.autocomplete = "off";
+    label.append(h("span", undefined, opts.label), input);
+    s.body.append(label);
+    const grid = h("div", "grid-2");
+    const no = h("button", "btn plain", "[ESC] CANCEL") as HTMLButtonElement;
+    no.type = "button";
+    no.onclick = () => done(null);
+    const ok = h("button", "btn", `[ENTER] ${okWord}`) as HTMLButtonElement;
+    ok.type = "button";
+    ok.onclick = () => done(input.value);
+    grid.append(no, ok);
+    s.foot.append(grid);
+    s.back.onclick = () => done(null);
+    window.setTimeout(() => input.select(), 0);
+    return { root: s.root, focus: input, onEnter: () => done(input.value), onEscape: () => done(null) };
+  });
+}
+
+// ---- display preferences (read by the raster instruments) -------------------------
+
+export type Density = "coarse" | "medium" | "fine";
+
+/** localStorage janos.flicker ("1"/"0", default "1") and janos.density (default "medium"). */
+export function readDisplayPrefs(): { flicker: boolean; density: Density } {
+  let flicker = "1";
+  let density = "medium";
+  try {
+    flicker = localStorage.getItem("janos.flicker") ?? "1";
+    density = localStorage.getItem("janos.density") ?? "medium";
+  } catch {
+    /* private mode */
+  }
+  return { flicker: flicker !== "0", density: density === "coarse" || density === "fine" ? density : "medium" };
+}
+
+/** Stores one display preference and announces it with a "janos-display" window event. */
+export function writeDisplayPref(key: "flicker" | "density", value: string): void {
+  try {
+    localStorage.setItem(`janos.${key}`, value);
+  } catch {
+    /* private mode */
+  }
+  window.dispatchEvent(new Event("janos-display"));
+}
+
+// ---- Garmin link state -------------------------------------------------------------
+
+export type LinkLamp = "on" | "warn" | "off";
+
+/** Maps a sync status message to the code table. */
+export function garminMessageCode(message: string | null | undefined): string | null {
+  if (!message) return null;
+  if (/match|unlock/i.test(message)) return "ERR 001 GARMIN LINK KEY MISMATCH";
+  const http = /HTTP (\d+)/i.exec(message);
+  if (http) return `ERR 003 GARMIN LINK UNREACHABLE · HTTP ${http[1]}`;
+  if (/offline|unreachable|network|fetch/i.test(message)) return "ERR 003 GARMIN LINK UNREACHABLE";
+  if (/waiting|first/i.test(message)) return "PROC 004 AWAITING FIRST GARMIN SYNC";
+  return message.toUpperCase();
+}
+
+/** Header lamp: green LINK (< 12 h), amber STALE / AWAITING, red FAULT (no key or key mismatch). */
+export function garminLink(key: string | null, status: GarminStatus | null, now = Date.now()): { lamp: LinkLamp; label: string; code: string | null } {
+  const code = garminMessageCode(status?.message);
+  if (!key) return { lamp: "off", label: "FAULT", code: "!! GARMIN LINK NOT CONFIGURED" };
+  if (code?.startsWith("ERR 001")) return { lamp: "off", label: "FAULT", code };
+  if (!status?.lastSuccess) return { lamp: "warn", label: "AWAITING", code: code ?? "PROC 004 AWAITING FIRST GARMIN SYNC" };
+  if (now - status.lastSuccess >= 12 * 3600000) return { lamp: "warn", label: "STALE", code: code ?? "WARN 002 GARMIN DATA STALE" };
+  return { lamp: "on", label: "LINK", code };
+}

@@ -1,5 +1,5 @@
-const CACHE = "janos-813dfbfb04";
-const SHELL = ["./","index.html","app.js?v=813dfbfb04","app.css?v=813dfbfb04","manifest.webmanifest","icon-180.png","icon-192.png","icon-512.png"];
+const CACHE = "janos-c5ae3ff325";
+const SHELL = ["./","index.html","app.js?v=c5ae3ff325","app.css?v=c5ae3ff325","manifest.webmanifest","icon-180.png","icon-192.png","icon-512.png"];
 const RUNTIME = "janos-runtime";
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)));
@@ -24,10 +24,19 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(caches.match(e.request).then((r) => r || fetch(e.request)));
     return;
   }
-  if (url.hostname === "cdn.jsdelivr.net") {
-    // Barcode scanner library: cache after first use so scanning works offline.
+  if (url.hostname === "cdn.jsdelivr.net" || url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com") {
+    // Barcode scanner library and Google Fonts: cache-first after first use, so both work offline.
     e.respondWith(
-      caches.open(RUNTIME).then((c) => c.match(e.request).then((r) => r || fetch(e.request).then((res) => { c.put(e.request, res.clone()); return res; })))
+      caches.open(RUNTIME).then((c) =>
+        c.match(e.request).then(
+          (r) =>
+            r ||
+            fetch(e.request).then((res) => {
+              if (res.ok || res.type === "opaque") c.put(e.request, res.clone());
+              return res;
+            })
+        )
+      )
     );
   }
 });

@@ -19,10 +19,15 @@ import {
   type ExerciseSession,
 } from "../db/repo";
 import type { CardioModality, CardioSession, CardioType, Exercise, StrengthSet, Template, Workout } from "../db/types";
+import { detectRecords, sessionRecords, type RecordHit, type SetLite } from "../engine/records";
 import { adviseProgression, e1RM, type ProgressionAdvice } from "../engine/strength";
+import { MUSCLE_LABEL, MUSCLES, weeklySetsPerMuscle } from "../engine/volume";
 import { fmt, formatMinSec } from "../engine/units";
 import { distFromDisplay, distToDisplay, shortDateTime, toLocalInputValue } from "./format";
-import { BarChart, Card, Chips, Field, NumInput, Segmented, Sheet, Stepper, useUI } from "./kit";
+import { Card, Chips, confirmScreen, Field, NumInput, PageTitle, ProgressBar, Segmented, Sheet, Stat, Stepper, useUI } from "./kit";
+import { loadLoadModel, pad, signed, type LoadModel } from "./models";
+import { BarsPanel, MeterPanel, PlotPanel, Seg7Panel } from "./raster";
+import { getAll } from "../db/db";
 
 export function TrainScreen() {
   const [mode, setMode] = useState<"strength" | "cardio">("strength");
@@ -30,10 +35,8 @@ export function TrainScreen() {
   if (active && mode === "strength") return <WorkoutView workout={active} />;
   return (
     <div className="page">
-      <div className="page-title">
-        <h1>Train</h1>
-      </div>
-      <Segmented options={[{ value: "strength", label: "Strength" }, { value: "cardio", label: "Cardio" }]} value={mode} onChange={setMode} />
+      <PageTitle sys="TRAIN" status={mode === "strength" ? "STRENGTH" : "CARDIO"} />
+      <Segmented options={[{ value: "strength", label: "STRENGTH" }, { value: "cardio", label: "CARDIO" }]} value={mode} onChange={setMode} />
       <div style={{ height: 8 }} />
       {mode === "strength" ? <StrengthHome /> : <CardioHome />}
     </div>
@@ -54,43 +57,44 @@ function StrengthHome() {
 
   return (
     <>
-      <h2>Start a workout</h2>
+      <h2>START A WORKOUT</h2>
       {templates.map((t) => (
-        <Card key={t.id}>
-          <div className="card-head">
-            <div className="title" style={{ fontSize: 18 }}>{t.name}</div>
-            <button className="link" onClick={() => setEditTpl(t)}>Edit</button>
-          </div>
-          <div className="muted small" style={{ marginBottom: 10 }}>
+        <Card key={t.id} title={<span className="uc">{t.name}</span>} aside={<button className="link" onClick={() => setEditTpl(t)}>EDIT</button>}>
+          <div className="small uc" style={{ marginBottom: 10 }}>
             {t.exerciseIds.map((id) => names.get(id) ?? "?").join(" · ")}
           </div>
-          <button className="btn block" onClick={() => startWorkout(t)}>Start {t.name}</button>
+          <button className="btn block" onClick={() => startWorkout(t)}>
+            ▶ START <span className="uc">{t.name}</span>
+          </button>
         </Card>
       ))}
       <div className="grid-2">
-        <button className="btn plain" onClick={() => startWorkout()}>Empty workout</button>
-        <button className="btn plain" onClick={() => setEditTpl({ id: uid(), name: "New template", exerciseIds: [], setsPerExercise: 3 })}>New template</button>
+        <button className="btn plain" onClick={() => startWorkout()}>EMPTY WORKOUT</button>
+        <button className="btn plain" onClick={() => setEditTpl({ id: uid(), name: "New template", exerciseIds: [], setsPerExercise: 3 })}>[+] NEW TEMPLATE</button>
       </div>
       <div style={{ height: 8 }} />
-      <button className="btn plain block" onClick={() => setShowLibrary(true)}>Exercises and machines</button>
+      <button className="btn plain block" onClick={() => setShowLibrary(true)}>EXERCISES + MACHINES</button>
 
-      <h2>History</h2>
-      <div className="card tight">
-        {workouts.length === 0 ? <div className="empty">Finished workouts appear here.</div> : null}
+      <VolumeCard exercises={exercises} />
+      <RecordsCard exercises={exercises} workouts={workouts} />
+
+      <h2>HISTORY</h2>
+      <Card title="WORKOUT LOG" aside={workouts.length ? `${workouts.length} FILED` : null} flush>
+        {workouts.length === 0 ? <div className="empty">NO RECORDS YET. EVERY FINISHED WORKOUT IS FILED HERE AUTOMATICALLY.</div> : null}
         {workouts.slice(0, 20).map((w) => (
           <button className="row" key={w.id} onClick={() => setDetail(w)}>
             <div className="grow">
-              <div className="name">{w.name}</div>
+              <div className="name uc">{w.name}</div>
               <div className="muted small">
                 {shortDateTime(w.start)}
-                {w.end ? ` · ${Math.round((w.end - w.start) / 60000)} min` : ""}
-                {w.sessionRPE ? ` · effort ${w.sessionRPE}/10` : ""}
+                {w.end ? ` · ${Math.round((w.end - w.start) / 60000)} MIN` : ""}
+                {w.sessionRPE ? ` · EFFORT ${w.sessionRPE}/10` : ""}
               </div>
             </div>
-            <span className="muted">›</span>
+            <span className="go">▶</span>
           </button>
         ))}
-      </div>
+      </Card>
 
       {editTpl ? <TemplateEditor template={editTpl} exercises={exercises} onClose={() => setEditTpl(null)} /> : null}
       {showLibrary ? (
@@ -109,6 +113,86 @@ function StrengthHome() {
   );
 }
 
+/** Hard sets per muscle over the last 7 days (working sets at ≤ 4 RIR; secondary muscles count half). */
+function VolumeCard(props: { exercises: Exercise[] }) {
+  const sets = useLive(() => getAll<StrengthSet>("sets"), [], [] as StrengthSet[]);
+  const byId = new Map(props.exercises.map((e) => [e.id, e]));
+  const to = Date.now();
+  const vol = weeklySetsPerMuscle(
+    sets.filter((x) => byId.has(x.exerciseId)).map((x) => ({ exerciseName: byId.get(x.exerciseId)!.name, group: byId.get(x.exerciseId)!.group, rir: x.rir, kind: x.kind, completedAt: x.completedAt })),
+    to - 7 * 86400000,
+    to,
+  );
+  const total = MUSCLES.reduce((a, m) => a + vol[m], 0);
+  return (
+    <Card title="JANOS-SYS/VOLUME" status={`${fmt(total, 1)} HARD SETS / 7 D`}>
+      {total === 0 ? <div className="empty" style={{ padding: 0 }}>NO HARD SETS IN THE LAST 7 DAYS.</div> : null}
+      {total > 0
+        ? MUSCLES.map((m) => (
+            <div className="vol-row" key={m}>
+              <span className="lab">{MUSCLE_LABEL[m]}</span>
+              <ProgressBar value={Math.min(vol[m], 20)} max={20} cells={20} />
+              <span className={vol[m] >= 10 ? "num ok" : "num"}>{vol[m].toFixed(1).padStart(4, "0")}</span>
+            </div>
+          ))
+        : null}
+      <div className="desc">HARD SET = WORKING SET AT ≤4 REPS IN RESERVE. 10–20 PER MUSCLE PER WEEK IS THE USUAL GROWTH RANGE; SECONDARY MUSCLES COUNT HALF.</div>
+    </Card>
+  );
+}
+
+/** Personal records set in the last 30 days, replayed workout by workout against everything before it. */
+function RecordsCard(props: { exercises: Exercise[]; workouts: Workout[] }) {
+  const sets = useLive(() => getAll<StrengthSet>("sets"), [], [] as StrengthSet[]);
+  const names = new Map(props.exercises.map((e) => [e.id, e]));
+  const since = Date.now() - 30 * 86400000;
+  const hits: { t: number; ex: string; r: RecordHit }[] = [];
+  const byWorkout = new Map<string, StrengthSet[]>();
+  for (const x of sets) byWorkout.set(x.workoutId, [...(byWorkout.get(x.workoutId) ?? []), x]);
+  const ordered = [...props.workouts].filter((w) => w.end).sort((a, b) => a.start - b.start);
+  const seen: StrengthSet[] = [];
+  for (const w of ordered) {
+    const ws = byWorkout.get(w.id) ?? [];
+    if (w.start >= since) {
+      for (const h of sessionRecords(seen, ws)) {
+        const e = names.get(h.exerciseId);
+        if (e && !assisted(e)) hits.push({ t: w.start, ex: e.name, r: h });
+      }
+    }
+    seen.push(...ws);
+  }
+  // One line per exercise per workout; the most meaningful record first.
+  const RANK: RecordHit["kind"][] = ["e1rm", "heaviest", "repsAtLoad", "setVolume", "sessionVolume"];
+  const grouped = new Map<string, { t: number; ex: string; rs: RecordHit[] }>();
+  for (const h of hits) {
+    const k = `${h.t}|${h.ex}`;
+    const g = grouped.get(k) ?? { t: h.t, ex: h.ex, rs: [] };
+    g.rs.push(h.r);
+    grouped.set(k, g);
+  }
+  const lines = [...grouped.values()].sort((a, b) => b.t - a.t);
+  const shown = lines.slice(0, 10);
+  return (
+    <Card title="JANOS-SYS/RECORDS" status={`${pad(lines.length)} · 30 D`} flush>
+      {shown.length === 0 ? <div className="empty">NO RECORDS IN 30 DAYS. RECORDS NEED AT LEAST ONE EARLIER SESSION ON THE SAME MACHINE.</div> : null}
+      {shown.map((g, i) => {
+        const rs = [...g.rs].sort((a, b) => RANK.indexOf(a.kind) - RANK.indexOf(b.kind));
+        return (
+          <div className="row static rec-row" key={i}>
+            <div className="grow">
+              <div className="name uc">{g.ex}</div>
+              <div className="muted small">
+                {shortDateTime(g.t)} · <span className="rec">▲ {recordText(rs[0])}</span>
+                {rs.length > 1 ? ` · +${rs.length - 1} MORE` : ""}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </Card>
+  );
+}
+
 function WorkoutDetail(props: { workout: Workout; names: Map<string, string>; onClose: () => void }) {
   const { toast } = useUI();
   const sets = useLive(() => setsForWorkout(props.workout.id), [props.workout.id], [] as StrengthSet[]);
@@ -116,30 +200,37 @@ function WorkoutDetail(props: { workout: Workout; names: Map<string, string>; on
   for (const s of sets) byEx.set(s.exerciseId, [...(byEx.get(s.exerciseId) ?? []), s]);
   return (
     <Sheet
-      title={props.workout.name}
+      title="WORKOUT LOG"
       onClose={props.onClose}
+      enterLabel="DELETE"
       footer={
         <button
           className="btn danger block"
           onClick={async () => {
-            if (!confirm("Delete this workout and all its sets?")) return;
+            const ok = await confirmScreen({ title: "DELETE WORKOUT", message: "DELETE THIS WORKOUT AND ALL ITS SETS?", confirmLabel: "DELETE", danger: true, alarm: false });
+            if (!ok) return;
             await deleteWorkout(props.workout.id);
-            toast("Workout deleted");
+            toast("WORKOUT DELETED");
             props.onClose();
           }}
         >
-          Delete workout
+          DELETE WORKOUT
         </button>
       }
     >
-      <div className="muted small" style={{ marginBottom: 10 }}>{shortDateTime(props.workout.start)}</div>
+      <div className="wk-status" style={{ margin: "0 0 12px" }}>
+        <div className="grow">
+          <div className="name uc">{props.workout.name}</div>
+          <div className="sub">{shortDateTime(props.workout.start)}</div>
+        </div>
+      </div>
       {[...byEx.entries()].map(([exId, list]) => (
-        <Card key={exId} title={props.names.get(exId) ?? "Exercise"}>
+        <Card key={exId} title={<span className="uc">{props.names.get(exId) ?? "Exercise"}</span>} aside={`${list.length} SETS`}>
           {list.map((s) => (
             <div className="set-line" key={s.id}>
               <span className="idx">{s.kind === "warmup" ? "W" : s.index}</span>
               <span>{fmt(s.load)} × {s.reps}{s.rir !== null ? ` @ ${s.rir} RIR` : ""}</span>
-              <span className="muted small">e1RM {fmt(e1RM(s.load, s.reps, s.rir ?? 0), 0)}</span>
+              <span className="muted small">E1RM {fmt(e1RM(s.load, s.reps, s.rir ?? 0), 0)}</span>
             </div>
           ))}
         </Card>
@@ -230,36 +321,47 @@ function WorkoutView(props: { workout: Workout }) {
 
   return (
     <div className="page">
-      <div className="page-title">
-        <div>
-          <h1 style={{ fontSize: 24 }}>{w.name}</h1>
-          <div className="sub num">{formatMinSec(elapsed)} elapsed · {sets.length} {sets.length === 1 ? "set" : "sets"}</div>
+      <PageTitle sys="TRAIN/ACTIVE" status={<span className="act mg-bl2">● ACTIVE</span>} />
+      <div className="wk-status">
+        <div className="grow">
+          <div className="name uc">{w.name}</div>
+          <div className="sub">{formatMinSec(elapsed)} ELAPSED · {sets.length} {sets.length === 1 ? "SET" : "SETS"}</div>
         </div>
-        <button className="btn sm" onClick={() => setFinishing(true)}>Finish</button>
+        <button className="btn sm" onClick={() => setFinishing(true)}>■ FINISH</button>
       </div>
 
-      {restEnd !== null ? (
-        <div className="rest-banner">
-          <span>Rest</span>
-          <span className="time">{formatMinSec(Math.max(0, (restEnd - now) / 1000))}</span>
-          <span>
-            <button className="btn sm plain" onClick={() => setRestEnd(restEnd + 30000)}>+30 s</button>{" "}
-            <button className="btn sm plain" onClick={() => setRestEnd(null)}>Skip</button>
-          </span>
-        </div>
-      ) : null}
+      <Card title="JANOS-SYS/CHRONO" status={restEnd !== null ? "REST" : "SET READY"} flush>
+        <Seg7Panel
+          id="workout-chrono"
+          heat
+          rev="CHRONO MOD 2.07"
+          caption={restEnd !== null ? "REST REMAINING:" : "ELAPSED WORKOUT TIME:"}
+          value={restEnd !== null ? formatMinSec(Math.max(0, (restEnd - now) / 1000)).padStart(5, "0") : elapsedText(elapsed)}
+          state={restEnd !== null ? { text: "● ACTIVE", tone: "red", blink: 2 } : { text: "○ STANDBY", tone: "or" }}
+          tone={restEnd !== null && restEnd - now < 10000 ? "red" : "am"}
+          sub={`${restEnd !== null ? `ELAPSED ${elapsedText(elapsed)} · ` : ""}SETS ${pad(sets.filter((x) => x.kind === "working").length)} · REST ${pad(settings.restSeconds, 3)} S`}
+          srText={restEnd !== null ? `Rest ${Math.max(0, Math.round((restEnd - now) / 1000))} seconds left.` : `Workout time ${elapsedText(elapsed)}.`}
+        />
+        {restEnd !== null ? (
+          <div className="rowbar" role="timer">
+            <button className="btn sm plain" onClick={() => setRestEnd(restEnd + 30000)}>+30 S</button>
+            <div className="grow" />
+            <button className="btn sm plain" onClick={() => setRestEnd(null)}>SKIP REST</button>
+          </div>
+        ) : null}
+      </Card>
 
       <div className="ex-nav">
         {w.exerciseIds.map((id) => {
           const done = sets.some((s) => s.exerciseId === id);
           return (
-            <button key={id} className={[id === current ? "on" : "", done ? "done" : ""].join(" ")} onClick={() => setCurrent(id)}>
-              {done ? "✓ " : ""}
-              {exMap.get(id)?.name ?? "…"}
+            <button key={id} className={[id === current ? "on" : "", done ? "done" : ""].join(" ")} aria-pressed={id === current} onClick={() => setCurrent(id)}>
+              {done ? "■ " : "□ "}
+              <span className="uc">{exMap.get(id)?.name ?? "…"}</span>
             </button>
           );
         })}
-        <button onClick={() => setPicking(true)}>+ Exercise</button>
+        <button onClick={() => setPicking(true)}>[+] EXERCISE</button>
       </div>
 
       {ex ? (
@@ -272,7 +374,7 @@ function WorkoutView(props: { workout: Workout }) {
         />
       ) : (
         <div className="empty">
-          <button className="btn" onClick={() => setPicking(true)}>Add an exercise</button>
+          <button className="btn" onClick={() => setPicking(true)}>[+] ADD AN EXERCISE</button>
         </div>
       )}
 
@@ -292,18 +394,35 @@ function WorkoutView(props: { workout: Workout }) {
   );
 }
 
+function elapsedText(sec: number): string {
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const x = sec % 60;
+  return h ? `${h}:${pad(m)}:${pad(x)}` : `${pad(m)}:${pad(x)}`;
+}
+
+const RECORD_LABEL: Record<RecordHit["kind"], string> = {
+  heaviest: "HEAVIEST",
+  e1rm: "EST 1RM",
+  setVolume: "SET VOLUME",
+  repsAtLoad: "REPS AT LOAD",
+  sessionVolume: "SESSION VOLUME",
+};
+const recordText = (r: RecordHit) => `${RECORD_LABEL[r.kind]} ${fmt(r.value)}${r.previous !== null ? ` (WAS ${fmt(r.previous)})` : ""}`;
+const assisted = (e: Exercise) => /assist/i.test(e.name);
+
 function adviceText(a: ProgressionAdvice): string {
   switch (a.kind) {
     case "increaseLoad":
-      return `Go up: ${fmt(a.load)} × ${a.repMin}–${a.repMax}`;
+      return `▲ GO UP · ${fmt(a.load)} × ${a.repMin}–${a.repMax}`;
     case "addReps":
-      return `Same weight, aim for ${a.targetReps} reps at ${fmt(a.load)}`;
+      return `SAME WEIGHT · AIM FOR ${a.targetReps} REPS AT ${fmt(a.load)}`;
     case "repeatLoad":
-      return `Repeat ${fmt(a.load)}`;
+      return `REPEAT ${fmt(a.load)}`;
     case "reduceLoad":
-      return `Drop to ${fmt(a.load)}`;
+      return `▼ DROP TO ${fmt(a.load)}`;
     default:
-      return "First time: pick a weight you can do 10–12 times with 1–2 reps left";
+      return "FIRST SESSION · PICK A WEIGHT FOR 10–12 REPS WITH 1–2 IN RESERVE";
   }
 }
 
@@ -353,8 +472,9 @@ function ExerciseCard(props: { exercise: Exercise; workoutId: string; sets: Stre
 
   const workingCount = props.sets.filter((s) => s.kind === "working").length;
 
+  const [records, setRecords] = useState<Record<string, RecordHit[]>>({});
   const done = async () => {
-    await logSet({
+    const saved = await logSet({
       workoutId: props.workoutId,
       exerciseId: ex.id,
       index: warmup ? 0 : workingCount + 1,
@@ -365,57 +485,74 @@ function ExerciseCard(props: { exercise: Exercise; workoutId: string; sets: Stre
     });
     setWarmup(false);
     props.onSetDone();
+    if (!warmup && !assisted(ex)) {
+      const hits = detectRecords(history.flatMap((h) => h.sets as SetLite[]), saved, [...props.sets, saved]);
+      if (hits.length) {
+        setRecords((r) => ({ ...r, [saved.id]: hits }));
+        toast(`>> 092 NEW RECORD · ${hits.map(recordText).join(" · ")}`);
+      }
+    }
   };
 
   return (
     <>
-      <Card>
-        <div style={{ fontWeight: 700, fontSize: 20 }}>{ex.name}</div>
-        {ex.machineLabel ? <div className="muted small">{ex.machineLabel}</div> : null}
-        {ex.setupNote ? <div className="muted small">{ex.setupNote}</div> : null}
+      <Card title="EXERCISE" aside={`TARGET ${ex.repMin}–${ex.repMax} · ${ex.targetRIR} RIR`}>
+        <div className="ex-title uc">{ex.name}</div>
+        {ex.machineLabel ? <div className="muted small uc">{ex.machineLabel}</div> : null}
+        {ex.setupNote ? <div className="muted small uc">{ex.setupNote}</div> : null}
         <div style={{ marginTop: 8 }} className="small">
-          <span className="muted">Last time: </span>
-          {last ? workingSets(last.sets).map((s) => `${fmt(s.load)}×${s.reps}`).join(", ") : "—"}
+          <span className="muted">LAST SESSION </span>
+          <span className="num">{last ? workingSets(last.sets).map((s) => `${fmt(s.load)}×${s.reps}`).join(", ") : "—"}</span>
         </div>
         <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
           <span className="pill accent">{adviceText(advice)}</span>
-          <button className="link small" onClick={() => setShowWhy(!showWhy)}>{showWhy ? "Hide" : "Why?"}</button>
+          <button className="link small" onClick={() => setShowWhy(!showWhy)}>{showWhy ? "HIDE" : "WHY?"}</button>
         </div>
-        {showWhy ? <div className="muted small" style={{ marginTop: 6 }}>{why}</div> : null}
+        {showWhy ? <div className="desc">{why}</div> : null}
       </Card>
 
+      {Object.keys(records).length ? (
+        <div className="notice ok" role="status">
+          <span className="msg">092 NEW RECORD</span>
+          <span className="act">{Object.values(records).flat().map(recordText).join(" · ")}</span>
+        </div>
+      ) : null}
       {props.sets.length ? (
-        <Card>
+        <Card title="SETS" aside={`${props.sets.length} LOGGED`}>
           {props.sets.map((s) => (
             <div className="set-line" key={s.id}>
               <span className="idx">{s.kind === "warmup" ? "W" : s.index}</span>
-              <span style={{ fontWeight: 600 }}>
+              <span>
                 {fmt(s.load)} × {s.reps}
-                <span className="muted small" style={{ fontWeight: 400 }}>{s.rir !== null ? `  ${s.rir} in reserve` : ""}</span>
+                <span className="muted small">{s.rir !== null ? `  ${s.rir} RIR` : ""}</span>
+                {records[s.id] ? <span className="rec"> ▲ RECORD</span> : null}
               </span>
               <button
-                className="link small"
-                style={{ color: "var(--danger)" }}
+                className="link danger"
                 onClick={async () => {
                   await del("sets", s.id);
-                  toast("Set deleted", () => void put("sets", s));
+                  toast("PROC 093 ENTRY DELETED", () => void put("sets", s));
                 }}
               >
-                Delete
+                DEL
               </button>
             </div>
           ))}
         </Card>
       ) : null}
 
-      <Card>
-        <div className="small muted" style={{ marginBottom: 6 }}>
-          {warmup ? "Warm-up set" : `Set ${workingCount + 1}`} · weight ({ex.equipment === "dumbbell" ? "per dumbbell" : "lb"})
+      <Card title={warmup ? "WARM-UP SET" : `SET ${String(workingCount + 1).padStart(2, "0")}`} aside="INPUT">
+        <div className="field" style={{ marginBottom: 4 }}>
+          <span>WEIGHT ({ex.equipment === "dumbbell" ? "PER DUMBBELL" : "LB"})</span>
         </div>
         <Stepper value={load} onChange={setLoad} values={loads} label="weight" />
-        <div className="small muted" style={{ margin: "12px 0 6px" }}>Reps · target {ex.repMin}–{ex.repMax}</div>
+        <div className="field" style={{ margin: "12px 0 4px" }}>
+          <span>REPS · TARGET {ex.repMin}–{ex.repMax}</span>
+        </div>
         <Stepper value={reps} onChange={setReps} step={1} min={0} label="reps" />
-        <div className="small muted" style={{ margin: "12px 0 6px" }}>Reps left in the tank</div>
+        <div className="field" style={{ margin: "12px 0 4px" }}>
+          <span>REPS IN RESERVE</span>
+        </div>
         <Chips
           options={[0, 1, 2, 3, 4].map((v) => ({ value: v, label: v === 4 ? "4+" : String(v) }))}
           value={rir}
@@ -423,9 +560,9 @@ function ExerciseCard(props: { exercise: Exercise; workoutId: string; sets: Stre
           allowNone
         />
         <div style={{ height: 14 }} />
-        <button className="btn block xl" onClick={done}>Done set ✓</button>
-        <div style={{ textAlign: "center", marginTop: 6 }}>
-          <button className="link small" onClick={() => setWarmup(!warmup)}>{warmup ? "Log as a working set instead" : "This is a warm-up set"}</button>
+        <button className="btn block xl" onClick={done}>■ DONE SET</button>
+        <div style={{ textAlign: "center", marginTop: 10 }}>
+          <button className="link small" onClick={() => setWarmup(!warmup)}>{warmup ? "LOG AS A WORKING SET INSTEAD" : "THIS IS A WARM-UP SET"}</button>
         </div>
       </Card>
     </>
@@ -437,40 +574,47 @@ function FinishSheet(props: { workout: Workout; setCount: number; onClose: () =>
   const [notes, setNotes] = useState("");
   return (
     <Sheet
-      title="Finish workout"
+      title="FINISH WORKOUT"
       onClose={props.onClose}
       footer={
         <div className="grid-2">
           <button
-            className="btn plain"
-            style={{ color: "var(--danger)" }}
+            className="btn danger"
             onClick={async () => {
-              if (!confirm("Discard this workout and its sets?")) return;
+              const ok = await confirmScreen({
+                title: "DISCARD WORKOUT",
+                message: "DISCARD THIS WORKOUT AND ITS SETS? THIS CANNOT BE UNDONE.",
+                confirmLabel: "DISCARD",
+                danger: true,
+              });
+              if (!ok) return;
               await deleteWorkout(props.workout.id);
-              props.onDone("Workout discarded");
+              props.onDone("PROC 090 WORKOUT DISCARDED");
             }}
           >
-            Discard
+            DISCARD
           </button>
           <button
             className="btn"
             onClick={async () => {
               await finishWorkout(props.workout, rpe, notes.trim() || undefined);
-              props.onDone(props.setCount ? "Workout saved" : "Empty workout removed");
+              props.onDone(props.setCount ? ">> 091 WORKOUT SAVED" : "EMPTY WORKOUT REMOVED");
             }}
           >
-            Save
+            SAVE
           </button>
         </div>
       }
     >
-      <Field label="How hard was the whole session? (1 = very easy, 10 = maximal)">
+      <Field label="SESSION EFFORT · 1 VERY EASY · 10 MAXIMAL">
         <Chips options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((v) => ({ value: v, label: String(v) }))} value={rpe} onChange={setRpe} allowNone />
       </Field>
-      <Field label="Notes (optional)">
+      <Field label="NOTES (OPTIONAL)">
         <textarea className="input" rows={3} value={notes} onChange={(e: any) => setNotes(e.target.value)} />
       </Field>
-      <div className="muted small">{props.setCount} sets logged.</div>
+      <div className="desc">
+        <b>{props.setCount}</b> SETS LOGGED.
+      </div>
     </Sheet>
   );
 }
@@ -481,21 +625,23 @@ function ExercisePicker(props: { exercises: Exercise[]; onPick: (e: Exercise) =>
   const shown = props.exercises.filter((e) => e.name.toLowerCase().includes(q.trim().toLowerCase()));
   if (creating) return <ExerciseEditor exercise={creating} onClose={() => setCreating(null)} onSaved={props.onPick} />;
   return (
-    <Sheet title="Add exercise" onClose={props.onClose}>
-      <input className="input" placeholder="Search" value={q} onChange={(e: any) => setQ(e.target.value)} />
+    <Sheet title="ADD EXERCISE" onClose={props.onClose}>
+      <input className="input" placeholder="SEARCH" aria-label="search exercises" value={q} onChange={(e: any) => setQ(e.target.value)} />
       <div style={{ height: 10 }} />
-      <button className="btn secondary block" onClick={() => setCreating(newExercise(q))}>+ New exercise</button>
-      <div style={{ height: 10 }} />
-      <div className="card tight">
+      <button className="btn secondary block" onClick={() => setCreating(newExercise(q))}>[+] NEW EXERCISE</button>
+      <div style={{ height: 12 }} />
+      <Card title="LIBRARY" aside={`${shown.length}`} flush>
+        {shown.length === 0 ? <div className="empty">NO MATCH.</div> : null}
         {shown.map((e) => (
           <button className="row" key={e.id} onClick={() => props.onPick(e)}>
             <div className="grow">
-              <div className="name">{e.name}</div>
-              {e.machineLabel ? <div className="muted small">{e.machineLabel}</div> : null}
+              <div className="name uc">{e.name}</div>
+              {e.machineLabel ? <div className="muted small uc">{e.machineLabel}</div> : null}
             </div>
+            <span className="go">▶</span>
           </button>
         ))}
-      </div>
+      </Card>
     </Sheet>
   );
 }
@@ -513,25 +659,29 @@ const newExercise = (name = ""): Exercise => ({
 
 function ExerciseLibrary(props: { exercises: Exercise[]; onClose: () => void; onEdit: (e: Exercise) => void }) {
   return (
-    <Sheet title="Exercises" onClose={props.onClose} right={<button className="link" onClick={() => props.onEdit(newExercise())}>New</button>}>
-      <div className="muted small" style={{ marginBottom: 10 }}>
-        Each machine keeps its own history. If your gym has two different chest press machines, make two exercises.
+    <Sheet title="EXERCISES" onClose={props.onClose} right={<button className="link" onClick={() => props.onEdit(newExercise())}>[+] NEW</button>}>
+      <div className="desc" style={{ margin: "0 0 12px" }}>
+        EACH MACHINE KEEPS ITS OWN HISTORY. TWO DIFFERENT CHEST PRESS MACHINES = TWO EXERCISES.
       </div>
-      <div className="card tight">
+      <Card title="LIBRARY" aside={`${props.exercises.length}`} flush>
         {props.exercises.map((e) => (
           <button className="row" key={e.id} onClick={() => props.onEdit(e)}>
             <div className="grow">
-              <div className="name" style={e.archived ? { opacity: 0.5 } : undefined}>{e.name}</div>
+              <div className="name uc" style={e.archived ? { color: "var(--gry)" } : undefined}>{e.name}</div>
               <div className="muted small">
-                {e.machineLabel ? `${e.machineLabel} · ` : ""}
-                {e.loads.min}–{e.loads.max} by {e.loads.step} · {e.repMin}–{e.repMax} reps
-                {e.archived ? " · hidden" : ""}
+                {e.machineLabel ? (
+                  <>
+                    <span className="uc">{e.machineLabel}</span> ·{" "}
+                  </>
+                ) : null}
+                {e.loads.min}–{e.loads.max} BY {e.loads.step} · {e.repMin}–{e.repMax} REPS
+                {e.archived ? " · HIDDEN" : ""}
               </div>
             </div>
-            <span className="muted">›</span>
+            <span className="go">▶</span>
           </button>
         ))}
-      </div>
+      </Card>
     </Sheet>
   );
 }
@@ -541,7 +691,7 @@ function ExerciseEditor(props: { exercise: Exercise; onClose: () => void; onSave
   const setL = (k: "min" | "max" | "step", v: number | null) => v !== null && setE({ ...e, loads: { ...e.loads, [k]: v } });
   return (
     <Sheet
-      title={props.exercise.name ? "Edit exercise" : "New exercise"}
+      title={props.exercise.name ? "EDIT EXERCISE" : "NEW EXERCISE"}
       onClose={props.onClose}
       footer={
         <button
@@ -554,38 +704,38 @@ function ExerciseEditor(props: { exercise: Exercise; onClose: () => void; onSave
             props.onClose();
           }}
         >
-          Save
+          SAVE
         </button>
       }
     >
-      <Field label="Name"><input className="input" value={e.name} onChange={(ev: any) => setE({ ...e, name: ev.target.value })} /></Field>
-      <Field label="Which machine (optional, e.g. 'Matrix, by the window')">
+      <Field label="NAME"><input className="input" value={e.name} onChange={(ev: any) => setE({ ...e, name: ev.target.value })} /></Field>
+      <Field label="WHICH MACHINE (OPTIONAL · E.G. MATRIX, BY THE WINDOW)">
         <input className="input" value={e.machineLabel ?? ""} onChange={(ev: any) => setE({ ...e, machineLabel: ev.target.value || undefined })} />
       </Field>
-      <Field label="Equipment">
+      <Field label="EQUIPMENT">
         <Chips
           options={(["machine", "cable", "dumbbell", "smith", "barbell", "bodyweight", "other"] as const).map((v) => ({ value: v, label: v }))}
           value={e.equipment}
           onChange={(v) => v && setE({ ...e, equipment: v })}
         />
       </Field>
-      <h2>Weights available on this machine</h2>
+      <h2>WEIGHTS ON THIS MACHINE</h2>
       <div className="grid-3">
-        <Field label="Lightest"><NumInput value={e.loads.min} onChange={(v) => setL("min", v)} /></Field>
-        <Field label="Heaviest"><NumInput value={e.loads.max} onChange={(v) => setL("max", v)} /></Field>
-        <Field label="Step"><NumInput value={e.loads.step} onChange={(v) => setL("step", v)} /></Field>
+        <Field label="LIGHTEST"><NumInput value={e.loads.min} onChange={(v) => setL("min", v)} /></Field>
+        <Field label="HEAVIEST"><NumInput value={e.loads.max} onChange={(v) => setL("max", v)} /></Field>
+        <Field label="STEP"><NumInput value={e.loads.step} onChange={(v) => setL("step", v)} /></Field>
       </div>
-      <h2>Targets</h2>
+      <h2>TARGETS</h2>
       <div className="grid-3">
-        <Field label="Min reps"><NumInput value={e.repMin} onChange={(v) => v && setE({ ...e, repMin: v })} decimals={false} /></Field>
-        <Field label="Max reps"><NumInput value={e.repMax} onChange={(v) => v && setE({ ...e, repMax: v })} decimals={false} /></Field>
-        <Field label="Reps in reserve"><NumInput value={e.targetRIR} onChange={(v) => v !== null && setE({ ...e, targetRIR: v })} decimals={false} /></Field>
+        <Field label="MIN REPS"><NumInput value={e.repMin} onChange={(v) => v && setE({ ...e, repMin: v })} decimals={false} /></Field>
+        <Field label="MAX REPS"><NumInput value={e.repMax} onChange={(v) => v && setE({ ...e, repMax: v })} decimals={false} /></Field>
+        <Field label="RIR"><NumInput value={e.targetRIR} onChange={(v) => v !== null && setE({ ...e, targetRIR: v })} decimals={false} /></Field>
       </div>
-      <Field label="Setup note (seat height, grip…)">
+      <Field label="SETUP NOTE (SEAT HEIGHT, GRIP…)">
         <input className="input" value={e.setupNote ?? ""} onChange={(ev: any) => setE({ ...e, setupNote: ev.target.value || undefined })} />
       </Field>
       <button className="btn plain block" onClick={() => setE({ ...e, archived: !e.archived })}>
-        {e.archived ? "Show in lists again" : "Hide from lists"}
+        {e.archived ? "SHOW IN LISTS AGAIN" : "HIDE FROM LISTS"}
       </button>
     </Sheet>
   );
@@ -616,20 +766,26 @@ function TemplateEditor(props: { template: Template; exercises: Exercise[]; onCl
   }
   return (
     <Sheet
-      title="Template"
+      title="TEMPLATE"
       onClose={props.onClose}
       footer={
         <div className="grid-2">
           <button
-            className="btn plain"
-            style={{ color: "var(--danger)" }}
+            className="btn danger"
             onClick={async () => {
-              if (!confirm(`Delete template "${t.name}"? Past workouts are kept.`)) return;
+              const ok = await confirmScreen({
+                title: "DELETE TEMPLATE",
+                message: `DELETE TEMPLATE "${t.name}"? PAST WORKOUTS ARE KEPT.`,
+                confirmLabel: "DELETE",
+                danger: true,
+                alarm: false,
+              });
+              if (!ok) return;
               await del("templates", t.id);
               props.onClose();
             }}
           >
-            Delete
+            DELETE
           </button>
           <button
             className="btn"
@@ -639,25 +795,25 @@ function TemplateEditor(props: { template: Template; exercises: Exercise[]; onCl
               props.onClose();
             }}
           >
-            Save
+            SAVE
           </button>
         </div>
       }
     >
-      <Field label="Name"><input className="input" value={t.name} onChange={(e: any) => setT({ ...t, name: e.target.value })} /></Field>
-      <h2>Exercises, in order</h2>
-      <div className="card tight">
-        {t.exerciseIds.length === 0 ? <div className="empty">No exercises yet.</div> : null}
+      <Field label="NAME"><input className="input" value={t.name} onChange={(e: any) => setT({ ...t, name: e.target.value })} /></Field>
+      <Card title="SEQUENCE" aside={`${t.exerciseIds.length} EXERCISES`} flush>
+        {t.exerciseIds.length === 0 ? <div className="empty">NO EXERCISES YET.</div> : null}
         {t.exerciseIds.map((id, i) => (
           <div className="row" key={id}>
-            <div className="grow name">{names.get(id) ?? "?"}</div>
-            <button className="icon-btn" aria-label="move up" onClick={() => move(i, -1)}>↑</button>
-            <button className="icon-btn" aria-label="move down" onClick={() => move(i, 1)}>↓</button>
-            <button className="icon-btn" aria-label="remove" onClick={() => setT({ ...t, exerciseIds: t.exerciseIds.filter((x) => x !== id) })}>✕</button>
+            <span className="num">{String(i + 1).padStart(2, "0")}</span>
+            <div className="grow name uc">{names.get(id) ?? "?"}</div>
+            <button className="icon-btn" aria-label="move up" onClick={() => move(i, -1)}>▲</button>
+            <button className="icon-btn" aria-label="move down" onClick={() => move(i, 1)}>▼</button>
+            <button className="icon-btn" aria-label="remove" onClick={() => setT({ ...t, exerciseIds: t.exerciseIds.filter((x) => x !== id) })}>X</button>
           </div>
         ))}
-      </div>
-      <button className="btn secondary block" onClick={() => setAdding(true)}>+ Add exercise</button>
+      </Card>
+      <button className="btn secondary block" onClick={() => setAdding(true)}>[+] ADD EXERCISE</button>
     </Sheet>
   );
 }
@@ -705,6 +861,70 @@ function startOfIsoWeek(ms: number): number {
   return d.getTime();
 }
 
+/** Fitness (CTL 42 d), fatigue (ATL 7 d), form (TSB) and the acute:chronic load ratio. */
+function LoadCard() {
+  const { settings } = useUI();
+  const m = useLive(() => loadLoadModel(settings), [settings], null as LoadModel | null);
+  if (!m) return null;
+  const t = m.today;
+  const series = m.series.slice(-90);
+  const x = (d: string) => Date.parse(`${d}T12:00:00`);
+  const f = m.focus28;
+  const tot = f.lowMin + f.highMin + f.anaerobicMin;
+  return (
+    <>
+      <Card title="JANOS-SYS/LOAD" status={t?.ratio != null ? `RATIO ${t.ratio.toFixed(2)} ${m.band.toUpperCase().replace("-", " ")}` : "NO RATIO YET"} flush>
+        <PlotPanel
+          id="cardio-load"
+          rev="LOAD MON 1.2"
+          lines={[
+            { pts: series.map((d) => ({ x: x(d.day), y: d.ctl })), tone: "wht", width: 2 },
+            { pts: series.map((d) => ({ x: x(d.day), y: d.atl })), tone: "am" },
+          ]}
+          dots={series.filter((d) => d.load > 0).map((d) => ({ x: x(d.day), y: d.load, flag: d.estimated }))}
+          yFormat={(v) => String(Math.round(v))}
+          legend="— FITNESS 42 D  — FATIGUE 7 D  ■ DAY LOAD"
+          empty="NO LOAD DATA"
+          stamp={t?.ratio != null && t.ratio >= 1.5 ? { text: "LOAD SPIKE", tone: "red", blink: true } : undefined}
+          srText={t ? `Fitness ${Math.round(t.ctl)}, fatigue ${Math.round(t.atl)}, form ${Math.round(t.tsb)}.` : "No load data."}
+        />
+        {t ? (
+          <div className="card-body">
+            <div className="grid-3">
+              <Stat label="FITNESS" value={pad(t.ctl, 3)} />
+              <Stat label="FATIGUE" value={pad(t.atl, 3)} />
+              <Stat label="FORM" value={signed(t.tsb)} sub={t.tsb < -30 ? "HEAVY FATIGUE" : t.tsb < -10 ? "PRODUCTIVE" : t.tsb > 15 ? "FRESH" : "NEUTRAL"} />
+            </div>
+            <div className="desc">
+              RATIO = 7-DAY ÷ 28-DAY LOAD. 0.8–1.4 IS THE USUAL SAFE BUILD ZONE; ≥1.5 IS A SPIKE. FORM BELOW −30 MEANS DEEP FATIGUE. RED DOTS ARE ESTIMATED LOADS.
+            </div>
+          </div>
+        ) : null}
+      </Card>
+      {tot > 0 ? (
+        <Card title="JANOS-SYS/INTENSITY" status="HR ZONES · 28 D" flush>
+          <MeterPanel
+            id="cardio-focus"
+            rev="ZONE MOD 1.0"
+            scale={[
+              { f: 0, label: "0" },
+              { f: 0.5, label: "50%" },
+              { f: 1, label: "100%" },
+            ]}
+            rows={[
+              { id2: "01", name: "LOW", value: f.lowMin, max: tot, line: `LOW AEROBIC Z1-2 · ${pad(f.lowMin, 3)} MIN`, right: `${pad((f.lowMin / tot) * 100, 3)}%`, tone: "bands" },
+              { id2: "02", name: "HIGH", value: f.highMin, max: tot, line: `HIGH AEROBIC Z3-4 · ${pad(f.highMin, 3)} MIN`, right: `${pad((f.highMin / tot) * 100, 3)}%`, tone: "bands" },
+              { id2: "03", name: "ANAER", value: f.anaerobicMin, max: tot, line: `ANAEROBIC Z5 · ${pad(f.anaerobicMin, 3)} MIN`, right: `${pad((f.anaerobicMin / tot) * 100, 3)}%`, tone: "bands" },
+            ]}
+            srText={`Last 28 days: ${Math.round(f.lowMin)} min low aerobic, ${Math.round(f.highMin)} min high aerobic, ${Math.round(f.anaerobicMin)} min anaerobic.`}
+          />
+          <div className="desc pad">MOST ENDURANCE PLANS KEEP ROUGHLY 75–80 % OF TIME IN ZONES 1–2.</div>
+        </Card>
+      ) : null}
+    </>
+  );
+}
+
 function CardioHome() {
   const { settings, open } = useUI();
   const sessions = useLive(listCardio, [], [] as CardioSession[]);
@@ -719,14 +939,14 @@ function CardioHome() {
   return (
     <>
       <div style={{ height: 8 }} />
-      <button className="btn block xl" onClick={() => open({ kind: "cardio" })}>Log cardio</button>
-      <h2>Minutes per week</h2>
-      <Card>
-        <BarChart bars={bars} />
+      <button className="btn block xl" onClick={() => open({ kind: "cardio" })}>[+] LOG CARDIO</button>
+      <div style={{ height: 12 }} />
+      <Card title="JANOS-SYS/CARDIO" status="MIN / WEEK · 8 WK" flush>
+        <BarsPanel id="cardio-weeks" rev="CARDIO MOD 1.4" bars={bars.map((b, i) => ({ ...b, tone: i === bars.length - 1 ? "wht" : undefined }))} target={{ value: 150, label: "150 MIN" }} empty="NO CARDIO YET" />
       </Card>
-      <h2>Sessions</h2>
-      <div className="card tight">
-        {sessions.length === 0 ? <div className="empty">No cardio logged yet.</div> : null}
+      <LoadCard />
+      <Card title="SESSIONS" aside={sessions.length ? `${sessions.length} FILED` : null} flush>
+        {sessions.length === 0 ? <div className="empty">NO RECORDS YET. GARMIN CARDIO IS FILED HERE AUTOMATICALLY.</div> : null}
         {sessions.slice(0, 30).map((s) => (
           <button className="row" key={s.id} onClick={() => open({ kind: "cardio", id: s.id })}>
             <div className="grow">
@@ -734,19 +954,18 @@ function CardioHome() {
                 {modalityLabel(s.modality)} · {typeLabel(s.sessionType)}
               </div>
               <div className="muted small">
-                {shortDateTime(s.start)} · {s.minutes} min
+                {shortDateTime(s.start)} · {s.minutes} MIN
                 {s.distanceKm ? ` · ${fmt(distToDisplay(s.distanceKm, settings), 2)} ${settings.distanceUnit}` : ""}
-                {s.avgHR ? ` · ${s.avgHR} bpm` : ""}
-                {s.rpe ? ` · load ${Math.round(s.rpe * s.minutes)}` : ""}
+                {s.avgHR ? ` · ${s.avgHR} BPM` : ""}
+                {s.rpe ? ` · EFFORT ${s.rpe}/10` : ""}
+                {s.source === "garmin" ? <span className="blu"> · GARMIN</span> : null}
               </div>
             </div>
-            <span className="muted">›</span>
+            <span className="go">▶</span>
           </button>
         ))}
-      </div>
-      <div className="muted small" style={{ marginTop: 8 }}>
-        Load = effort (1–10) × minutes. It works the same for every kind of cardio and for lifting.
-      </div>
+      </Card>
+      <div className="desc">LOAD = GARMIN TRAINING LOAD (EPOC) FOR WATCH-RECORDED ACTIVITIES. SESSIONS WITHOUT THE WATCH ARE ESTIMATED FROM HEART RATE (TRIMP) OR EFFORT × MINUTES.</div>
     </>
   );
 }
@@ -781,54 +1000,55 @@ export function CardioSheet(props: { id?: string }) {
       source: s.source ?? "manual",
       editedByUser: s.source === "garmin" ? true : s.editedByUser,
     });
-    toast("Cardio saved");
+    toast("CARDIO SAVED");
     close();
   };
   const remove = async () => {
     if (s.source === "garmin") await put("cardio", { ...s, hidden: true, editedByUser: true });
     else await del("cardio", s.id);
-    toast("Session deleted", () => void put("cardio", s));
+    toast("PROC 093 ENTRY DELETED", () => void put("cardio", s));
     close();
   };
   return (
     <Sheet
-      title={props.id ? "Edit cardio" : "Log cardio"}
+      title={props.id ? "EDIT CARDIO" : "LOG CARDIO"}
+      status={s.source === "garmin" ? <span className="blu">GARMIN</span> : null}
       onClose={close}
       footer={
         props.id ? (
           <div className="grid-2">
-            <button className="btn plain" style={{ color: "var(--danger)" }} onClick={remove}>
-              Delete
+            <button className="btn danger" onClick={remove}>
+              DELETE
             </button>
-            <button className="btn" disabled={!minutes} onClick={save}>Save</button>
+            <button className="btn" disabled={!minutes} onClick={save}>SAVE</button>
           </div>
         ) : (
-          <button className="btn block xl" disabled={!minutes} onClick={save}>Save</button>
+          <button className="btn block xl" disabled={!minutes} onClick={save}>SAVE</button>
         )
       }
     >
-      <Field label="What">
+      <Field label="WHAT">
         <Chips options={MODALITIES} value={s.modality} onChange={(v) => v && setS({ ...s, modality: v })} />
       </Field>
-      <Field label="Kind of session">
+      <Field label="KIND OF SESSION">
         <Chips options={SESSION_TYPES} value={s.sessionType} onChange={(v) => v && setS({ ...s, sessionType: v })} />
       </Field>
       <div className="grid-2">
-        <Field label="Minutes"><NumInput value={minutes} onChange={setMinutes} decimals={false} /></Field>
-        <Field label={`Distance (${settings.distanceUnit}, optional)`}><NumInput value={dist} onChange={setDist} /></Field>
-        <Field label="Average HR (optional)"><NumInput value={s.avgHR ?? null} onChange={(v) => setS({ ...s, avgHR: v })} decimals={false} /></Field>
-        <Field label="Max HR (optional)"><NumInput value={s.maxHR ?? null} onChange={(v) => setS({ ...s, maxHR: v })} decimals={false} /></Field>
+        <Field label="MINUTES"><NumInput value={minutes} onChange={setMinutes} decimals={false} ariaLabel="minutes" /></Field>
+        <Field label={`DISTANCE (${settings.distanceUnit} · OPT)`}><NumInput value={dist} onChange={setDist} /></Field>
+        <Field label="AVERAGE HR (OPT)"><NumInput value={s.avgHR ?? null} onChange={(v) => setS({ ...s, avgHR: v })} decimals={false} /></Field>
+        <Field label="MAX HR (OPT)"><NumInput value={s.maxHR ?? null} onChange={(v) => setS({ ...s, maxHR: v })} decimals={false} /></Field>
       </div>
-      <Field label="Effort (1 = very easy, 10 = maximal)">
+      <Field label="EFFORT · 1 VERY EASY · 10 MAXIMAL">
         <Chips options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((v) => ({ value: v, label: String(v) }))} value={s.rpe ?? null} onChange={(v) => setS({ ...s, rpe: v })} allowNone />
       </Field>
-      <Field label="Started">
+      <Field label="STARTED">
         <input className="input" type="datetime-local" value={toLocalInputValue(s.start)} onChange={(e: any) => e.target.value && setS({ ...s, start: new Date(e.target.value).getTime() })} />
       </Field>
-      <Field label="Machine or route (optional)">
+      <Field label="MACHINE OR ROUTE (OPTIONAL)">
         <input className="input" value={s.machine ?? ""} onChange={(e: any) => setS({ ...s, machine: e.target.value || undefined })} />
       </Field>
-      <Field label="Notes (optional)">
+      <Field label="NOTES (OPTIONAL)">
         <input className="input" value={s.notes ?? ""} onChange={(e: any) => setS({ ...s, notes: e.target.value || undefined })} />
       </Field>
     </Sheet>

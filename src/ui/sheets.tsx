@@ -1,4 +1,4 @@
-// Small sheets: weigh-in, morning check-in, caffeine, quick log and settings.
+// Small sheets: weigh-in, morning check-in, caffeine, quick log and settings (the config terminal).
 
 import { useEffect, useState } from "react";
 import { del, get, persistenceStatus, put, restoreAll, uid, useLive, type Backup } from "../db/db";
@@ -7,11 +7,28 @@ import { createGarminKey, getGarminKey, getGarminStatus, setGarminKey, syncGarmi
 import { addWeight, getSettings, listCaffeine, listWeights, saveSettings, today, TZ } from "../db/repo";
 import type { CaffeineEntry, CheckIn, Settings, WeightEntry } from "../db/types";
 import { addDays, localTime } from "../engine/dates";
+import { DEFAULT_RATE_PCT } from "../engine/energy";
 import { caffeineRemaining, mifflinStJeor } from "../engine/sleep";
 import { fmt } from "../engine/units";
 import { checkWeightEntry, weightTrend } from "../engine/weight";
 import { dayLabel, durationFromClock, hoursText, shortDateTime, weightFromDisplay, weightText, weightToDisplay } from "./format";
-import { Card, Chips, Field, NumInput, Segmented, Sheet, useUI } from "./kit";
+import {
+  Card,
+  Check,
+  Chips,
+  confirmScreen,
+  Field,
+  garminLink,
+  garminMessageCode,
+  NumInput,
+  readDisplayPrefs,
+  Segmented,
+  Sheet,
+  Stat,
+  useUI,
+  writeDisplayPref,
+  type Density,
+} from "./kit";
 
 // ---- weigh-in ---------------------------------------------------------------
 
@@ -37,59 +54,63 @@ export function WeightSheet() {
       }
     }
     const w = await addWeight(weightFromDisplay(v, settings));
-    toast(`Saved ${fmt(v)} ${settings.weightUnit}`, () => void del("weights", w.id));
+    toast(`WEIGH-IN SAVED · ${fmt(v)} ${settings.weightUnit}`, () => void del("weights", w.id));
     close();
   };
 
   return (
     <Sheet
-      title="Weigh-in"
+      title="WEIGH-IN"
       onClose={close}
       footer={
         <button className="btn block xl" disabled={value === null} onClick={() => value !== null && save(value)}>
-          Save
+          SAVE
         </button>
       }
     >
-      <Field label={`Weight (${settings.weightUnit})`}>
+      <Field label={`WEIGHT (${settings.weightUnit})`}>
         <NumInput big value={value} onChange={(v) => { setValue(v); setWarning(null); }} ariaLabel="weight" autoFocus />
       </Field>
-      {ref !== null ? <div className="muted small" style={{ textAlign: "center" }}>Trend weight: {fmt(ref)} {settings.weightUnit}</div> : null}
+      {ref !== null ? (
+        <div className="desc" style={{ textAlign: "center" }}>
+          TREND WEIGHT <b>{fmt(ref)} {settings.weightUnit}</b>
+        </div>
+      ) : null}
       {warning ? (
-        <div className="notice warn" style={{ marginTop: 12 }}>
-          <div style={{ marginBottom: 8 }}>{warning.reason}</div>
+        <div className="notice warn" role="alert" style={{ marginTop: 12 }}>
+          <span className="msg">{warning.suggestion !== null ? "WARN 052 UNIT MIX-UP SUSPECTED" : "WARN 051 WEIGHT ENTRY IMPLAUSIBLE"}</span>
+          <span className="act">{warning.reason}</span>
           <div className="chips">
             {warning.suggestion !== null ? (
               <button className="btn sm" onClick={() => save(warning.suggestion!, true)}>
-                Use {fmt(warning.suggestion)} {settings.weightUnit}
+                USE {fmt(warning.suggestion)} {settings.weightUnit}
               </button>
             ) : null}
             <button className="btn sm plain" onClick={() => value !== null && save(value, true)}>
-              Save {value} anyway
+              SAVE {value} ANYWAY
             </button>
           </div>
         </div>
       ) : null}
-      <h2>Recent</h2>
-      <div className="card tight">
-        {weights.length === 0 ? <div className="empty">No weigh-ins yet.</div> : null}
+      <h2>RECENT</h2>
+      <Card title="WEIGH-IN LOG" aside={weights.length ? `${weights.length} ENTRIES` : null} flush>
+        {weights.length === 0 ? <div className="empty">NO WEIGH-INS YET · WEIGH IN AFTER WAKING, BEFORE FOOD</div> : null}
         {[...weights].reverse().slice(0, 10).map((w) => (
           <div className="row" key={w.id}>
             <div className="grow">{shortDateTime(w.t)}</div>
             <div className="num">{weightText(w.kg, settings)}</div>
             <button
-              className="link"
-              style={{ color: "var(--danger)" }}
+              className="link danger"
               onClick={async () => {
                 await del("weights", w.id);
-                toast("Weigh-in deleted", () => void put("weights", w));
+                toast("PROC 093 ENTRY DELETED", () => void put("weights", w));
               }}
             >
-              Delete
+              DEL
             </button>
           </div>
         ))}
-      </div>
+      </Card>
     </Sheet>
   );
 }
@@ -127,69 +148,74 @@ export function CheckInSheet(props: { day?: string }) {
 
   const save = async () => {
     await put("checkins", { ...c, sleepHours, updatedAt: Date.now() });
-    toast("Check-in saved");
+    toast("CHECK-IN SAVED");
     close();
   };
 
   return (
-    <Sheet title={`Check-in · ${dayLabel(day, today(settings))}`} onClose={close} footer={<button className="btn block xl" onClick={save}>Save</button>}>
-      <h2 style={{ marginTop: 4 }}>Sleep (from your Garmin)</h2>
+    <Sheet title={`CHECK-IN · ${dayLabel(day, today(settings))}`} onClose={close} footer={<button className="btn block xl" onClick={save}>SAVE</button>}>
+      <h2 style={{ marginTop: 4 }}>SLEEP</h2>
       <div className="grid-2">
-        <Field label="Hours">
+        <Field label="HOURS">
           <NumInput value={hours} onChange={setHours} decimals={false} placeholder="7" ariaLabel="sleep hours" />
         </Field>
-        <Field label="Minutes">
+        <Field label="MINUTES">
           <NumInput value={minutes} onChange={setMinutes} decimals={false} placeholder="30" ariaLabel="sleep minutes" />
         </Field>
       </div>
       <div className="grid-2">
-        <Field label="Fell asleep">
+        <Field label="FELL ASLEEP">
           <input className="input" type="time" value={c.bedtime ?? ""} onChange={(e: any) => set("bedtime", e.target.value || null)} />
         </Field>
-        <Field label="Woke up">
+        <Field label="WOKE UP">
           <input className="input" type="time" value={c.wakeTime ?? ""} onChange={(e: any) => set("wakeTime", e.target.value || null)} />
         </Field>
       </div>
-      {sleepHours !== null ? <div className="muted small" style={{ marginBottom: 8 }}>Sleep: {hoursText(sleepHours)}{typed === null ? " (from the times)" : ""}</div> : null}
-      <Field label="Naps yesterday (minutes)">
+      {sleepHours !== null ? (
+        <div className="desc" style={{ margin: "0 0 10px" }}>
+          SLEEP <b>{hoursText(sleepHours)}</b>
+          {typed === null ? " · FROM THE TIMES" : ""}
+        </div>
+      ) : null}
+      <Field label="NAPS YESTERDAY (MIN)">
         <NumInput value={c.napMinutes ?? null} onChange={(v) => set("napMinutes", v)} decimals={false} placeholder="0" />
       </Field>
 
-      <h2>How do you feel? (optional)</h2>
-      <Field label="Energy (1 = drained, 5 = great)">
+      <h2>STATUS (OPTIONAL)</h2>
+      <Field label="ENERGY · 1 DRAINED · 5 GREAT">
         <Chips options={scale5} value={c.energy ?? null} onChange={(v) => set("energy", v)} allowNone />
       </Field>
-      <Field label="Soreness (1 = none, 5 = very sore)">
+      <Field label="SORENESS · 1 NONE · 5 VERY SORE">
         <Chips options={scale5} value={c.soreness ?? null} onChange={(v) => set("soreness", v)} allowNone />
       </Field>
-      <Field label="Stress (1 = calm, 5 = very stressed)">
+      <Field label="STRESS · 1 CALM · 5 VERY STRESSED">
         <Chips options={scale5} value={c.stress ?? null} onChange={(v) => set("stress", v)} allowNone />
       </Field>
-      <Field label="Feeling ill?">
-        <Chips options={[{ value: "no", label: "No" }, { value: "yes", label: "Yes" }]} value={c.ill ? "yes" : "no"} onChange={(v) => set("ill", v === "yes")} />
+      <Field label="FEELING ILL">
+        <Chips options={[{ value: "no", label: "NO" }, { value: "yes", label: "YES" }]} value={c.ill ? "yes" : "no"} onChange={(v) => set("ill", v === "yes")} />
       </Field>
 
       {showGarmin ? (
         <>
-          <h2>Garmin numbers (optional)</h2>
+          <h2>GARMIN READINGS (OPTIONAL)</h2>
           <div className="grid-2">
-            <Field label="Sleep score">
+            <Field label="SLEEP SCORE">
               <NumInput value={c.sleepScore ?? null} onChange={(v) => set("sleepScore", v)} decimals={false} />
             </Field>
-            <Field label="Overnight HRV (ms)">
+            <Field label="OVERNIGHT HRV (MS)">
               <NumInput value={c.hrv ?? null} onChange={(v) => set("hrv", v)} decimals={false} />
             </Field>
-            <Field label="Resting HR (bpm)">
+            <Field label="RESTING HR (BPM)">
               <NumInput value={c.restingHR ?? null} onChange={(v) => set("restingHR", v)} decimals={false} />
             </Field>
-            <Field label="Body Battery">
+            <Field label="BODY BATTERY">
               <NumInput value={c.bodyBattery ?? null} onChange={(v) => set("bodyBattery", v)} decimals={false} />
             </Field>
           </div>
         </>
       ) : (
         <button className="btn plain block" onClick={() => setShowGarmin(true)}>
-          Add Garmin numbers (HRV, resting HR, Body Battery, sleep score)
+          ADD GARMIN READINGS · HRV · RESTING HR · BODY BATTERY · SLEEP SCORE
         </button>
       )}
     </Sheet>
@@ -206,66 +232,93 @@ export function bedtimeMs(settings: Settings, now = Date.now()): number {
   return d.getTime();
 }
 
+/** "HH:MM" today; if that is in the future (more than 5 min), the same time yesterday. */
+export function clockToPastMs(hhmm: string, now = Date.now()): number | null {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm);
+  if (!m) return null;
+  const d = new Date(now);
+  d.setHours(Number(m[1]), Number(m[2]), 0, 0);
+  if (d.getTime() > now + 5 * 60000) d.setDate(d.getDate() - 1);
+  return d.getTime();
+}
+
+const hhmm = (ms: number) => {
+  const d = new Date(ms);
+  return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+};
+
 export function CaffeineSheet() {
   const { settings, close, toast } = useUI();
   const since = Date.now() - 36 * 3600000;
   const doses = useLive(() => listCaffeine(since), [], [] as CaffeineEntry[]);
   const [mg, setMg] = useState<number | null>(null);
+  const [time, setTime] = useState<string>(() => hhmm(Date.now()));
   const now = Date.now();
   const add = async (label: string, amount: number) => {
-    const e: CaffeineEntry = { id: uid(), t: Date.now(), mg: amount, label };
+    const t = clockToPastMs(time) ?? Date.now();
+    const e: CaffeineEntry = { id: uid(), t, mg: amount, label };
     await put("caffeine", e);
-    toast(`${label}: ${amount} mg`, () => void del("caffeine", e.id));
+    toast(`CAFFEINE FILED · ${label} ${amount} MG AT ${hhmm(t)}`, () => void del("caffeine", e.id));
+  };
+  const setDoseTime = async (d: CaffeineEntry, value: string) => {
+    const t = clockToPastMs(value, Math.max(Date.now(), d.t));
+    if (t !== null) await put("caffeine", { ...d, t });
   };
   const remainingBed = caffeineRemaining(doses.map((d) => ({ mg: d.mg, t: d.t })), bedtimeMs(settings), settings.caffeineHalfLifeHours);
   const remainingNow = caffeineRemaining(doses.map((d) => ({ mg: d.mg, t: d.t })), now, settings.caffeineHalfLifeHours);
   return (
-    <Sheet title="Caffeine" onClose={close}>
+    <Sheet title="CAFFEINE" onClose={close}>
+      <Field label="TIME TAKEN">
+        <input className="input" type="time" value={time} onChange={(e: any) => setTime(e.target.value)} aria-label="time taken" />
+      </Field>
+      <div className="chips" style={{ marginBottom: 12 }}>
+        {[0, 30, 60, 120, 180].map((min) => (
+          <button key={min} className="chip" onClick={() => setTime(hhmm(Date.now() - min * 60000))}>
+            {min === 0 ? "NOW" : min < 60 ? `−${min} MIN` : `−${min / 60} H`}
+          </button>
+        ))}
+      </div>
       <div className="grid-2">
         {settings.caffeinePresets.map((p) => (
-          <button key={p.label} className="btn plain" onClick={() => add(p.label, p.mg)} style={{ minHeight: 64, flexDirection: "column", gap: 0 }}>
-            <span>{p.label}</span>
-            <span className="muted small">{p.mg} mg</span>
+          <button key={p.label} className="btn plain stack" onClick={() => add(p.label, p.mg)} style={{ minHeight: 64 }}>
+            <span className="uc">{p.label}</span>
+            <span className="sub">{p.mg} MG</span>
           </button>
         ))}
       </div>
       <div className="grid-2" style={{ marginTop: 10, alignItems: "end" }}>
-        <Field label="Other amount (mg)">
-          <NumInput value={mg} onChange={setMg} decimals={false} />
+        <Field label="OTHER AMOUNT (MG)">
+          <NumInput value={mg} onChange={setMg} decimals={false} ariaLabel="other amount" />
         </Field>
         <button className="btn" style={{ marginBottom: 12 }} disabled={!mg} onClick={() => mg && add("Custom", mg)}>
-          Add
+          [+] ADD
         </button>
       </div>
-      <Card>
+      <Card title="CAFFEINE LOAD" aside={`HALF-LIFE ${settings.caffeineHalfLifeHours} H`}>
         <div className="grid-2">
-          <div className="stat">
-            <div className="label">In your system now</div>
-            <div className="value">≈ {Math.round(remainingNow)} mg</div>
-          </div>
-          <div className="stat">
-            <div className="label">At bedtime ({settings.bedtime})</div>
-            <div className="value">≈ {Math.round(remainingBed)} mg</div>
-          </div>
+          <Stat label="IN SYSTEM NOW" value={`≈${Math.round(remainingNow)} MG`} />
+          <Stat label={`AT BEDTIME ${settings.bedtime}`} value={`≈${Math.round(remainingBed)} MG`} />
         </div>
-        <div className="muted small" style={{ marginTop: 8 }}>
-          Estimate with a {settings.caffeineHalfLifeHours}-hour half-life. People differ a lot (roughly 2–10 h); change it in Settings.
+        <div className="desc">
+          ESTIMATE · HALF-LIFE <b>{settings.caffeineHalfLifeHours} H</b> · PEOPLE VARY ≈2–10 H · SET IN CONFIG
         </div>
       </Card>
-      <h2>Last 36 hours</h2>
-      <div className="card tight">
-        {doses.length === 0 ? <div className="empty">Nothing logged.</div> : null}
+      <Card title="LAST 36 H" aside={doses.length ? `${doses.length} ${doses.length === 1 ? "DOSE" : "DOSES"}` : null} flush>
+        {doses.length === 0 ? <div className="empty">NO RECORDS YET.</div> : null}
         {[...doses].sort((a, b) => b.t - a.t).map((d) => (
           <div className="row" key={d.id}>
-            <div className="grow">{d.label}</div>
-            <div className="muted small">{shortDateTime(d.t)}</div>
-            <div className="num">{d.mg} mg</div>
-            <button className="link" style={{ color: "var(--danger)" }} onClick={() => del("caffeine", d.id)}>
-              Delete
+            <div className="grow">
+              <div className="name uc">{d.label}</div>
+              <div className="muted small">{shortDateTime(d.t)}</div>
+            </div>
+            <input className="input tin" type="time" value={hhmm(d.t)} onChange={(e: any) => void setDoseTime(d, e.target.value)} aria-label={`time of ${d.label}`} />
+            <div className="num">{d.mg} MG</div>
+            <button className="link danger" onClick={() => del("caffeine", d.id)}>
+              DEL
             </button>
           </div>
         ))}
-      </div>
+      </Card>
     </Sheet>
   );
 }
@@ -277,20 +330,22 @@ export function QuickSheet() {
   const hour = localTime(Date.now(), TZ).hour;
   const meal = hour < 11 ? "breakfast" : hour < 15 ? "lunch" : hour < 21 ? "dinner" : "snacks";
   const items: { label: string; sub: string; go: () => void }[] = [
-    { label: "Weigh-in", sub: "Log bodyweight", go: () => open({ kind: "weight" }) },
-    { label: "Food", sub: `Add to ${meal}`, go: () => open({ kind: "food", day: today(settings), meal }) },
-    { label: "Check-in", sub: "Sleep and how you feel", go: () => open({ kind: "checkin" }) },
-    { label: "Workout", sub: "Start or continue", go: () => { close(); goTab("train"); } },
-    { label: "Cardio", sub: "Log a session", go: () => open({ kind: "cardio" }) },
-    { label: "Caffeine", sub: "Coffee, pre-workout…", go: () => open({ kind: "caffeine" }) },
+    { label: "WEIGH-IN", sub: "LOG BODYWEIGHT", go: () => open({ kind: "weight" }) },
+    { label: "FOOD", sub: `ADD TO ${meal.toUpperCase()}`, go: () => open({ kind: "food", day: today(settings), meal }) },
+    { label: "CHECK-IN", sub: "SLEEP + STATUS", go: () => open({ kind: "checkin" }) },
+    { label: "WORKOUT", sub: "START OR CONTINUE", go: () => { close(); goTab("train"); } },
+    { label: "CARDIO", sub: "LOG A SESSION", go: () => open({ kind: "cardio" }) },
+    { label: "CAFFEINE", sub: "COFFEE · PRE-WORKOUT", go: () => open({ kind: "caffeine" }) },
   ];
   return (
-    <Sheet title="Log" onClose={close}>
+    <Sheet title="LOG" onClose={close}>
       <div className="grid-2">
-        {items.map((i) => (
-          <button key={i.label} className="btn plain" style={{ minHeight: 84, flexDirection: "column", gap: 2 }} onClick={i.go}>
-            <span style={{ fontSize: 18 }}>{i.label}</span>
-            <span className="muted small" style={{ fontWeight: 400 }}>{i.sub}</span>
+        {items.map((i, n) => (
+          <button key={i.label} className="btn plain stack" style={{ minHeight: 80 }} onClick={i.go}>
+            <span style={{ fontSize: 18 }}>
+              <span className="num" style={{ color: "inherit" }}>{String(n + 1).padStart(2, "0")}</span> {i.label}
+            </span>
+            <span className="sub">{i.sub}</span>
           </button>
         ))}
       </div>
@@ -298,30 +353,47 @@ export function QuickSheet() {
   );
 }
 
-// ---- settings -----------------------------------------------------------------
+// ---- settings (config terminal) -------------------------------------------------
 
 export function SettingsSheet() {
   const { close, toast } = useUI();
   const settings = useLive(getSettings, [], null as Settings | null);
   const weights = useLive(listWeights, [], [] as WeightEntry[]);
   const [storage, setStorage] = useState("…");
+  const [dirty, setDirty] = useState(false);
+  const [display, setDisplay] = useState(readDisplayPrefs);
   useEffect(() => {
-    persistenceStatus().then((s) => setStorage(s === "persistent" ? "Protected from automatic clearing" : s === "best-effort" ? "Not yet protected (it will ask when needed)" : "Unknown"));
+    persistenceStatus().then((s) => setStorage(s === "persistent" ? "PROTECTED FROM AUTO-CLEAR" : s === "best-effort" ? "NOT YET PROTECTED" : "UNKNOWN"));
   }, []);
   if (!settings) return null;
   const s = settings;
-  const upd = (patch: Partial<Settings>) => saveSettings(patch);
+  const upd = (patch: Partial<Settings>) => {
+    setDirty(true);
+    return saveSettings(patch);
+  };
   const trend = weightTrend(weights.map((w) => ({ t: w.t, kg: w.kg })));
   const kg = trend.at(-1)?.trend ?? null;
   const age = new Date().getFullYear() - s.birthYear;
   const rmr = kg !== null ? mifflinStJeor(kg, s.heightCm, age, s.sex) : null;
+  const leave = () => {
+    if (dirty) toast(">> 061 SETTINGS SAVED");
+    close();
+  };
+  const setFlicker = (on: boolean) => {
+    writeDisplayPref("flicker", on ? "1" : "0");
+    setDisplay(readDisplayPrefs());
+  };
+  const setDensity = (d: Density) => {
+    writeDisplayPref("density", d);
+    setDisplay(readDisplayPrefs());
+  };
 
   const exportJson = async () => {
     const json = await buildBackupJson();
     const r = await shareOrDownload(`janos-backup-${today(s)}.json`, json, "application/json");
     if (r !== "cancelled") {
       await saveSettings({ lastBackupAt: Date.now() });
-      toast("Backup exported");
+      toast(">> 071 BACKUP EXPORTED");
     }
   };
   const exportCsv = async () => {
@@ -331,99 +403,160 @@ export function SettingsSheet() {
   const restore = async (file: File) => {
     try {
       const backup = JSON.parse(await file.text()) as Backup;
-      if (!confirm("Replace ALL data on this phone with this backup?")) return;
+      const ok = await confirmScreen({
+        title: "RESTORE",
+        message: "PROC 094 RESTORE WILL REPLACE ALL DATA ON THIS PHONE WITH THIS BACKUP.",
+        confirmLabel: "REPLACE ALL",
+        danger: true,
+      });
+      if (!ok) return;
       await restoreAll(backup);
-      toast("Backup restored");
+      toast("BACKUP RESTORED");
     } catch (e) {
-      alert((e as Error).message);
+      await confirmScreen({ title: "RESTORE", message: `ERR 072 RESTORE FAILED · ${(e as Error).message}`, confirmLabel: "ACKNOWLEDGE", cancelLabel: false });
     }
   };
 
   return (
-    <Sheet title="Settings" onClose={close}>
-      <GarminSyncSection />
-      <h2>You</h2>
-      <Field label="Sex (for the starting calorie estimate)">
-        <Segmented options={[{ value: "male", label: "Male" }, { value: "female", label: "Female" }]} value={s.sex} onChange={(v) => upd({ sex: v })} />
-      </Field>
-      <div className="grid-2">
-        <Field label="Birth year">
-          <NumInput value={s.birthYear} onChange={(v) => v && upd({ birthYear: v })} decimals={false} />
-        </Field>
-        <Field label="Height (cm)">
-          <NumInput value={s.heightCm} onChange={(v) => v && upd({ heightCm: v })} />
-        </Field>
-      </div>
+    <Sheet title="CONFIG" onClose={leave} status="AUTO-SAVE" className="cfg" keys={["[ESC] BACK", "[TAB] NEXT", "[SPACE] TOGGLE"]}>
+      <fieldset className="mg-fs">
+        <legend>1. GARMIN LINK</legend>
+        <GarminSyncSection />
+      </fieldset>
 
-      <h2>Units</h2>
-      <Field label="Bodyweight">
-        <Segmented options={[{ value: "lb", label: "Pounds" }, { value: "kg", label: "Kilograms" }]} value={s.weightUnit} onChange={(v) => upd({ weightUnit: v })} />
-      </Field>
-      <Field label="Distance">
-        <Segmented options={[{ value: "km", label: "Kilometres" }, { value: "mi", label: "Miles" }]} value={s.distanceUnit} onChange={(v) => upd({ distanceUnit: v })} />
-      </Field>
-
-      <h2>Nutrition targets</h2>
-      <Field label="Diet phase">
-        <Segmented options={[{ value: "cut", label: "Cut" }, { value: "maintain", label: "Maintain" }, { value: "bulk", label: "Bulk" }]} value={s.phase} onChange={(v) => upd({ phase: v })} />
-      </Field>
-      {rmr !== null ? (
-        <div className="notice">
-          Starting estimate of maintenance: <b>{Math.round((rmr * 1.4) / 10) * 10}–{Math.round((rmr * 1.6) / 10) * 10} kcal/day</b> (Mifflin–St Jeor × 1.4–1.6). The app will learn your real number from your logs and weight trend.
+      <fieldset className="mg-fs">
+        <legend>2. PROFILE</legend>
+        <Field label="SEX · STARTING CALORIE ESTIMATE">
+          <Segmented options={[{ value: "male", label: "MALE" }, { value: "female", label: "FEMALE" }]} value={s.sex} onChange={(v) => upd({ sex: v })} />
+        </Field>
+        <div className="grid-2">
+          <Field label="BIRTH YEAR">
+            <NumInput value={s.birthYear} onChange={(v) => v && upd({ birthYear: v })} decimals={false} />
+          </Field>
+          <Field label="HEIGHT (CM)">
+            <NumInput value={s.heightCm} onChange={(v) => v && upd({ heightCm: v })} />
+          </Field>
         </div>
-      ) : (
-        <div className="notice">Log a weigh-in to see a starting calorie estimate.</div>
-      )}
-      <div className="grid-2">
-        <Field label="Calories (kcal/day)">
-          <NumInput value={s.kcalTarget} onChange={(v) => upd({ kcalTarget: v })} decimals={false} placeholder="e.g. 2600" />
-        </Field>
-        <Field label="Protein (g/day)">
-          <NumInput value={s.proteinTarget} onChange={(v) => upd({ proteinTarget: v })} decimals={false} />
-        </Field>
-        <Field label="Carbs (g/day, optional)">
-          <NumInput value={s.carbTarget} onChange={(v) => upd({ carbTarget: v })} decimals={false} />
-        </Field>
-        <Field label="Fat (g/day, optional)">
-          <NumInput value={s.fatTarget} onChange={(v) => upd({ fatTarget: v })} decimals={false} />
-        </Field>
-      </div>
+      </fieldset>
 
-      <h2>Sleep and caffeine</h2>
-      <div className="grid-2">
-        <Field label="Sleep need (hours)">
-          <NumInput value={s.sleepNeedHours} onChange={(v) => v && upd({ sleepNeedHours: v })} />
+      <fieldset className="mg-fs">
+        <legend>3. UNITS</legend>
+        <Field label="BODYWEIGHT">
+          <Segmented options={[{ value: "lb", label: "LB" }, { value: "kg", label: "KG" }]} value={s.weightUnit} onChange={(v) => upd({ weightUnit: v })} />
         </Field>
-        <Field label="Usual bedtime">
-          <input className="input" type="time" value={s.bedtime} onChange={(e: any) => e.target.value && upd({ bedtime: e.target.value })} />
+        <Field label="DISTANCE">
+          <Segmented options={[{ value: "km", label: "KM" }, { value: "mi", label: "MI" }]} value={s.distanceUnit} onChange={(v) => upd({ distanceUnit: v })} />
         </Field>
-        <Field label="Caffeine half-life (h)">
-          <NumInput value={s.caffeineHalfLifeHours} onChange={(v) => v && upd({ caffeineHalfLifeHours: v })} />
-        </Field>
-        <Field label="Rest timer (seconds)">
-          <NumInput value={s.restSeconds} onChange={(v) => v && upd({ restSeconds: v })} decimals={false} />
-        </Field>
-      </div>
+      </fieldset>
 
-      <h2>Your data</h2>
-      <div className="card">
-        <div className="small muted" style={{ marginBottom: 10 }}>
-          Everything is stored only on this iPhone. Export a backup regularly and save it to Files or iCloud Drive.
-          {s.lastBackupAt ? ` Last backup: ${shortDateTime(s.lastBackupAt)}.` : " No backup yet."}
+      <fieldset className="mg-fs">
+        <legend>4. TARGETS</legend>
+        <Field label="DIET PHASE">
+          <Segmented options={[{ value: "cut", label: "CUT" }, { value: "maintain", label: "MAINTAIN" }, { value: "bulk", label: "BULK" }]} value={s.phase} onChange={(v) => upd({ phase: v, goalRatePct: null })} />
+        </Field>
+        <Field label="GOAL RATE (% BODYWEIGHT / WEEK)">
+          <Chips
+            options={(s.phase === "cut" ? [-0.25, -0.5, -0.75, -1] : s.phase === "bulk" ? [0.1, 0.25, 0.5] : [0]).map((v) => ({ value: v, label: `${v > 0 ? "+" : ""}${v}%` }))}
+            value={s.goalRatePct ?? DEFAULT_RATE_PCT[s.phase]}
+            onChange={(v) => upd({ goalRatePct: v })}
+          />
+        </Field>
+        <Check checked={s.autoTargets} onChange={(v) => upd({ autoTargets: v })} label="AUTO TARGETS · WEEKLY CHECK-IN FROM ADAPTIVE EXPENDITURE" />
+        {s.autoTargets ? (
+          <p className="mg-hint">
+            CALORIES, CARBS AND FAT FOLLOW YOUR <b>MEASURED MAINTENANCE</b> (FOOD ON COMPLETE DAYS VS TREND WEIGHT) PLUS THE GOAL RATE. UPDATED WEEKLY WHEN THE WEEK HAS <b>4 COMPLETE DAYS</b> AND <b>1 WEIGH-IN</b>. PROTEIN USES YOUR NUMBER BELOW (DEFAULT <b>1.8 G/KG</b>).
+          </p>
+        ) : rmr !== null ? (
+          <p className="mg-hint">
+            STARTING MAINTENANCE ESTIMATE <b>{Math.round((rmr * 1.4) / 10) * 10}–{Math.round((rmr * 1.6) / 10) * 10} KCAL/DAY</b> (MIFFLIN–ST JEOR × 1.4–1.6).
+          </p>
+        ) : (
+          <p className="mg-hint">
+            WARN 031 INSUFFICIENT DATA · LOG A <b>WEIGH-IN</b> FOR A STARTING CALORIE ESTIMATE.
+          </p>
+        )}
+        <div className="grid-2">
+          {!s.autoTargets ? (
+            <Field label="CALORIES (KCAL/DAY)">
+              <NumInput value={s.kcalTarget} onChange={(v) => upd({ kcalTarget: v })} decimals={false} placeholder="2600" />
+            </Field>
+          ) : null}
+          <Field label="PROTEIN (G/DAY)">
+            <NumInput value={s.proteinTarget} onChange={(v) => upd({ proteinTarget: v })} decimals={false} />
+          </Field>
+          {!s.autoTargets ? (
+            <>
+              <Field label="CARBS (G/DAY · OPT)">
+                <NumInput value={s.carbTarget} onChange={(v) => upd({ carbTarget: v })} decimals={false} />
+              </Field>
+              <Field label="FAT (G/DAY · OPT)">
+                <NumInput value={s.fatTarget} onChange={(v) => upd({ fatTarget: v })} decimals={false} />
+              </Field>
+            </>
+          ) : null}
         </div>
-        <button className="btn block" onClick={exportJson}>Export full backup (JSON)</button>
-        <div style={{ height: 8 }} />
-        <button className="btn secondary block" onClick={exportCsv}>Export spreadsheets (CSV zip)</button>
-        <div style={{ height: 8 }} />
+      </fieldset>
+
+      <fieldset className="mg-fs">
+        <legend>5. SLEEP + CAFFEINE</legend>
+        <div className="grid-2">
+          <Field label="SLEEP NEED (H)">
+            <NumInput value={s.sleepNeedHours} onChange={(v) => v && upd({ sleepNeedHours: v })} />
+          </Field>
+          <Field label="USUAL BEDTIME">
+            <input className="input" type="time" value={s.bedtime} onChange={(e: any) => e.target.value && upd({ bedtime: e.target.value })} />
+          </Field>
+          <Field label="CAFFEINE HALF-LIFE (H)">
+            <NumInput value={s.caffeineHalfLifeHours} onChange={(v) => v && upd({ caffeineHalfLifeHours: v })} />
+          </Field>
+          <Field label="REST TIMER (S)">
+            <NumInput value={s.restSeconds} onChange={(v) => v && upd({ restSeconds: v })} decimals={false} />
+          </Field>
+        </div>
+      </fieldset>
+
+      <fieldset className="mg-fs">
+        <legend>6. DISPLAY</legend>
+        <Check checked={display.flicker} onChange={setFlicker} label="RAPID FLICKER (FLASHING — TURN OFF IF SENSITIVE)" />
+        <Field label="RASTER DENSITY">
+          <Segmented
+            options={[
+              { value: "coarse", label: "COARSE" },
+              { value: "medium", label: "MEDIUM" },
+              { value: "fine", label: "FINE" },
+            ]}
+            value={display.density}
+            onChange={setDensity}
+          />
+        </Field>
+        <p className="mg-hint">
+          STORED ON THIS DEVICE ONLY. THE PHONE&apos;S <b>REDUCE MOTION</b> SETTING ALSO STOPS FLICKER AND BLINK.
+        </p>
+      </fieldset>
+
+      <fieldset className="mg-fs">
+        <legend>7. DATA</legend>
+        <p className="mg-hint">
+          ALL DATA IS STORED ONLY ON THIS IPHONE. EXPORT A BACKUP REGULARLY AND SAVE IT TO <b>FILES</b> OR <b>ICLOUD DRIVE</b>.
+        </p>
+        <div className="kv">
+          <span>LAST BACKUP</span>
+          <b>{s.lastBackupAt ? shortDateTime(s.lastBackupAt) : "NONE"}</b>
+        </div>
+        <div className="kv" style={{ marginBottom: 10 }}>
+          <span>STORAGE</span>
+          <b>{storage}</b>
+        </div>
+        <button className="btn block" onClick={exportJson}>EXPORT FULL BACKUP (JSON)</button>
+        <div className="gap" />
+        <button className="btn secondary block" onClick={exportCsv}>EXPORT SPREADSHEETS (CSV ZIP)</button>
+        <div className="gap" />
         <label className="btn plain block">
-          Restore from backup…
+          RESTORE FROM BACKUP…
           <input type="file" accept="application/json,.json" style={{ display: "none" }} onChange={(e: any) => e.target.files?.[0] && restore(e.target.files[0])} />
         </label>
-        <div className="small muted" style={{ marginTop: 10 }}>Storage: {storage}</div>
-      </div>
-      <div className="muted small" style={{ textAlign: "center", margin: "16px 0" }}>
-        Janos Health v0.1 · No accounts, no tracking. Barcode lookups use Open Food Facts (ODbL).
-      </div>
+      </fieldset>
+      <div className="foot-note">JANOS HEALTH V0.1 · NO ACCOUNTS · NO TRACKING · BARCODE DATA: OPEN FOOD FACTS (ODBL)</div>
     </Sheet>
   );
 }
@@ -431,6 +564,8 @@ export function SettingsSheet() {
 export const yesterday = (settings: Settings) => addDays(today(settings), -1);
 
 // ---- Garmin sync --------------------------------------------------------------
+
+const lampColor = { on: "var(--grn)", warn: "var(--am)", off: "var(--red)" } as const;
 
 function GarminSyncSection() {
   const { toast } = useUI();
@@ -440,105 +575,134 @@ function GarminSyncSection() {
   const [busy, setBusy] = useState(false);
   const [pasting, setPasting] = useState(false);
   const [pasted, setPasted] = useState("");
+  const link = garminLink(key, status);
+  const code = garminMessageCode(status?.message);
 
   const copy = async (k: string) => {
     try {
       await navigator.clipboard.writeText(k);
-      toast("Key copied. Paste it into GitHub as JANOS_DATA_KEY.");
+      toast("KEY COPIED · PASTE IT INTO GITHUB AS JANOS_DATA_KEY");
     } catch {
       setReveal(true);
-      toast("Couldn't copy automatically; select the key and copy it.");
+      toast("COPY BLOCKED · SELECT THE KEY AND COPY IT");
     }
   };
 
   return (
     <>
-      <h2 style={{ marginTop: 4 }}>Garmin sync</h2>
-      <div className="card">
-        {!key ? (
-          <>
-            <div className="small" style={{ marginBottom: 10 }}>
-              Create a private key (step 4 in SETUP.md). Your Garmin data is stored encrypted with it, and only this phone can read it.
+      {!key ? (
+        <>
+          <p className="mg-hint">
+            CREATE A PRIVATE SYNC KEY (STEP 4 IN <b>SETUP.MD</b>). <span className="blu">GARMIN</span> DATA IS STORED ENCRYPTED WITH IT; ONLY THIS PHONE CAN READ IT.
+          </p>
+          <button
+            className="btn block"
+            onClick={async () => {
+              const k = await createGarminKey();
+              setReveal(true);
+              await copy(k);
+            }}
+          >
+            CREATE SYNC KEY + COPY
+          </button>
+          <div className="gap" />
+          <button className="btn plain block" onClick={() => setPasting(true)}>I ALREADY HAVE A KEY</button>
+        </>
+      ) : (
+        <>
+          <div className="subcard mg-brk">
+            <div className="sct">
+              <span className="id">GARMIN · GITHUB SYNC</span>
+              <span className="st" style={{ color: lampColor[link.lamp] }}>● {link.label}</span>
             </div>
-            <button
-              className="btn block"
-              onClick={async () => {
-                const k = await createGarminKey();
-                setReveal(true);
-                await copy(k);
-              }}
-            >
-              Create sync key and copy it
-            </button>
-            <div style={{ height: 8 }} />
-            <button className="btn plain block" onClick={() => setPasting(true)}>I already have a key</button>
-          </>
-        ) : (
-          <>
-            <div className="card-head">
-              <div className="title">
-                {status?.lastSuccess ? "Connected" : "Key created"}
-              </div>
-              <div className="muted small">
-                {status?.generatedAt ? `Garmin data from ${shortDateTime(Date.parse(status.generatedAt))}` : "No data yet"}
-              </div>
+            <div className="kv">
+              <span>STATUS</span>
+              <b>{status?.lastSuccess ? "CONNECTED" : "KEY CREATED"}</b>
             </div>
-            {status?.message ? <div className="notice warn">{status.message}</div> : null}
+            <div className="kv">
+              <span>DATA FROM</span>
+              <b>{status?.generatedAt ? shortDateTime(Date.parse(status.generatedAt)) : "NO DATA YET"}</b>
+            </div>
             {status?.lastSuccess ? (
-              <div className="muted small" style={{ marginBottom: 10 }}>
-                {status.days} days and {status.activities} activities synced. Checked {shortDateTime(status.lastSuccess)}.
-                {status.lastErrors.length ? ` The last GitHub run had ${status.lastErrors.length} minor error${status.lastErrors.length > 1 ? "s" : ""} (usually a metric your watch doesn't record).` : ""}
-              </div>
+              <>
+                <div className="kv">
+                  <span>SYNCED</span>
+                  <b>
+                    {status.days} DAYS · {status.activities} ACTIVITIES
+                  </b>
+                </div>
+                <div className="kv">
+                  <span>CHECKED</span>
+                  <b>{shortDateTime(status.lastSuccess)}</b>
+                </div>
+                {status.lastErrors.length ? (
+                  <div className="kv">
+                    <span>LAST RUN</span>
+                    <b>{status.lastErrors.length} MINOR ERROR{status.lastErrors.length > 1 ? "S" : ""}</b>
+                  </div>
+                ) : null}
+              </>
             ) : null}
-            <div className="small muted" style={{ marginBottom: 6 }}>Sync key (GitHub secret JANOS_DATA_KEY):</div>
-            <div className="input" style={{ fontFamily: "ui-monospace, Menlo, monospace", fontSize: 13, wordBreak: "break-all", userSelect: "all", minHeight: 0 }}>
-              {reveal ? key : "•".repeat(20) + key.slice(-4)}
-            </div>
-            <div className="grid-2" style={{ marginTop: 8 }}>
-              <button className="btn plain" onClick={() => setReveal(!reveal)}>{reveal ? "Hide" : "Show"}</button>
-              <button className="btn plain" onClick={() => copy(key)}>Copy</button>
-            </div>
-            <div style={{ height: 8 }} />
-            <button
-              className="btn block"
-              disabled={busy}
-              onClick={async () => {
-                setBusy(true);
-                const s = await syncGarmin(true);
-                setBusy(false);
-                toast(s.message ?? `Garmin data updated (${s.days} days)`);
-              }}
-            >
-              {busy ? "Checking…" : "Check for new Garmin data now"}
-            </button>
-            <div style={{ height: 8 }} />
-            <button className="btn plain block" onClick={() => setPasting(true)}>Replace key</button>
-          </>
-        )}
-        {pasting ? (
-          <div style={{ marginTop: 12 }}>
-            <Field label="Paste the key (44 characters)">
-              <input className="input" value={pasted} onChange={(e: any) => setPasted(e.target.value)} autoCapitalize="off" autoCorrect="off" spellCheck={false} />
-            </Field>
-            <button
-              className="btn block"
-              onClick={async () => {
-                try {
-                  await setGarminKey(pasted);
-                  setPasting(false);
-                  setPasted("");
-                  toast("Key saved");
-                  void syncGarmin(true);
-                } catch (e) {
-                  toast((e as Error).message);
-                }
-              }}
-            >
-              Save key
-            </button>
           </div>
-        ) : null}
-      </div>
+          {status?.lastSuccess && status.lastErrors.length ? (
+            <p className="mg-hint">MINOR ERRORS USUALLY MEAN A METRIC YOUR WATCH DOES NOT RECORD.</p>
+          ) : null}
+          {status?.message ? (
+            <div className={code?.startsWith("ERR") ? "notice err" : "notice warn"}>
+              <span className="msg">{code}</span>
+              <span className="act">{status.message}</span>
+            </div>
+          ) : null}
+          <div className="field" style={{ marginBottom: 0 }}>
+            <span>
+              SYNC KEY · GITHUB SECRET <b className="blu" style={{ fontWeight: 400 }}>JANOS_DATA_KEY</b>
+            </span>
+          </div>
+          <div className="keybox">{reveal ? key : "•".repeat(20) + key.slice(-4)}</div>
+          <div className="grid-2">
+            <button className="btn plain" onClick={() => setReveal(!reveal)}>{reveal ? "HIDE" : "SHOW"}</button>
+            <button className="btn plain" onClick={() => copy(key)}>COPY</button>
+          </div>
+          <div className="gap" />
+          <button
+            className="btn block"
+            disabled={busy}
+            onClick={async () => {
+              setBusy(true);
+              const st = await syncGarmin(true);
+              setBusy(false);
+              toast(st.message ? garminMessageCode(st.message) ?? st.message : `>> 005 GARMIN DATA RECEIVED · ${st.days} DAYS`);
+            }}
+          >
+            {busy ? "CHECKING…" : "CHECK FOR GARMIN DATA NOW"}
+          </button>
+          <div className="gap" />
+          <button className="btn plain block" onClick={() => setPasting(true)}>REPLACE KEY</button>
+        </>
+      )}
+      {pasting ? (
+        <div style={{ marginTop: 12 }}>
+          <Field label="PASTE THE KEY (44 CHARACTERS)">
+            <input className="input" value={pasted} onChange={(e: any) => setPasted(e.target.value)} autoCapitalize="off" autoCorrect="off" spellCheck={false} />
+          </Field>
+          <button
+            className="btn block"
+            onClick={async () => {
+              try {
+                await setGarminKey(pasted);
+                setPasting(false);
+                setPasted("");
+                toast(">> 061 SETTINGS SAVED · SYNC KEY STORED");
+                void syncGarmin(true);
+              } catch (e) {
+                toast(`ERR 021 SYNC KEY INVALID · ${(e as Error).message}`);
+              }
+            }}
+          >
+            SAVE KEY
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }

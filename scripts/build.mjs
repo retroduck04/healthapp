@@ -16,6 +16,10 @@ mkdirSync(out, { recursive: true });
 
 const version = process.env.APP_VERSION || "0.1.0";
 
+// The four MAGI type roles. Noto Serif 900 is used only for English display words (the brand).
+const FONTS =
+  "https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=Noto+Serif:wght@900&family=Roboto+Condensed:wght@400;700&family=Share+Tech+Mono&display=swap";
+
 const result = await esbuild.build({
   entryPoints: [join(root, "src/main.tsx")],
   bundle: true,
@@ -30,7 +34,8 @@ const result = await esbuild.build({
   legalComments: "none",
 });
 const js = result.outputFiles[0].contents;
-const css = readFileSync(join(root, "src/styles.css"));
+// MAGI base (tokens + mg- components) first, then the app's own styles.
+const css = Buffer.concat([readFileSync(join(root, "src/magi/base.css")), Buffer.from("\n"), readFileSync(join(root, "src/styles.css"))]);
 const hash = createHash("sha256").update(js).update(css).digest("hex").slice(0, 10);
 
 writeFileSync(join(out, "app.js"), js);
@@ -52,7 +57,7 @@ writeFileSync(
       scope: "./",
       display: "standalone",
       background_color: "#000000",
-      theme_color: "#0e8f7e",
+      theme_color: "#000000",
       icons: [
         { src: "icon-192.png", sizes: "192x192", type: "image/png" },
         { src: "icon-512.png", sizes: "512x512", type: "image/png" },
@@ -70,19 +75,22 @@ writeFileSync(
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0e8f7e">
+<meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Janos">
 <title>Janos Health</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="app.css?v=${hash}">
 </head>
 <body>
 <div id="root"></div>
-<noscript>Janos Health needs JavaScript.</noscript>
+<noscript>JANOS HEALTH REQUIRES JAVASCRIPT.</noscript>
 <script src="app.js?v=${hash}"></script>
 </body>
 </html>
@@ -119,10 +127,19 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(caches.match(e.request).then((r) => r || fetch(e.request)));
     return;
   }
-  if (url.hostname === "cdn.jsdelivr.net") {
-    // Barcode scanner library: cache after first use so scanning works offline.
+  if (url.hostname === "cdn.jsdelivr.net" || url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com") {
+    // Barcode scanner library and Google Fonts: cache-first after first use, so both work offline.
     e.respondWith(
-      caches.open(RUNTIME).then((c) => c.match(e.request).then((r) => r || fetch(e.request).then((res) => { c.put(e.request, res.clone()); return res; })))
+      caches.open(RUNTIME).then((c) =>
+        c.match(e.request).then(
+          (r) =>
+            r ||
+            fetch(e.request).then((res) => {
+              if (res.ok || res.type === "opaque") c.put(e.request, res.clone());
+              return res;
+            })
+        )
+      )
     );
   }
 });

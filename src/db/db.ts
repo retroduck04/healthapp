@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 
 export const DB_NAME = "janos";
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 
 export type StoreName =
   | "meta"
@@ -21,7 +21,8 @@ export type StoreName =
   | "checkins"
   | "caffeine"
   | "tags"
-  | "garminDays";
+  | "garminDays"
+  | "garminActivities";
 
 export const STORES: StoreName[] = [
   "meta",
@@ -39,6 +40,7 @@ export const STORES: StoreName[] = [
   "caffeine",
   "tags",
   "garminDays",
+  "garminActivities",
 ];
 
 type IndexSpec = [name: string, keyPath: string];
@@ -68,6 +70,10 @@ const migrations: ((db: IDBDatabase) => void)[] = [
   // v2: Garmin daily summaries (sleep, HRV, resting HR, stress, Body Battery, steps…)
   (db) => {
     db.createObjectStore("garminDays", { keyPath: "date" });
+  },
+  // v3: every Garmin activity (strength included) with Garmin's own training load, for load tracking
+  (db) => {
+    db.createObjectStore("garminActivities", { keyPath: "id" }).createIndex("start", "start");
   },
 ];
 
