@@ -1,0 +1,48 @@
+# Garmin sync for Janos Health.
+# Move this file to .github/workflows/garmin-sync.yml (see SETUP.md).
+# Every 3 hours it downloads your recent Garmin data and stores it encrypted in docs/data.
+name: Garmin sync
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      backfill_days:
+        description: "Extra days of history to download (0 = just recent days)"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: garmin-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -r sync/requirements.txt
+      - name: Download Garmin data
+        env:
+          GARMIN_EMAIL: ${{ secrets.GARMIN_EMAIL }}
+          GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
+          JANOS_DATA_KEY: ${{ secrets.JANOS_DATA_KEY }}
+          JANOS_BACKFILL_DAYS: ${{ github.event.inputs.backfill_days || '0' }}
+        run: python sync/garmin_sync.py
+      - name: Save encrypted data
+        run: |
+          git config user.name "janos-sync"
+          git config user.email "janos-sync@users.noreply.github.com"
+          git add -A docs/data sync
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Garmin sync $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase
+          git push
