@@ -5,7 +5,8 @@ days, and writes them into docs/data as AES-256-GCM encrypted, gzip-compressed J
 Only the Janos Health app on your phone holds the key (JANOS_DATA_KEY) to read them.
 
 Environment:
-  GARMIN_EMAIL, GARMIN_PASSWORD   Garmin Connect login (GitHub secrets)
+  GARMIN_TOKENS                   login tokens from tools/Connect Garmin.bat (GitHub secret; preferred)
+  GARMIN_EMAIL, GARMIN_PASSWORD   Garmin Connect login (GitHub secrets; fallback only)
   JANOS_DATA_KEY                  base64 32-byte key created in the app (GitHub secret)
   JANOS_DAYS_BACK                 days to refresh each run (default 4)
   JANOS_BACKFILL_DAYS             extra history to fetch this run (default 0; 60 on first run)
@@ -18,6 +19,7 @@ import datetime as dt
 import gzip
 import json
 import os
+import shutil
 import sys
 import tempfile
 import time
@@ -163,20 +165,49 @@ def summarize_weights(body: Any) -> list[dict[str, Any]]:
 
 # ---------------------------------------------------------------- garmin
 
-def login(email: str, password: str, token_dir: Path):
+def login(email: str, password: str, home: Path, key: bytes):
+    """Logs in with saved tokens when possible, so GitHub never has to send the password to Garmin.
+
+    Order: tokens saved by earlier runs (sync/tokens.enc), then the GARMIN_TOKENS secret made by
+    tools/Connect Garmin.bat on your own computer, then email + password as a last resort.
+    Garmin often rate-limits password logins from GitHub's servers (HTTP 429); token logins avoid that.
+    """
     from garminconnect import Garmin  # imported here so the rest can be tested without it
 
-    api = Garmin(email, password)
-    errors = []
-    for attempt in (lambda: api.login(str(token_dir)), lambda: api.login()):
+    token_dir = home / ".garminconnect"
+    errors: list[str] = []
+    sources = (("saved tokens", lambda: restore_tokens(key, home)), ("GARMIN_TOKENS secret", lambda: seed_tokens(home)))
+    for label, load in sources:
+        clear_tokens(home)
+        if not load():
+            continue
         try:
-            attempt()
+            api = Garmin()  # no password: if the tokens are bad this fails instead of trying a password login
+            api.login(str(token_dir))
+            print(f"Logged in to Garmin with {label}.")
             return api
-        except TypeError as e:  # signature differences between library versions
-            errors.append(f"TypeError: {e}")
         except Exception as e:  # noqa: BLE001
-            errors.append(f"{type(e).__name__}: {e}")
-    sys.exit("Garmin login failed. " + " | ".join(errors) + " (Is Garmin two-factor login turned off? Is the password secret correct?)")
+            errors.append(f"{label}: {type(e).__name__}: {str(e)[:200]}")
+
+    if email and password:
+        clear_tokens(home)
+        token_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            api = Garmin(email, password)
+            api.login(str(token_dir))
+            print("Logged in to Garmin with email and password.")
+            return api
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"password login: {type(e).__name__}: {str(e)[:200]}")
+
+    text = " | ".join(errors) or "no tokens and no password"
+    if "429" in text or "TooManyRequests" in text:
+        hint = ("Garmin is blocking logins from GitHub's servers. Fix: on your laptop, double-click "
+                "tools/Connect Garmin.bat, then save what it copies as the GitHub secret GARMIN_TOKENS.")
+    else:
+        hint = ("Check the GARMIN_EMAIL and GARMIN_PASSWORD secrets, or run tools/Connect Garmin.bat on your "
+                "laptop and save what it copies as the GitHub secret GARMIN_TOKENS.")
+    sys.exit(f"Garmin login failed: {text}\n\n{hint}")
 
 
 TOKEN_DIRS = ("tokens", ".garminconnect", ".garth")
@@ -203,20 +234,47 @@ def save_tokens(api: Any, key: bytes, token_dir: Path, home: Path) -> None:
         TOKENS.write_bytes(encrypt(key, files))
 
 
-def restore_tokens(key: bytes, home: Path) -> None:
-    if not TOKENS.exists():
-        return
-    try:
-        files = decrypt(key, TOKENS.read_bytes())
-    except Exception:  # noqa: BLE001
-        print("Saved Garmin tokens could not be decrypted (new key?). Logging in with the password.")
-        return
+def write_token_files(home: Path, files: dict[str, str]) -> int:
+    written = 0
     for rel, b64 in files.items():
+        rel = rel.replace("\\", "/")
         if rel.split("/")[0] not in TOKEN_DIRS or ".." in rel:
             continue
         target = home / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(base64.b64decode(b64))
+        written += 1
+    return written
+
+
+def clear_tokens(home: Path) -> None:
+    for name in TOKEN_DIRS:
+        shutil.rmtree(home / name, ignore_errors=True)
+
+
+def restore_tokens(key: bytes, home: Path) -> bool:
+    """Tokens saved (encrypted) by the previous run."""
+    if not TOKENS.exists():
+        return False
+    try:
+        files = decrypt(key, TOKENS.read_bytes())
+    except Exception:  # noqa: BLE001
+        print("Saved Garmin tokens could not be decrypted (new key?). Skipping them.")
+        return False
+    return write_token_files(home, files) > 0
+
+
+def seed_tokens(home: Path) -> bool:
+    """Tokens from the GARMIN_TOKENS secret (made by tools/Connect Garmin.bat on your own computer)."""
+    raw = os.environ.get("GARMIN_TOKENS", "").strip()
+    if not raw:
+        return False
+    try:
+        files = json.loads(base64.b64decode(raw))
+    except Exception:  # noqa: BLE001
+        print("The GARMIN_TOKENS secret isn't in the expected format. Run tools/Connect Garmin.bat again and paste the new value.")
+        return False
+    return write_token_files(home, files) > 0
 
 
 def call(errors: list[str], label: str, fn: Callable[[], Any]) -> Any:
@@ -263,8 +321,6 @@ def main() -> None:
     key = load_key()
     email = os.environ.get("GARMIN_EMAIL", "").strip()
     password = os.environ.get("GARMIN_PASSWORD", "")
-    if not email or not password:
-        sys.exit("GARMIN_EMAIL and GARMIN_PASSWORD secrets are required.")
 
     DATA.mkdir(parents=True, exist_ok=True)
     RAW.mkdir(parents=True, exist_ok=True)
@@ -284,9 +340,7 @@ def main() -> None:
     home = Path(tempfile.mkdtemp())
     os.environ["HOME"] = str(home)
     token_dir = home / ".garminconnect"  # the library's default token folder
-    restore_tokens(key, home)
-    token_dir.mkdir(exist_ok=True)
-    api = login(email, password, token_dir)
+    api = login(email, password, home, key)
     save_tokens(api, key, token_dir, home)
 
     errors: list[str] = []
@@ -294,6 +348,8 @@ def main() -> None:
     for i in range(span):
         day = (today - dt.timedelta(days=i)).isoformat()
         raw = fetch_day(api, day, errors)
+        if all(v is None for v in raw.values()):
+            continue  # nothing came back: keep whatever we already had for this day
         (RAW / f"{day}.enc").write_bytes(encrypt(key, raw))
         summary["days"][day] = summarize_day(day, raw)
 
