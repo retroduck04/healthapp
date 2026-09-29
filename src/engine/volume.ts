@@ -4,6 +4,9 @@
 // - Adds "adductors": the seed's "Hip adduction" has no sensible home among the other ten muscles.
 // - "Back extension" maps to back (erectors) + glutes/hamstrings; "Face pull"/rear-delt work to shoulders + back.
 // - Group fallback for "arms" is biceps + triceps as secondary (half a set each), since the name gave no hint.
+// - Adds "forearms" (seed v2: reverse curl, wrist curl; hammer curls count forearms as secondary).
+// - Upright rows count back (traps) as secondary; straight-arm pulldowns are back only (no elbow flexion);
+//   chest-supported rows are back work (the word "chest" names the pad, not the target).
 
 export type Muscle =
   | "chest"
@@ -11,6 +14,7 @@ export type Muscle =
   | "shoulders"
   | "biceps"
   | "triceps"
+  | "forearms"
   | "quads"
   | "hamstrings"
   | "glutes"
@@ -24,6 +28,7 @@ export const MUSCLES: readonly Muscle[] = [
   "shoulders",
   "biceps",
   "triceps",
+  "forearms",
   "quads",
   "hamstrings",
   "glutes",
@@ -38,6 +43,7 @@ export const MUSCLE_LABEL: Record<Muscle, string> = {
   shoulders: "SHOULDERS",
   biceps: "BICEPS",
   triceps: "TRICEPS",
+  forearms: "FOREARMS",
   quads: "QUADS",
   hamstrings: "HAMSTRINGS",
   glutes: "GLUTES",
@@ -56,26 +62,33 @@ type Rule = [RegExp, Muscle[], Muscle[]];
 // First match wins, so specific phrases come before the generic words they contain.
 const RULES: readonly Rule[] = [
   [/\bcalf|\bcalves/, ["calves"], []],
-  [/hip thrust|glute bridge|\bbridge/, ["glutes"], ["hamstrings"]],
+  [/pull[- ]?through/, ["glutes"], ["hamstrings"]],
+  [/hip thrust|glute (bridge|drive|kickback)|\bbridge/, ["glutes"], ["hamstrings"]],
   [/glute|abduct/, ["glutes"], []],
   [/adduct/, ["adductors"], []],
   [/back extension|hyperextension|good ?morning/, ["back"], ["glutes", "hamstrings"]],
+  [/wrist|forearm|gripper/, ["forearms"], []],
+  [/reverse[- ](grip )?curl|zottman/, ["forearms"], ["biceps"]],
   [/tricep|pressdown|push ?down|skull ?crusher|french press|kickback/, ["triceps"], []],
   [/close[- ]grip bench/, ["triceps"], ["chest"]],
   [/leg extension|quad extension/, ["quads"], []],
   [/leg curl|hamstring curl|nordic/, ["hamstrings"], []],
   [/leg press|squat|hack|lunge|split squat|step[- ]?up|pendulum/, ["quads"], ["glutes"]],
   [/deadlift|\brdl\b|romanian|stiff[- ]leg/, ["hamstrings"], ["glutes", "back"]],
-  [/crunch|\babs?\b|abdominal|plank|sit[- ]?up|leg raise|knee raise|rollout|wood ?chop|pallof|oblique/, ["abs"], []],
+  [/crunch|\babs?\b|abdominal|plank|sit[- ]?up|leg raise|knee raise|rollout|wood ?chop|pallof|oblique|rotary|torso|twist/, ["abs"], []],
   [/face pull|rear delt|reverse (pec deck|fly|flye)/, ["shoulders"], ["back"]],
-  [/lateral raise|lat raise|side raise|front raise|upright row|\by[- ]raise/, ["shoulders"], []],
+  [/upright row/, ["shoulders"], ["back"]],
+  [/lateral raise|lat raise|side raise|front raise|\by[- ]raise/, ["shoulders"], []],
   [/shoulder press|overhead press|military|\bohp\b|arnold|landmine press/, ["shoulders"], ["triceps"]],
   [/\bdips?\b/, ["triceps"], ["chest", "shoulders"]],
+  [/chest[- ]supported/, ["back"], ["biceps", "shoulders"]],
+  [/straight[- ]arm/, ["back"], []],
   [/pec deck|\bfly|\bflye|crossover|\bpec\b/, ["chest"], ["shoulders"]],
   [/chest press|bench|push[- ]?up|\bchest\b/, ["chest"], ["triceps", "shoulders"]],
   [/pulldown|pull[- ]down|pull[- ]?up|chin[- ]?up|\brow\b|\browing\b|pullover|\blat\b|\blats\b/, ["back"], ["biceps"]],
   [/shrug/, ["back"], []],
-  [/curl|preacher|hammer/, ["biceps"], []],
+  [/hammer/, ["biceps"], ["forearms"]],
+  [/curl|preacher/, ["biceps"], []],
   [/extension/, ["triceps"], []],
   [/press/, ["chest"], ["triceps", "shoulders"]],
 ];

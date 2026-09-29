@@ -85,9 +85,12 @@ export interface Food {
   name: string;
   brand?: string;
   barcode?: string;
-  source: "openfoodfacts" | "custom";
+  source: "openfoodfacts" | "custom" | "database";
   per100g: Nutrients;
   servings: Serving[];
+  /** Built-in restaurant items without a published weight: "grams" are 100 per serving, so only servings are offered. */
+  unitOnly?: boolean;
+  category?: string;
   attribution?: string;
   createdAt: number;
   lastUsedAt: number;
@@ -106,7 +109,7 @@ export interface FoodEntry extends Nutrients {
   foodId?: string;
   grams?: number | null;
   amountLabel?: string; // "1.5 × 1 bar" or "150 g"
-  method: "search" | "barcode" | "quick" | "saved" | "copy" | "custom";
+  method: "search" | "barcode" | "quick" | "saved" | "copy" | "custom" | "database";
 }
 
 export interface DayStatus {

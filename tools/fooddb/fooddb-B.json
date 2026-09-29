@@ -1,0 +1,5724 @@
+[
+  {
+    "brand": "Burger King",
+    "name": "Whopper",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bk",
+      "burger king",
+      "whopper"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 670,
+    "protein": 31,
+    "carbs": 54,
+    "fat": 39,
+    "fiber": 3,
+    "sugar": 13,
+    "sodiumMg": 1170,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Whopper with Cheese",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bk",
+      "burger king",
+      "whopper with cheese",
+      "cheese whopper"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 760,
+    "protein": 36,
+    "carbs": 56,
+    "fat": 46,
+    "fiber": 3,
+    "sugar": 14,
+    "sodiumMg": 1600,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Double Whopper",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bk",
+      "burger king",
+      "double whopper"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 920,
+    "protein": 52,
+    "carbs": 54,
+    "fat": 58,
+    "fiber": 3,
+    "sugar": 13,
+    "sodiumMg": 1240,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Whopper Jr.",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bk",
+      "burger king",
+      "whopper jr",
+      "whopper junior"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 330,
+    "protein": 15,
+    "carbs": 30,
+    "fat": 18,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 560,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Hamburger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bk",
+      "burger king",
+      "hamburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 250,
+    "protein": 13,
+    "carbs": 29,
+    "fat": 10,
+    "fiber": 1,
+    "sugar": 7,
+    "sodiumMg": 560,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Cheeseburger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bk",
+      "burger king",
+      "cheeseburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 15,
+    "carbs": 30,
+    "fat": 13,
+    "fiber": 1,
+    "sugar": 7,
+    "sodiumMg": 780,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Double Cheeseburger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bk",
+      "burger king",
+      "double cheeseburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 400,
+    "protein": 24,
+    "carbs": 30,
+    "fat": 21,
+    "fiber": 1,
+    "sugar": 7,
+    "sodiumMg": 810,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Bacon Cheeseburger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bk",
+      "burger king",
+      "bacon cheeseburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 340,
+    "protein": 18,
+    "carbs": 30,
+    "fat": 16,
+    "fiber": 1,
+    "sugar": 7,
+    "sodiumMg": 940,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Original Chicken Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "bk",
+      "burger king",
+      "original chicken",
+      "long chicken",
+      "chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 680,
+    "protein": 23,
+    "carbs": 63,
+    "fat": 39,
+    "fiber": 3,
+    "sugar": 7,
+    "sodiumMg": 1380,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Royal Crispy Chicken (Classic)",
+    "variant": "Classic",
+    "category": "sandwich",
+    "aliases": [
+      "bk",
+      "burger king",
+      "royal crispy",
+      "crispy chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 600,
+    "protein": 31,
+    "carbs": 54,
+    "fat": 31,
+    "fiber": 9,
+    "sugar": 9,
+    "sodiumMg": 1330,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Chicken Jr.",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "bk",
+      "burger king",
+      "chicken jr",
+      "chicken junior"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 440,
+    "protein": 13,
+    "carbs": 39,
+    "fat": 27,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 700,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Chicken Nuggets (4 pc)",
+    "variant": "4 pc",
+    "category": "chicken",
+    "aliases": [
+      "bk",
+      "burger king",
+      "nuggets",
+      "chicken nuggets",
+      "bk nuggets",
+      "4 piece"
+    ],
+    "serving": {
+      "label": "4 nuggets",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 4,
+    "kcal": 190,
+    "protein": 9,
+    "carbs": 12,
+    "fat": 12,
+    "fiber": null,
+    "sugar": 0,
+    "sodiumMg": 490,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Chicken Nuggets (6 pc)",
+    "variant": "6 pc",
+    "category": "chicken",
+    "aliases": [
+      "bk",
+      "burger king",
+      "nuggets",
+      "chicken nuggets",
+      "bk nuggets",
+      "6 piece"
+    ],
+    "serving": {
+      "label": "6 nuggets",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 6,
+    "kcal": 290,
+    "protein": 13,
+    "carbs": 18,
+    "fat": 19,
+    "fiber": 1,
+    "sugar": 0,
+    "sodiumMg": 730,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Chicken Nuggets (10 pc)",
+    "variant": "10 pc",
+    "category": "chicken",
+    "aliases": [
+      "bk",
+      "burger king",
+      "nuggets",
+      "chicken nuggets",
+      "bk nuggets",
+      "10 piece"
+    ],
+    "serving": {
+      "label": "10 nuggets",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 10,
+    "kcal": 480,
+    "protein": 22,
+    "carbs": 30,
+    "fat": 31,
+    "fiber": 2,
+    "sugar": 0,
+    "sodiumMg": 1220,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Chicken Nuggets (20 pc)",
+    "variant": "20 pc",
+    "category": "chicken",
+    "aliases": [
+      "bk",
+      "burger king",
+      "nuggets",
+      "chicken nuggets",
+      "bk nuggets",
+      "20 piece"
+    ],
+    "serving": {
+      "label": "20 nuggets",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 20,
+    "kcal": 970,
+    "protein": 45,
+    "carbs": 60,
+    "fat": 62,
+    "fiber": 5,
+    "sugar": 0,
+    "sodiumMg": 2440,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Chicken Fries (9 pc)",
+    "variant": "9 pc",
+    "category": "chicken",
+    "aliases": [
+      "bk",
+      "burger king",
+      "chicken fries",
+      "9 piece"
+    ],
+    "serving": {
+      "label": "9 pieces",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 9,
+    "kcal": 260,
+    "protein": 15,
+    "carbs": 20,
+    "fat": 13,
+    "fiber": 1,
+    "sugar": 0,
+    "sodiumMg": 780,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "French Fries (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "bk",
+      "burger king",
+      "fries",
+      "bk fries",
+      "french fries",
+      "small fries"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 300,
+    "protein": 4,
+    "carbs": 43,
+    "fat": 13,
+    "fiber": 3,
+    "sugar": 1,
+    "sodiumMg": 220,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "French Fries (Medium)",
+    "variant": "Medium",
+    "category": "side",
+    "aliases": [
+      "bk",
+      "burger king",
+      "fries",
+      "bk fries",
+      "french fries",
+      "medium fries"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 370,
+    "protein": 5,
+    "carbs": 54,
+    "fat": 16,
+    "fiber": 4,
+    "sugar": 1,
+    "sodiumMg": 270,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "French Fries (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "bk",
+      "burger king",
+      "fries",
+      "bk fries",
+      "french fries",
+      "large fries"
+    ],
+    "serving": {
+      "label": "1 large",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 440,
+    "protein": 5,
+    "carbs": 64,
+    "fat": 19,
+    "fiber": 5,
+    "sugar": 1,
+    "sodiumMg": 320,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Onion Rings (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "bk",
+      "burger king",
+      "onion rings",
+      "rings"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 280,
+    "protein": 4,
+    "carbs": 37,
+    "fat": 13,
+    "fiber": 4,
+    "sugar": 4,
+    "sodiumMg": 510,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Onion Rings (Medium)",
+    "variant": "Medium",
+    "category": "side",
+    "aliases": [
+      "bk",
+      "burger king",
+      "onion rings",
+      "rings"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 360,
+    "protein": 4,
+    "carbs": 48,
+    "fat": 16,
+    "fiber": 5,
+    "sugar": 5,
+    "sodiumMg": 640,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Onion Rings (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "bk",
+      "burger king",
+      "onion rings",
+      "rings"
+    ],
+    "serving": {
+      "label": "1 large",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 520,
+    "protein": 7,
+    "carbs": 70,
+    "fat": 24,
+    "fiber": 7,
+    "sugar": 7,
+    "sodiumMg": 950,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Hash Browns (Small)",
+    "variant": "Small",
+    "category": "breakfast",
+    "aliases": [
+      "bk",
+      "burger king",
+      "hash browns",
+      "hashbrowns"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 2,
+    "carbs": 29,
+    "fat": 19,
+    "fiber": 2,
+    "sugar": 0,
+    "sodiumMg": 840,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Burger King",
+    "name": "Hershey's Sundae Pie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "bk",
+      "burger king",
+      "sundae pie",
+      "hersheys pie",
+      "pie"
+    ],
+    "serving": {
+      "label": "1 pie",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 310,
+    "protein": 3,
+    "carbs": 32,
+    "fat": 18,
+    "fiber": 1,
+    "sugar": 22,
+    "sodiumMg": 230,
+    "region": "US",
+    "source": "https://bk-use1-prod.sites.rbictg.com/nutrition/nutrition.pdf",
+    "computed": false,
+    "note": "US data (Burger King USA Nutrition Information, November 2022). Burger King Canada's nutrition is only shown in its JavaScript app and could not be retrieved; Canadian recipes may differ slightly."
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Chick-fil-A Chicken Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "chicken sandwich",
+      "cfa sandwich",
+      "original chicken sandwich",
+      "chickfila"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 185
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 440,
+    "protein": 29,
+    "carbs": 43,
+    "fat": 17,
+    "fiber": 1,
+    "sugar": 7,
+    "sodiumMg": 1500,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Spicy Chicken Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "spicy chicken sandwich",
+      "spicy sandwich",
+      "chickfila spicy"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 190
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 460,
+    "protein": 28,
+    "carbs": 47,
+    "fat": 18,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 1770,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Chick-fil-A Deluxe Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "deluxe",
+      "deluxe sandwich",
+      "chicken deluxe"
+    ],
+    "serving": {
+      "label": "1 sandwich (with cheese)",
+      "grams": 256
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 530,
+    "protein": 35,
+    "carbs": 45,
+    "fat": 24,
+    "fiber": 2,
+    "sugar": 8,
+    "sodiumMg": 1670,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Spicy Deluxe Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "spicy deluxe",
+      "spicy deluxe sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich (with cheese)",
+      "grams": 261
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 540,
+    "protein": 34,
+    "carbs": 49,
+    "fat": 24,
+    "fiber": 2,
+    "sugar": 8,
+    "sodiumMg": 1930,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Grilled Chicken Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "grilled chicken sandwich",
+      "grilled sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 205
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 380,
+    "protein": 28.1,
+    "carbs": 44,
+    "fat": 11,
+    "fiber": 3,
+    "sugar": 11,
+    "sodiumMg": 755,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Grilled Chicken Club Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "grilled club",
+      "chicken club",
+      "club sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich (with cheddar)",
+      "grams": 236
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 520,
+    "protein": 37.1,
+    "carbs": 44,
+    "fat": 22,
+    "fiber": 3,
+    "sugar": 11,
+    "sodiumMg": 1065,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Nuggets (8 pc)",
+    "variant": "8 pc",
+    "category": "chicken",
+    "aliases": [
+      "nuggets",
+      "chicken nuggets",
+      "8 piece",
+      "8 nuggets"
+    ],
+    "serving": {
+      "label": "8 nuggets",
+      "grams": 113
+    },
+    "multi": [],
+    "pieces": 8,
+    "kcal": 250,
+    "protein": 27,
+    "carbs": 11,
+    "fat": 11,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 1210,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Nuggets (12 pc)",
+    "variant": "12 pc",
+    "category": "chicken",
+    "aliases": [
+      "nuggets",
+      "chicken nuggets",
+      "12 piece",
+      "12 nuggets"
+    ],
+    "serving": {
+      "label": "12 nuggets",
+      "grams": 170
+    },
+    "multi": [],
+    "pieces": 12,
+    "kcal": 380,
+    "protein": 40,
+    "carbs": 16,
+    "fat": 17,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 1820,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Nuggets (30 pc)",
+    "variant": "30 pc",
+    "category": "chicken",
+    "aliases": [
+      "nuggets",
+      "chicken nuggets",
+      "30 piece",
+      "nugget tray"
+    ],
+    "serving": {
+      "label": "30 nuggets",
+      "grams": 425
+    },
+    "multi": [],
+    "pieces": 30,
+    "kcal": 950,
+    "protein": 100,
+    "carbs": 41,
+    "fat": 43,
+    "fiber": 0,
+    "sugar": 4,
+    "sodiumMg": 4550,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Grilled Nuggets (8 pc)",
+    "variant": "8 pc",
+    "category": "chicken",
+    "aliases": [
+      "grilled nuggets",
+      "8 piece grilled"
+    ],
+    "serving": {
+      "label": "8 grilled nuggets",
+      "grams": 95
+    },
+    "multi": [],
+    "pieces": 8,
+    "kcal": 130,
+    "protein": 25,
+    "carbs": 1,
+    "fat": 3,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 440,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Grilled Nuggets (12 pc)",
+    "variant": "12 pc",
+    "category": "chicken",
+    "aliases": [
+      "grilled nuggets",
+      "12 piece grilled"
+    ],
+    "serving": {
+      "label": "12 grilled nuggets",
+      "grams": 142
+    },
+    "multi": [],
+    "pieces": 12,
+    "kcal": 200,
+    "protein": 38,
+    "carbs": 2,
+    "fat": 4.5,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 660,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Spicy Chick-n-Strips (10 pc)",
+    "variant": "10 pc",
+    "category": "chicken",
+    "aliases": [
+      "strips",
+      "chicken strips",
+      "tenders",
+      "spicy strips",
+      "10 piece"
+    ],
+    "serving": {
+      "label": "10 strips",
+      "grams": 431
+    },
+    "multi": [],
+    "pieces": 10,
+    "kcal": 900,
+    "protein": 89,
+    "carbs": 52,
+    "fat": 38,
+    "fiber": 2,
+    "sugar": 4,
+    "sodiumMg": 5170,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": "Only the 10-count row is unambiguous on the source page; scale by pieces for smaller counts."
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Waffle Potato Fries (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "waffle fries",
+      "fries",
+      "small fries"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": 96
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 320,
+    "protein": 4,
+    "carbs": 35,
+    "fat": 19,
+    "fiber": 4,
+    "sugar": 1,
+    "sodiumMg": 190,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Waffle Potato Fries (Medium)",
+    "variant": "Medium",
+    "category": "side",
+    "aliases": [
+      "waffle fries",
+      "fries",
+      "medium fries"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": 125
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 420,
+    "protein": 5,
+    "carbs": 45,
+    "fat": 24,
+    "fiber": 5,
+    "sugar": 1,
+    "sodiumMg": 240,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Waffle Potato Fries (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "waffle fries",
+      "fries",
+      "large fries"
+    ],
+    "serving": {
+      "label": "1 large",
+      "grams": 179
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 600,
+    "protein": 7,
+    "carbs": 65,
+    "fat": 35,
+    "fiber": 7,
+    "sugar": 1,
+    "sodiumMg": 340,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Mac & Cheese (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "mac and cheese",
+      "mac n cheese"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": 150
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 230,
+    "protein": 11,
+    "carbs": 22,
+    "fat": 11,
+    "fiber": 3,
+    "sugar": 1,
+    "sodiumMg": 790,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Mac & Cheese (Medium)",
+    "variant": "Medium",
+    "category": "side",
+    "aliases": [
+      "mac and cheese",
+      "mac n cheese"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": 210
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 310,
+    "protein": 16,
+    "carbs": 30,
+    "fat": 15,
+    "fiber": 4,
+    "sugar": 2,
+    "sodiumMg": 1110,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Cobb Salad",
+    "variant": null,
+    "category": "salad",
+    "aliases": [
+      "cobb salad",
+      "salad"
+    ],
+    "serving": {
+      "label": "1 salad (with nuggets)",
+      "grams": 438
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 840,
+    "protein": 42,
+    "carbs": 34,
+    "fat": 60,
+    "fiber": 6,
+    "sugar": 8,
+    "sodiumMg": 2100,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Spicy Southwest Salad",
+    "variant": null,
+    "category": "salad",
+    "aliases": [
+      "southwest salad",
+      "spicy salad",
+      "salad"
+    ],
+    "serving": {
+      "label": "1 salad",
+      "grams": 448
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 650,
+    "protein": 32,
+    "carbs": 28,
+    "fat": 47,
+    "fiber": 8,
+    "sugar": 7,
+    "sodiumMg": 1500,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Chicken Noodle Soup (Cup)",
+    "variant": "Cup",
+    "category": "other",
+    "aliases": [
+      "chicken soup",
+      "noodle soup",
+      "soup"
+    ],
+    "serving": {
+      "label": "1 cup",
+      "grams": 249
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 185,
+    "protein": 10,
+    "carbs": 26,
+    "fat": 5.5,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 1190,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Chocolate Chunk Cookie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "cookie",
+      "chocolate chip cookie"
+    ],
+    "serving": {
+      "label": "1 cookie",
+      "grams": 74
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 350,
+    "protein": 5,
+    "carbs": 47,
+    "fat": 16,
+    "fiber": 3,
+    "sugar": 25,
+    "sodiumMg": 220,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Vanilla Milkshake",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "milkshake",
+      "vanilla shake",
+      "shake"
+    ],
+    "serving": {
+      "label": "1 milkshake",
+      "grams": 409
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 600,
+    "protein": 12,
+    "carbs": 87,
+    "fat": 23,
+    "fiber": 0,
+    "sugar": 84,
+    "sodiumMg": 320,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Cookies & Cream Milkshake",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "cookies and cream shake",
+      "oreo shake",
+      "milkshake"
+    ],
+    "serving": {
+      "label": "1 milkshake",
+      "grams": 409
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 650,
+    "protein": 12,
+    "carbs": 95,
+    "fat": 25,
+    "fiber": 1,
+    "sugar": 87,
+    "sodiumMg": 350,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Frosted Lemonade",
+    "variant": null,
+    "category": "drink",
+    "aliases": [
+      "frosted lemonade"
+    ],
+    "serving": {
+      "label": "1 drink",
+      "grams": 383
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 360,
+    "protein": 6,
+    "carbs": 69,
+    "fat": 7,
+    "fiber": 0,
+    "sugar": 66,
+    "sodiumMg": 85,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Lemonade (Medium)",
+    "variant": "Medium",
+    "category": "drink",
+    "aliases": [
+      "lemonade",
+      "chick-fil-a lemonade"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": 612
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 270,
+    "protein": 0.4,
+    "carbs": 66,
+    "fat": 0,
+    "fiber": 0,
+    "sugar": 60,
+    "sodiumMg": 0,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Chick-fil-A",
+    "name": "Sweetened Iced Tea (Medium)",
+    "variant": "Medium",
+    "category": "drink",
+    "aliases": [
+      "sweet tea",
+      "iced tea"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": 604
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 120,
+    "protein": 0,
+    "carbs": 30,
+    "fat": 0,
+    "fiber": 0,
+    "sugar": 30,
+    "sodiumMg": 10,
+    "region": "CA",
+    "source": "https://chick-fil-a.ca/en/nutrition-allergens",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Fries (Little)",
+    "variant": "Little",
+    "category": "side",
+    "aliases": [
+      "five guys fries",
+      "little fries",
+      "small fries",
+      "fries"
+    ],
+    "serving": {
+      "label": "1 little fries",
+      "grams": 227
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 526,
+    "protein": 8,
+    "carbs": 72,
+    "fat": 23,
+    "fiber": 8,
+    "sugar": 2,
+    "sodiumMg": 531,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Fries (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "five guys fries",
+      "regular fries",
+      "medium fries",
+      "fries"
+    ],
+    "serving": {
+      "label": "1 regular fries",
+      "grams": 411
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 953,
+    "protein": 15,
+    "carbs": 131,
+    "fat": 41,
+    "fiber": 15,
+    "sugar": 4,
+    "sodiumMg": 962,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Fries (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "five guys fries",
+      "large fries",
+      "fries"
+    ],
+    "serving": {
+      "label": "1 large fries",
+      "grams": 567
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 1314,
+    "protein": 20,
+    "carbs": 181,
+    "fat": 57,
+    "fiber": 21,
+    "sugar": 6,
+    "sodiumMg": 1327,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Cajun Fries (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "cajun fries",
+      "spicy fries",
+      "five guys cajun"
+    ],
+    "serving": {
+      "label": "1 regular cajun fries",
+      "grams": 416
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 967,
+    "protein": 15,
+    "carbs": 134,
+    "fat": 41,
+    "fiber": 15,
+    "sugar": 4,
+    "sodiumMg": 1293,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Cajun Fries (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "cajun fries",
+      "spicy fries",
+      "five guys cajun"
+    ],
+    "serving": {
+      "label": "1 large cajun fries",
+      "grams": 572
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 1328,
+    "protein": 20,
+    "carbs": 184,
+    "fat": 57,
+    "fiber": 21,
+    "sugar": 6,
+    "sodiumMg": 1658,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Hot Dog",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "hot dog",
+      "hotdog",
+      "five guys hot dog"
+    ],
+    "serving": {
+      "label": "1 hot dog (frank + bun, no toppings)",
+      "grams": 167
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 520,
+    "protein": 18,
+    "carbs": 40,
+    "fat": 35,
+    "fiber": 2,
+    "sugar": 8,
+    "sodiumMg": 1130,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": true,
+    "note": "Computed from the guide's parts: hot dog (90 g) + bun (77 g). Toppings extra."
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Vanilla Milkshake",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "milkshake",
+      "vanilla shake",
+      "shake"
+    ],
+    "serving": {
+      "label": "1 milkshake (no whipped cream)",
+      "grams": 396
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 670,
+    "protein": 13,
+    "carbs": 84,
+    "fat": 32,
+    "fiber": 0,
+    "sugar": 82,
+    "sodiumMg": 360,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": "Vanilla shake base as listed in the guide."
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Chocolate Milkshake",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "chocolate shake",
+      "milkshake",
+      "shake"
+    ],
+    "serving": {
+      "label": "1 milkshake (no whipped cream)",
+      "grams": 446
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 920,
+    "protein": 15,
+    "carbs": 139,
+    "fat": 35.5,
+    "fiber": 1,
+    "sugar": 114,
+    "sodiumMg": 530,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": true,
+    "note": "Computed from the guide's parts: vanilla shake base (396 g) + chocolate mix-in (50 g)."
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Poutine Gravy (add-on)",
+    "variant": "add-on",
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "gravy",
+      "poutine gravy"
+    ],
+    "serving": {
+      "label": "1 portion gravy",
+      "grams": 180
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 54,
+    "protein": 1,
+    "carbs": 10,
+    "fat": 1,
+    "fiber": null,
+    "sugar": 1,
+    "sodiumMg": 1036,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": "Five Guys poutine = fries + poutine gravy + cheese curds; log the fries size plus this and the curds."
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Cheese Curds (add-on)",
+    "variant": "add-on",
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "cheese curds",
+      "curds"
+    ],
+    "serving": {
+      "label": "1 portion curds",
+      "grams": 100
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 366,
+    "protein": 24,
+    "carbs": 4,
+    "fat": 28,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 700,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": "Poutine add-on; combine with fries and poutine gravy."
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Bacon (add-on)",
+    "variant": "add-on",
+    "category": "other",
+    "aliases": [
+      "bacon",
+      "add bacon"
+    ],
+    "serving": {
+      "label": "2 pieces",
+      "grams": 14
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 70,
+    "protein": 5,
+    "carbs": 0,
+    "fat": 6,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 210,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Cheese (add-on)",
+    "variant": "add-on",
+    "category": "other",
+    "aliases": [
+      "cheese slice",
+      "add cheese"
+    ],
+    "serving": {
+      "label": "1 slice",
+      "grams": 19
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 70,
+    "protein": 4,
+    "carbs": 0,
+    "fat": 6,
+    "fiber": 0,
+    "sugar": null,
+    "sodiumMg": 310,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": "Carbs and sugars listed as <1 g."
+  },
+  {
+    "brand": "Five Guys",
+    "name": "Peanuts",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "peanuts",
+      "free peanuts"
+    ],
+    "serving": {
+      "label": "1 oz (30 g)",
+      "grams": 30
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 170,
+    "protein": 7,
+    "carbs": 5,
+    "fat": 14,
+    "fiber": 3,
+    "sugar": 1,
+    "sodiumMg": 180,
+    "region": "CA",
+    "source": "https://www.fiveguys.ca/media/canada_en-ca/-/media/public-site/files/allergen-ingredients-and-nutrition-info/five-guys-canada-ingredient--allergen-guide-english.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Original Burger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "harveys burger",
+      "original burger",
+      "hamburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 145
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 380,
+    "protein": 17,
+    "carbs": 33,
+    "fat": 20,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 840,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Original Burger with Cheese",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "cheeseburger",
+      "original cheeseburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 162
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 440,
+    "protein": 20,
+    "carbs": 35,
+    "fat": 24,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 1130,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Original Burger with Cheese and Bacon",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "bacon cheeseburger",
+      "original bacon cheeseburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 175
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 490,
+    "protein": 25,
+    "carbs": 35,
+    "fat": 28,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 1310,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Angus Burger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "angus burger",
+      "angus"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 157
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 410,
+    "protein": 18,
+    "carbs": 32,
+    "fat": 23,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 700,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Angus Burger with Cheese",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "angus cheeseburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 174
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 470,
+    "protein": 21,
+    "carbs": 34,
+    "fat": 27,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 990,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Junior Burger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "junior burger",
+      "jr burger",
+      "small burger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 93
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 250,
+    "protein": 10,
+    "carbs": 27,
+    "fat": 11,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 450,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Big Harv (Original)",
+    "variant": "Original",
+    "category": "burger",
+    "aliases": [
+      "big harv",
+      "double burger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 257
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 690,
+    "protein": 35,
+    "carbs": 39,
+    "fat": 44,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 1890,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Big Harv (Angus)",
+    "variant": "Angus",
+    "category": "burger",
+    "aliases": [
+      "big harv angus",
+      "double angus"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 281
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 750,
+    "protein": 36,
+    "carbs": 39,
+    "fat": 50,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 1620,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Veggie Burger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "veggie burger",
+      "vegetarian burger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 142
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 330,
+    "protein": 20,
+    "carbs": 32,
+    "fat": 14,
+    "fiber": 4,
+    "sugar": 3,
+    "sodiumMg": 680,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Crispy Chicken Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "chicken sandwich",
+      "crispy chicken"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 212
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 560,
+    "protein": 25,
+    "carbs": 51,
+    "fat": 29,
+    "fiber": 2,
+    "sugar": 6,
+    "sodiumMg": 1070,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Grilled Chicken Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "grilled chicken sandwich",
+      "grilled chicken"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 169
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 270,
+    "protein": 28,
+    "carbs": 29,
+    "fat": 5,
+    "fiber": 2,
+    "sugar": 3,
+    "sodiumMg": 670,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Crispy Chicken Wrap",
+    "variant": null,
+    "category": "wrap",
+    "aliases": [
+      "chicken wrap",
+      "crispy wrap"
+    ],
+    "serving": {
+      "label": "1 wrap",
+      "grams": 251
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 700,
+    "protein": 27,
+    "carbs": 70,
+    "fat": 36,
+    "fiber": 3,
+    "sugar": 5,
+    "sodiumMg": 1410,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Chicken Strips (2 pc)",
+    "variant": "2 pc",
+    "category": "chicken",
+    "aliases": [
+      "chicken strips",
+      "strips",
+      "tenders",
+      "2 piece"
+    ],
+    "serving": {
+      "label": "2 strips",
+      "grams": 87
+    },
+    "multi": [],
+    "pieces": 2,
+    "kcal": 200,
+    "protein": 12,
+    "carbs": 15,
+    "fat": 11,
+    "fiber": 1,
+    "sugar": 0,
+    "sodiumMg": 430,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Chicken Strips (4 pc)",
+    "variant": "4 pc",
+    "category": "chicken",
+    "aliases": [
+      "chicken strips",
+      "strips",
+      "tenders",
+      "4 piece"
+    ],
+    "serving": {
+      "label": "4 strips",
+      "grams": 175
+    },
+    "multi": [],
+    "pieces": 4,
+    "kcal": 400,
+    "protein": 23,
+    "carbs": 29,
+    "fat": 22,
+    "fiber": 2,
+    "sugar": 0,
+    "sodiumMg": 850,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Chicken Nuggets (5 pc)",
+    "variant": "5 pc",
+    "category": "chicken",
+    "aliases": [
+      "nuggets",
+      "5 piece",
+      "chicken nuggets"
+    ],
+    "serving": {
+      "label": "5 nuggets",
+      "grams": 121
+    },
+    "multi": [],
+    "pieces": 5,
+    "kcal": 330,
+    "protein": 15,
+    "carbs": 16,
+    "fat": 23,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 480,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Chicken Nuggets (8 pc)",
+    "variant": "8 pc",
+    "category": "chicken",
+    "aliases": [
+      "nuggets",
+      "8 piece",
+      "chicken nuggets"
+    ],
+    "serving": {
+      "label": "8 nuggets",
+      "grams": 194
+    },
+    "multi": [],
+    "pieces": 8,
+    "kcal": 530,
+    "protein": 24,
+    "carbs": 25,
+    "fat": 37,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 760,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Chicken Nuggets (12 pc)",
+    "variant": "12 pc",
+    "category": "chicken",
+    "aliases": [
+      "nuggets",
+      "12 piece",
+      "chicken nuggets"
+    ],
+    "serving": {
+      "label": "12 nuggets",
+      "grams": 291
+    },
+    "multi": [],
+    "pieces": 12,
+    "kcal": 790,
+    "protein": 36,
+    "carbs": 38,
+    "fat": 55,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 1140,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Hot Dog",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "hot dog",
+      "hotdog"
+    ],
+    "serving": {
+      "label": "1 hot dog",
+      "grams": 147
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 340,
+    "protein": 17,
+    "carbs": 37,
+    "fat": 14,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 1020,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Classic Poutine (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "classic poutine"
+    ],
+    "serving": {
+      "label": "1 regular poutine",
+      "grams": 308
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 700,
+    "protein": 22,
+    "carbs": 73,
+    "fat": 36,
+    "fiber": 7,
+    "sugar": 1,
+    "sodiumMg": 1890,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Classic Poutine (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "large poutine"
+    ],
+    "serving": {
+      "label": "1 large poutine",
+      "grams": 480
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 1180,
+    "protein": 28,
+    "carbs": 145,
+    "fat": 56,
+    "fiber": 14,
+    "sugar": 1,
+    "sodiumMg": 2890,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Bacon Double Cheese Poutine (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "bacon poutine",
+      "poutine"
+    ],
+    "serving": {
+      "label": "1 regular poutine",
+      "grams": 349
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 850,
+    "protein": 33,
+    "carbs": 74,
+    "fat": 47,
+    "fiber": 7,
+    "sugar": 1,
+    "sodiumMg": 2280,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Buffalo Chicken Poutine (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "chicken poutine",
+      "buffalo poutine",
+      "poutine"
+    ],
+    "serving": {
+      "label": "1 regular poutine",
+      "grams": 385
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 850,
+    "protein": 28,
+    "carbs": 88,
+    "fat": 44,
+    "fiber": 7,
+    "sugar": 8,
+    "sodiumMg": 2650,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Fries (Kids)",
+    "variant": "Kids",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "small fries",
+      "kids fries"
+    ],
+    "serving": {
+      "label": "1 kids fries",
+      "grams": 114
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 320,
+    "protein": 4,
+    "carbs": 48,
+    "fat": 13,
+    "fiber": 5,
+    "sugar": 0,
+    "sodiumMg": 670,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Fries (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "regular fries",
+      "medium fries"
+    ],
+    "serving": {
+      "label": "1 regular fries",
+      "grams": 154
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 430,
+    "protein": 6,
+    "carbs": 65,
+    "fat": 18,
+    "fiber": 6,
+    "sugar": 0,
+    "sodiumMg": 900,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Fries (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "large fries"
+    ],
+    "serving": {
+      "label": "1 large fries",
+      "grams": 198
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 550,
+    "protein": 7,
+    "carbs": 84,
+    "fat": 23,
+    "fiber": 8,
+    "sugar": 0,
+    "sodiumMg": 1160,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Onion Rings (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "onion rings",
+      "rings"
+    ],
+    "serving": {
+      "label": "1 regular",
+      "grams": 85
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 300,
+    "protein": 4,
+    "carbs": 33,
+    "fat": 18,
+    "fiber": 2,
+    "sugar": 4,
+    "sodiumMg": 700,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Frings",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "frings",
+      "fries and rings"
+    ],
+    "serving": {
+      "label": "1 order",
+      "grams": 199
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 620,
+    "protein": 8,
+    "carbs": 81,
+    "fat": 31,
+    "fiber": 7,
+    "sugar": 4,
+    "sodiumMg": 1360,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Apple Pie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "apple pie",
+      "pie"
+    ],
+    "serving": {
+      "label": "1 pie",
+      "grams": 78
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 220,
+    "protein": 2,
+    "carbs": 27,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 9,
+    "sodiumMg": 250,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Vanilla Shake (Regular)",
+    "variant": "Regular",
+    "category": "dessert",
+    "aliases": [
+      "vanilla shake",
+      "milkshake",
+      "shake"
+    ],
+    "serving": {
+      "label": "1 regular shake",
+      "grams": 397
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 580,
+    "protein": 14,
+    "carbs": 101,
+    "fat": 13,
+    "fiber": 0,
+    "sugar": 90,
+    "sodiumMg": 430,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Chocolate Shake (Regular)",
+    "variant": "Regular",
+    "category": "dessert",
+    "aliases": [
+      "chocolate shake",
+      "milkshake",
+      "shake"
+    ],
+    "serving": {
+      "label": "1 regular shake",
+      "grams": 427
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 660,
+    "protein": 15,
+    "carbs": 122,
+    "fat": 14,
+    "fiber": 1,
+    "sugar": 109,
+    "sodiumMg": 500,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Harvey's",
+    "name": "English Muffin with Bacon, Egg & Cheese",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "breakfast sandwich",
+      "bacon egg cheese",
+      "english muffin"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 152
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 370,
+    "protein": 18,
+    "carbs": 27,
+    "fat": 20,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 760,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": "Breakfast at select locations."
+  },
+  {
+    "brand": "Harvey's",
+    "name": "English Muffin with Sausage, Egg & Cheese",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "breakfast sandwich",
+      "sausage egg cheese",
+      "english muffin"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 180
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 470,
+    "protein": 20,
+    "carbs": 27,
+    "fat": 30,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 870,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": "Breakfast at select locations."
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Breakfast Wrap with Bacon, Egg, Cheese & Tater Tots",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "breakfast wrap",
+      "bacon breakfast wrap"
+    ],
+    "serving": {
+      "label": "1 wrap",
+      "grams": 214
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 590,
+    "protein": 20,
+    "carbs": 45,
+    "fat": 36,
+    "fiber": 2,
+    "sugar": 3,
+    "sodiumMg": 1260,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": "Breakfast at select locations."
+  },
+  {
+    "brand": "Harvey's",
+    "name": "Homestyle Breakfast with Bacon",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "homestyle breakfast",
+      "big breakfast",
+      "bacon and eggs"
+    ],
+    "serving": {
+      "label": "1 breakfast",
+      "grams": 330
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 740,
+    "protein": 28,
+    "carbs": 49,
+    "fat": 48,
+    "fiber": 3,
+    "sugar": 3,
+    "sodiumMg": 1310,
+    "region": "CA",
+    "source": "https://www.harveys.ca/en/nutrition.html",
+    "computed": false,
+    "note": "Breakfast at select locations."
+  },
+  {
+    "brand": "KFC",
+    "name": "Original Recipe Breast (keel)",
+    "variant": "keel",
+    "category": "chicken",
+    "aliases": [
+      "original recipe",
+      "kfc chicken",
+      "fried chicken",
+      "breast",
+      "kfc breast"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 290,
+    "protein": 35,
+    "carbs": 8,
+    "fat": 13,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 420,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": "KFC Canada breast piece cut 'keel'."
+  },
+  {
+    "brand": "KFC",
+    "name": "Original Recipe Breast (rib)",
+    "variant": "rib",
+    "category": "chicken",
+    "aliases": [
+      "original recipe",
+      "kfc chicken",
+      "fried chicken",
+      "breast",
+      "rib piece"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 270,
+    "protein": 29,
+    "carbs": 6,
+    "fat": 15,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 420,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": "KFC Canada breast piece cut 'rib'."
+  },
+  {
+    "brand": "KFC",
+    "name": "Original Recipe Thigh",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "original recipe",
+      "kfc chicken",
+      "fried chicken",
+      "thigh"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 220,
+    "protein": 15,
+    "carbs": 6,
+    "fat": 15,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 300,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Original Recipe Drumstick",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "original recipe",
+      "kfc chicken",
+      "fried chicken",
+      "drumstick",
+      "drum",
+      "leg"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 140,
+    "protein": 15,
+    "carbs": 2,
+    "fat": 8,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 150,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Original Recipe Wing",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "original recipe",
+      "kfc chicken",
+      "fried chicken",
+      "wing"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 160,
+    "protein": 14,
+    "carbs": 4,
+    "fat": 9,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 210,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Original Recipe Tender",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "tender",
+      "tenders",
+      "chicken tender",
+      "original recipe tenders"
+    ],
+    "serving": {
+      "label": "1 tender",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 100,
+    "protein": 10,
+    "carbs": 5,
+    "fat": 5,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 350,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Hot & Spicy Breast (keel)",
+    "variant": "keel",
+    "category": "chicken",
+    "aliases": [
+      "hot and spicy",
+      "spicy chicken",
+      "kfc spicy",
+      "fried chicken",
+      "spicy breast"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 410,
+    "protein": 36,
+    "carbs": 13,
+    "fat": 23,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 560,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Hot & Spicy Thigh",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "hot and spicy",
+      "spicy chicken",
+      "kfc spicy",
+      "fried chicken",
+      "spicy thigh"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 310,
+    "protein": 14,
+    "carbs": 13,
+    "fat": 23,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 350,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Hot & Spicy Drumstick",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "hot and spicy",
+      "spicy chicken",
+      "kfc spicy",
+      "fried chicken",
+      "spicy drumstick"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 170,
+    "protein": 16,
+    "carbs": 3,
+    "fat": 10,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 230,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Crispy Strips (3 pc)",
+    "variant": "3 pc",
+    "category": "chicken",
+    "aliases": [
+      "strips",
+      "chicken strips",
+      "tenders",
+      "3 piece strips"
+    ],
+    "serving": {
+      "label": "3 strips",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 3,
+    "kcal": 330,
+    "protein": 27,
+    "carbs": 21,
+    "fat": 15,
+    "fiber": 3,
+    "sugar": 3,
+    "sodiumMg": 990,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Hot Wings (5 pc)",
+    "variant": "5 pc",
+    "category": "chicken",
+    "aliases": [
+      "hot wings",
+      "wings",
+      "5 wings",
+      "5 piece"
+    ],
+    "serving": {
+      "label": "5 wings",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 5,
+    "kcal": 380,
+    "protein": 27,
+    "carbs": 15,
+    "fat": 24,
+    "fiber": 2,
+    "sugar": 0,
+    "sodiumMg": 970,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Hot Wings (10 pc)",
+    "variant": "10 pc",
+    "category": "chicken",
+    "aliases": [
+      "hot wings",
+      "wings",
+      "10 wings",
+      "10 piece"
+    ],
+    "serving": {
+      "label": "10 wings",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 10,
+    "kcal": 760,
+    "protein": 55,
+    "carbs": 31,
+    "fat": 48,
+    "fiber": 5,
+    "sugar": 0,
+    "sodiumMg": 1950,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Popcorn Chicken (Individual)",
+    "variant": "Individual",
+    "category": "chicken",
+    "aliases": [
+      "popcorn chicken",
+      "popcorn"
+    ],
+    "serving": {
+      "label": "1 individual size",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 170,
+    "protein": 9,
+    "carbs": 12,
+    "fat": 10,
+    "fiber": 1,
+    "sugar": 0,
+    "sodiumMg": 400,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Popcorn Chicken (Small)",
+    "variant": "Small",
+    "category": "chicken",
+    "aliases": [
+      "popcorn chicken",
+      "popcorn"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 370,
+    "protein": 19,
+    "carbs": 26,
+    "fat": 21,
+    "fiber": 2,
+    "sugar": 0,
+    "sodiumMg": 850,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Popcorn Chicken (Medium)",
+    "variant": "Medium",
+    "category": "chicken",
+    "aliases": [
+      "popcorn chicken",
+      "popcorn"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 740,
+    "protein": 39,
+    "carbs": 52,
+    "fat": 42,
+    "fiber": 4,
+    "sugar": 0,
+    "sodiumMg": 1690,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Popcorn Chicken (Large)",
+    "variant": "Large",
+    "category": "chicken",
+    "aliases": [
+      "popcorn chicken",
+      "popcorn"
+    ],
+    "serving": {
+      "label": "1 large",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 1000,
+    "protein": 52,
+    "carbs": 71,
+    "fat": 57,
+    "fiber": 5,
+    "sugar": 0,
+    "sodiumMg": 2290,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Famous Chicken Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "chicken sandwich",
+      "kfc sandwich",
+      "famous sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 690,
+    "protein": 35,
+    "carbs": 58,
+    "fat": 36,
+    "fiber": 2,
+    "sugar": 11,
+    "sodiumMg": 1400,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Spicy Famous Chicken Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "spicy chicken sandwich",
+      "spicy famous"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 700,
+    "protein": 35,
+    "carbs": 58,
+    "fat": 37,
+    "fiber": 2,
+    "sugar": 11,
+    "sodiumMg": 1370,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Big Crunch",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "big crunch",
+      "crunch sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 620,
+    "protein": 25,
+    "carbs": 57,
+    "fat": 34,
+    "fiber": 3,
+    "sugar": 5,
+    "sodiumMg": 1100,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Zinger Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "zinger",
+      "spicy sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 640,
+    "protein": 25,
+    "carbs": 59,
+    "fat": 35,
+    "fiber": 3,
+    "sugar": 6,
+    "sodiumMg": 1250,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Twister",
+    "variant": null,
+    "category": "wrap",
+    "aliases": [
+      "twister",
+      "chicken wrap",
+      "kfc wrap"
+    ],
+    "serving": {
+      "label": "1 wrap",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 500,
+    "protein": 24,
+    "carbs": 49,
+    "fat": 23,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 1260,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Poutine (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "kfc poutine"
+    ],
+    "serving": {
+      "label": "1 poutine",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 740,
+    "protein": 24,
+    "carbs": 78,
+    "fat": 38,
+    "fiber": 6,
+    "sugar": 3,
+    "sodiumMg": 1650,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Poutine (Snack size)",
+    "variant": "Snack size",
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "small poutine",
+      "snack poutine"
+    ],
+    "serving": {
+      "label": "1 snack-size poutine",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 570,
+    "protein": 20,
+    "carbs": 55,
+    "fat": 31,
+    "fiber": 4,
+    "sugar": 3,
+    "sodiumMg": 1350,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Popcorn Chicken Poutine",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "popcorn chicken poutine",
+      "poutine",
+      "chicken poutine"
+    ],
+    "serving": {
+      "label": "1 poutine",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 950,
+    "protein": 35,
+    "carbs": 93,
+    "fat": 50,
+    "fiber": 7,
+    "sugar": 3,
+    "sodiumMg": 2130,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Seasoned Fries (Individual)",
+    "variant": "Individual",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "kfc fries",
+      "small fries"
+    ],
+    "serving": {
+      "label": "1 individual size",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 310,
+    "protein": 5,
+    "carbs": 45,
+    "fat": 13,
+    "fiber": 4,
+    "sugar": 1,
+    "sodiumMg": 470,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Seasoned Fries (Mega)",
+    "variant": "Mega",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "kfc fries",
+      "mega fries"
+    ],
+    "serving": {
+      "label": "1 mega size",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 400,
+    "protein": 7,
+    "carbs": 59,
+    "fat": 17,
+    "fiber": 5,
+    "sugar": 1,
+    "sodiumMg": 610,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Seasoned Fries (Medium)",
+    "variant": "Medium",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "kfc fries",
+      "medium fries"
+    ],
+    "serving": {
+      "label": "1 medium (sharing size)",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 850,
+    "protein": 15,
+    "carbs": 124,
+    "fat": 35,
+    "fiber": 11,
+    "sugar": 2,
+    "sodiumMg": 1280,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Seasoned Fries (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "kfc fries",
+      "large fries"
+    ],
+    "serving": {
+      "label": "1 large (sharing size)",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 1320,
+    "protein": 23,
+    "carbs": 191,
+    "fat": 55,
+    "fiber": 16,
+    "sugar": 3,
+    "sodiumMg": 1990,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Gravy (Individual)",
+    "variant": "Individual",
+    "category": "side",
+    "aliases": [
+      "gravy",
+      "kfc gravy"
+    ],
+    "serving": {
+      "label": "1 individual size",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 45,
+    "protein": 1,
+    "carbs": 7,
+    "fat": 1,
+    "fiber": 0,
+    "sugar": 2,
+    "sodiumMg": 460,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "KFC",
+    "name": "Coleslaw (Individual)",
+    "variant": "Individual",
+    "category": "side",
+    "aliases": [
+      "coleslaw",
+      "slaw"
+    ],
+    "serving": {
+      "label": "1 individual size",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 120,
+    "protein": 1,
+    "carbs": 13,
+    "fat": 7,
+    "fiber": 0,
+    "sugar": 9,
+    "sodiumMg": 140,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/a2mgcrjjefyo/3AUi2N7aacNo4rjQ1jE3di/ab5513730957082e372dd36fd0a7c950/KFC_Nutritional_Information__W8__EN_FR.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Chicken Breast (Centre)",
+    "variant": "Centre",
+    "category": "chicken",
+    "aliases": [
+      "mary browns chicken",
+      "fried chicken",
+      "breast",
+      "centre breast"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": 170
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 330,
+    "protein": 39,
+    "carbs": 7,
+    "fat": 16,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 820,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Chicken Breast (Side)",
+    "variant": "Side",
+    "category": "chicken",
+    "aliases": [
+      "mary browns chicken",
+      "fried chicken",
+      "breast",
+      "side breast"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": 172
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 241,
+    "protein": 32,
+    "carbs": 2,
+    "fat": 12,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 570,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Chicken Thigh",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "mary browns chicken",
+      "fried chicken",
+      "thigh"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": 133
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 240,
+    "protein": 19,
+    "carbs": 4,
+    "fat": 16,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 430,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Chicken Drumstick",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "mary browns chicken",
+      "fried chicken",
+      "drumstick",
+      "leg"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": 70
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 90,
+    "protein": 11,
+    "carbs": 1,
+    "fat": 5,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 250,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Chicken Wing",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "mary browns chicken",
+      "fried chicken",
+      "wing"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": 86
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 160,
+    "protein": 14,
+    "carbs": 4,
+    "fat": 10,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 370,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Big Mary",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "big mary",
+      "chicken sandwich",
+      "mary browns sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 249
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 596,
+    "protein": 33,
+    "carbs": 44.3,
+    "fat": 31.7,
+    "fiber": 1.9,
+    "sugar": 3.5,
+    "sodiumMg": 655,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Spicy Big Mary",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "spicy big mary",
+      "spicy chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 250
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 598,
+    "protein": 33,
+    "carbs": 45.6,
+    "fat": 31,
+    "fiber": 2,
+    "sugar": 3.5,
+    "sodiumMg": 802,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Buffalo Mary Sandwich",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "buffalo mary",
+      "buffalo chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 320
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 700,
+    "protein": 35,
+    "carbs": 65,
+    "fat": 31,
+    "fiber": 2,
+    "sugar": 25,
+    "sodiumMg": 1560,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Mini Mary",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "mini mary",
+      "small chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 106
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 355,
+    "protein": 10.3,
+    "carbs": 21.2,
+    "fat": 25.6,
+    "fiber": 0.7,
+    "sugar": 2.2,
+    "sodiumMg": 348,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Chicken Tenders (3 pc)",
+    "variant": "3 pc",
+    "category": "chicken",
+    "aliases": [
+      "tenders",
+      "chicken tenders",
+      "3 piece",
+      "strips"
+    ],
+    "serving": {
+      "label": "3 tenders",
+      "grams": 128
+    },
+    "multi": [],
+    "pieces": 3,
+    "kcal": 394,
+    "protein": 20.8,
+    "carbs": 8.6,
+    "fat": 30.6,
+    "fiber": 0.4,
+    "sugar": 0.1,
+    "sodiumMg": 160,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Chicken Tenders (5 pc)",
+    "variant": "5 pc",
+    "category": "chicken",
+    "aliases": [
+      "tenders",
+      "chicken tenders",
+      "5 piece",
+      "strips"
+    ],
+    "serving": {
+      "label": "5 tenders",
+      "grams": 213
+    },
+    "multi": [],
+    "pieces": 5,
+    "kcal": 657,
+    "protein": 34.7,
+    "carbs": 14.3,
+    "fat": 51,
+    "fiber": 0.7,
+    "sugar": 0.1,
+    "sodiumMg": 267,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Buffalo Chicken Tenders (3 pc)",
+    "variant": "3 pc",
+    "category": "chicken",
+    "aliases": [
+      "buffalo tenders",
+      "3 piece"
+    ],
+    "serving": {
+      "label": "3 tenders",
+      "grams": 213
+    },
+    "multi": [],
+    "pieces": 3,
+    "kcal": 522,
+    "protein": 21.4,
+    "carbs": 34,
+    "fat": 32,
+    "fiber": 0.4,
+    "sugar": 22.8,
+    "sodiumMg": 1492,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Taters (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "taters",
+      "potato wedges",
+      "mary browns taters"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": 199
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 470,
+    "protein": 9.4,
+    "carbs": 63,
+    "fat": 24.5,
+    "fiber": 6.6,
+    "sugar": 1.9,
+    "sodiumMg": 611,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": "The guide's Medium/Large rows for this item were inconsistent (weights out of order), so only Small is included."
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Fries (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "small fries"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": 156
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 324,
+    "protein": 2.3,
+    "carbs": 35.6,
+    "fat": 21.4,
+    "fiber": 2.3,
+    "sugar": 1.1,
+    "sodiumMg": 663,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": "The guide's Medium/Large rows for this item were inconsistent (weights out of order), so only Small is included."
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Fries Poutine",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "fries poutine"
+    ],
+    "serving": {
+      "label": "1 poutine",
+      "grams": 372
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 668,
+    "protein": 18.2,
+    "carbs": 54.6,
+    "fat": 44.7,
+    "fiber": 3,
+    "sugar": 2.6,
+    "sodiumMg": 1881,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Taters Poutine",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "taters poutine"
+    ],
+    "serving": {
+      "label": "1 poutine",
+      "grams": 372
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 726,
+    "protein": 24.7,
+    "carbs": 72.3,
+    "fat": 41.9,
+    "fiber": 6.8,
+    "sugar": 2.9,
+    "sodiumMg": 1648,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Taters Poutine and Pulled Chicken",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "chicken poutine",
+      "poutine"
+    ],
+    "serving": {
+      "label": "1 poutine",
+      "grams": 457
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 869,
+    "protein": 39.7,
+    "carbs": 75.4,
+    "fat": 50,
+    "fiber": 6.9,
+    "sugar": 2.9,
+    "sodiumMg": 2021,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Gravy (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "gravy"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": 115
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 37,
+    "protein": 1,
+    "carbs": 7.2,
+    "fat": 0.5,
+    "fiber": 0.2,
+    "sugar": 0.8,
+    "sodiumMg": 625,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Mary Brown's",
+    "name": "Coleslaw (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "coleslaw",
+      "slaw"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": 108
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 122,
+    "protein": 0.2,
+    "carbs": 11.4,
+    "fat": 8.3,
+    "fiber": 2,
+    "sugar": 8.3,
+    "sodiumMg": 296,
+    "region": "CA",
+    "source": "https://marybrowns.com/wp-content/uploads/Mary-Browns-Allergen-and-Nutritionals-July-2026.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Big Mac",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "big mac",
+      "bigmac"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 216
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 570,
+    "protein": 24,
+    "carbs": 46,
+    "fat": 32,
+    "fiber": 3,
+    "sugar": 8,
+    "sodiumMg": 920,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200944",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Double Big Mac",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "double big mac"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 289
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 740,
+    "protein": 38,
+    "carbs": 48,
+    "fat": 44,
+    "fiber": 3,
+    "sugar": 9,
+    "sodiumMg": 1020,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200946",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Quarter Pounder with Cheese",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "quarter pounder",
+      "qpc",
+      "quarter pounder with cheese"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 201
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 530,
+    "protein": 29,
+    "carbs": 41,
+    "fat": 27,
+    "fiber": 2,
+    "sugar": 10,
+    "sodiumMg": 1050,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200159",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Double Quarter Pounder with Cheese",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "double quarter pounder",
+      "double qpc"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 278
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 750,
+    "protein": 47,
+    "carbs": 42,
+    "fat": 44,
+    "fiber": 3,
+    "sugar": 10,
+    "sodiumMg": 1210,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200149",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Quarter Pounder BLT",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "quarter pounder blt",
+      "qp blt"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 231
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 610,
+    "protein": 31,
+    "carbs": 43,
+    "fat": 35,
+    "fiber": 3,
+    "sugar": 11,
+    "sodiumMg": 1190,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200158",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "McDouble",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "mcdouble",
+      "mc double"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 149
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 380,
+    "protein": 21,
+    "carbs": 34,
+    "fat": 18,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 840,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200155",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Cheeseburger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "cheeseburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 113
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 14,
+    "carbs": 32,
+    "fat": 12,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 670,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200140",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Double Cheeseburger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "double cheeseburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 161
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 420,
+    "protein": 24,
+    "carbs": 34,
+    "fat": 21,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 1010,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200147",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Hamburger",
+    "variant": null,
+    "category": "burger",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "hamburger"
+    ],
+    "serving": {
+      "label": "1 burger",
+      "grams": 100
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 240,
+    "protein": 12,
+    "carbs": 32,
+    "fat": 8,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 490,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200154",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Filet-O-Fish",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "filet o fish",
+      "fish burger",
+      "fish sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 138
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 400,
+    "protein": 14,
+    "carbs": 40,
+    "fat": 20,
+    "fiber": 1,
+    "sugar": 5,
+    "sodiumMg": 570,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200151",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "McChicken",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "mcchicken",
+      "chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 175
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 480,
+    "protein": 16,
+    "carbs": 45,
+    "fat": 27,
+    "fiber": 3,
+    "sugar": 6,
+    "sodiumMg": 650,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200187",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Junior Chicken",
+    "variant": null,
+    "category": "sandwich",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "junior chicken",
+      "jr chicken"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 132
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 380,
+    "protein": 12,
+    "carbs": 36,
+    "fat": 21,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 570,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200186",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Chicken McNuggets (4 pc)",
+    "variant": "4 pc",
+    "category": "chicken",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "nuggets",
+      "mcnuggets",
+      "chicken nuggets",
+      "chicken mcnuggets",
+      "4 piece"
+    ],
+    "serving": {
+      "label": "4 nuggets",
+      "grams": 64
+    },
+    "multi": [],
+    "pieces": 4,
+    "kcal": 170,
+    "protein": 10,
+    "carbs": 10,
+    "fat": 9,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 300,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200351",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Chicken McNuggets (6 pc)",
+    "variant": "6 pc",
+    "category": "chicken",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "nuggets",
+      "mcnuggets",
+      "chicken nuggets",
+      "chicken mcnuggets",
+      "6 piece"
+    ],
+    "serving": {
+      "label": "6 nuggets",
+      "grams": 95
+    },
+    "multi": [],
+    "pieces": 6,
+    "kcal": 250,
+    "protein": 16,
+    "carbs": 15,
+    "fat": 14,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 450,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200352",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Chicken McNuggets (10 pc)",
+    "variant": "10 pc",
+    "category": "chicken",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "nuggets",
+      "mcnuggets",
+      "chicken nuggets",
+      "chicken mcnuggets",
+      "10 piece"
+    ],
+    "serving": {
+      "label": "10 nuggets",
+      "grams": 159
+    },
+    "multi": [],
+    "pieces": 10,
+    "kcal": 410,
+    "protein": 26,
+    "carbs": 26,
+    "fat": 23,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 750,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200349",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Chicken McNuggets (20 pc)",
+    "variant": "20 pc",
+    "category": "chicken",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "nuggets",
+      "mcnuggets",
+      "chicken nuggets",
+      "chicken mcnuggets",
+      "20 piece"
+    ],
+    "serving": {
+      "label": "20 nuggets",
+      "grams": 318
+    },
+    "multi": [],
+    "pieces": 20,
+    "kcal": 830,
+    "protein": 52,
+    "carbs": 51,
+    "fat": 46,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 1490,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200350",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "World Famous Fries (Small)",
+    "variant": "Small",
+    "category": "side",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "fries",
+      "mcdonalds fries",
+      "french fries",
+      "world famous fries",
+      "small fries"
+    ],
+    "serving": {
+      "label": "1 small",
+      "grams": 75
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 240,
+    "protein": 3,
+    "carbs": 31,
+    "fat": 11,
+    "fiber": 3,
+    "sugar": 0,
+    "sodiumMg": 180,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200170",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "World Famous Fries (Medium)",
+    "variant": "Medium",
+    "category": "side",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "fries",
+      "mcdonalds fries",
+      "french fries",
+      "world famous fries",
+      "medium fries"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": 110
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 350,
+    "protein": 4,
+    "carbs": 46,
+    "fat": 17,
+    "fiber": 4,
+    "sugar": 0,
+    "sodiumMg": 260,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200169",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "World Famous Fries (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "fries",
+      "mcdonalds fries",
+      "french fries",
+      "world famous fries",
+      "large fries"
+    ],
+    "serving": {
+      "label": "1 large",
+      "grams": 178
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 560,
+    "protein": 6,
+    "carbs": 74,
+    "fat": 27,
+    "fiber": 6,
+    "sugar": 0,
+    "sodiumMg": 420,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200168",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Poutine",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "poutine",
+      "mcdonalds poutine"
+    ],
+    "serving": {
+      "label": "1 poutine",
+      "grams": 254
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 870,
+    "protein": 21,
+    "carbs": 113,
+    "fat": 37,
+    "fiber": 5,
+    "sugar": 9,
+    "sodiumMg": 3170,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200180",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Egg McMuffin",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "egg mcmuffin",
+      "mcmuffin"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 133
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 16,
+    "carbs": 28,
+    "fat": 11,
+    "fiber": 2,
+    "sugar": 3,
+    "sodiumMg": 750,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200049",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Sausage 'N Egg McMuffin",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "sausage egg mcmuffin",
+      "sausage and egg mcmuffin",
+      "mcmuffin"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 158
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 440,
+    "protein": 20,
+    "carbs": 29,
+    "fat": 26,
+    "fiber": 2,
+    "sugar": 3,
+    "sodiumMg": 880,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200059",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Sausage McMuffin",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "sausage mcmuffin",
+      "mcmuffin"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 111
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 370,
+    "protein": 15,
+    "carbs": 28,
+    "fat": 22,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 820,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200062",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Bacon, Egg & Cheese McGriddles",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "mcgriddle",
+      "bacon egg cheese mcgriddle"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 159
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 380,
+    "protein": 14,
+    "carbs": 42,
+    "fat": 18,
+    "fiber": 1,
+    "sugar": 15,
+    "sodiumMg": 1080,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200044",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Sausage, Egg & Cheese McGriddles",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "mcgriddle",
+      "sausage egg cheese mcgriddle"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": 193
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 510,
+    "protein": 19,
+    "carbs": 42,
+    "fat": 29,
+    "fiber": 1,
+    "sugar": 15,
+    "sodiumMg": 1290,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200063",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Hash Brown",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "hash brown",
+      "hashbrown",
+      "hash browns"
+    ],
+    "serving": {
+      "label": "1 hash brown",
+      "grams": 55
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 160,
+    "protein": 1,
+    "carbs": 16,
+    "fat": 10,
+    "fiber": 2,
+    "sugar": 0,
+    "sodiumMg": 360,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200054",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Hotcakes with Syrup and Butter",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "hotcakes",
+      "pancakes"
+    ],
+    "serving": {
+      "label": "1 order (3 hotcakes, syrup, butter)",
+      "grams": 206
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 550,
+    "protein": 8,
+    "carbs": 93,
+    "fat": 16,
+    "fiber": 3,
+    "sugar": 46,
+    "sodiumMg": 660,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200055",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Breakfast Burrito",
+    "variant": null,
+    "category": "breakfast",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "breakfast burrito",
+      "burrito"
+    ],
+    "serving": {
+      "label": "1 burrito",
+      "grams": 114
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 13,
+    "carbs": 23,
+    "fat": 16,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 570,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200610",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Baked Apple Pie (2 pies)",
+    "variant": "2 pies",
+    "category": "dessert",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "apple pie",
+      "pie"
+    ],
+    "serving": {
+      "label": "2 pies",
+      "grams": 158
+    },
+    "multi": [],
+    "pieces": 2,
+    "kcal": 540,
+    "protein": 6,
+    "carbs": 68,
+    "fat": 26,
+    "fiber": 3,
+    "sugar": 21,
+    "sodiumMg": 270,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200553",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator). Listed as a 2-pie serving; scale by pieces for 1 pie."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "McFlurry with Oreo (Regular)",
+    "variant": "Regular",
+    "category": "dessert",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "mcflurry",
+      "oreo mcflurry"
+    ],
+    "serving": {
+      "label": "1 regular McFlurry",
+      "grams": 286
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 570,
+    "protein": 11,
+    "carbs": 91,
+    "fat": 19,
+    "fiber": 1,
+    "sugar": 68,
+    "sodiumMg": 410,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200124",
+    "computed": true,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator). Computed from two official items: Vanilla McFlurry Base - Regular (200124) + Oreo Mix-in - Regular (200101)."
+  },
+  {
+    "brand": "McDonald's",
+    "name": "Coca-Cola (Medium)",
+    "variant": "Medium",
+    "category": "drink",
+    "aliases": [
+      "mcdonalds",
+      "mcd",
+      "mickey d",
+      "coke",
+      "coca cola",
+      "pop",
+      "soda"
+    ],
+    "serving": {
+      "label": "1 medium (570 ml)",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 190,
+    "protein": 0,
+    "carbs": 52,
+    "fat": 0,
+    "fiber": 0,
+    "sugar": 52,
+    "sodiumMg": 45,
+    "region": "CA",
+    "source": "https://www.mcdonalds.com/dnaapp/itemDetails?country=CA&language=en&showLiveData=true&item=200011",
+    "computed": false,
+    "note": "McDonald's Canada official nutrition data (the API behind mcdonalds.com/ca nutrition calculator)."
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Chicken Breast (Classic)",
+    "variant": "Classic",
+    "category": "chicken",
+    "aliases": [
+      "popeyes chicken",
+      "fried chicken",
+      "bone-in chicken",
+      "breast"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 290,
+    "protein": 32,
+    "carbs": 8,
+    "fat": 15,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 990,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Chicken Breast (Spicy)",
+    "variant": "Spicy",
+    "category": "chicken",
+    "aliases": [
+      "popeyes chicken",
+      "fried chicken",
+      "bone-in chicken",
+      "breast",
+      "spicy chicken"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 290,
+    "protein": 32,
+    "carbs": 8,
+    "fat": 15,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 780,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Chicken Thigh (Classic)",
+    "variant": "Classic",
+    "category": "chicken",
+    "aliases": [
+      "popeyes chicken",
+      "fried chicken",
+      "bone-in chicken",
+      "thigh"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 330,
+    "protein": 27,
+    "carbs": 9,
+    "fat": 21,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 900,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Chicken Leg (Classic)",
+    "variant": "Classic",
+    "category": "chicken",
+    "aliases": [
+      "popeyes chicken",
+      "fried chicken",
+      "bone-in chicken",
+      "leg",
+      "drumstick"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 150,
+    "protein": 17,
+    "carbs": 3,
+    "fat": 8,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 420,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Chicken Wing (Classic)",
+    "variant": "Classic",
+    "category": "chicken",
+    "aliases": [
+      "popeyes chicken",
+      "fried chicken",
+      "bone-in chicken",
+      "wing"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 1,
+    "kcal": 150,
+    "protein": 10,
+    "carbs": 5,
+    "fat": 10,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 450,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Chicken Sandwich (Classic)",
+    "variant": "Classic",
+    "category": "sandwich",
+    "aliases": [
+      "popeyes sandwich",
+      "chicken sandwich",
+      "classic chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 730,
+    "protein": 34,
+    "carbs": 53,
+    "fat": 42,
+    "fiber": 2,
+    "sugar": 9,
+    "sodiumMg": 1700,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Chicken Sandwich (Spicy)",
+    "variant": "Spicy",
+    "category": "sandwich",
+    "aliases": [
+      "popeyes spicy sandwich",
+      "spicy chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 730,
+    "protein": 34,
+    "carbs": 54,
+    "fat": 42,
+    "fiber": 2,
+    "sugar": 9,
+    "sodiumMg": 1980,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Deluxe Chicken Sandwich (Classic)",
+    "variant": "Classic",
+    "category": "sandwich",
+    "aliases": [
+      "deluxe sandwich",
+      "chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 740,
+    "protein": 34,
+    "carbs": 55,
+    "fat": 42,
+    "fiber": 2,
+    "sugar": 10,
+    "sodiumMg": 1700,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Blackened Chicken Sandwich (Classic)",
+    "variant": "Classic",
+    "category": "sandwich",
+    "aliases": [
+      "blackened sandwich",
+      "chicken sandwich"
+    ],
+    "serving": {
+      "label": "1 sandwich",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 530,
+    "protein": 29,
+    "carbs": 38,
+    "fat": 30,
+    "fiber": 3,
+    "sugar": 9,
+    "sodiumMg": 1640,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Tenders (Classic 3 pc)",
+    "variant": "Classic 3 pc",
+    "category": "chicken",
+    "aliases": [
+      "tenders",
+      "chicken tenders",
+      "strips",
+      "3 piece"
+    ],
+    "serving": {
+      "label": "3 tenders",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 3,
+    "kcal": 350,
+    "protein": 31,
+    "carbs": 22,
+    "fat": 15,
+    "fiber": 0,
+    "sugar": 2,
+    "sodiumMg": 1780,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Tenders (Spicy 3 pc)",
+    "variant": "Spicy 3 pc",
+    "category": "chicken",
+    "aliases": [
+      "spicy tenders",
+      "chicken tenders",
+      "strips",
+      "3 piece"
+    ],
+    "serving": {
+      "label": "3 tenders",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 3,
+    "kcal": 350,
+    "protein": 31,
+    "carbs": 22,
+    "fat": 15,
+    "fiber": 0,
+    "sugar": 2,
+    "sodiumMg": 1690,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Nuggets (8 pc)",
+    "variant": "8 pc",
+    "category": "chicken",
+    "aliases": [
+      "nuggets",
+      "chicken nuggets",
+      "8 piece"
+    ],
+    "serving": {
+      "label": "8 nuggets",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 8,
+    "kcal": 520,
+    "protein": 29,
+    "carbs": 22,
+    "fat": 35,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 1340,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Signature Hot Wings (6 pc)",
+    "variant": "6 pc",
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "hot wings",
+      "6 wings"
+    ],
+    "serving": {
+      "label": "6 wings",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 6,
+    "kcal": 470,
+    "protein": 28,
+    "carbs": 19,
+    "fat": 30,
+    "fiber": 3,
+    "sugar": 2,
+    "sodiumMg": 4150,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Boneless Wings (6 pc)",
+    "variant": "6 pc",
+    "category": "chicken",
+    "aliases": [
+      "boneless wings",
+      "boneless"
+    ],
+    "serving": {
+      "label": "6 pieces",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": 6,
+    "kcal": 420,
+    "protein": 33,
+    "carbs": 34,
+    "fat": 19,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 2050,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Popcorn Shrimp",
+    "variant": null,
+    "category": "other",
+    "aliases": [
+      "shrimp",
+      "popcorn shrimp"
+    ],
+    "serving": {
+      "label": "1/4 lb",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 450,
+    "protein": 14,
+    "carbs": 38,
+    "fat": 30,
+    "fiber": 2,
+    "sugar": 0,
+    "sodiumMg": 1520,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Cajun Fries (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "cajun fries",
+      "popeyes fries"
+    ],
+    "serving": {
+      "label": "1 regular",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 330,
+    "protein": 4,
+    "carbs": 41,
+    "fat": 17,
+    "fiber": 4,
+    "sugar": 1,
+    "sodiumMg": 700,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Cajun Fries (Medium)",
+    "variant": "Medium",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "cajun fries"
+    ],
+    "serving": {
+      "label": "1 medium",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 930,
+    "protein": 10,
+    "carbs": 114,
+    "fat": 49,
+    "fiber": 11,
+    "sugar": 2,
+    "sodiumMg": 1960,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Cajun Fries (Large)",
+    "variant": "Large",
+    "category": "side",
+    "aliases": [
+      "fries",
+      "cajun fries"
+    ],
+    "serving": {
+      "label": "1 large",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 1200,
+    "protein": 13,
+    "carbs": 150,
+    "fat": 62,
+    "fiber": 14,
+    "sugar": 3,
+    "sodiumMg": 1310,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Cajun Poutine (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "cajun poutine",
+      "popeyes poutine"
+    ],
+    "serving": {
+      "label": "1 regular",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 720,
+    "protein": 25,
+    "carbs": 60,
+    "fat": 50,
+    "fiber": 5,
+    "sugar": 2,
+    "sodiumMg": 1930,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Mashed Potatoes with Cajun Gravy (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "mashed potatoes",
+      "gravy"
+    ],
+    "serving": {
+      "label": "1 regular",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 110,
+    "protein": 4,
+    "carbs": 15,
+    "fat": 4,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 540,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Coleslaw (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "coleslaw",
+      "slaw"
+    ],
+    "serving": {
+      "label": "1 regular",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 190,
+    "protein": 1,
+    "carbs": 13,
+    "fat": 15,
+    "fiber": 1,
+    "sugar": 10,
+    "sodiumMg": 220,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Mac & Cheese (Regular)",
+    "variant": "Regular",
+    "category": "side",
+    "aliases": [
+      "mac and cheese",
+      "mac n cheese"
+    ],
+    "serving": {
+      "label": "1 regular",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 150,
+    "protein": 5,
+    "carbs": 25,
+    "fat": 3,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 310,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Biscuit",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "biscuit",
+      "buttermilk biscuit"
+    ],
+    "serving": {
+      "label": "1 biscuit",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 220,
+    "protein": 3,
+    "carbs": 29,
+    "fat": 11,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 450,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Popeyes",
+    "name": "Cinnamon Apple Pie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "apple pie",
+      "pie"
+    ],
+    "serving": {
+      "label": "1 pie",
+      "grams": null
+    },
+    "multi": [],
+    "pieces": null,
+    "kcal": 250,
+    "protein": 3,
+    "carbs": 33,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 11,
+    "sodiumMg": 260,
+    "region": "CA",
+    "source": "https://plkcanadadeliveryassets.s3.us-east-1.amazonaws.com/PLK+CAN+Nutrition+Guide+-+2025.pdf",
+    "computed": false,
+    "note": ""
+  }
+]

@@ -1,6 +1,6 @@
 // Food tab and the add-food sheet.
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { put, uid, useLive } from "../db/db";
 import {
   addEntry,
@@ -22,8 +22,10 @@ import {
 } from "../db/repo";
 import { MEALS, type DayStatus, type Food, type FoodEntry, type Meal, type SavedMeal } from "../db/types";
 import { addDays } from "../engine/dates";
+import { rank } from "../engine/foodsearch";
 import { fmt } from "../engine/units";
 import { BarcodeScanner } from "./barcode";
+import { freshFood, hayOfFood, kcalPerServing, loadFoodDb, rowsOfBrand, rowToFood, searchDb, type FoodDb } from "./fooddb";
 import { dayLabel, longDate } from "./format";
 import { Card, Chips, Field, fmtKcal, NumInput, PageTitle, promptScreen, Segmented, Sheet, Stat, useUI } from "./kit";
 import { loadEnergyModel, pad, runWeeklyCheckIn, signed, type EnergyModel } from "./models";
@@ -58,7 +60,11 @@ function ExpenditureCard(props: { m: EnergyModel }) {
   const ci = m.checkIn;
   const next = ci ? addDays(ci.day, 7) : null;
   return (
-    <Card title="JANOS-SYS/EXPENDITURE" status={cur ? `CONFIDENCE ${CONF[cur.confidence]}` : "PRIOR ONLY"}>
+    <Card
+      title="JANOS-SYS/EXPENDITURE"
+      status={cur ? `CONFIDENCE ${CONF[cur.confidence]}` : "PRIOR ONLY"}
+      help={`MAINTENANCE IS LEARNED FROM COMPLETE FOOD DAYS AND YOUR TREND WEIGHT (LAST 21 D)${cur && cur.confidence !== "prior" ? `: ${cur.completeDays} COMPLETE DAYS SO FAR` : `; UNTIL 7 COMPLETE DAYS IT STARTS FROM ${m.priorSource === "GARMIN" ? "GARMIN CALORIES" : "HEIGHT, WEIGHT AND AGE"}`}. WITH AUTO TARGETS ON, A WEEKLY CHECK-IN MOVES THE TARGET TOWARD YOUR GOAL RATE.`}
+    >
       <div className="grid-2">
         <Stat label="MAINTENANCE ≈" value={`${pad(est, 4)} KCAL`} sub={`±${half} (80 % RANGE)${cur?.paused ? " · HELD" : ""}`} />
         <Stat
@@ -72,9 +78,7 @@ function ExpenditureCard(props: { m: EnergyModel }) {
         />
       </div>
       <div className="desc">
-        {cur && cur.confidence !== "prior"
-          ? `FROM ${cur.completeDays} COMPLETE FOOD DAYS AND YOUR TREND WEIGHT (LAST 21 D). `
-          : `WARN 031 LEARNING · ${cur?.completeDays ?? 0}/7 COMPLETE DAYS · STARTING GUESS FROM ${m.priorSource === "GARMIN" ? "GARMIN CALORIES" : "HEIGHT, WEIGHT AND AGE"}. `}
+        {cur && cur.confidence !== "prior" ? "" : `WARN 031 LEARNING · ${cur?.completeDays ?? 0}/7 COMPLETE DAYS · `}
         {settings.autoTargets
           ? ci
             ? `CHECK-IN ${ci.day} · NEXT ${next}${m.checkInState.due && !m.checkInState.ready ? ` · WAITING: ${m.checkInState.missing}` : ""}.`
@@ -127,12 +131,12 @@ export function FoodScreen() {
     <div className="page">
       <PageTitle sys="FOOD" status={`${entries.length} ${entries.length === 1 ? "ENTRY" : "ENTRIES"}`} />
       <div className="daynav">
-        <button className="icon-btn" aria-label="previous day" onClick={() => setDay(addDays(day, -1))}>◀</button>
+        <button className="icon-btn" aria-label="previous day" onClick={() => setDay(addDays(day, -1))}>◄</button>
         <div className="day">
           <b>{dayLabel(day, todayISO, addDays(todayISO, -1))}</b>
           <span>{longDate(Date.parse(`${day}T12:00:00`))}</span>
         </div>
-        <button className="icon-btn" aria-label="next day" disabled={day >= todayISO} onClick={() => setDay(addDays(day, 1))}>▶</button>
+        <button className="icon-btn" aria-label="next day" disabled={day >= todayISO} onClick={() => setDay(addDays(day, 1))}>►</button>
       </div>
 
       <Card title="JANOS-SYS/INTAKE" status={t.source === "NONE" ? <button className="link" onClick={() => open({ kind: "settings" })}>SET TARGET</button> : `${t.source} TARGETS`} flush>
@@ -191,14 +195,17 @@ export function FoodScreen() {
         );
       })}
 
-      <Card title="LOG COMPLETE?" aside={status.complete === null ? "UNSET" : status.complete ? "COMPLETE" : "PARTIAL"}>
+      <Card
+        title="LOG COMPLETE?"
+        aside={status.complete === null ? "UNSET" : status.complete ? "COMPLETE" : "PARTIAL"}
+        help="PARTIAL DAYS ARE LEFT OUT WHEN MAINTENANCE CALORIES ARE LEARNED, SO A HALF-LOGGED DAY NEVER READS AS A DEFICIT."
+      >
         <Chips
           options={[{ value: "yes", label: "YES · ALL LOGGED" }, { value: "no", label: "NO · PARTIAL" }]}
           value={status.complete === null ? null : status.complete ? "yes" : "no"}
           onChange={(v) => setDayComplete(day, v === null ? null : v === "yes")}
           allowNone
         />
-        <div className="desc">PARTIAL DAYS ARE LEFT OUT WHEN MAINTENANCE CALORIES ARE LEARNED, SO A HALF-LOGGED DAY NEVER READS AS A DEFICIT.</div>
       </Card>
 
       {editing ? <EntryEditor entry={editing} onClose={() => setEditing(null)} /> : null}
@@ -299,7 +306,7 @@ export function FoodAddSheet(props: { day: string; meal: string }) {
       </div>
       <Segmented
         options={[
-          { value: "recent", label: "FOODS" },
+          { value: "recent", label: "SEARCH" },
           { value: "barcode", label: "BARCODE" },
           { value: "saved", label: "MEALS" },
           { value: "quick", label: "QUICK" },
@@ -332,40 +339,96 @@ export function FoodAddSheet(props: { day: string; meal: string }) {
   );
 }
 
+/** One food in a pick list: name, brand and the default serving's energy. */
+function FoodRow(props: { f: Food; onPick: (f: Food) => void }) {
+  const f = props.f;
+  const s = f.servings[0];
+  return (
+    <button className="row" onClick={() => props.onPick(f)}>
+      <div className="grow">
+        <div className="name uc">{f.name}</div>
+        <div className="muted small">
+          {f.brand ? <span className="uc">{f.brand} · </span> : f.source === "database" ? "STAPLE · " : null}
+          <span className="uc">{s ? s.label : "100 g"}</span>
+        </div>
+      </div>
+      <div className="num">{fmtKcal(kcalPerServing(f))}</div>
+    </button>
+  );
+}
+
 function FoodList(props: { onPick: (f: Food) => void; onCreate: () => void }) {
   const foods = useLive(allFoods, [], [] as Food[]);
   const [q, setQ] = useState("");
-  const shown = useMemo(() => {
-    const t = q.trim().toLowerCase();
-    return (t ? foods.filter((f) => `${f.name} ${f.brand ?? ""}`.toLowerCase().includes(t)) : foods).slice(0, 60);
-  }, [foods, q]);
+  const [chain, setChain] = useState<string | null>(null);
+  const [db, setDb] = useState<FoodDb | null>(null);
+  const [dbFailed, setDbFailed] = useState(false);
+  useEffect(() => {
+    let live = true;
+    loadFoodDb().then(
+      (d) => live && setDb(d),
+      () => live && setDbFailed(true),
+    );
+    return () => {
+      live = false;
+    };
+  }, []);
+  const query = q.trim();
+  const pick = (f: Food) => props.onPick(freshFood(db, f));
+
+  // The user's own foods first (recent when not searching), then the built-in database.
+  const mine = useMemo(() => {
+    if (chain !== null) return [];
+    if (!query) return foods.slice(0, 12);
+    return rank(foods, (f) => hayOfFood(db, f), query, 15);
+  }, [foods, query, db, chain]);
+  const fromDb = useMemo(() => {
+    if (!db || (!query && chain === null)) return [];
+    const have = new Set(mine.map((f) => f.id));
+    const rows = chain !== null ? (query ? searchDb(db, query, 600).filter((r) => r[1] === chain) : rowsOfBrand(db, chain)) : searchDb(db, query, 40);
+    return rows.filter((r) => !have.has(r[0])).map(rowToFood);
+  }, [db, query, chain, mine]);
+
+  const chains = db ? (
+    <Card title="RESTAURANTS" aside={chain !== null ? <button className="link" onClick={() => setChain(null)}>ALL</button> : `${db.brands.length} CHAINS`}>
+      <Chips
+        options={[...db.brands.map((b) => ({ value: b.name, label: b.name.toUpperCase() })), { value: "", label: "STAPLES" }]}
+        value={chain}
+        onChange={(v) => setChain(v)}
+        allowNone
+      />
+    </Card>
+  ) : null;
+
   return (
     <>
-      <input className="input" placeholder="SEARCH YOUR FOODS" aria-label="search your foods" value={q} onChange={(e: any) => setQ(e.target.value)} />
+      <input
+        className="input"
+        placeholder={chain !== null ? `SEARCH ${chain || "STAPLES"}` : "SEARCH · E.G. DOMINOS 3 MEAT"}
+        aria-label="search foods"
+        autoComplete="off"
+        value={q}
+        onChange={(e: any) => setQ(e.target.value)}
+      />
       <div style={{ height: 10 }} />
+      {chain !== null ? chains : null}
+      {mine.length ? (
+        <Card title={query ? "YOUR FOODS" : "RECENT"} aside={`${mine.length}`} flush>
+          {mine.map((f) => <FoodRow key={f.id} f={f} onPick={pick} />)}
+        </Card>
+      ) : null}
+      {chain === null && !query ? chains : null}
+      {query || chain !== null ? (
+        <Card title={chain !== null ? chain.toUpperCase() || "STAPLES" : "DATABASE"} aside={db ? `${fromDb.length}` : null} flush>
+          {!db ? <div className="empty">{dbFailed ? "DATABASE OFFLINE · OPEN THE APP ONLINE ONCE TO CACHE IT." : "LOADING DATABASE…"}</div> : null}
+          {db && fromDb.length === 0 && mine.length === 0 ? <div className="empty">NO MATCH · TRY FEWER WORDS, SCAN THE BARCODE, OR USE QUICK.</div> : null}
+          {fromDb.map((f) => <FoodRow key={f.id} f={f} onPick={pick} />)}
+        </Card>
+      ) : null}
+      {!query && chain === null && !foods.length ? (
+        <div className="desc pad">SEARCH {db ? db.rows.length : "500+"} RESTAURANT ITEMS AND STAPLES, OR SCAN A BARCODE. FOODS YOU LOG ARE FILED UNDER RECENT.</div>
+      ) : null}
       <button className="btn secondary block" onClick={props.onCreate}>[+] NEW FOOD FROM A LABEL</button>
-      <div style={{ height: 12 }} />
-      <Card title={q ? "MATCHES" : "RECENT FOODS"} aside={shown.length ? `${shown.length}` : null} flush>
-        {shown.length === 0 ? (
-          <div className="empty">{foods.length ? "NO MATCH." : "NO RECORDS YET. FOODS YOU ADD OR SCAN ARE FILED HERE, MOST RECENT FIRST."}</div>
-        ) : null}
-        {shown.map((f) => (
-          <button className="row" key={f.id} onClick={() => props.onPick(f)}>
-            <div className="grow">
-              <div className="name uc">{f.name}</div>
-              <div className="muted small">
-                {f.brand ? (
-                  <>
-                    <span className="uc">{f.brand}</span> ·{" "}
-                  </>
-                ) : null}
-                {Math.round(f.per100g.kcal)} KCAL / 100 G
-              </div>
-            </div>
-            <span className="go">▶</span>
-          </button>
-        ))}
-      </Card>
     </>
   );
 }
@@ -408,7 +471,7 @@ function BarcodePanel(props: { onFound: (f: Food) => void; onCreate: (partial: P
   }
   return (
     <>
-      <button className="btn block xl" onClick={() => setScanning(true)}>▶ SCAN BARCODE WITH CAMERA</button>
+      <button className="btn block xl" onClick={() => setScanning(true)}>► SCAN BARCODE WITH CAMERA</button>
       <h2>OR TYPE THE NUMBER</h2>
       <input className="input" inputMode="numeric" placeholder="0 55653 68500 1" aria-label="barcode number" value={code} onChange={(e: any) => setCode(e.target.value)} />
       <div style={{ height: 10 }} />
@@ -480,13 +543,17 @@ function QuickAdd(props: { onAdd: (q: { name: string; kcal: number; protein: num
 function AmountSheet(props: { food: Food; day: string; meal: Meal; onBack: () => void }) {
   const { close, toast } = useUI();
   const f = props.food;
-  const options = [...f.servings, { label: "grams", grams: 1 }];
+  // Restaurant items without a published weight are logged by the serving only.
+  const options = f.unitOnly ? f.servings : [...f.servings, { label: "grams", grams: 1 }];
   const [serving, setServing] = useState(0);
   const [qty, setQty] = useState<number | null>(options[0].label === "grams" ? 100 : 1);
   const s = options[serving];
   const grams = (qty ?? 0) * s.grams;
   const n = scale(f.per100g, grams);
-  const label = s.label === "grams" ? `${fmt(grams)} g` : `${fmt(qty ?? 0, 2)} × ${s.label}`;
+  const label = s.label === "grams" ? `${fmt(grams)} g` : qty === 1 ? s.label : `${fmt(qty ?? 0, 2)} × ${s.label}`;
+  const unitLabel = (o: { label: string; grams: number }) =>
+    o.label === "grams" ? "grams" : f.unitOnly || /\d\s*(g|ml)\b/i.test(o.label) ? o.label : `${o.label} (${fmt(o.grams)} g)`;
+  const method: FoodEntry["method"] = f.barcode ? "barcode" : f.source === "database" ? "database" : "search";
   return (
     <Sheet
       title="AMOUNT"
@@ -496,7 +563,7 @@ function AmountSheet(props: { food: Food; day: string; meal: Meal; onBack: () =>
           className="btn block xl"
           disabled={!qty}
           onClick={async () => {
-            await addFoodEntry(f, grams, label, props.day, props.meal, f.barcode ? "barcode" : "search");
+            await addFoodEntry(f, grams, label, props.day, props.meal, method);
             toast(`ADDED · ${f.name}`);
             close();
           }}
@@ -505,7 +572,7 @@ function AmountSheet(props: { food: Food; day: string; meal: Meal; onBack: () =>
         </button>
       }
     >
-      <Card title="FOOD" aside={f.source === "custom" ? "YOUR FOOD" : f.barcode ? `EAN ${f.barcode}` : null}>
+      <Card title="FOOD" aside={f.source === "custom" ? "YOUR FOOD" : f.source === "database" ? "DATABASE" : f.barcode ? `EAN ${f.barcode}` : null}>
         <div className="ex-title uc">{f.name}</div>
         {f.brand ? <div className="muted small uc">{f.brand}</div> : null}
         <div className="grid-3" style={{ marginTop: 10 }}>
@@ -514,22 +581,28 @@ function AmountSheet(props: { food: Food; day: string; meal: Meal; onBack: () =>
           <div className="stat"><div className="label">FAT</div><div className="value" style={{ fontSize: 18 }}>{fmt(n.fat)} G</div></div>
         </div>
       </Card>
-      <Field label="UNIT">
-        <Chips
-          options={options.map((o, i) => ({ value: i, label: o.label === "grams" ? "grams" : `${o.label}${o.label.includes("g") ? "" : ` (${fmt(o.grams)} g)`}` }))}
-          value={serving}
-          onChange={(v) => {
-            if (v === null) return;
-            setServing(v);
-            setQty(options[v].label === "grams" ? 100 : 1);
-          }}
-        />
-      </Field>
+      {options.length > 1 ? (
+        <Field label="UNIT">
+          <Chips
+            options={options.map((o, i) => ({ value: i, label: unitLabel(o) }))}
+            value={serving}
+            onChange={(v) => {
+              if (v === null) return;
+              setServing(v);
+              setQty(options[v].label === "grams" ? 100 : 1);
+            }}
+          />
+        </Field>
+      ) : (
+        <div className="desc" style={{ margin: "0 0 10px" }}>
+          UNIT · <span className="uc">{unitLabel(s)}</span>
+        </div>
+      )}
       <Field label={s.label === "grams" ? "GRAMS" : "HOW MANY"}>
         <NumInput value={qty} onChange={setQty} big ariaLabel="amount" />
       </Field>
       {s.label !== "grams" ? (
-        <Chips options={[0.5, 1, 1.5, 2].map((v) => ({ value: v, label: String(v) }))} value={qty} onChange={(v) => v !== null && setQty(v)} />
+        <Chips options={[0.5, 1, 1.5, 2, 3, 4].map((v) => ({ value: v, label: String(v) }))} value={qty} onChange={(v) => v !== null && setQty(v)} />
       ) : null}
       {f.attribution ? <div className="desc" style={{ marginTop: 14 }}>SOURCE: {f.attribution}</div> : null}
     </Sheet>

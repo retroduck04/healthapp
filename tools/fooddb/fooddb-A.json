@@ -1,0 +1,4179 @@
+[
+  {
+    "brand": "Domino's",
+    "name": "Pepperoni",
+    "variant": "Large Hand Tossed",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, hand tossed, 1/8 pizza)",
+      "grams": 123
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 13,
+    "carbs": 34,
+    "fat": 10.5,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 565,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": true,
+    "note": "Computed from the guide's per-slice parts: hand tossed crust + pizza sauce + regular cheese (with toppings) + pepperoni (Large)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Pepperoni",
+    "variant": "Large Crunchy Thin",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza",
+      "thin crust pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (large, crunchy thin, 1/8 pizza)",
+      "grams": 85
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 230,
+    "protein": 11,
+    "carbs": 18,
+    "fat": 13,
+    "fiber": 3,
+    "sugar": 2,
+    "sodiumMg": 410,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": true,
+    "note": "Computed from the guide's per-slice parts: crunchy thin crust + pizza sauce + regular cheese (with toppings) + pepperoni (Large)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Pepperoni",
+    "variant": "X-Large Hand Tossed",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza",
+      "xl pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (x-large, hand tossed, 1/10 pizza)",
+      "grams": 128
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 300,
+    "protein": 14,
+    "carbs": 35,
+    "fat": 11.5,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 610,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": true,
+    "note": "Computed from the guide's per-slice parts: hand tossed crust + pizza sauce + regular cheese (with toppings) + pepperoni (X-Large)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Cheese Pizza",
+    "variant": "Large Hand Tossed",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "cheese"
+    ],
+    "serving": {
+      "label": "1 slice (large, hand tossed, 1/8 pizza)",
+      "grams": 126
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 14,
+    "carbs": 35,
+    "fat": 9,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 465,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": true,
+    "note": "Computed from the guide's per-slice parts: hand tossed crust + pizza sauce + regular cheese (cheese-only pizza) (Large)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Cheese Pizza",
+    "variant": "X-Large Hand Tossed",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "cheese",
+      "xl cheese pizza"
+    ],
+    "serving": {
+      "label": "1 slice (x-large, hand tossed, 1/10 pizza)",
+      "grams": 130
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 295,
+    "protein": 15,
+    "carbs": 36,
+    "fat": 9.5,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 510,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": true,
+    "note": "Computed from the guide's per-slice parts: hand tossed crust + pizza sauce + regular cheese (cheese-only pizza) (X-Large)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "MeatZZa",
+    "variant": "Medium",
+    "category": "pizza",
+    "aliases": [
+      "meatzza",
+      "meat pizza",
+      "meat feast",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (medium, 1/8 pizza)",
+      "grams": 113
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 270,
+    "protein": 14,
+    "carbs": 26,
+    "fat": 11,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 550,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "MeatZZa",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "meatzza",
+      "meat pizza",
+      "meat feast",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 155
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 360,
+    "protein": 20,
+    "carbs": 36,
+    "fat": 16,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 760,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "MeatZZa",
+    "variant": "X-Large",
+    "category": "pizza",
+    "aliases": [
+      "meatzza",
+      "meat pizza",
+      "meat feast",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (x-large, 1/10 pizza)",
+      "grams": 165
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 390,
+    "protein": 21,
+    "carbs": 37,
+    "fat": 17,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 840,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "ExtravaganZZa",
+    "variant": "Medium",
+    "category": "pizza",
+    "aliases": [
+      "extravaganza",
+      "supreme",
+      "everything pizza",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (medium, 1/8 pizza)",
+      "grams": 129
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 270,
+    "protein": 15,
+    "carbs": 27,
+    "fat": 12,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 550,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "ExtravaganZZa",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "extravaganza",
+      "supreme",
+      "everything pizza",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 178
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 380,
+    "protein": 20,
+    "carbs": 37,
+    "fat": 16,
+    "fiber": 3,
+    "sugar": 3,
+    "sodiumMg": 760,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "ExtravaganZZa",
+    "variant": "X-Large",
+    "category": "pizza",
+    "aliases": [
+      "extravaganza",
+      "supreme",
+      "everything pizza",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (x-large, 1/10 pizza)",
+      "grams": 189
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 400,
+    "protein": 21,
+    "carbs": 39,
+    "fat": 17,
+    "fiber": 3,
+    "sugar": 3,
+    "sodiumMg": 840,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Hawaiian",
+    "variant": "Medium",
+    "category": "pizza",
+    "aliases": [
+      "hawaiian pizza",
+      "ham and pineapple",
+      "pineapple pizza"
+    ],
+    "serving": {
+      "label": "1 slice (medium, 1/8 pizza)",
+      "grams": 110
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 230,
+    "protein": 12,
+    "carbs": 27,
+    "fat": 7,
+    "fiber": 2,
+    "sugar": 3,
+    "sodiumMg": 460,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Hawaiian",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "hawaiian pizza",
+      "ham and pineapple",
+      "pineapple pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 151
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 310,
+    "protein": 17,
+    "carbs": 37,
+    "fat": 10,
+    "fiber": 2,
+    "sugar": 4,
+    "sodiumMg": 630,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Canadian",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "canadian pizza",
+      "pepperoni bacon mushroom"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 144
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 330,
+    "protein": 17,
+    "carbs": 35,
+    "fat": 13,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 630,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Deluxe",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "deluxe pizza",
+      "supreme"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 144
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 300,
+    "protein": 14,
+    "carbs": 36,
+    "fat": 11,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 510,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Pepperoni Feast",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "extra pepperoni",
+      "pepperoni pizza",
+      "double pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 137
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 340,
+    "protein": 17,
+    "carbs": 35,
+    "fat": 14,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 670,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "BBQ Chicken Bacon",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "bbq chicken pizza",
+      "chicken bacon pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 137
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 330,
+    "protein": 16,
+    "carbs": 38,
+    "fat": 12,
+    "fiber": 2,
+    "sugar": 6,
+    "sodiumMg": 630,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Chicken Bacon Ranch",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "chicken ranch pizza",
+      "chicken bacon pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 131
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 350,
+    "protein": 14,
+    "carbs": 33,
+    "fat": 17,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 550,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Pacific Veggie",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "veggie pizza",
+      "vegetarian pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": 157
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 280,
+    "protein": 14,
+    "carbs": 36,
+    "fat": 9,
+    "fiber": 3,
+    "sugar": 3,
+    "sodiumMg": 520,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": "Per-slice values from the guide's Feast Pizzas table (crust not stated; weights match hand tossed)."
+  },
+  {
+    "brand": "Domino's",
+    "name": "Breadsticks",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "bread sticks",
+      "garlic bread"
+    ],
+    "serving": {
+      "label": "2 breadsticks",
+      "grams": 49
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 170,
+    "protein": 4,
+    "carbs": 20,
+    "fat": 8,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 180,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Cheesy Bread",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "cheese bread",
+      "cheesy bread"
+    ],
+    "serving": {
+      "label": "2 pieces",
+      "grams": 63
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 220,
+    "protein": 7,
+    "carbs": 21,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 280,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Stuffed Cheesy Bread",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "stuffed cheese bread",
+      "cheesy bread"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": 50
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 160,
+    "protein": 7,
+    "carbs": 15,
+    "fat": 7,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 230,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Cheesy Garlic Fingers (14\")",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "garlic fingers",
+      "cheesy garlic fingers",
+      "garlic cheese fingers"
+    ],
+    "serving": {
+      "label": "2 fingers (from 14\" order)",
+      "grams": 62
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 180,
+    "protein": 8,
+    "carbs": 20,
+    "fat": 8,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 280,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Boneless Chicken",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "boneless wings",
+      "boneless bites",
+      "chicken bites"
+    ],
+    "serving": {
+      "label": "2 pieces",
+      "grams": 50
+    },
+    "multi": [
+      {
+        "label": "8 pieces",
+        "count": 4
+      }
+    ],
+    "pieces": 2,
+    "kcal": 90,
+    "protein": 9,
+    "carbs": 8,
+    "fat": 3,
+    "fiber": 1,
+    "sugar": 0,
+    "sodiumMg": 450,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "BBQ Wings",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "chicken wings",
+      "bbq wings"
+    ],
+    "serving": {
+      "label": "2 wings",
+      "grams": 45
+    },
+    "multi": [
+      {
+        "label": "8 wings",
+        "count": 4
+      }
+    ],
+    "pieces": 2,
+    "kcal": 90,
+    "protein": 7,
+    "carbs": 4,
+    "fat": 5,
+    "fiber": 0,
+    "sugar": 3,
+    "sodiumMg": 390,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Hot Wings",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "chicken wings",
+      "buffalo wings",
+      "hot wings"
+    ],
+    "serving": {
+      "label": "2 wings",
+      "grams": 56
+    },
+    "multi": [
+      {
+        "label": "8 wings",
+        "count": 4
+      }
+    ],
+    "pieces": 2,
+    "kcal": 90,
+    "protein": 7,
+    "carbs": 4,
+    "fat": 5,
+    "fiber": 0,
+    "sugar": 3,
+    "sodiumMg": 770,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Honey Garlic Wings",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "chicken wings",
+      "honey garlic"
+    ],
+    "serving": {
+      "label": "2 wings",
+      "grams": 56
+    },
+    "multi": [
+      {
+        "label": "8 wings",
+        "count": 4
+      }
+    ],
+    "pieces": 2,
+    "kcal": 120,
+    "protein": 7,
+    "carbs": 11,
+    "fat": 5,
+    "fiber": 0,
+    "sugar": 7,
+    "sodiumMg": 410,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Chicken Alfredo Pasta",
+    "variant": null,
+    "category": "other",
+    "aliases": [
+      "pasta",
+      "alfredo",
+      "chicken alfredo"
+    ],
+    "serving": {
+      "label": "1 dish",
+      "grams": 326
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 570,
+    "protein": 25,
+    "carbs": 58,
+    "fat": 24,
+    "fiber": 3,
+    "sugar": 4,
+    "sodiumMg": 950,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Italian Sausage Marinara Pasta",
+    "variant": null,
+    "category": "other",
+    "aliases": [
+      "pasta",
+      "sausage pasta",
+      "marinara"
+    ],
+    "serving": {
+      "label": "1 dish",
+      "grams": 383
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 630,
+    "protein": 30,
+    "carbs": 67,
+    "fat": 26,
+    "fiber": 5,
+    "sugar": 11,
+    "sodiumMg": 1780,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Chocolate Lava Crunch Cake",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "lava cake",
+      "chocolate lava cake"
+    ],
+    "serving": {
+      "label": "1 cake",
+      "grams": 85
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 350,
+    "protein": 4,
+    "carbs": 47,
+    "fat": 17,
+    "fiber": 1,
+    "sugar": 30,
+    "sodiumMg": 180,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Marbled Cookie Brownie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "brownie",
+      "cookie brownie"
+    ],
+    "serving": {
+      "label": "1 brownie",
+      "grams": 42
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 200,
+    "protein": 2,
+    "carbs": 25,
+    "fat": 10,
+    "fiber": 1,
+    "sugar": 18,
+    "sodiumMg": 120,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Domino's",
+    "name": "Cinna Stix",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "cinnamon sticks",
+      "cinnastix",
+      "cinnamon bread"
+    ],
+    "serving": {
+      "label": "2 pieces",
+      "grams": 62
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 210,
+    "protein": 4,
+    "carbs": 28,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 5,
+    "sodiumMg": 160,
+    "region": "CA",
+    "source": "https://www.dominos.ca/assets/build/market/CA/_en/pdf/Canadian-Nutrition-Guide-Final-Secure.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Pepperoni Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 250,
+    "protein": 12,
+    "carbs": 29,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 590,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Pepperoni Pizza",
+    "variant": "Medium",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza"
+    ],
+    "serving": {
+      "label": "1 slice (medium, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 210,
+    "protein": 10,
+    "carbs": 25,
+    "fat": 8,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 520,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Medium = 8 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Pepperoni Pizza",
+    "variant": "X-Large",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza"
+    ],
+    "serving": {
+      "label": "1 slice (x-large, 1/12 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 260,
+    "protein": 12,
+    "carbs": 32,
+    "fat": 9,
+    "fiber": 2,
+    "sugar": 4,
+    "sodiumMg": 620,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "X-Large = 12 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Classic Cheese Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "cheese"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 220,
+    "protein": 10,
+    "carbs": 29,
+    "fat": 7,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 480,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Classic Cheese Pizza",
+    "variant": "Medium",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "cheese"
+    ],
+    "serving": {
+      "label": "1 slice (medium, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 180,
+    "protein": 9,
+    "carbs": 25,
+    "fat": 5,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 420,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Medium = 8 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Classic Cheese Pizza",
+    "variant": "X-Large",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "cheese"
+    ],
+    "serving": {
+      "label": "1 slice (x-large, 1/12 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 230,
+    "protein": 11,
+    "carbs": 32,
+    "fat": 7,
+    "fiber": 2,
+    "sugar": 4,
+    "sodiumMg": 520,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "X-Large = 12 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Meat Supreme Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "meat supreme",
+      "meat pizza",
+      "meat lovers",
+      "3 meat",
+      "three meat"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 16,
+    "carbs": 29,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 890,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Meat Supreme Pizza",
+    "variant": "Medium",
+    "category": "pizza",
+    "aliases": [
+      "meat supreme",
+      "meat pizza",
+      "meat lovers",
+      "3 meat",
+      "three meat"
+    ],
+    "serving": {
+      "label": "1 slice (medium, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 260,
+    "protein": 14,
+    "carbs": 26,
+    "fat": 11,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 800,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Medium = 8 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Meat Supreme Pizza",
+    "variant": "X-Large",
+    "category": "pizza",
+    "aliases": [
+      "meat supreme",
+      "meat pizza",
+      "meat lovers",
+      "3 meat",
+      "three meat"
+    ],
+    "serving": {
+      "label": "1 slice (x-large, 1/12 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 310,
+    "protein": 16,
+    "carbs": 33,
+    "fat": 13,
+    "fiber": 2,
+    "sugar": 4,
+    "sodiumMg": 950,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "X-Large = 12 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Canadian Eh! Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "canadian",
+      "canadian eh",
+      "canadian pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 270,
+    "protein": 14,
+    "carbs": 29,
+    "fat": 10,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 690,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Canadian Eh! Pizza",
+    "variant": "Medium",
+    "category": "pizza",
+    "aliases": [
+      "canadian",
+      "canadian eh",
+      "canadian pizza"
+    ],
+    "serving": {
+      "label": "1 slice (medium, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 230,
+    "protein": 12,
+    "carbs": 26,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 630,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Medium = 8 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Tropical Hawaiian Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "hawaiian",
+      "hawaiian pizza",
+      "ham and pineapple"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 260,
+    "protein": 13,
+    "carbs": 30,
+    "fat": 10,
+    "fiber": 1,
+    "sugar": 5,
+    "sodiumMg": 650,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Classic Super Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "super",
+      "super pizza",
+      "classic super"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 250,
+    "protein": 13,
+    "carbs": 29,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 4,
+    "sodiumMg": 610,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Spicy BBQ Chicken Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "bbq chicken pizza",
+      "bbq chicken"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 250,
+    "protein": 13,
+    "carbs": 33,
+    "fat": 7,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 680,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Bacon Double Cheeseburger Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "cheeseburger pizza",
+      "bacon cheeseburger pizza",
+      "bdc"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 260,
+    "protein": 13,
+    "carbs": 29,
+    "fat": 11,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 650,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Buffalo Chicken Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "buffalo chicken",
+      "chicken pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 260,
+    "protein": 13,
+    "carbs": 29,
+    "fat": 10,
+    "fiber": 2,
+    "sugar": 4,
+    "sodiumMg": 730,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Garden Veggie Pizza",
+    "variant": "Large",
+    "category": "pizza",
+    "aliases": [
+      "veggie pizza",
+      "vegetarian pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 210,
+    "protein": 12,
+    "carbs": 28,
+    "fat": 6,
+    "fiber": 4,
+    "sugar": 4,
+    "sodiumMg": 350,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/pizza/small-pizza/",
+    "computed": false,
+    "note": "Large = 10 slices (pizzapizza.ca pizza calculator)."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Classic Wings",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "chicken wings",
+      "5 wings"
+    ],
+    "serving": {
+      "label": "5 wings",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "10 wings",
+        "count": 2
+      }
+    ],
+    "pieces": 5,
+    "kcal": 510,
+    "protein": 40,
+    "carbs": 1,
+    "fat": 38,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 1090,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/chicken-wings-bites/",
+    "computed": false,
+    "note": "Unsauced; wing sauce not included."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Crispy Breaded Wings",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "breaded wings",
+      "wings",
+      "crispy wings"
+    ],
+    "serving": {
+      "label": "5 wings",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "10 wings",
+        "count": 2
+      }
+    ],
+    "pieces": 5,
+    "kcal": 650,
+    "protein": 40,
+    "carbs": 21,
+    "fat": 47,
+    "fiber": 2,
+    "sugar": 1,
+    "sodiumMg": 1260,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/chicken-wings-bites/",
+    "computed": false,
+    "note": "Unsauced; wing sauce not included."
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Boneless Chicken Bites",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "boneless wings",
+      "chicken bites",
+      "boneless bites"
+    ],
+    "serving": {
+      "label": "5 pieces",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "10 pieces",
+        "count": 2
+      }
+    ],
+    "pieces": 5,
+    "kcal": 380,
+    "protein": 27,
+    "carbs": 25,
+    "fat": 19,
+    "fiber": 2,
+    "sugar": 1,
+    "sodiumMg": 1060,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/chicken-wings-bites/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Fries",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "fries",
+      "french fries",
+      "chips"
+    ],
+    "serving": {
+      "label": "1 order",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 330,
+    "protein": 3,
+    "carbs": 48,
+    "fat": 13,
+    "fiber": 4,
+    "sugar": 1,
+    "sodiumMg": 680,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/sides/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Classic Poutine",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "fries gravy curds"
+    ],
+    "serving": {
+      "label": "1 order",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 600,
+    "protein": 18,
+    "carbs": 63,
+    "fat": 32,
+    "fiber": 4,
+    "sugar": 2,
+    "sodiumMg": 1890,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/sides/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Bacon Poutine",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "poutine",
+      "bacon poutine"
+    ],
+    "serving": {
+      "label": "1 order",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 720,
+    "protein": 23,
+    "carbs": 63,
+    "fat": 42,
+    "fiber": 4,
+    "sugar": 2,
+    "sodiumMg": 2190,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/sides/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Garlic Cheese Fingers",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "garlic fingers",
+      "cheesy garlic fingers",
+      "garlic bread"
+    ],
+    "serving": {
+      "label": "2 fingers",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 320,
+    "protein": 11,
+    "carbs": 35,
+    "fat": 15,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 700,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/sides/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Onion Rings",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "onion rings",
+      "rings"
+    ],
+    "serving": {
+      "label": "1 order",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 500,
+    "protein": 5,
+    "carbs": 56,
+    "fat": 29,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 1310,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/sides/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Cheese Panzerotti",
+    "variant": null,
+    "category": "other",
+    "aliases": [
+      "panzerotti",
+      "panzo",
+      "calzone"
+    ],
+    "serving": {
+      "label": "1 panzerotti",
+      "grams": 460
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 1340,
+    "protein": 53,
+    "carbs": 133,
+    "fat": 66,
+    "fiber": 6,
+    "sugar": 16,
+    "sodiumMg": 2370,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/panzerottis/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Pepperoni Panzerotti",
+    "variant": null,
+    "category": "other",
+    "aliases": [
+      "panzerotti",
+      "pepperoni panzerotti",
+      "panzo",
+      "calzone"
+    ],
+    "serving": {
+      "label": "1 panzerotti",
+      "grams": 481
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 1440,
+    "protein": 58,
+    "carbs": 133,
+    "fat": 76,
+    "fiber": 6,
+    "sugar": 16,
+    "sodiumMg": 2660,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/panzerottis/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Two-Bite Brownies",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "brownie",
+      "brownies"
+    ],
+    "serving": {
+      "label": "2 brownies",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 160,
+    "protein": 1,
+    "carbs": 21,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 12,
+    "sodiumMg": 75,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/desserts/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Pizza",
+    "name": "Funnel Cake Stix",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "funnel cake",
+      "funnel cake sticks"
+    ],
+    "serving": {
+      "label": "1/4 order",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole order",
+        "count": 4
+      }
+    ],
+    "pieces": null,
+    "kcal": 250,
+    "protein": 2,
+    "carbs": 36,
+    "fat": 12,
+    "fiber": 0,
+    "sugar": 16,
+    "sodiumMg": 220,
+    "region": "CA",
+    "source": "https://www.pizzapizza.ca/about-us/desserts/",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Pepperoni",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pepperoni only"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 79
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 260,
+    "protein": 11,
+    "carbs": 27,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 340,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Pepperoni",
+    "variant": "Medium Pan",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pepperoni only"
+    ],
+    "serving": {
+      "label": "1 slice (12\" medium pan, 1/8 pizza)",
+      "grams": 85
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 270,
+    "protein": 12,
+    "carbs": 29,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 360,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Pepperoni",
+    "variant": "Large Thin 'N Crispy",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pepperoni only",
+      "thin crust pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large thin 'n crispy, 1/12 pizza)",
+      "grams": 62
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 220,
+    "protein": 11,
+    "carbs": 25,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 450,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Pepperoni",
+    "variant": "Large Stuffed Crust",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pepperoni only",
+      "stuffed crust pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large stuffed crust, 1/12 pizza)",
+      "grams": 86
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 230,
+    "protein": 14,
+    "carbs": 21,
+    "fat": 10,
+    "fiber": 1,
+    "sugar": 0,
+    "sodiumMg": 430,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Pepperoni",
+    "variant": "6\" Personal Pan",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pepperoni only",
+      "personal pan pizza",
+      "personal pizza"
+    ],
+    "serving": {
+      "label": "1 personal pan pizza (6\")",
+      "grams": 206
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 620,
+    "protein": 25,
+    "carbs": 71,
+    "fat": 26,
+    "fiber": 3,
+    "sugar": 2,
+    "sodiumMg": 760,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Meat Lover's",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "meat lovers",
+      "meat lover's",
+      "meat pizza",
+      "3 meat",
+      "three meat"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 96
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 300,
+    "protein": 14,
+    "carbs": 28,
+    "fat": 15,
+    "fiber": 2,
+    "sugar": 1,
+    "sodiumMg": 470,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Meat Lover's",
+    "variant": "Medium Pan",
+    "category": "pizza",
+    "aliases": [
+      "meat lovers",
+      "meat lover's",
+      "meat pizza",
+      "3 meat",
+      "three meat"
+    ],
+    "serving": {
+      "label": "1 slice (12\" medium pan, 1/8 pizza)",
+      "grams": 102
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 320,
+    "protein": 15,
+    "carbs": 30,
+    "fat": 15,
+    "fiber": 2,
+    "sugar": 1,
+    "sodiumMg": 500,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Meat Lover's",
+    "variant": "Large Thin 'N Crispy",
+    "category": "pizza",
+    "aliases": [
+      "meat lovers",
+      "meat lover's",
+      "meat pizza",
+      "3 meat",
+      "three meat"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large thin 'n crispy, 1/12 pizza)",
+      "grams": 79
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 270,
+    "protein": 14,
+    "carbs": 26,
+    "fat": 12,
+    "fiber": 2,
+    "sugar": 1,
+    "sodiumMg": 580,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Meat Lover's",
+    "variant": "Large Stuffed Crust",
+    "category": "pizza",
+    "aliases": [
+      "meat lovers",
+      "meat lover's",
+      "meat pizza",
+      "3 meat",
+      "three meat",
+      "stuffed crust meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large stuffed crust, 1/12 pizza)",
+      "grams": 107
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 18,
+    "carbs": 22,
+    "fat": 15,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 600,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Meat Lover's",
+    "variant": "6\" Personal Pan",
+    "category": "pizza",
+    "aliases": [
+      "meat lovers",
+      "meat lover's",
+      "meat pizza",
+      "3 meat",
+      "three meat",
+      "personal pan pizza",
+      "personal pizza"
+    ],
+    "serving": {
+      "label": "1 personal pan pizza (6\")",
+      "grams": 225
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 710,
+    "protein": 33,
+    "carbs": 73,
+    "fat": 33,
+    "fiber": 4,
+    "sugar": 3,
+    "sodiumMg": 1080,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Cheese",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "cheese only",
+      "plain pizza"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 79
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 240,
+    "protein": 12,
+    "carbs": 27,
+    "fat": 10,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 310,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Cheese",
+    "variant": "Medium Pan",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "cheese only",
+      "plain pizza"
+    ],
+    "serving": {
+      "label": "1 slice (12\" medium pan, 1/8 pizza)",
+      "grams": 85
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 260,
+    "protein": 12,
+    "carbs": 30,
+    "fat": 11,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 330,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Cheese",
+    "variant": "Large Thin 'N Crispy",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "cheese only",
+      "plain pizza",
+      "thin crust cheese"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large thin 'n crispy, 1/12 pizza)",
+      "grams": 62
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 210,
+    "protein": 11,
+    "carbs": 25,
+    "fat": 8,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 410,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Pepperoni Lover's",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni lovers",
+      "extra pepperoni",
+      "double pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 89
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 14,
+    "carbs": 27,
+    "fat": 14,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 410,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Supreme Lover's",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "supreme",
+      "supreme lovers",
+      "supreme pizza"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 97
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 280,
+    "protein": 14,
+    "carbs": 28,
+    "fat": 13,
+    "fiber": 2,
+    "sugar": 1,
+    "sodiumMg": 420,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Super Supreme",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "super supreme",
+      "supreme",
+      "everything pizza",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 95
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 280,
+    "protein": 13,
+    "carbs": 28,
+    "fat": 13,
+    "fiber": 2,
+    "sugar": 1,
+    "sodiumMg": 430,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Canadian",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "canadian pizza"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 88
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 270,
+    "protein": 13,
+    "carbs": 27,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 420,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Hawaiian",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "hawaiian pizza",
+      "ham and pineapple"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 95
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 260,
+    "protein": 13,
+    "carbs": 29,
+    "fat": 11,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 370,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Veggie Lover's",
+    "variant": "Large Pan",
+    "category": "pizza",
+    "aliases": [
+      "veggie lovers",
+      "veggie pizza",
+      "vegetarian pizza"
+    ],
+    "serving": {
+      "label": "1 slice (14\" large pan, 1/12 pizza)",
+      "grams": 98
+    },
+    "multi": [
+      {
+        "label": "whole pizza (12 slices)",
+        "count": 12
+      }
+    ],
+    "pieces": null,
+    "kcal": 230,
+    "protein": 10,
+    "carbs": 28,
+    "fat": 9,
+    "fiber": 2,
+    "sugar": 2,
+    "sodiumMg": 270,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Breadstick",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "breadsticks",
+      "bread sticks"
+    ],
+    "serving": {
+      "label": "1 breadstick",
+      "grams": 46
+    },
+    "multi": [
+      {
+        "label": "5 breadsticks",
+        "count": 5
+      }
+    ],
+    "pieces": null,
+    "kcal": 190,
+    "protein": 4,
+    "carbs": 22,
+    "fat": 10,
+    "fiber": 1,
+    "sugar": 0,
+    "sodiumMg": 150,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Breadstick with Cheese",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "cheese breadsticks",
+      "cheesy breadsticks"
+    ],
+    "serving": {
+      "label": "1 breadstick",
+      "grams": 58
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 230,
+    "protein": 7,
+    "carbs": 22,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 0,
+    "sodiumMg": 200,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Garlic Bread",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "garlic bread"
+    ],
+    "serving": {
+      "label": "1 piece",
+      "grams": 40
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 120,
+    "protein": 3,
+    "carbs": 17,
+    "fat": 5,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 230,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Crispy Potato Wedges",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "wedges",
+      "potato wedges",
+      "fries"
+    ],
+    "serving": {
+      "label": "1 order",
+      "grams": 170
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 350,
+    "protein": 4,
+    "carbs": 44,
+    "fat": 17,
+    "fiber": 5,
+    "sugar": 0,
+    "sodiumMg": 720,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Tuscani Chicken Alfredo Pasta",
+    "variant": null,
+    "category": "other",
+    "aliases": [
+      "pasta",
+      "chicken alfredo",
+      "alfredo"
+    ],
+    "serving": {
+      "label": "1/2 regular order",
+      "grams": 307
+    },
+    "multi": [
+      {
+        "label": "regular order (2 servings)",
+        "count": 2
+      }
+    ],
+    "pieces": null,
+    "kcal": 550,
+    "protein": 22,
+    "carbs": 54,
+    "fat": 26,
+    "fiber": 3,
+    "sugar": 4,
+    "sodiumMg": 1290,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Caramel Chocolate Lava Cake",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "lava cake",
+      "chocolate lava cake"
+    ],
+    "serving": {
+      "label": "1 cake",
+      "grams": 165
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 630,
+    "protein": 9,
+    "carbs": 79,
+    "fat": 32,
+    "fiber": 3,
+    "sugar": 56,
+    "sodiumMg": 280,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Hershey's Chipits Chocolate Chip Cookie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "cookie",
+      "chocolate chip cookie"
+    ],
+    "serving": {
+      "label": "1 slice",
+      "grams": 40
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 180,
+    "protein": 2,
+    "carbs": 26,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 17,
+    "sodiumMg": 125,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Pizza Hut",
+    "name": "Triple Chocolate Brownie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "brownie",
+      "chocolate brownie"
+    ],
+    "serving": {
+      "label": "1 piece (1/12 tray)",
+      "grams": 40
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 170,
+    "protein": 2,
+    "carbs": 25,
+    "fat": 7,
+    "fiber": 1,
+    "sugar": 17,
+    "sodiumMg": 40,
+    "region": "CA",
+    "source": "https://assets.ctfassets.net/foi9ggpj1j8o/7rP6F2kWHOSs5DTlolMoeM/1473cdd8784a6ff7ae8eccf56fe52e04/nutritionals.14841ea6d15764c94dd896afffdb2452.pdf",
+    "computed": false,
+    "note": "Pizza Hut Canada nutrition guide (updated Oct 2019)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Classic Pepperoni",
+    "variant": "Large Classic",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "hot n ready",
+      "hot and ready"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 288,
+    "protein": 13.6,
+    "carbs": 31.2,
+    "fat": 12.1,
+    "fiber": 1.6,
+    "sugar": 2.4,
+    "sodiumMg": 631,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2300 kcal, 97 g fat, 250 g carbs, 109 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Classic Cheese",
+    "variant": "Large Classic",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "hot n ready"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 244,
+    "protein": 11.9,
+    "carbs": 31,
+    "fat": 8.1,
+    "fiber": 1.5,
+    "sugar": 2.1,
+    "sodiumMg": 468,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (1950 kcal, 65 g fat, 248 g carbs, 95 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "ExtraMostBestest Pepperoni",
+    "variant": "Large ExtraMostBestest",
+    "category": "pizza",
+    "aliases": [
+      "extramostbestest",
+      "extra most bestest",
+      "extra pepperoni",
+      "pepperoni pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 312,
+    "protein": 15.2,
+    "carbs": 31.5,
+    "fat": 14.1,
+    "fiber": 1.6,
+    "sugar": 2.4,
+    "sodiumMg": 705,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2500 kcal, 113 g fat, 252 g carbs, 122 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "3 Meat Treat",
+    "variant": "Large Specialty",
+    "category": "pizza",
+    "aliases": [
+      "3 meat treat",
+      "meat pizza",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 358,
+    "protein": 16.9,
+    "carbs": 31.5,
+    "fat": 18.4,
+    "fiber": 1.6,
+    "sugar": 2.5,
+    "sodiumMg": 824,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2860 kcal, 147 g fat, 252 g carbs, 135 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "5 Meat Feast",
+    "variant": "Large Specialty",
+    "category": "pizza",
+    "aliases": [
+      "5 meat feast",
+      "five meat",
+      "meat feast",
+      "meat pizza",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 354,
+    "protein": 17.4,
+    "carbs": 31.5,
+    "fat": 17.8,
+    "fiber": 1.6,
+    "sugar": 2.5,
+    "sodiumMg": 890,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2830 kcal, 142 g fat, 252 g carbs, 139 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Ultimate Supreme",
+    "variant": "Large Specialty",
+    "category": "pizza",
+    "aliases": [
+      "supreme",
+      "supreme pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 312,
+    "protein": 14.8,
+    "carbs": 32.4,
+    "fat": 14,
+    "fiber": 1.9,
+    "sugar": 2.9,
+    "sodiumMg": 722,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2500 kcal, 112 g fat, 259 g carbs, 118 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Hula Hawaiian",
+    "variant": "Large Specialty",
+    "category": "pizza",
+    "aliases": [
+      "hawaiian",
+      "hawaiian pizza",
+      "ham and pineapple"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 272,
+    "protein": 15.1,
+    "carbs": 34,
+    "fat": 8.8,
+    "fiber": 1.6,
+    "sugar": 4.4,
+    "sodiumMg": 696,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2180 kcal, 70 g fat, 272 g carbs, 121 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Veggie",
+    "variant": "Large Specialty",
+    "category": "pizza",
+    "aliases": [
+      "veggie pizza",
+      "vegetarian pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 280,
+    "protein": 12.5,
+    "carbs": 33.2,
+    "fat": 10.5,
+    "fiber": 2.5,
+    "sugar": 3.1,
+    "sodiumMg": 679,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2240 kcal, 84 g fat, 266 g carbs, 100 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Stuffed Crust Pepperoni",
+    "variant": "Large Stuffed Crust",
+    "category": "pizza",
+    "aliases": [
+      "stuffed crust",
+      "stuffed crust pepperoni",
+      "pepperoni pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large stuffed crust, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 372,
+    "protein": 18,
+    "carbs": 32.4,
+    "fat": 19.1,
+    "fiber": 1.6,
+    "sugar": 2.5,
+    "sodiumMg": 880,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2980 kcal, 153 g fat, 259 g carbs, 144 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Detroit-Style Deep Dish Pepperoni",
+    "variant": "Detroit-Style Deep Dish",
+    "category": "pizza",
+    "aliases": [
+      "deep dish",
+      "detroit style",
+      "deep deep dish",
+      "pepperoni pizza"
+    ],
+    "serving": {
+      "label": "1 slice (Detroit-style deep dish, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 346,
+    "protein": 16.1,
+    "carbs": 39.9,
+    "fat": 13.9,
+    "fiber": 2,
+    "sugar": 2.5,
+    "sodiumMg": 660,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (2770 kcal, 111 g fat, 319 g carbs, 129 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Detroit-Style Deep Dish 3 Meat Treat",
+    "variant": "Detroit-Style Deep Dish",
+    "category": "pizza",
+    "aliases": [
+      "deep dish",
+      "detroit style",
+      "3 meat treat",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (Detroit-style deep dish, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 435,
+    "protein": 19.9,
+    "carbs": 40.1,
+    "fat": 21.9,
+    "fiber": 2,
+    "sugar": 2.8,
+    "sodiumMg": 905,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": true,
+    "note": "US guide lists the whole pizza (3480 kcal, 175 g fat, 321 g carbs, 159 g protein); divided by 8 slices (8 slices per pizza per the Little Caesars Canada guide)."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Crazy Bread",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "crazy bread",
+      "breadsticks",
+      "bread sticks"
+    ],
+    "serving": {
+      "label": "1 order (8 sticks)",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": 8,
+    "kcal": 800,
+    "protein": 25,
+    "carbs": 128,
+    "fat": 22,
+    "fiber": 5,
+    "sugar": 6,
+    "sodiumMg": 1290,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Italian Cheese Bread",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "cheese bread",
+      "cheesy bread"
+    ],
+    "serving": {
+      "label": "1 order (10 sticks)",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": 10,
+    "kcal": 1340,
+    "protein": 59,
+    "carbs": 156,
+    "fat": 54,
+    "fiber": 7,
+    "sugar": 8,
+    "sodiumMg": 2250,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Pepperoni Cheese Bread",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "pepperoni cheese bread",
+      "cheesy bread"
+    ],
+    "serving": {
+      "label": "1 order (10 sticks)",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": 10,
+    "kcal": 1520,
+    "protein": 66,
+    "carbs": 155,
+    "fat": 71,
+    "fiber": 7,
+    "sugar": 7,
+    "sodiumMg": 2840,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Caesar Wings (Oven Roasted)",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "chicken wings",
+      "caesar wings",
+      "8 wings"
+    ],
+    "serving": {
+      "label": "1 order (8 wings)",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": 8,
+    "kcal": 510,
+    "protein": 47,
+    "carbs": 3,
+    "fat": 35,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 1740,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": false,
+    "note": "Guide lists per order; 8 wings per order per the Little Caesars Canada guide."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Caesar Wings (Buffalo)",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "buffalo wings",
+      "hot wings",
+      "caesar wings"
+    ],
+    "serving": {
+      "label": "1 order (8 wings)",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": 8,
+    "kcal": 520,
+    "protein": 47,
+    "carbs": 7,
+    "fat": 35,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 3330,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": false,
+    "note": "Guide lists per order; 8 wings per order per the Little Caesars Canada guide."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Caesar Wings (BBQ)",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "bbq wings",
+      "caesar wings"
+    ],
+    "serving": {
+      "label": "1 order (8 wings)",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": 8,
+    "kcal": 620,
+    "protein": 48,
+    "carbs": 32,
+    "fat": 35,
+    "fiber": 0,
+    "sugar": 24,
+    "sodiumMg": 2300,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": false,
+    "note": "Guide lists per order; 8 wings per order per the Little Caesars Canada guide."
+  },
+  {
+    "brand": "Little Caesars",
+    "name": "Caesar Wings (Garlic Parmesan)",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "garlic parmesan wings",
+      "caesar wings"
+    ],
+    "serving": {
+      "label": "1 order (8 wings)",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": 8,
+    "kcal": 670,
+    "protein": 49,
+    "carbs": 5,
+    "fat": 51,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 2510,
+    "region": "US",
+    "source": "https://littlecaesars.com/static/usnutritionguide.pdf",
+    "computed": false,
+    "note": "Guide lists per order; 8 wings per order per the Little Caesars Canada guide."
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Pepperoni",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 320,
+    "protein": 12,
+    "carbs": 38,
+    "fat": 13,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 810,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Pepperoni",
+    "variant": "Medium Original",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza"
+    ],
+    "serving": {
+      "label": "1 slice (medium original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 230,
+    "protein": 8,
+    "carbs": 26,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 570,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Pepperoni",
+    "variant": "X-Large Original",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza",
+      "xl pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (x-large original, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 330,
+    "protein": 12,
+    "carbs": 40,
+    "fat": 13,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 840,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Pepperoni",
+    "variant": "Large Thin",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza",
+      "thin crust pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (large thin crust, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 250,
+    "protein": 9,
+    "carbs": 20,
+    "fat": 14,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 590,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Pepperoni",
+    "variant": "Large Epic Stuffed Crust",
+    "category": "pizza",
+    "aliases": [
+      "pepperoni pizza",
+      "pepperoni",
+      "pep pizza",
+      "stuffed crust",
+      "epic stuffed crust"
+    ],
+    "serving": {
+      "label": "1 slice (large epic stuffed crust, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 390,
+    "protein": 16,
+    "carbs": 40,
+    "fat": 17,
+    "fiber": 2,
+    "sugar": 4,
+    "sodiumMg": 980,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Cheese",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "cheese"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 290,
+    "protein": 11,
+    "carbs": 38,
+    "fat": 10,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 710,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Cheese",
+    "variant": "Medium Original",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "cheese"
+    ],
+    "serving": {
+      "label": "1 slice (medium original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 210,
+    "protein": 8,
+    "carbs": 27,
+    "fat": 7,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 520,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Cheese",
+    "variant": "X-Large Original",
+    "category": "pizza",
+    "aliases": [
+      "cheese pizza",
+      "plain pizza",
+      "cheese"
+    ],
+    "serving": {
+      "label": "1 slice (x-large original, 1/10 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (10 slices)",
+        "count": 10
+      }
+    ],
+    "pieces": null,
+    "kcal": 300,
+    "protein": 11,
+    "carbs": 40,
+    "fat": 10,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 730,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "The Meats",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "all the meats",
+      "the meats",
+      "meat pizza",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 380,
+    "protein": 15,
+    "carbs": 38,
+    "fat": 17,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 1040,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "The Works",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "the works",
+      "supreme",
+      "everything pizza",
+      "3 meat",
+      "three meat",
+      "meat lovers"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 340,
+    "protein": 13,
+    "carbs": 39,
+    "fat": 14,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 890,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Super Hawaiian",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "hawaiian",
+      "hawaiian pizza",
+      "ham and pineapple"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 340,
+    "protein": 15,
+    "carbs": 40,
+    "fat": 13,
+    "fiber": 2,
+    "sugar": 7,
+    "sodiumMg": 920,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Sausage",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "sausage pizza",
+      "italian sausage"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 330,
+    "protein": 12,
+    "carbs": 38,
+    "fat": 14,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 810,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "BBQ Chicken & Bacon",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "bbq chicken pizza",
+      "bbq chicken bacon",
+      "chicken bacon pizza"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 340,
+    "protein": 16,
+    "carbs": 45,
+    "fat": 11,
+    "fiber": 2,
+    "sugar": 11,
+    "sodiumMg": 1020,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Garden Fresh",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "veggie pizza",
+      "vegetarian pizza",
+      "garden fresh"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 280,
+    "protein": 10,
+    "carbs": 39,
+    "fat": 9,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 680,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Shaq-a-Roni",
+    "variant": "Large Original",
+    "category": "pizza",
+    "aliases": [
+      "shaqaroni",
+      "shaq pizza",
+      "extra pepperoni"
+    ],
+    "serving": {
+      "label": "1 slice (large original, 1/8 pizza)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole pizza (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 390,
+    "protein": 15,
+    "carbs": 39,
+    "fat": 18,
+    "fiber": 2,
+    "sugar": 5,
+    "sodiumMg": 1010,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/index.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Garlic Knots",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "garlic knots",
+      "knots"
+    ],
+    "serving": {
+      "label": "1 knot",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 110,
+    "protein": 2,
+    "carbs": 14,
+    "fat": 4.5,
+    "fiber": 0,
+    "sugar": 1,
+    "sodiumMg": 260,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/sides.html",
+    "computed": false,
+    "note": "Source prints carbs as '14mg'; taken as 14 g."
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Breadsticks (14\")",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "breadsticks",
+      "bread sticks"
+    ],
+    "serving": {
+      "label": "1 breadstick",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 150,
+    "protein": 4,
+    "carbs": 27,
+    "fat": 2,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 270,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/sides.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Garlic Parmesan Breadsticks (14\")",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "garlic breadsticks",
+      "garlic parmesan breadsticks"
+    ],
+    "serving": {
+      "label": "1 breadstick",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 170,
+    "protein": 4,
+    "carbs": 27,
+    "fat": 5,
+    "fiber": 1,
+    "sugar": 2,
+    "sodiumMg": 360,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/sides.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Cheesesticks (12\")",
+    "variant": null,
+    "category": "side",
+    "aliases": [
+      "cheese sticks",
+      "cheesesticks",
+      "cheesy bread"
+    ],
+    "serving": {
+      "label": "1 stick",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": null,
+    "kcal": 110,
+    "protein": 4,
+    "carbs": 13,
+    "fat": 5,
+    "fiber": 1,
+    "sugar": 1,
+    "sodiumMg": 260,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/sides.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Roasted Wings (Unsauced)",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "chicken wings",
+      "8 wings",
+      "plain wings"
+    ],
+    "serving": {
+      "label": "8 wings",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "16 wings",
+        "count": 2
+      }
+    ],
+    "pieces": 8,
+    "kcal": 810,
+    "protein": 66,
+    "carbs": 4,
+    "fat": 57,
+    "fiber": 0,
+    "sugar": 0,
+    "sodiumMg": 1460,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/wings.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Buffalo Wings",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "buffalo wings",
+      "hot wings",
+      "8 wings"
+    ],
+    "serving": {
+      "label": "8 wings",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "16 wings",
+        "count": 2
+      }
+    ],
+    "pieces": 8,
+    "kcal": 840,
+    "protein": 67,
+    "carbs": 8,
+    "fat": 58,
+    "fiber": 1,
+    "sugar": 3,
+    "sodiumMg": 2920,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/wings.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "BBQ Wings",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "wings",
+      "bbq wings",
+      "8 wings"
+    ],
+    "serving": {
+      "label": "8 wings",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "16 wings",
+        "count": 2
+      }
+    ],
+    "pieces": 8,
+    "kcal": 880,
+    "protein": 67,
+    "carbs": 20,
+    "fat": 57,
+    "fiber": 1,
+    "sugar": 14,
+    "sodiumMg": 1940,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/wings.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Boneless Wings (Unsauced)",
+    "variant": null,
+    "category": "chicken",
+    "aliases": [
+      "boneless wings",
+      "boneless",
+      "chicken bites",
+      "10 piece"
+    ],
+    "serving": {
+      "label": "10 pieces",
+      "grams": null
+    },
+    "multi": null,
+    "pieces": 10,
+    "kcal": 590,
+    "protein": 49,
+    "carbs": 41,
+    "fat": 26,
+    "fiber": 2,
+    "sugar": 1,
+    "sodiumMg": 1930,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/wings.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Chocolate Chip Cookie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "cookie",
+      "chocolate chip cookie"
+    ],
+    "serving": {
+      "label": "1 slice (8 per order)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole cookie (8 slices)",
+        "count": 8
+      }
+    ],
+    "pieces": null,
+    "kcal": 190,
+    "protein": 2,
+    "carbs": 26,
+    "fat": 9,
+    "fiber": 1,
+    "sugar": 18,
+    "sodiumMg": 105,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/desserts.html",
+    "computed": false,
+    "note": ""
+  },
+  {
+    "brand": "Papa John's",
+    "name": "Double Chocolate Chip Brownie",
+    "variant": null,
+    "category": "dessert",
+    "aliases": [
+      "brownie",
+      "chocolate brownie"
+    ],
+    "serving": {
+      "label": "1 square (9 per order)",
+      "grams": null
+    },
+    "multi": [
+      {
+        "label": "whole order (9 squares)",
+        "count": 9
+      }
+    ],
+    "pieces": null,
+    "kcal": 240,
+    "protein": 2,
+    "carbs": 34,
+    "fat": 12,
+    "fiber": 1,
+    "sugar": 23,
+    "sodiumMg": 70,
+    "region": "US",
+    "source": "https://www.papajohns.com/company/nutritional-details/desserts.html",
+    "computed": false,
+    "note": ""
+  }
+]

@@ -1,0 +1,4100 @@
+[
+ {
+  "brand": "Tim Hortons",
+  "name": "Original Blend Coffee (Small)",
+  "variant": "Small",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "coffee",
+   "black coffee",
+   "original blend",
+   "brewed coffee",
+   "small coffee"
+  ],
+  "serving": {
+   "label": "1 small coffee, black",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 3,
+  "protein": 0.3,
+  "carbs": 0,
+  "fat": 0,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 0,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca). Under 10 kcal, so the macro check is not meaningful (rounding)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Original Blend Coffee (Medium)",
+  "variant": "Medium",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "coffee",
+   "black coffee",
+   "original blend",
+   "brewed coffee",
+   "medium coffee"
+  ],
+  "serving": {
+   "label": "1 medium coffee, black",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 4,
+  "protein": 0.5,
+  "carbs": 0,
+  "fat": 0,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 0,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca). Under 10 kcal, so the macro check is not meaningful (rounding)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Original Blend Coffee (Large)",
+  "variant": "Large",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "coffee",
+   "black coffee",
+   "original blend",
+   "brewed coffee",
+   "large coffee"
+  ],
+  "serving": {
+   "label": "1 large coffee, black",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 5,
+  "protein": 1,
+  "carbs": 0,
+  "fat": 0,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 0,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca). Under 10 kcal, so the macro check is not meaningful (rounding)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Original Blend Coffee (Extra Large)",
+  "variant": "Extra Large",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "coffee",
+   "black coffee",
+   "original blend",
+   "brewed coffee",
+   "xl coffee",
+   "extra large coffee"
+  ],
+  "serving": {
+   "label": "1 extra large coffee, black",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 5,
+  "protein": 1,
+  "carbs": 0,
+  "fat": 0,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 0,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca). Under 10 kcal, so the macro check is not meaningful (rounding)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Double-Double (Small)",
+  "variant": "Small",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "double double",
+   "double-double",
+   "coffee double double",
+   "dd",
+   "cream and sugar",
+   "small double double"
+  ],
+  "serving": {
+   "label": "1 small coffee, 2 cream, 2 sugar",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 142,
+  "protein": 1.4,
+  "carbs": 17.0,
+  "fat": 7,
+  "fiber": 0,
+  "sugar": 16.9,
+  "sodiumMg": 47,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": true,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca). Computed from Tim Hortons' own data for this size: Original Blend coffee + 2 cream + 2 sugar modifiers (how the Tims app builds a Double-Double)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Double-Double (Medium)",
+  "variant": "Medium",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "double double",
+   "double-double",
+   "coffee double double",
+   "dd",
+   "cream and sugar",
+   "medium double double"
+  ],
+  "serving": {
+   "label": "1 medium coffee, 2 cream, 2 sugar",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 216,
+  "protein": 2.4,
+  "carbs": 23.4,
+  "fat": 11.6,
+  "fiber": 0,
+  "sugar": 23.3,
+  "sodiumMg": 79,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": true,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca). Computed from Tim Hortons' own data for this size: Original Blend coffee + 2 cream + 2 sugar modifiers (how the Tims app builds a Double-Double)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Double-Double (Large)",
+  "variant": "Large",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "double double",
+   "double-double",
+   "coffee double double",
+   "dd",
+   "cream and sugar",
+   "large double double"
+  ],
+  "serving": {
+   "label": "1 large coffee, 2 cream, 2 sugar",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 269,
+  "protein": 3.3,
+  "carbs": 29.5,
+  "fat": 14.3,
+  "fiber": 0,
+  "sugar": 29.5,
+  "sodiumMg": 97,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": true,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca). Computed from Tim Hortons' own data for this size: Original Blend coffee + 2 cream + 2 sugar modifiers (how the Tims app builds a Double-Double)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Double-Double (Extra Large)",
+  "variant": "Extra Large",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "double double",
+   "double-double",
+   "coffee double double",
+   "dd",
+   "cream and sugar",
+   "extra large double double"
+  ],
+  "serving": {
+   "label": "1 extra large coffee, 2 cream, 2 sugar",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 323,
+  "protein": 3.7,
+  "carbs": 37.3,
+  "fat": 16.7,
+  "fiber": 0,
+  "sugar": 37.2,
+  "sodiumMg": 113,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": true,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca). Computed from Tim Hortons' own data for this size: Original Blend coffee + 2 cream + 2 sugar modifiers (how the Tims app builds a Double-Double)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Original Iced Capp (Small)",
+  "variant": "Small",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "iced capp",
+   "ice capp",
+   "iced cappuccino",
+   "original iced capp"
+  ],
+  "serving": {
+   "label": "1 small Iced Capp",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 218,
+  "protein": 1.4,
+  "carbs": 36.6,
+  "fat": 7.5,
+  "fiber": 0,
+  "sugar": 34.6,
+  "sodiumMg": 75,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Original Iced Capp (Medium)",
+  "variant": "Medium",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "iced capp",
+   "ice capp",
+   "iced cappuccino",
+   "original iced capp"
+  ],
+  "serving": {
+   "label": "1 medium Iced Capp",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 288,
+  "protein": 2.4,
+  "carbs": 43.6,
+  "fat": 12.5,
+  "fiber": 0,
+  "sugar": 40.6,
+  "sodiumMg": 105,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Original Iced Capp (Large)",
+  "variant": "Large",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "iced capp",
+   "ice capp",
+   "iced cappuccino",
+   "original iced capp"
+  ],
+  "serving": {
+   "label": "1 large Iced Capp",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 388,
+  "protein": 3.4,
+  "carbs": 57.6,
+  "fat": 18.5,
+  "fiber": 1,
+  "sugar": 54.6,
+  "sodiumMg": 140,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "French Vanilla (Medium)",
+  "variant": "Medium",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "french vanilla",
+   "french vanilla cappuccino"
+  ],
+  "serving": {
+   "label": "1 medium French Vanilla",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 330,
+  "protein": 3,
+  "carbs": 50,
+  "fat": 12,
+  "fiber": 1,
+  "sugar": 39,
+  "sodiumMg": 230,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Hot Chocolate (Medium)",
+  "variant": "Medium",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "hot chocolate",
+   "hot cocoa"
+  ],
+  "serving": {
+   "label": "1 medium hot chocolate",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 280,
+  "protein": 1,
+  "carbs": 62,
+  "fat": 4,
+  "fiber": 2,
+  "sugar": 43,
+  "sodiumMg": 230,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Latte (Medium)",
+  "variant": "Medium",
+  "category": "drink",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "latte",
+   "caffe latte"
+  ],
+  "serving": {
+   "label": "1 medium latte",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 124,
+  "protein": 8.9,
+  "carbs": 12.3,
+  "fat": 4.4,
+  "fiber": 0,
+  "sugar": 11.6,
+  "sodiumMg": 115,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Boston Cream Donut",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "donut",
+   "doughnut",
+   "boston cream"
+  ],
+  "serving": {
+   "label": "1 donut",
+   "grams": 83
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 240,
+  "protein": 4,
+  "carbs": 38,
+  "fat": 8,
+  "fiber": 1,
+  "sugar": 16,
+  "sodiumMg": 240,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Chocolate Dip Donut",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "donut",
+   "doughnut",
+   "chocolate dip"
+  ],
+  "serving": {
+   "label": "1 donut",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 220,
+  "protein": 4,
+  "carbs": 33,
+  "fat": 8,
+  "fiber": 1,
+  "sugar": 12,
+  "sodiumMg": 190,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Honey Dip Donut",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "donut",
+   "doughnut",
+   "honey dip",
+   "honey glazed donut"
+  ],
+  "serving": {
+   "label": "1 donut",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 250,
+  "protein": 4,
+  "carbs": 41,
+  "fat": 7,
+  "fiber": 1,
+  "sugar": 21,
+  "sodiumMg": 190,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Old Fashioned Plain Donut",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "donut",
+   "doughnut",
+   "old fashioned plain",
+   "plain donut"
+  ],
+  "serving": {
+   "label": "1 donut",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 280,
+  "protein": 3,
+  "carbs": 26,
+  "fat": 18,
+  "fiber": 1,
+  "sugar": 9,
+  "sodiumMg": 230,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Apple Fritter",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "donut",
+   "doughnut",
+   "apple fritter",
+   "fritter"
+  ],
+  "serving": {
+   "label": "1 fritter",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 330,
+  "protein": 6,
+  "carbs": 54,
+  "fat": 11,
+  "fiber": 2,
+  "sugar": 23,
+  "sodiumMg": 280,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Honey Cruller Donut",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "donut",
+   "doughnut",
+   "honey cruller",
+   "cruller"
+  ],
+  "serving": {
+   "label": "1 donut",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 320,
+  "protein": 2,
+  "carbs": 30,
+  "fat": 22,
+  "fiber": 0,
+  "sugar": 18,
+  "sodiumMg": 120,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Double Chocolate Donut",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "donut",
+   "doughnut",
+   "double chocolate"
+  ],
+  "serving": {
+   "label": "1 donut",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 310,
+  "protein": 3,
+  "carbs": 28,
+  "fat": 21,
+  "fiber": 1,
+  "sugar": 14,
+  "sodiumMg": 210,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Sour Cream Glazed Donut",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "donut",
+   "doughnut",
+   "sour cream glazed"
+  ],
+  "serving": {
+   "label": "1 donut",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 340,
+  "protein": 3,
+  "carbs": 40,
+  "fat": 18,
+  "fiber": 1,
+  "sugar": 24,
+  "sodiumMg": 180,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Chocolate Glazed Timbit",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "timbit",
+   "timbits",
+   "donut holes",
+   "10 timbits",
+   "20 timbits",
+   "chocolate timbit"
+  ],
+  "serving": {
+   "label": "1 Timbit",
+   "grams": null
+  },
+  "multi": [
+   {
+    "label": "10 pack",
+    "count": 10
+   },
+   {
+    "label": "20 pack",
+    "count": 20
+   },
+   {
+    "label": "40 pack",
+    "count": 40
+   }
+  ],
+  "pieces": 1,
+  "kcal": 80,
+  "protein": 1,
+  "carbs": 11,
+  "fat": 3.5,
+  "fiber": 0,
+  "sugar": 6,
+  "sodiumMg": 70,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Old Fashioned Plain Timbit",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "timbit",
+   "timbits",
+   "donut holes",
+   "10 timbits",
+   "20 timbits",
+   "plain timbit"
+  ],
+  "serving": {
+   "label": "1 Timbit",
+   "grams": null
+  },
+  "multi": [
+   {
+    "label": "10 pack",
+    "count": 10
+   },
+   {
+    "label": "20 pack",
+    "count": 20
+   },
+   {
+    "label": "40 pack",
+    "count": 40
+   }
+  ],
+  "pieces": 1,
+  "kcal": 60,
+  "protein": 1,
+  "carbs": 8,
+  "fat": 3.5,
+  "fiber": 0,
+  "sugar": 3,
+  "sodiumMg": 65,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Honey Dip Timbit",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "timbit",
+   "timbits",
+   "donut holes",
+   "10 timbits",
+   "20 timbits",
+   "honey dip timbit",
+   "glazed timbit"
+  ],
+  "serving": {
+   "label": "1 Timbit",
+   "grams": null
+  },
+  "multi": [
+   {
+    "label": "10 pack",
+    "count": 10
+   },
+   {
+    "label": "20 pack",
+    "count": 20
+   },
+   {
+    "label": "40 pack",
+    "count": 40
+   }
+  ],
+  "pieces": 1,
+  "kcal": 50,
+  "protein": 1,
+  "carbs": 8,
+  "fat": 1.5,
+  "fiber": 0,
+  "sugar": 5,
+  "sodiumMg": 25,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Sour Cream Glazed Timbit",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "timbit",
+   "timbits",
+   "donut holes",
+   "10 timbits",
+   "20 timbits",
+   "sour cream timbit"
+  ],
+  "serving": {
+   "label": "1 Timbit",
+   "grams": null
+  },
+  "multi": [
+   {
+    "label": "10 pack",
+    "count": 10
+   },
+   {
+    "label": "20 pack",
+    "count": 20
+   },
+   {
+    "label": "40 pack",
+    "count": 40
+   }
+  ],
+  "pieces": 1,
+  "kcal": 90,
+  "protein": 1,
+  "carbs": 11,
+  "fat": 5,
+  "fiber": 0,
+  "sugar": 7,
+  "sodiumMg": 50,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Birthday Cake Timbit",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "timbit",
+   "timbits",
+   "donut holes",
+   "10 timbits",
+   "20 timbits",
+   "birthday cake timbit"
+  ],
+  "serving": {
+   "label": "1 Timbit",
+   "grams": null
+  },
+  "multi": [
+   {
+    "label": "10 pack",
+    "count": 10
+   },
+   {
+    "label": "20 pack",
+    "count": 20
+   },
+   {
+    "label": "40 pack",
+    "count": 40
+   }
+  ],
+  "pieces": 1,
+  "kcal": 80,
+  "protein": 1,
+  "carbs": 13,
+  "fat": 3,
+  "fiber": 1,
+  "sugar": 9,
+  "sodiumMg": 60,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Hashbrown",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "hash brown",
+   "hashbrown",
+   "hash browns"
+  ],
+  "serving": {
+   "label": "1 hashbrown",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 120,
+  "protein": 1,
+  "carbs": 15,
+  "fat": 6,
+  "fiber": 1,
+  "sugar": 1,
+  "sodiumMg": 220,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Plain Bagel",
+  "variant": null,
+  "category": "breakfast",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "bagel",
+   "plain bagel"
+  ],
+  "serving": {
+   "label": "1 bagel, no spread",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 290,
+  "protein": 9,
+  "carbs": 62,
+  "fat": 1.5,
+  "fiber": 2,
+  "sugar": 9,
+  "sodiumMg": 380,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Tim Hortons",
+  "name": "Everything Bagel",
+  "variant": null,
+  "category": "breakfast",
+  "aliases": [
+   "tim hortons",
+   "timmies",
+   "tims",
+   "bagel",
+   "everything bagel"
+  ],
+  "serving": {
+   "label": "1 bagel, no spread",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 290,
+  "protein": 10,
+  "carbs": 60,
+  "fat": 2,
+  "fiber": 4,
+  "sugar": 9,
+  "sodiumMg": 390,
+  "region": "CA",
+  "source": "https://www.timhortons.ca/nutrition-and-allergens",
+  "computed": false,
+  "note": "From Tim Hortons Canada's official menu data (the CMS behind timhortons.ca)."
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Caffè Latte (Grande)",
+  "variant": "Grande, 2% milk",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "latte",
+   "caffe latte",
+   "grande latte"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 190,
+  "protein": 12,
+  "carbs": 19,
+  "fat": 7,
+  "fiber": 0,
+  "sugar": 17,
+  "sodiumMg": 170,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/407/hot/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Pike Place Roast (Grande)",
+  "variant": "Grande",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "pike place",
+   "brewed coffee",
+   "coffee",
+   "black coffee",
+   "drip coffee"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), black",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 5,
+  "protein": 1,
+  "carbs": 0,
+  "fat": 0.1,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 10,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/480/hot/nutrition",
+  "computed": false,
+  "note": "Under 20 kcal, so the macro check is not meaningful (rounding)."
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Caffè Americano (Grande)",
+  "variant": "Grande",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "americano",
+   "caffe americano"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml)",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 15,
+  "protein": 1,
+  "carbs": 2,
+  "fat": 0,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 10,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/406/hot/nutrition",
+  "computed": false,
+  "note": "Under 20 kcal, so the macro check is not meaningful (rounding)."
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Cappuccino (Grande)",
+  "variant": "Grande, 2% milk",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "cappuccino"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 140,
+  "protein": 9,
+  "carbs": 14,
+  "fat": 5,
+  "fiber": 0,
+  "sugar": 12,
+  "sodiumMg": 120,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/409/hot/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Caramel Macchiato (Grande)",
+  "variant": "Grande, 2% milk",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "caramel macchiato",
+   "macchiato"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 250,
+  "protein": 10,
+  "carbs": 35,
+  "fat": 7,
+  "fiber": 0,
+  "sugar": 33,
+  "sodiumMg": 150,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/413/hot/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Iced Caramel Macchiato (Grande)",
+  "variant": "Grande, 2% milk",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "iced caramel macchiato",
+   "iced macchiato"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 250,
+  "protein": 10,
+  "carbs": 37,
+  "fat": 7,
+  "fiber": 0,
+  "sugar": 34,
+  "sodiumMg": 150,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/413/iced/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Caffè Mocha (Grande)",
+  "variant": "Grande, 2% milk, whipped cream",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "mocha",
+   "caffe mocha"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk, with whipped cream",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 370,
+  "protein": 14,
+  "carbs": 43,
+  "fat": 15,
+  "fiber": 4,
+  "sugar": 35,
+  "sodiumMg": 150,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/408/hot/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "White Chocolate Mocha (Grande)",
+  "variant": "Grande, 2% milk, whipped cream",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "white mocha",
+   "white chocolate mocha"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk, with whipped cream",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 390,
+  "protein": 13,
+  "carbs": 47,
+  "fat": 17,
+  "fiber": 0,
+  "sugar": 46,
+  "sodiumMg": 220,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/420/hot/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Flat White (Grande)",
+  "variant": "Grande, whole milk",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "flat white"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), whole milk (default)",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 220,
+  "protein": 12,
+  "carbs": 18,
+  "fat": 11,
+  "fiber": 0,
+  "sugar": 17,
+  "sodiumMg": 150,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/565/hot/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Iced Caffè Latte (Grande)",
+  "variant": "Grande, 2% milk",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "iced latte",
+   "iced caffe latte"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 130,
+  "protein": 8,
+  "carbs": 13,
+  "fat": 4.5,
+  "fiber": 0,
+  "sugar": 11,
+  "sodiumMg": 115,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/407/iced/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Iced Brown Sugar Oat Shaken Espresso (Grande)",
+  "variant": "Grande, oat beverage",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "brown sugar shaken espresso",
+   "iced shaken espresso",
+   "brown sugar oat"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), oat beverage (default)",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 140,
+  "protein": 2,
+  "carbs": 25,
+  "fat": 3.5,
+  "fiber": 1,
+  "sugar": 16,
+  "sodiumMg": 150,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/2123431/iced/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Vanilla Sweet Cream Cold Brew (Grande)",
+  "variant": "Grande",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "cold brew",
+   "vanilla sweet cream cold brew",
+   "sweet cream cold brew"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml)",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 110,
+  "protein": 1,
+  "carbs": 14,
+  "fat": 5,
+  "fiber": 0,
+  "sugar": 14,
+  "sodiumMg": 20,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/2121859/iced/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Caramel Frappuccino (Grande)",
+  "variant": "Grande, whole milk, whipped cream",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "caramel frappuccino",
+   "frappuccino",
+   "frap"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), whole milk, with whipped cream",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 380,
+  "protein": 4,
+  "carbs": 55,
+  "fat": 16,
+  "fiber": 0,
+  "sugar": 54,
+  "sodiumMg": 230,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/424/iced/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Chai Latte (Grande)",
+  "variant": "Grande, 2% milk",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "chai",
+   "chai latte",
+   "chai tea latte"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 200,
+  "protein": 7,
+  "carbs": 33,
+  "fat": 4.5,
+  "fiber": 0,
+  "sugar": 31,
+  "sodiumMg": 110,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/466/hot/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Pink Drink (Grande)",
+  "variant": "Grande",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "pink drink",
+   "strawberry acai coconut"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml)",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 140,
+  "protein": 0.4,
+  "carbs": 28,
+  "fat": 2.5,
+  "fiber": 1,
+  "sugar": 25,
+  "sodiumMg": 85,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/2122275/iced/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Strawberry Açaí Refresher (Grande)",
+  "variant": "Grande",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "strawberry acai",
+   "refresher",
+   "strawberry acai refresher"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml)",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 90,
+  "protein": 0.2,
+  "carbs": 23,
+  "fat": 0.1,
+  "fiber": 1,
+  "sugar": 21,
+  "sodiumMg": 40,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/2121342/iced/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Pumpkin Spice Latte (Grande)",
+  "variant": "Grande, 2% milk, whipped cream",
+  "category": "drink",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "psl",
+   "pumpkin spice latte",
+   "pumpkin spice"
+  ],
+  "serving": {
+   "label": "1 grande (473 ml), 2% milk, with whipped cream",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 390,
+  "protein": 14,
+  "carbs": 52,
+  "fat": 14,
+  "fiber": 0,
+  "sugar": 50,
+  "sodiumMg": 230,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/418/hot/nutrition",
+  "computed": false,
+  "note": "Seasonal (fall)."
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Butter Croissant",
+  "variant": null,
+  "category": "breakfast",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "croissant",
+   "butter croissant"
+  ],
+  "serving": {
+   "label": "1 croissant",
+   "grams": 62
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 260,
+  "protein": 5,
+  "carbs": 27,
+  "fat": 15,
+  "fiber": 1,
+  "sugar": 5,
+  "sodiumMg": 320,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/1033/single/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Chocolate Croissant",
+  "variant": null,
+  "category": "breakfast",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "chocolate croissant",
+   "pain au chocolat"
+  ],
+  "serving": {
+   "label": "1 croissant",
+   "grams": 80
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 340,
+  "protein": 5,
+  "carbs": 38,
+  "fat": 20,
+  "fiber": 2,
+  "sugar": 13,
+  "sodiumMg": 280,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/1028/single/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Starbucks",
+  "name": "Bacon-Style Turkey, Cheddar & Egg White Sandwich",
+  "variant": null,
+  "category": "breakfast",
+  "aliases": [
+   "starbucks",
+   "sbux",
+   "turkey bacon sandwich",
+   "egg white sandwich",
+   "breakfast sandwich"
+  ],
+  "serving": {
+   "label": "1 sandwich",
+   "grams": 142
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 260,
+  "protein": 17,
+  "carbs": 30,
+  "fat": 9,
+  "fiber": 2,
+  "sugar": 2,
+  "sodiumMg": 600,
+  "region": "CA",
+  "source": "https://www.starbucks.ca/menu/product/368/single/nutrition",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Crunchy Taco (Beef)",
+  "variant": null,
+  "category": "taco",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "crunchy taco",
+   "hard taco",
+   "beef taco",
+   "taco"
+  ],
+  "serving": {
+   "label": "1 taco",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 170,
+  "protein": 8,
+  "carbs": 13,
+  "fat": 10,
+  "fiber": 1,
+  "sugar": null,
+  "sodiumMg": 310,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations). Sugars listed as <1 g."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Soft Taco (Beef)",
+  "variant": null,
+  "category": "taco",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "soft taco",
+   "beef soft taco",
+   "taco"
+  ],
+  "serving": {
+   "label": "1 taco",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 190,
+  "protein": 9,
+  "carbs": 17,
+  "fat": 9,
+  "fiber": null,
+  "sugar": null,
+  "sodiumMg": 450,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations). Fibre listed as <1 g; sugars listed as <1 g."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Nacho Cheese Doritos Locos Taco",
+  "variant": null,
+  "category": "taco",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "doritos locos taco",
+   "dlt",
+   "doritos taco"
+  ],
+  "serving": {
+   "label": "1 taco",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 170,
+  "protein": 8,
+  "carbs": 13,
+  "fat": 10,
+  "fiber": 1,
+  "sugar": 1,
+  "sodiumMg": 360,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Crunchwrap Supreme (Beef)",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "crunchwrap",
+   "crunchwrap supreme",
+   "beef crunchwrap"
+  ],
+  "serving": {
+   "label": "1 crunchwrap",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 550,
+  "protein": 16,
+  "carbs": 70,
+  "fat": 22,
+  "fiber": 3,
+  "sugar": 5,
+  "sodiumMg": 1020,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Spicy Chicken Crunchwrap Supreme",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "crunchwrap",
+   "chicken crunchwrap",
+   "spicy chicken crunchwrap"
+  ],
+  "serving": {
+   "label": "1 crunchwrap",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 540,
+  "protein": 18,
+  "carbs": 70,
+  "fat": 20,
+  "fiber": 3,
+  "sugar": 5,
+  "sodiumMg": 1060,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Chalupa Supreme (Beef)",
+  "variant": null,
+  "category": "taco",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "chalupa",
+   "chalupa supreme",
+   "beef chalupa"
+  ],
+  "serving": {
+   "label": "1 chalupa",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 370,
+  "protein": 13,
+  "carbs": 30,
+  "fat": 22,
+  "fiber": 5,
+  "sugar": 4,
+  "sodiumMg": 570,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Chalupa Supreme (Chicken)",
+  "variant": null,
+  "category": "taco",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "chalupa",
+   "chicken chalupa"
+  ],
+  "serving": {
+   "label": "1 chalupa",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 350,
+  "protein": 16,
+  "carbs": 28,
+  "fat": 20,
+  "fiber": 5,
+  "sugar": 4,
+  "sodiumMg": 550,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Cheesy Gordita Crunch",
+  "variant": null,
+  "category": "taco",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "cheesy gordita crunch",
+   "gordita",
+   "cgc"
+  ],
+  "serving": {
+   "label": "1 item",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 500,
+  "protein": 21,
+  "carbs": 39,
+  "fat": 28,
+  "fiber": 4,
+  "sugar": 3,
+  "sodiumMg": 800,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Mexican Pizza",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "mexican pizza"
+  ],
+  "serving": {
+   "label": "1 pizza",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 560,
+  "protein": 21,
+  "carbs": 48,
+  "fat": 31,
+  "fiber": 6,
+  "sugar": 3,
+  "sodiumMg": 880,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Chicken Quesadilla",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "quesadilla",
+   "chicken quesadilla"
+  ],
+  "serving": {
+   "label": "1 quesadilla",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 520,
+  "protein": 28,
+  "carbs": 35,
+  "fat": 29,
+  "fiber": 1,
+  "sugar": 2,
+  "sodiumMg": 1010,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Cheese Quesadilla",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "quesadilla",
+   "cheese quesadilla"
+  ],
+  "serving": {
+   "label": "1 quesadilla",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 470,
+  "protein": 21,
+  "carbs": 34,
+  "fat": 26,
+  "fiber": 1,
+  "sugar": 1,
+  "sodiumMg": 770,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Burrito Supreme (Beef)",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "burrito supreme",
+   "burrito",
+   "beef burrito supreme"
+  ],
+  "serving": {
+   "label": "1 burrito",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 420,
+  "protein": 17,
+  "carbs": 51,
+  "fat": 16,
+  "fiber": 5,
+  "sugar": 3,
+  "sodiumMg": 1030,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Beef Burrito",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "beef burrito",
+   "burrito"
+  ],
+  "serving": {
+   "label": "1 burrito",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 310,
+  "protein": 11,
+  "carbs": 38,
+  "fat": 12,
+  "fiber": null,
+  "sugar": 2,
+  "sodiumMg": 710,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations). Fibre listed as <1 g."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Bean Burrito",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "bean burrito",
+   "burrito"
+  ],
+  "serving": {
+   "label": "1 burrito",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 380,
+  "protein": 14,
+  "carbs": 55,
+  "fat": 12,
+  "fiber": 7,
+  "sugar": 2,
+  "sodiumMg": 960,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "7-Layer Burrito (Beef)",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "7 layer burrito",
+   "seven layer burrito",
+   "burrito"
+  ],
+  "serving": {
+   "label": "1 burrito",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 450,
+  "protein": 16,
+  "carbs": 50,
+  "fat": 20,
+  "fiber": 3,
+  "sugar": 3,
+  "sodiumMg": 910,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Nachos Supreme",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "nachos",
+   "nachos supreme"
+  ],
+  "serving": {
+   "label": "1 order",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 280,
+  "protein": 6,
+  "carbs": 28,
+  "fat": 16,
+  "fiber": 2,
+  "sugar": 3,
+  "sodiumMg": 450,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Fries",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "fries",
+   "taco bell fries"
+  ],
+  "serving": {
+   "label": "1 order",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 300,
+  "protein": 4,
+  "carbs": 41,
+  "fat": 14,
+  "fiber": 4,
+  "sugar": 0,
+  "sodiumMg": 350,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations). Only one size listed."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Fries Supreme",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "fries supreme",
+   "loaded fries"
+  ],
+  "serving": {
+   "label": "1 order",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 420,
+  "protein": 8,
+  "carbs": 49,
+  "fat": 22,
+  "fiber": 4,
+  "sugar": 3,
+  "sodiumMg": 700,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Cinnamon Twists",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "cinnamon twists"
+  ],
+  "serving": {
+   "label": "1 order",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 170,
+  "protein": 1,
+  "carbs": 27,
+  "fat": 6,
+  "fiber": null,
+  "sugar": 13,
+  "sodiumMg": 210,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations). Fibre listed as <1 g."
+ },
+ {
+  "brand": "Taco Bell",
+  "name": "Cinnabon Delights (2 Pack)",
+  "variant": null,
+  "category": "dessert",
+  "aliases": [
+   "taco bell",
+   "tbell",
+   "cinnabon delights",
+   "cinnabon"
+  ],
+  "serving": {
+   "label": "2 pieces",
+   "grams": null
+  },
+  "multi": [
+   {
+    "label": "4 pack",
+    "count": 2
+   },
+   {
+    "label": "12 pack",
+    "count": 6
+   }
+  ],
+  "pieces": 2,
+  "kcal": 160,
+  "protein": 2,
+  "carbs": 17,
+  "fat": 9,
+  "fiber": 0,
+  "sugar": 10,
+  "sodiumMg": 80,
+  "region": "CA",
+  "source": "https://www.nutritionix.com/taco-bell-canada/menu/premium",
+  "computed": false,
+  "note": "Taco Bell Canada official nutrition menu (Canadian formulations)."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Chicken (bowl/burrito portion)",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "chipotle",
+   "chicken",
+   "chipotle chicken"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 180,
+  "protein": 32,
+  "carbs": 0,
+  "fat": 7,
+  "fiber": 0.5,
+  "sugar": 0,
+  "sodiumMg": 310,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Steak (bowl/burrito portion)",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "chipotle",
+   "steak",
+   "chipotle steak"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 150,
+  "protein": 21,
+  "carbs": 1,
+  "fat": 6.5,
+  "fiber": 1,
+  "sugar": 0,
+  "sodiumMg": 330,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Barbacoa (bowl/burrito portion)",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "chipotle",
+   "barbacoa",
+   "beef"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 170,
+  "protein": 24,
+  "carbs": 2,
+  "fat": 7,
+  "fiber": 1,
+  "sugar": 0,
+  "sodiumMg": 530,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Carnitas (bowl/burrito portion)",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "chipotle",
+   "carnitas",
+   "pork"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 210,
+  "protein": 23,
+  "carbs": 0,
+  "fat": 12,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 450,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Sofritas (bowl/burrito portion)",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "chipotle",
+   "sofritas",
+   "tofu"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 150,
+  "protein": 8,
+  "carbs": 9,
+  "fat": 10,
+  "fiber": 3.5,
+  "sugar": 4.5,
+  "sodiumMg": 555,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Cilantro-Lime White Rice",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "white rice",
+   "rice"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 210,
+  "protein": 3.5,
+  "carbs": 40,
+  "fat": 4,
+  "fiber": 1,
+  "sugar": 0,
+  "sodiumMg": 345,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Cilantro-Lime Brown Rice",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "brown rice",
+   "rice"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 210,
+  "protein": 4,
+  "carbs": 36,
+  "fat": 5.5,
+  "fiber": 2.5,
+  "sugar": 0,
+  "sodiumMg": 195,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Black Beans",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "black beans",
+   "beans"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 130,
+  "protein": 8,
+  "carbs": 22,
+  "fat": 1.5,
+  "fiber": 7,
+  "sugar": 2,
+  "sodiumMg": 210,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Pinto Beans",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "pinto beans",
+   "beans"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 130,
+  "protein": 8,
+  "carbs": 21,
+  "fat": 1.5,
+  "fiber": 8,
+  "sugar": 1,
+  "sodiumMg": 210,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Roasted Chili-Corn Salsa",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "corn salsa",
+   "salsa"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 80,
+  "protein": 3,
+  "carbs": 16,
+  "fat": 1.5,
+  "fiber": 3,
+  "sugar": 4,
+  "sodiumMg": 330,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Cheese",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "cheese",
+   "shredded cheese"
+  ],
+  "serving": {
+   "label": "1 portion (28 g)",
+   "grams": 28
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 100,
+  "protein": 7,
+  "carbs": 0,
+  "fat": 8,
+  "fiber": 0,
+  "sugar": null,
+  "sodiumMg": 200,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito. Carbs and sugars listed as <1 g."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Sour Cream",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "sour cream"
+  ],
+  "serving": {
+   "label": "1 portion (57 g)",
+   "grams": 57
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 90,
+  "protein": 1,
+  "carbs": 3,
+  "fat": 8,
+  "fiber": 0,
+  "sugar": 2,
+  "sodiumMg": 45,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Guacamole",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "guac",
+   "guacamole"
+  ],
+  "serving": {
+   "label": "1 portion (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 230,
+  "protein": 2,
+  "carbs": 8,
+  "fat": 22,
+  "fiber": 6,
+  "sugar": 1,
+  "sodiumMg": 375,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Queso Blanco",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "queso",
+   "queso blanco"
+  ],
+  "serving": {
+   "label": "1 portion (57 g)",
+   "grams": 57
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 120,
+  "protein": 5,
+  "carbs": 4,
+  "fat": 9,
+  "fiber": 0,
+  "sugar": 1,
+  "sodiumMg": 250,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Flour Tortilla (burrito)",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "tortilla",
+   "burrito tortilla",
+   "flour tortilla"
+  ],
+  "serving": {
+   "label": "1 tortilla",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 320,
+  "protein": 8,
+  "carbs": 50,
+  "fat": 9,
+  "fiber": 3,
+  "sugar": 0,
+  "sodiumMg": 600,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": "Component: add to build a bowl or burrito."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Chips",
+  "variant": null,
+  "category": "side",
+  "aliases": [
+   "chipotle",
+   "chips",
+   "tortilla chips"
+  ],
+  "serving": {
+   "label": "1 regular bag (113 g)",
+   "grams": 113
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 540,
+  "protein": 7,
+  "carbs": 73,
+  "fat": 25,
+  "fiber": 7,
+  "sugar": 1,
+  "sodiumMg": 390,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Chicken Burrito Bowl",
+  "variant": null,
+  "category": "bowl",
+  "aliases": [
+   "chipotle",
+   "chicken bowl",
+   "burrito bowl",
+   "chipotle bowl"
+  ],
+  "serving": {
+   "label": "1 bowl",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 735,
+  "protein": 51.5,
+  "carbs": 69,
+  "fat": 28.5,
+  "fiber": 9.5,
+  "sugar": 5,
+  "sodiumMg": 1660,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": true,
+  "note": "Computed from the guide's components: chicken, white rice, black beans, fresh tomato salsa (25 kcal), cheese, sour cream."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Chicken Burrito Bowl with Guacamole",
+  "variant": null,
+  "category": "bowl",
+  "aliases": [
+   "chipotle",
+   "chicken bowl",
+   "burrito bowl",
+   "chicken bowl guac"
+  ],
+  "serving": {
+   "label": "1 bowl",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 875,
+  "protein": 52.5,
+  "carbs": 74,
+  "fat": 42.5,
+  "fiber": 15.5,
+  "sugar": 4,
+  "sodiumMg": 1990,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": true,
+  "note": "Computed from the guide's components: chicken, white rice, black beans, fresh tomato salsa (25 kcal), cheese, guacamole."
+ },
+ {
+  "brand": "Chipotle",
+  "name": "Steak Burrito",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "chipotle",
+   "steak burrito",
+   "burrito"
+  ],
+  "serving": {
+   "label": "1 burrito",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 1025,
+  "protein": 48.5,
+  "carbs": 120,
+  "fat": 37,
+  "fiber": 13,
+  "sugar": 5,
+  "sodiumMg": 2280,
+  "region": "CA",
+  "source": "https://www.chipotle.ca/content/dam/chipotle/menu/nutrition/CA-Nutrition-Facts-Paper-Menu-3-2025.pdf",
+  "computed": true,
+  "note": "Computed from the guide's components: flour tortilla, steak, white rice, black beans, fresh tomato salsa (25 kcal), cheese, sour cream."
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "OREO Cookie Blizzard (Mini)",
+  "variant": "Mini",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "oreo blizzard",
+   "mini blizzard"
+  ],
+  "serving": {
+   "label": "1 mini Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 350,
+  "protein": 9,
+  "carbs": 50,
+  "fat": 12,
+  "fiber": 0,
+  "sugar": 39,
+  "sodiumMg": 210,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "OREO Cookie Blizzard (Small)",
+  "variant": "Small",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "oreo blizzard",
+   "small blizzard"
+  ],
+  "serving": {
+   "label": "1 small Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 670,
+  "protein": 15,
+  "carbs": 92,
+  "fat": 22,
+  "fiber": 1,
+  "sugar": 70,
+  "sodiumMg": 390,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "OREO Cookie Blizzard (Medium)",
+  "variant": "Medium",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "oreo blizzard",
+   "medium blizzard"
+  ],
+  "serving": {
+   "label": "1 medium Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 920,
+  "protein": 19,
+  "carbs": 125,
+  "fat": 31,
+  "fiber": 1,
+  "sugar": 93,
+  "sodiumMg": 530,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "OREO Cookie Blizzard (Large)",
+  "variant": "Large",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "oreo blizzard",
+   "large blizzard"
+  ],
+  "serving": {
+   "label": "1 large Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 1190,
+  "protein": 25,
+  "carbs": 161,
+  "fat": 40,
+  "fiber": 1,
+  "sugar": 120,
+  "sodiumMg": 690,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Reese's Peanut Butter Cups Blizzard (Small)",
+  "variant": "Small",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "reeses blizzard",
+   "peanut butter cup blizzard"
+  ],
+  "serving": {
+   "label": "1 small Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 600,
+  "protein": 17,
+  "carbs": 86,
+  "fat": 26,
+  "fiber": 1,
+  "sugar": 73,
+  "sodiumMg": 400,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Reese's Peanut Butter Cups Blizzard (Medium)",
+  "variant": "Medium",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "reeses blizzard",
+   "peanut butter cup blizzard"
+  ],
+  "serving": {
+   "label": "1 medium Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 810,
+  "protein": 23,
+  "carbs": 116,
+  "fat": 36,
+  "fiber": 2,
+  "sugar": 99,
+  "sodiumMg": 550,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Reese's Peanut Butter Cups Blizzard (Large)",
+  "variant": "Large",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "reeses blizzard",
+   "peanut butter cup blizzard"
+  ],
+  "serving": {
+   "label": "1 large Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 1070,
+  "protein": 30,
+  "carbs": 153,
+  "fat": 47,
+  "fiber": 3,
+  "sugar": 130,
+  "sodiumMg": 720,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "SKOR Blizzard (Medium)",
+  "variant": "Medium",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "skor blizzard",
+   "skor"
+  ],
+  "serving": {
+   "label": "1 medium Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 840,
+  "protein": 17,
+  "carbs": 122,
+  "fat": 38,
+  "fiber": 1,
+  "sugar": 107,
+  "sodiumMg": 510,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Smarties Blizzard (Medium)",
+  "variant": "Medium",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "blizzard",
+   "smarties blizzard",
+   "smarties"
+  ],
+  "serving": {
+   "label": "1 medium Blizzard",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 860,
+  "protein": 20,
+  "carbs": 141,
+  "fat": 29,
+  "fiber": 2,
+  "sugar": 124,
+  "sodiumMg": 420,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Vanilla Cone (Small)",
+  "variant": "Small",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "cone",
+   "ice cream cone",
+   "vanilla cone",
+   "soft serve"
+  ],
+  "serving": {
+   "label": "1 small cone",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 230,
+  "protein": 7,
+  "carbs": 38,
+  "fat": 7,
+  "fiber": 0,
+  "sugar": 27,
+  "sodiumMg": 140,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Vanilla Cone (Medium)",
+  "variant": "Medium",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "cone",
+   "ice cream cone",
+   "vanilla cone",
+   "soft serve"
+  ],
+  "serving": {
+   "label": "1 medium cone",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 320,
+  "protein": 10,
+  "carbs": 54,
+  "fat": 10,
+  "fiber": 0,
+  "sugar": 37,
+  "sodiumMg": 200,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Vanilla Cone (Large)",
+  "variant": "Large",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "cone",
+   "ice cream cone",
+   "vanilla cone",
+   "soft serve"
+  ],
+  "serving": {
+   "label": "1 large cone",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 460,
+  "protein": 14,
+  "carbs": 76,
+  "fat": 15,
+  "fiber": 0,
+  "sugar": 53,
+  "sodiumMg": 280,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Chocolate Dipped Cone (Medium)",
+  "variant": "Medium",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "dipped cone",
+   "chocolate dipped cone",
+   "cone"
+  ],
+  "serving": {
+   "label": "1 medium dipped cone",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 460,
+  "protein": 10,
+  "carbs": 62,
+  "fat": 23,
+  "fiber": 1,
+  "sugar": 44,
+  "sodiumMg": 210,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Chocolate Sundae (Medium)",
+  "variant": "Medium",
+  "category": "dessert",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "sundae",
+   "chocolate sundae"
+  ],
+  "serving": {
+   "label": "1 medium sundae",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 390,
+  "protein": 10,
+  "carbs": 72,
+  "fat": 11,
+  "fiber": 1,
+  "sugar": 61,
+  "sodiumMg": 230,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Original Cheeseburger (Double)",
+  "variant": "Double",
+  "category": "burger",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "cheeseburger",
+   "double cheeseburger",
+   "burger"
+  ],
+  "serving": {
+   "label": "1 burger",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 560,
+  "protein": 39,
+  "carbs": 33,
+  "fat": 31,
+  "fiber": 1,
+  "sugar": 5,
+  "sodiumMg": 1310,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Original Cheeseburger (Triple)",
+  "variant": "Triple",
+  "category": "burger",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "cheeseburger",
+   "triple cheeseburger",
+   "burger"
+  ],
+  "serving": {
+   "label": "1 burger",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 760,
+  "protein": 55,
+  "carbs": 33,
+  "fat": 45,
+  "fiber": 1,
+  "sugar": 5,
+  "sodiumMg": 1690,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "FlameThrower Stackburger (Double)",
+  "variant": "Double",
+  "category": "burger",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "flamethrower",
+   "flamethrower burger",
+   "stackburger",
+   "burger"
+  ],
+  "serving": {
+   "label": "1 burger",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 750,
+  "protein": 44,
+  "carbs": 32,
+  "fat": 50,
+  "fiber": 1,
+  "sugar": 5,
+  "sodiumMg": 1600,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Bacon Two Cheese Deluxe Stackburger (Double)",
+  "variant": "Double",
+  "category": "burger",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "bacon two cheese deluxe",
+   "bacon cheeseburger",
+   "stackburger",
+   "burger"
+  ],
+  "serving": {
+   "label": "1 burger",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 710,
+  "protein": 46,
+  "carbs": 34,
+  "fat": 43,
+  "fiber": 1,
+  "sugar": 6,
+  "sodiumMg": 1600,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Backyard Bacon Ranch Stackburger (Double)",
+  "variant": "Double",
+  "category": "burger",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "backyard bacon ranch",
+   "stackburger",
+   "burger"
+  ],
+  "serving": {
+   "label": "1 burger",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 770,
+  "protein": 46,
+  "carbs": 45,
+  "fat": 46,
+  "fiber": 2,
+  "sugar": 13,
+  "sodiumMg": 1630,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Chicken Strip Basket (4 pc)",
+  "variant": "4 piece",
+  "category": "chicken",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "chicken strip basket",
+   "chicken strips",
+   "chicken fingers",
+   "4 piece"
+  ],
+  "serving": {
+   "label": "1 basket (4 strips)",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": 4,
+  "kcal": 700,
+  "protein": 32,
+  "carbs": 75,
+  "fat": 32,
+  "fiber": 6,
+  "sugar": 0,
+  "sodiumMg": 2200,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": "Basket as sold by DQ (strips with sides)."
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Chicken Strip Basket (6 pc)",
+  "variant": "6 piece",
+  "category": "chicken",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "chicken strip basket",
+   "chicken strips",
+   "chicken fingers",
+   "6 piece"
+  ],
+  "serving": {
+   "label": "1 basket (6 strips)",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": 6,
+  "kcal": 910,
+  "protein": 46,
+  "carbs": 91,
+  "fat": 42,
+  "fiber": 7,
+  "sugar": 0,
+  "sodiumMg": 2920,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": "Basket as sold by DQ (strips with sides)."
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Chicken Strips (3 pc)",
+  "variant": "3 piece",
+  "category": "chicken",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "chicken strips",
+   "chicken fingers",
+   "3 piece"
+  ],
+  "serving": {
+   "label": "3 strips",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": 3,
+  "kcal": 320,
+  "protein": 22,
+  "carbs": 24,
+  "fat": 15,
+  "fiber": 1,
+  "sugar": 0,
+  "sodiumMg": 1080,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Fries (Regular)",
+  "variant": "Regular",
+  "category": "side",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "fries",
+   "french fries"
+  ],
+  "serving": {
+   "label": "1 regular fries",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 280,
+  "protein": 3,
+  "carbs": 43,
+  "fat": 11,
+  "fiber": 4,
+  "sugar": 0,
+  "sodiumMg": 770,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Fries (Large)",
+  "variant": "Large",
+  "category": "side",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "fries",
+   "french fries"
+  ],
+  "serving": {
+   "label": "1 large fries",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 460,
+  "protein": 5,
+  "carbs": 70,
+  "fat": 19,
+  "fiber": 7,
+  "sugar": 1,
+  "sodiumMg": 1250,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Onion Rings (Regular)",
+  "variant": "Regular",
+  "category": "side",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "onion rings"
+  ],
+  "serving": {
+   "label": "1 regular onion rings",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 260,
+  "protein": 4,
+  "carbs": 32,
+  "fat": 14,
+  "fiber": 2,
+  "sugar": 3,
+  "sodiumMg": 730,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Poutine (Regular)",
+  "variant": "Regular",
+  "category": "side",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "poutine"
+  ],
+  "serving": {
+   "label": "1 regular poutine",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 450,
+  "protein": 9,
+  "carbs": 59,
+  "fat": 21,
+  "fiber": 5,
+  "sugar": 1,
+  "sodiumMg": 1520,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Dairy Queen",
+  "name": "Poutine (Large)",
+  "variant": "Large",
+  "category": "side",
+  "aliases": [
+   "dairy queen",
+   "dq",
+   "poutine"
+  ],
+  "serving": {
+   "label": "1 large poutine",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 970,
+  "protein": 19,
+  "carbs": 129,
+  "fat": 44,
+  "fiber": 12,
+  "sugar": 2,
+  "sodiumMg": 3240,
+  "region": "CA",
+  "source": "https://www.dairyqueen.com/en-ca/nutrition/food-treats",
+  "computed": false,
+  "note": ""
+ },
+ {
+  "brand": "Freshii",
+  "name": "Cobb Salad",
+  "variant": null,
+  "category": "salad",
+  "aliases": [
+   "freshii",
+   "cobb salad",
+   "salad"
+  ],
+  "serving": {
+   "label": "1 salad",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 430,
+  "protein": 21,
+  "carbs": 21,
+  "fat": 30,
+  "fiber": null,
+  "sugar": 8,
+  "sodiumMg": 700,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Fiiesta Salad",
+  "variant": null,
+  "category": "salad",
+  "aliases": [
+   "freshii",
+   "fiesta salad",
+   "salad"
+  ],
+  "serving": {
+   "label": "1 salad",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 390,
+  "protein": 10,
+  "carbs": 29,
+  "fat": 28,
+  "fiber": null,
+  "sugar": 7,
+  "sodiumMg": 560,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Kale Caesar Salad",
+  "variant": null,
+  "category": "salad",
+  "aliases": [
+   "freshii",
+   "kale caesar",
+   "caesar salad",
+   "salad"
+  ],
+  "serving": {
+   "label": "1 salad",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 670,
+  "protein": 29,
+  "carbs": 71,
+  "fat": 32,
+  "fiber": null,
+  "sugar": 17,
+  "sodiumMg": 990,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Greek Salad",
+  "variant": null,
+  "category": "salad",
+  "aliases": [
+   "freshii",
+   "greek salad",
+   "salad"
+  ],
+  "serving": {
+   "label": "1 salad",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 580,
+  "protein": 12,
+  "carbs": 43,
+  "fat": 41,
+  "fiber": null,
+  "sugar": 8,
+  "sodiumMg": 1350,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Berrii Crunchii Salad",
+  "variant": null,
+  "category": "salad",
+  "aliases": [
+   "freshii",
+   "berry crunchy salad",
+   "salad"
+  ],
+  "serving": {
+   "label": "1 salad",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 630,
+  "protein": 10,
+  "carbs": 44,
+  "fat": 48,
+  "fiber": null,
+  "sugar": 23,
+  "sodiumMg": 660,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Sesame Crunch Roll",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "freshii",
+   "sesame crunch wrap",
+   "wrap"
+  ],
+  "serving": {
+   "label": "1 roll",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 490,
+  "protein": 11,
+  "carbs": 71,
+  "fat": 23,
+  "fiber": null,
+  "sugar": 12,
+  "sodiumMg": 860,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Spiicy Buffalo Roll",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "freshii",
+   "spicy buffalo wrap",
+   "buffalo wrap",
+   "wrap"
+  ],
+  "serving": {
+   "label": "1 roll",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 580,
+  "protein": 18,
+  "carbs": 85,
+  "fat": 21,
+  "fiber": null,
+  "sugar": 6,
+  "sodiumMg": 1870,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Texas Smokehouse Roll",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "freshii",
+   "texas smokehouse wrap",
+   "bbq wrap",
+   "wrap"
+  ],
+  "serving": {
+   "label": "1 roll",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 840,
+  "protein": 37,
+  "carbs": 121,
+  "fat": 26,
+  "fiber": null,
+  "sugar": 26,
+  "sodiumMg": 2050,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Zesty Za'atar Roll",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "freshii",
+   "zaatar wrap",
+   "za'atar",
+   "wrap"
+  ],
+  "serving": {
+   "label": "1 roll",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 530,
+  "protein": 28,
+  "carbs": 68,
+  "fat": 18,
+  "fiber": null,
+  "sugar": 11,
+  "sodiumMg": 1090,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Italiian Market Roll",
+  "variant": null,
+  "category": "wrap",
+  "aliases": [
+   "freshii",
+   "italian market wrap",
+   "italian wrap",
+   "wrap"
+  ],
+  "serving": {
+   "label": "1 roll",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 970,
+  "protein": 42,
+  "carbs": 71,
+  "fat": 60,
+  "fiber": null,
+  "sugar": 12,
+  "sodiumMg": 1440,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Buddha's Satay Bowl",
+  "variant": null,
+  "category": "bowl",
+  "aliases": [
+   "freshii",
+   "buddha satay bowl",
+   "buddha bowl",
+   "satay bowl"
+  ],
+  "serving": {
+   "label": "1 bowl",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 540,
+  "protein": 11,
+  "carbs": 99,
+  "fat": 12,
+  "fiber": null,
+  "sugar": 19,
+  "sodiumMg": 800,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Chiipotle Cheddar Bowl",
+  "variant": null,
+  "category": "bowl",
+  "aliases": [
+   "freshii",
+   "chipotle cheddar bowl"
+  ],
+  "serving": {
+   "label": "1 bowl",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 730,
+  "protein": 17,
+  "carbs": 107,
+  "fat": 27,
+  "fiber": null,
+  "sugar": 10,
+  "sodiumMg": 570,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Oaxaca Bowl",
+  "variant": null,
+  "category": "bowl",
+  "aliases": [
+   "freshii",
+   "oaxaca bowl"
+  ],
+  "serving": {
+   "label": "1 bowl",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 660,
+  "protein": 20,
+  "carbs": 119,
+  "fat": 15,
+  "fiber": null,
+  "sugar": 25,
+  "sodiumMg": 640,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Teriyaki Twiist Bowl",
+  "variant": null,
+  "category": "bowl",
+  "aliases": [
+   "freshii",
+   "teriyaki twist bowl",
+   "teriyaki bowl"
+  ],
+  "serving": {
+   "label": "1 bowl",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 590,
+  "protein": 15,
+  "carbs": 115,
+  "fat": 9,
+  "fiber": null,
+  "sugar": 18,
+  "sodiumMg": 1220,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Chicken Tiika Bowl",
+  "variant": null,
+  "category": "bowl",
+  "aliases": [
+   "freshii",
+   "chicken tikka bowl",
+   "tikka bowl"
+  ],
+  "serving": {
+   "label": "1 bowl",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 560,
+  "protein": 33,
+  "carbs": 84,
+  "fat": 13,
+  "fiber": null,
+  "sugar": 7,
+  "sodiumMg": 870,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Mezze Deliight Bowl",
+  "variant": null,
+  "category": "bowl",
+  "aliases": [
+   "freshii",
+   "mezze delight bowl",
+   "mezze bowl"
+  ],
+  "serving": {
+   "label": "1 bowl",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 630,
+  "protein": 19,
+  "carbs": 79,
+  "fat": 29,
+  "fiber": null,
+  "sugar": 13,
+  "sodiumMg": 970,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Steak, Egg and Cheese Breakfast Burrito",
+  "variant": null,
+  "category": "breakfast",
+  "aliases": [
+   "freshii",
+   "breakfast burrito",
+   "steak egg cheese burrito"
+  ],
+  "serving": {
+   "label": "1 burrito",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 580,
+  "protein": 34,
+  "carbs": 50,
+  "fat": 29,
+  "fiber": null,
+  "sugar": 5,
+  "sodiumMg": 1710,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Spicy Lemongrass Soup (Small)",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "freshii",
+   "lemongrass soup",
+   "soup"
+  ],
+  "serving": {
+   "label": "1 small soup",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 200,
+  "protein": 4,
+  "carbs": 39,
+  "fat": 3,
+  "fiber": null,
+  "sugar": 11,
+  "sodiumMg": 1420,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ },
+ {
+  "brand": "Freshii",
+  "name": "Spicy Lemongrass Soup (Large)",
+  "variant": null,
+  "category": "other",
+  "aliases": [
+   "freshii",
+   "lemongrass soup",
+   "soup"
+  ],
+  "serving": {
+   "label": "1 large soup",
+   "grams": null
+  },
+  "multi": [],
+  "pieces": null,
+  "kcal": 470,
+  "protein": 10,
+  "carbs": 95,
+  "fat": 6,
+  "fiber": null,
+  "sugar": 21,
+  "sodiumMg": 2840,
+  "region": "CA",
+  "source": "https://freshii.com/wp-content/uploads/2024/03/NA-Guide-EN_compressed.pdf",
+  "computed": false,
+  "note": "Freshii official Nutrition & Allergen Guide (c)2023; fibre not listed; guide does not state region (Freshii is Canadian)."
+ }
+]

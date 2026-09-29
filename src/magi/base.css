@@ -13,6 +13,7 @@
   --k:#000000; --ink:#100a04; --or:#ff8000; --orb:#ffa31f; --am:#ffb800; --yel:#ffe000; --grn:#3ce07a; --red:#ff2000;
   --wht:#f2eee2; --gry:#8a877c; --dgy:#34322c; --dim:#4d2600; --dim2:#241200; --blu:#8cc8f0; --cya:#30b8e0; --dbl:#2f6be0; --tea:#00c8b4;
   --dred:#2a0600; --dgrn:#0c3a1e; --dcya:#0a3040; --dblu:#0c1c44; --bdim:#1c3848;
+  --r1:#4a0c02; --r2:#7a1204; --r3:#b51906; /* severity ramp: hard bands r1 < r2 < r3 < --red (body map), never blended */
   /* type roles (each falls back to an installed DejaVu face, then the platform) */
   --sys:"Roboto Condensed","Arial Narrow","Avenir Next Condensed","DejaVu Sans Condensed","Liberation Sans Narrow","Helvetica Neue",Arimo,sans-serif; /* system labels */
   --diag:"Share Tech Mono","DejaVu Sans Mono",Menlo,"SF Mono",ui-monospace,Consolas,monospace;                                            /* data, logs, inputs */

@@ -16,7 +16,7 @@ import { fmt } from "../engine/units";
 import { MUSCLES, weeklySetsPerMuscle } from "../engine/volume";
 import { defaultTrendParams, weightTrend } from "../engine/weight";
 import { weightToDisplay } from "./format";
-import { Card, PageTitle, Segmented, Stat, useUI } from "./kit";
+import { Card, Chips, PageTitle, Segmented, Stat, useUI } from "./kit";
 import { hm, hrvFromGarmin, loadEnergyModel, loadLoadModel, pad, signed, type EnergyModel } from "./models";
 import { PlotPanel, useFrame } from "./raster";
 import { computeDebt, sleepNights } from "./sleep";
@@ -33,9 +33,18 @@ async function trainedOrder(): Promise<string[]> {
 
 const noon = (d: string) => Date.parse(`${d}T12:00:00`);
 
+type Section = "report" | "body" | "lifts" | "health";
+const SECTIONS: { value: Section; label: string }[] = [
+  { value: "report", label: "REPORT" },
+  { value: "body", label: "BODY" },
+  { value: "lifts", label: "LIFTS" },
+  { value: "health", label: "HEALTH" },
+];
+
 export function ProgressScreen() {
   const { settings } = useUI();
   const [range, setRange] = useState<Range>("90");
+  const [section, setSection] = useState<Section>("report");
   const weights = useLive(listWeights, [], [] as WeightEntry[]);
   const exercises = useLive(() => listExercises(), [], [] as Exercise[]);
   const checkins = useLive(listCheckIns, [], [] as CheckIn[]);
@@ -107,22 +116,40 @@ export function ProgressScreen() {
 
   return (
     <div className="page">
-      <PageTitle sys="PROGRESS" status={range === "all" ? "RANGE ALL" : `RANGE ${range} D`} />
-      <Segmented
-        options={[
-          { value: "30", label: "30 D" },
-          { value: "90", label: "90 D" },
-          { value: "365", label: "1 YR" },
-          { value: "all", label: "ALL" },
-        ]}
-        value={range}
-        onChange={setRange}
-      />
+      <PageTitle sys="PROGRESS" status={section === "report" ? "WEEKLY" : range === "all" ? "RANGE ALL" : `RANGE ${range} D`} />
+      <Segmented options={SECTIONS} value={section} onChange={setSection} />
+      {section !== "report" ? (
+        <>
+          <div style={{ height: 6 }} />
+          <Chips
+            options={[
+              { value: "30", label: "30 D" },
+              { value: "90", label: "90 D" },
+              { value: "365", label: "1 YR" },
+              { value: "all", label: "ALL" },
+            ]}
+            value={range}
+            onChange={(v) => v && setRange(v)}
+          />
+        </>
+      ) : null}
       <div style={{ height: 12 }} />
 
-      <WeeklyReport settings={settings} />
+      {section === "report" ? (
+        <>
+          <WeeklyReport settings={settings} />
+          <InsightsCard settings={settings} />
+        </>
+      ) : null}
 
-      <Card title="JANOS-SYS/BODYMASS" status={weights.length ? `${pad(weights.length, 3)} WEIGH-INS` : "NO DATA"} flush>
+      {section === "body" ? (
+      <>
+      <Card
+        title="JANOS-SYS/BODYMASS"
+        status={weights.length ? `${pad(weights.length, 3)} WEIGH-INS` : "NO DATA"}
+        flush
+        help="DOTS = WEIGH-INS · LINE = TREND · BAND = WHERE 8 IN 10 WEIGH-INS SHOULD LAND. RED DOTS WERE UNUSUAL AND DOWN-WEIGHTED. THE TREND IGNORES DAY-TO-DAY WATER SWINGS."
+      >
         {weights.length < 3 ? (
           <div className="desc pad">WARN 031 INSUFFICIENT DATA · {weights.length}/3 WEIGH-INS · TREND APPEARS AFTER 3</div>
         ) : (
@@ -144,13 +171,17 @@ export function ProgressScreen() {
                 <Stat label="PER WEEK" value={signed(d(last!.slopePerDay * 7) - d(0), 2)} sub={settings.weightUnit} />
                 <Stat label="IN RANGE" value={first ? signed(d(last!.trend) - d(first.trend), 1) : "—"} sub={settings.weightUnit} />
               </div>
-              <div className="desc">DOTS = WEIGH-INS · LINE = TREND · BAND = WHERE 8 IN 10 WEIGH-INS SHOULD LAND. RED DOTS WERE UNUSUAL AND DOWN-WEIGHTED.</div>
             </div>
           </>
         )}
       </Card>
 
-      <Card title="JANOS-SYS/EXPENDITURE" status={energy?.current ? `${pad(energy.current.kcal, 4)} KCAL` : "LEARNING"} flush>
+      <Card
+        title="JANOS-SYS/EXPENDITURE"
+        status={energy?.current ? `${pad(energy.current.kcal, 4)} KCAL` : "LEARNING"}
+        flush
+        help="MAINTENANCE CALORIES LEARNED FROM WHAT YOU EAT (COMPLETE DAYS ONLY) AND HOW YOUR TREND WEIGHT MOVES. DOTS = DAILY INTAKE."
+      >
         {ex.length < 2 ? (
           <div className="desc pad">WARN 031 LEARNING · NEEDS 7 COMPLETE FOOD DAYS AND WEIGH-INS. MARK DAYS COMPLETE IN FOOD.</div>
         ) : (
@@ -168,7 +199,15 @@ export function ProgressScreen() {
         )}
       </Card>
 
-      <Card title="JANOS-SYS/STRENGTH" status="EST 1RM">
+      </>
+      ) : null}
+
+      {section === "lifts" ? (
+      <Card
+        title="JANOS-SYS/STRENGTH"
+        status="EST 1RM"
+        help="ESTIMATED 1-REP MAX FROM THE BEST SET EACH SESSION (REPS + REPS IN RESERVE). COMPARE SESSIONS ON THE SAME MACHINE; IT IS NOT A TRUE MAX."
+      >
         <select className="input" aria-label="exercise" value={exId} onChange={(e: any) => setPicked(e.target.value)}>
           <option value="">SELECT EXERCISE…</option>
           {pickList.map((e) => (
@@ -196,7 +235,6 @@ export function ProgressScreen() {
                 <Stat label="BEST EST. 1-REP MAX" value={bestE1 !== null ? fmt(bestE1, 0) : "—"} />
                 <Stat label="HEAVIEST WORKING SET" value={bestSet ? `${fmt(bestSet.load)} × ${bestSet.reps}` : "—"} />
               </div>
-              <div className="desc">ESTIMATED 1-REP MAX FROM THE BEST SET EACH SESSION (REPS + REPS IN RESERVE). COMPARE SESSIONS ON THE SAME MACHINE; NOT A TRUE MAX.</div>
             </>
           ) : (
             <div className="empty" style={{ padding: "10px 0 0" }}>NO WORKING SETS IN THIS RANGE.</div>
@@ -204,7 +242,16 @@ export function ProgressScreen() {
         ) : null}
       </Card>
 
-      <Card title="JANOS-SYS/HRV" status={hrvNow.status === "insufficient" ? "BASELINE BUILDING" : `7 D ${pad(hrvNow.avg7 ?? 0, 2)} MS · ${hrvNow.status.toUpperCase()}`} flush>
+      ) : null}
+
+      {section === "health" ? (
+      <>
+      <Card
+        title="JANOS-SYS/HRV"
+        status={hrvNow.status === "insufficient" ? "BASELINE BUILDING" : `7 D ${pad(hrvNow.avg7 ?? 0, 2)} MS · ${hrvNow.status.toUpperCase()}`}
+        flush
+        help={`7-DAY AVERAGE (LOG SCALE) AGAINST YOUR 60-DAY NORMAL BAND (±0.5 SD). A SUSTAINED DROP BELOW THE BAND IS THE SIGNAL; SINGLE NIGHTS ARE NOISE.${hrvNow.cv7 !== null ? ` 7-DAY VARIATION ${hrvNow.cv7.toFixed(0)} %.` : ""}`}
+      >
         <PlotPanel
           id="prog-hrv"
           rev="HRV MON 2.0"
@@ -223,10 +270,6 @@ export function ProgressScreen() {
           empty="NO HRV YET"
           srText={hrvNow.avg7 !== null ? `HRV 7-day average ${Math.round(hrvNow.avg7)} ms.` : "No HRV data."}
         />
-        <div className="desc pad">
-          7-DAY AVERAGE (LOG SCALE) AGAINST YOUR 60-DAY NORMAL BAND (±0.5 SD). A SUSTAINED DROP BELOW THE BAND IS THE SIGNAL; SINGLE NIGHTS ARE NOISE.
-          {hrvNow.cv7 !== null ? ` 7-DAY VARIATION ${hrvNow.cv7.toFixed(0)} %.` : ""}
-        </div>
       </Card>
 
       <Card title="JANOS-SYS/RESTING-HR" status={rhrLine.length ? `7 D ${pad(rhrLine.at(-1)!.y, 2)} BPM` : "NO DATA"} flush>
@@ -258,8 +301,8 @@ export function ProgressScreen() {
           />
         )}
       </Card>
-
-      <InsightsCard settings={settings} />
+      </>
+      ) : null}
     </div>
   );
 }

@@ -1,10 +1,12 @@
 // Today: recovery, energy balance, training load and activity at a glance.
 
 import { useEffect } from "react";
-import { useLive } from "../db/db";
+import { getAll, useLive } from "../db/db";
 import { getGarminKey, getGarminStatus, listGarminDays, type GarminStatus } from "../db/garmin";
-import { activeWorkout, entriesForDay, listCheckIns, listTemplates, listWeights, listWorkouts, startWorkout, sumNutrients, today, TZ } from "../db/repo";
-import type { CheckIn, FoodEntry, GarminDay, Template, WeightEntry, Workout } from "../db/types";
+import { activeWorkout, entriesForDay, listCheckIns, listExercises, listTemplates, listWeights, listWorkouts, startWorkout, sumNutrients, today, TZ } from "../db/repo";
+import type { CheckIn, Exercise, FoodEntry, GarminDay, StrengthSet, Template, WeightEntry, Workout } from "../db/types";
+import { BAND_LABEL, muscleFatigue, rankFatigue } from "../engine/fatigue";
+import { MUSCLE_LABEL } from "../engine/volume";
 import { addDays, localTime } from "../engine/dates";
 import { fmt } from "../engine/units";
 import { DEFAULT_RATE_PCT } from "../engine/energy";
@@ -52,6 +54,8 @@ export function TodayScreen() {
   const workouts = useLive(listWorkouts, [], [] as Workout[]);
   const energy = useLive(() => loadEnergyModel(settings), [settings], null as EnergyModel | null);
   const load = useLive(() => loadLoadModel(settings), [settings], null as LoadModel | null);
+  const exercises = useLive(() => listExercises(true), [], [] as Exercise[]);
+  const sets = useLive(() => getAll<StrengthSet>("sets"), [], [] as StrengthSet[]);
 
   const trend = weightTrend(weights.map((w) => ({ t: w.t, kg: w.kg })));
   const last = trend.at(-1);
@@ -119,6 +123,14 @@ export function TodayScreen() {
     alertBand(`WARN 095 LOAD SPIKE · RATIO ${ratio!.toFixed(2)} · TAKE AN EASY DAY`);
   }, [spike, todayLocal, tab, ratio]);
 
+  // ---- muscle fatigue (most fatigued groups; the body map lives in Train → Body)
+  const exById = new Map(exercises.map((e) => [e.id, e]));
+  const fatigue = muscleFatigue(
+    sets.filter((x) => exById.has(x.exerciseId)).map((x) => ({ exerciseName: exById.get(x.exerciseId)!.name, group: exById.get(x.exerciseId)!.group, rir: x.rir, kind: x.kind, completedAt: x.completedAt })),
+    Date.now(),
+  );
+  const tired = rankFatigue(fatigue);
+
   // ---- activity (Garmin)
   const weekDays = Array.from({ length: 7 }, (_, i) => addDays(todayLocal, -i));
   const intensity = garmin
@@ -132,7 +144,7 @@ export function TodayScreen() {
       {!garminKey ? (
         <button type="button" className="notice warn" onClick={() => open({ kind: "settings" })}>
           <span className="msg">!! GARMIN LINK NOT CONFIGURED</span>
-          <span className="act">SLEEP, HRV, RESTING HR, STEPS AND WORKOUTS ARRIVE AUTOMATICALLY ONCE SET UP · [TAP] OPEN CONFIG</span>
+          <span className="act">[TAP] SET UP AUTOMATIC SLEEP, HRV AND WORKOUT IMPORT</span>
         </button>
       ) : status?.message ? (
         <button type="button" className={code?.startsWith("ERR") ? "notice err" : "notice warn"} onClick={() => open({ kind: "settings" })}>
@@ -143,13 +155,13 @@ export function TodayScreen() {
       {backupDue ? (
         <button type="button" className="notice warn" onClick={() => open({ kind: "settings" })}>
           <span className="msg">WARN 073 BACKUP OVERDUE</span>
-          <span className="act">DATA LIVES ONLY ON THIS PHONE · [TAP] EXPORT TO FILES OR ICLOUD DRIVE (WEEKLY IS PLENTY)</span>
+          <span className="act">DATA LIVES ONLY ON THIS PHONE · [TAP] EXPORT A BACKUP</span>
         </button>
       ) : null}
       {energy && settings.autoTargets && energy.checkInState.due && !energy.checkInState.ready ? (
         <button type="button" className="notice warn" onClick={() => goTab("food")}>
           <span className="msg">WARN 031 WEEKLY CHECK-IN WAITING · {energy.checkInState.missing}</span>
-          <span className="act">MARK FOOD DAYS COMPLETE AND WEIGH IN · TARGETS UPDATE AUTOMATICALLY</span>
+          <span className="act">[TAP] MARK FOOD DAYS COMPLETE AND WEIGH IN</span>
         </button>
       ) : null}
 
@@ -162,9 +174,9 @@ export function TodayScreen() {
           srText={`Recovery ${verdictWord}. ${recovery.contributors.map((c) => `${c.label} ${c.value} ${c.level}`).join(". ")}`}
         />
         {recovery.summary === "Reduced" ? (
-          <div className="desc pad">SEVERAL SIGNALS OFF · TRAIN AS PLANNED IF YOU FEEL FINE; OTHERWISE TAKE AN EASIER SESSION</div>
+          <div className="desc pad">SEVERAL SIGNALS OFF · GO EASIER TODAY IF YOU FEEL IT</div>
         ) : recovery.summary === "Not enough data" ? (
-          <div className="desc pad">WARN 031 INSUFFICIENT DATA · APPEARS ONCE GARMIN SLEEP AND HEART-RATE DATA ARRIVE</div>
+          <div className="desc pad">WARN 031 WAITING FOR GARMIN SLEEP AND HEART-RATE DATA</div>
         ) : null}
       </Card>
 
@@ -190,25 +202,25 @@ export function TodayScreen() {
         />
       </Card>
 
-      <Card title="JANOS-SYS/LOAD" status={tgt ? `TODAY ${tgt.label}` : "STANDBY"} flush onClick={() => goTab("train")}>
+      <Card
+        title="JANOS-SYS/TRAINING"
+        status={tgt ? `TODAY ${tgt.label}` : `${liftsThisWeek} ${liftsThisWeek === 1 ? "LIFT" : "LIFTS"} / 7 D`}
+        flush
+        help="LOAD = TODAY'S TRAINING LOAD AGAINST A TARGET SET BY YOUR RECOVERY. RATIO = LAST 7 DAYS ÷ LAST 28 DAYS: 0.8–1.4 IS A SAFE BUILD, 1.5+ IS A SPIKE. MUSCLES = THE MOST FATIGUED GROUPS FROM YOUR LOGGED SETS (FULL BODY MAP IN TRAIN → BODY)."
+      >
         {load && load.hasData && ld && tgt ? (
           <MeterPanel
             id="today-load"
             rev="LOAD MON 1.2"
             stamp={spike ? { text: "LOAD SPIKE", tone: "red", blink: true } : undefined}
-            scale={[
-              { f: 0, label: "0" },
-              { f: 0.5, label: "50%" },
-              { f: 1, label: "MAX" },
-            ]}
             rows={[
               {
                 id2: "01",
-                name: "TODAY",
+                name: "LOAD",
                 value: Math.round(ld.load),
                 max: Math.max(tgt.high * 1.25, ld.load, 1),
                 peak: Math.round(tgt.high),
-                line: `LOAD ${pad(ld.load, 3)} · TARGET ${pad(tgt.low, 3)}-${pad(tgt.high, 3)} ${tgt.label}`,
+                line: `LOAD ${pad(ld.load, 3)} · TARGET ${pad(tgt.low, 3)}-${pad(tgt.high, 3)}`,
                 right: ld.load >= tgt.low && ld.load <= tgt.high ? "IN BAND" : ld.load > tgt.high ? "OVER" : "UNDER",
                 tone: ld.load > tgt.high * 1.1 ? "red" : ld.load >= tgt.low ? "grn" : "bands",
               },
@@ -217,25 +229,46 @@ export function TodayScreen() {
                 name: "RATIO",
                 value: ratio ?? 0,
                 max: 2,
-                line: ratio !== null ? `ACUTE:CHRONIC ${ratio.toFixed(2)} · ${load.band.toUpperCase().replace("-", " ")}` : `WARN 031 RATIO NEEDS 14 DAYS · HAVE ${pad(ld.historyDays)}`,
+                line: ratio !== null ? `7 D : 28 D ${ratio.toFixed(2)} · ${load.band.toUpperCase().replace("-", " ")}` : `RATIO NEEDS 14 DAYS · HAVE ${pad(ld.historyDays)}`,
                 right: ratio !== null ? ratio.toFixed(2) : "---",
                 tone: ratio === null ? "dim" : ratio >= 1.5 ? "red" : ratio >= 0.8 ? "grn" : "bands",
-              },
-              {
-                id2: "03",
-                name: "FORM",
-                value: Math.max(0, ld.tsb + 30),
-                max: 60,
-                line: `FITNESS ${pad(ld.ctl, 3)} · FATIGUE ${pad(ld.atl, 3)} · FORM ${signed(ld.tsb)}`,
-                right: signed(ld.tsb),
-                tone: ld.tsb < -30 ? "red" : "bands",
               },
             ]}
             srText={`Training load today ${Math.round(ld.load)}, target ${tgt.low} to ${tgt.high}. Load ratio ${ratio?.toFixed(2) ?? "not available"}.`}
           />
-        ) : (
-          <div className="desc pad">WARN 031 INSUFFICIENT DATA · LOAD BUILDS FROM GARMIN ACTIVITIES AND LOGGED WORKOUTS</div>
-        )}
+        ) : null}
+        <div className="card-body">
+          <div className="fatigue-line">
+            <span className="lab">MUSCLES</span>
+            {tired.length ? (
+              tired.slice(0, 3).map((m) => (
+                <span key={m} className={`fat b${fatigue[m].band}`}>
+                  {MUSCLE_LABEL[m]} {BAND_LABEL[fatigue[m].band]}
+                  {fatigue[m].readyInH ? ` ${fatigue[m].readyInH}H` : ""}
+                </span>
+              ))
+            ) : (
+              <span className="fat b0">ALL FRESH</span>
+            )}
+          </div>
+          {active ? (
+            <button className="btn block" onClick={() => goTab("train")}>
+              ► CONTINUE <span className="uc">{active.name}</span>
+            </button>
+          ) : nextTemplate ? (
+            <button
+              className="btn block"
+              onClick={async () => {
+                await startWorkout(nextTemplate);
+                goTab("train");
+              }}
+            >
+              ► START <span className="uc">{nextTemplate.name}</span>
+            </button>
+          ) : (
+            <button className="btn block" onClick={() => goTab("train")}>OPEN TRAIN</button>
+          )}
+        </div>
       </Card>
 
       {g ? (
@@ -302,26 +335,6 @@ export function TodayScreen() {
         )}
       </Card>
 
-      <Card title="JANOS-SYS/TRAINING" aside={`${liftsThisWeek} ${liftsThisWeek === 1 ? "LIFT" : "LIFTS"} / 7 D`}>
-        {active ? (
-          <button className="btn block" onClick={() => goTab("train")}>
-            ▶ CONTINUE <span className="uc">{active.name}</span>
-          </button>
-        ) : nextTemplate ? (
-          <button
-            className="btn block"
-            onClick={async () => {
-              await startWorkout(nextTemplate);
-              goTab("train");
-            }}
-          >
-            ▶ START <span className="uc">{nextTemplate.name}</span>
-          </button>
-        ) : (
-          <button className="btn block" onClick={() => goTab("train")}>OPEN TRAIN</button>
-        )}
-        <div className="desc">GARMIN CARDIO FILES INTO TRAIN → CARDIO AUTOMATICALLY.</div>
-      </Card>
     </div>
   );
 }

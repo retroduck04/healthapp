@@ -3,7 +3,7 @@
 import { deviceTimeZone, nutritionDay, type ISODate } from "../engine/dates";
 import { loadsFromSpec, type SetResult } from "../engine/strength";
 import { byIndex, del, delMany, get, getAll, put, putMany, uid } from "./db";
-import { seedExercises, seedTemplates } from "./seed";
+import { SEED_VERSION, seedReleases, seedTemplates } from "./seed";
 import {
   defaultSettings,
   type CaffeineEntry,
@@ -37,12 +37,29 @@ export async function saveSettings(patch: Partial<Settings>): Promise<void> {
   await put("meta", { key: "settings", value: { ...current, ...patch } });
 }
 
+/**
+ * Seeds the exercise library and templates on first run, then adds the exercises of every newer seed
+ * release on later runs (meta "seedVersion"; a database with only meta "seeded" counts as version 1).
+ * Only missing ids are inserted: stored exercises (edited load ranges, archived ones) are never touched,
+ * and an older release is never replayed, so nothing the owner removed from use comes back.
+ */
 export async function ensureSeeded(): Promise<void> {
-  const seeded = await get<{ key: string; value: boolean }>("meta", "seeded");
-  if (seeded?.value) return;
-  await putMany("exercises", seedExercises);
-  await putMany("templates", seedTemplates);
-  await put("meta", { key: "seeded", value: true });
+  const [seeded, ver] = await Promise.all([
+    get<{ key: string; value: boolean }>("meta", "seeded"),
+    get<{ key: string; value: number }>("meta", "seedVersion"),
+  ]);
+  const have = typeof ver?.value === "number" ? ver.value : seeded?.value ? 1 : 0;
+  if (have >= SEED_VERSION) return;
+  const stored = new Set((await getAll<Exercise>("exercises")).map((e) => e.id));
+  const add = seedReleases.filter((r) => r.version > have).flatMap((r) => r.exercises).filter((e) => !stored.has(e.id));
+  if (add.length) await putMany("exercises", add);
+  if (have === 0) {
+    const tpl = new Set((await getAll<Template>("templates")).map((t) => t.id));
+    const missing = seedTemplates.filter((t) => !tpl.has(t.id));
+    if (missing.length) await putMany("templates", missing);
+    await put("meta", { key: "seeded", value: true });
+  }
+  await put("meta", { key: "seedVersion", value: SEED_VERSION });
 }
 
 export const today = (settings?: Settings): ISODate => nutritionDay(Date.now(), TZ, settings?.dayBoundaryHour ?? 4);
@@ -97,7 +114,7 @@ export async function addEntry(e: Omit<FoodEntry, "id" | "t"> & { t?: number }):
 }
 
 export async function addFoodEntry(food: Food, grams: number, amountLabel: string, day: ISODate, meal: Meal, method: FoodEntry["method"]) {
-  await addEntry({ ...scale(food.per100g, grams), day, meal, name: food.brand ? `${food.name} (${food.brand})` : food.name, foodId: food.id, grams, amountLabel, method });
+  await addEntry({ ...scale(food.per100g, grams), day, meal, name: food.brand ? `${food.name} (${food.brand})` : food.name, foodId: food.id, grams: food.unitOnly ? null : grams, amountLabel, method });
   await put("foods", { ...food, lastUsedAt: Date.now(), useCount: (food.useCount ?? 0) + 1 });
 }
 

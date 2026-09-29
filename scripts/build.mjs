@@ -16,6 +16,11 @@ mkdirSync(out, { recursive: true });
 
 const version = process.env.APP_VERSION || "0.1.0";
 
+// Built-in food database (restaurant items + staples), shipped beside app.js and cached offline.
+const foodDb = readFileSync(join(root, "src/data/fooddb.json"));
+const foodDbUrl = `fooddb.json?v=${createHash("sha256").update(foodDb).digest("hex").slice(0, 10)}`;
+writeFileSync(join(out, "fooddb.json"), foodDb);
+
 // The four MAGI type roles. Noto Serif 900 is used only for English display words (the brand).
 const FONTS =
   "https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=Noto+Serif:wght@900&family=Roboto+Condensed:wght@400;700&family=Share+Tech+Mono&display=swap";
@@ -28,7 +33,7 @@ const result = await esbuild.build({
   target: ["safari16"],
   jsx: "automatic",
   nodePaths: [globalModules],
-  define: { "process.env.NODE_ENV": '"production"', __APP_VERSION__: JSON.stringify(version) },
+  define: { "process.env.NODE_ENV": '"production"', __APP_VERSION__: JSON.stringify(version), __FOODDB_URL__: JSON.stringify(foodDbUrl) },
   write: false,
   logLevel: "warning",
   legalComments: "none",
@@ -98,7 +103,7 @@ writeFileSync(
 );
 
 // Service worker: app shell cached for offline use; Garmin data always fetched fresh.
-const shell = ["./", "index.html", `app.js?v=${hash}`, `app.css?v=${hash}`, "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
+const shell = ["./", "index.html", `app.js?v=${hash}`, `app.css?v=${hash}`, foodDbUrl, "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 writeFileSync(
   join(out, "sw.js"),
   `const CACHE = "janos-${hash}";

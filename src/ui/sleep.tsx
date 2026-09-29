@@ -1,6 +1,6 @@
 // Sleep tab: check-ins, sleep debt, 14-night history, caffeine.
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useLive } from "../db/db";
 import { listGarminDays } from "../db/garmin";
 import { listCaffeine, listCheckIns, today, TZ } from "../db/repo";
@@ -9,7 +9,7 @@ import { addDays, parseISODate, type ISODate } from "../engine/dates";
 import { caffeineRemaining, defaultSleepDebtParams, sleepDebt, type SleepNight } from "../engine/sleep";
 import { bedtimePlan, caffeineCurve, caffeineCutoff, sleepRegularityIndex, timingSpread } from "../engine/sleepplan";
 import { dayLabel } from "./format";
-import { Card, PageTitle, Stat, useUI } from "./kit";
+import { Card, PageTitle, Segmented, Stat, useUI } from "./kit";
 import { clock, clockOf, hm, pad } from "./models";
 import { BarsPanel, PlotPanel, Seg7Panel } from "./raster";
 import { bedtimeMs } from "./sheets";
@@ -42,6 +42,7 @@ export function computeDebt(checkins: readonly CheckIn[], garmin: readonly Garmi
 
 export function SleepScreen() {
   const { settings, open } = useUI();
+  const [section, setSection] = useState<"tonight" | "history">("tonight");
   const checkins = useLive(listCheckIns, [], [] as CheckIn[]);
   const garmin = useLive(listGarminDays, [], [] as GarminDay[]);
   const doses = useLive(() => listCaffeine(Date.now() - 36 * 3600000), [], [] as CaffeineEntry[]);
@@ -90,6 +91,18 @@ export function SleepScreen() {
   return (
     <div className="page">
       <PageTitle sys="SLEEP" status={`NEED ${hm(need)} H`} />
+      <Segmented
+        options={[
+          { value: "tonight", label: "TONIGHT" },
+          { value: "history", label: "HISTORY" },
+        ]}
+        value={section}
+        onChange={setSection}
+      />
+      <div style={{ height: 12 }} />
+
+      {section === "tonight" ? (
+      <>
 
       {lastNightH !== null ? (
         <Card
@@ -100,6 +113,7 @@ export function SleepScreen() {
           }
           status={g?.sleep.score ? `SCORE ${pad(g.sleep.score, 3)}` : undefined}
           flush
+          help={g?.sleep.totalSec ? "WRIST-SENSOR STAGES ARE ESTIMATES; EVERY CALCULATION USES TOTAL SLEEP ONLY." : undefined}
         >
           <Seg7Panel
             id="sleep-last"
@@ -125,20 +139,23 @@ export function SleepScreen() {
                 <Stat label="REM" value={g.sleep.remSec != null ? hm(g.sleep.remSec / 3600) : "—"} />
                 <Stat label="AWAKE" value={g.sleep.awakeSec != null ? hm(g.sleep.awakeSec / 3600) : "—"} />
               </div>
-              <div className="desc">WRIST-SENSOR STAGES ARE ESTIMATES; CALCULATIONS USE TOTAL SLEEP ONLY.</div>
             </div>
           ) : null}
         </Card>
       ) : (
         <Card title="JANOS-SYS/LAST-NIGHT" aside="NO DATA">
           <div className="empty" style={{ padding: "0 0 10px" }}>
-            NO GARMIN SLEEP FOR LAST NIGHT YET. IT ARRIVES AUTOMATICALLY ONCE THE GARMIN LINK IS SET UP (CONFIG → 1. GARMIN LINK), OR ENTER IT BY HAND.
+            NO SLEEP FOR LAST NIGHT YET · GARMIN SENDS IT AUTOMATICALLY, OR ENTER IT BY HAND.
           </div>
           <button className="btn plain block" onClick={() => open({ kind: "checkin" })}>ENTER MANUALLY</button>
         </Card>
       )}
 
-      <Card title="JANOS-SYS/DEBT" aside={debt.debtHours === null ? "NO DATA" : debtBand(debt.debtHours)}>
+      <Card
+        title="JANOS-SYS/DEBT"
+        aside={debt.debtHours === null ? "NO DATA" : debtBand(debt.debtHours)}
+        help="SLEEP DEBT = HOURS SHORT OF YOUR NEED OVER 14 NIGHTS, RECENT NIGHTS WEIGHTED MORE. REPAY GRADUALLY: UP TO 1 H EXTRA PER NIGHT, SAME WAKE TIME. THE BEDTIME INCLUDES 15 MIN TO FALL ASLEEP."
+      >
         {debt.debtHours === null ? (
           <div className="desc">WARN 031 INSUFFICIENT DATA · {logged}/14 NIGHTS LOGGED · NEEDS 11. FILLS IN BY ITSELF WITH THE GARMIN LINK ON.</div>
         ) : (
@@ -149,56 +166,18 @@ export function SleepScreen() {
             </div>
             <div className="desc">
               {debt.estimatedNights ? `${debt.estimatedNights} MISSING NIGHT${debt.estimatedNights > 1 ? "S" : ""} ESTIMATED · ` : ""}
-              {debt.debtHours < 1
-                ? "LOW · KEEP THE USUAL SCHEDULE."
-                : "REPAY GRADUALLY: UP TO 1 H EXTRA PER NIGHT, SAME WAKE TIME. INCLUDES 15 MIN TO FALL ASLEEP."}
+              {debt.debtHours < 1 ? "KEEP THE USUAL SCHEDULE." : "REPAY GRADUALLY · SAME WAKE TIME."}
             </div>
           </>
         )}
       </Card>
 
-      <Card title="JANOS-SYS/14-NIGHTS" aside="STAGES · HOURS" flush>
-        <BarsPanel
-          id="sleep-14"
-          rev="SOMNO MOD 1.03"
-          bars={nights.map((n) => {
-            const gd = gByDay.get(n.day);
-            const h = n.night.mainSleepHours ?? 0;
-            const seg =
-              gd?.sleep.totalSec && gd.sleep.deepSec != null && gd.sleep.remSec != null && gd.sleep.lightSec != null
-                ? [
-                    { value: gd.sleep.deepSec / 3600, tone: "dbl" as const },
-                    { value: gd.sleep.lightSec / 3600, tone: "cya" as const },
-                    { value: gd.sleep.remSec / 3600, tone: "blu" as const },
-                  ]
-                : undefined;
-            return { label: String(parseISODate(n.day).day), value: h, segments: seg, tone: h && h < need - 1 ? ("am" as const) : undefined };
-          })}
-          format={(v) => v.toFixed(1)}
-          target={{ value: need, label: `NEED ${hm(need)}` }}
-          legend="■ DEEP ■ LIGHT ■ REM"
-          empty="NO NIGHTS YET"
-        />
-      </Card>
-
-      <Card title="JANOS-SYS/REGULARITY" aside={sri.sri !== null ? `SRI ${sri.sri.toFixed(0)}` : "NO DATA"}>
-        {spread.n >= 3 ? (
-          <>
-            <div className="grid-3">
-              <Stat label="SRI (−100…100)" value={sri.sri !== null ? pad(sri.sri, 2) : "---"} sub={sri.sri !== null ? regularityWord(sri.sri) : `${sri.nights}/5 NIGHTS`} />
-              <Stat label="BEDTIME" value={spread.bedtimeMedianMin !== null ? clock(spread.bedtimeMedianMin) : "—"} sub={spread.bedtimeSdMin !== null ? `±${Math.round(spread.bedtimeSdMin)} MIN` : ""} />
-              <Stat label="WAKE" value={spread.wakeMedianMin !== null ? clock(spread.wakeMedianMin) : "—"} sub={spread.wakeSdMin !== null ? `±${Math.round(spread.wakeSdMin)} MIN` : ""} />
-            </div>
-            <div className="desc">
-              SLEEP REGULARITY INDEX: CHANCE OF BEING IN THE SAME STATE (ASLEEP/AWAKE) 24 H APART, LAST 14 DAYS. STEADY BED AND WAKE TIMES MATTER AS MUCH AS DURATION.
-            </div>
-          </>
-        ) : (
-          <div className="desc">WARN 031 INSUFFICIENT DATA · {spread.n}/5 GARMIN NIGHTS WITH BED AND WAKE TIMES.</div>
-        )}
-      </Card>
-
-      <Card title="JANOS-SYS/CAFFEINE" aside={<button className="link" onClick={() => open({ kind: "caffeine" })}>LOG</button>} flush>
+      <Card
+        title="JANOS-SYS/CAFFEINE"
+        aside={<button className="link" onClick={() => open({ kind: "caffeine" })}>LOG</button>}
+        flush
+        help={`CUTOFF = LATEST TIME A 95 MG COFFEE STILL DECAYS TO ≤25 MG BY BEDTIME (${half} H HALF-LIFE; CHANGE IN CONFIG). BASED ON A 2023 META-ANALYSIS OF CAFFEINE TIMING AND SLEEP.`}
+      >
         <PlotPanel
           id="sleep-caffeine"
           rev="CAF CURVE R02"
@@ -226,10 +205,52 @@ export function SleepScreen() {
               sub={cutoff.status === "PAST" ? "PAST CUTOFF" : cutoff.status === "CLOSED" ? "LIMIT REACHED" : "95 MG DOSE"}
             />
           </div>
-          <div className="desc">
-            CUTOFF = LATEST TIME A 95 MG COFFEE STILL DECAYS TO ≤25 MG BY BEDTIME ({half} H HALF-LIFE; CHANGE IN CONFIG). BASED ON A 2023 META-ANALYSIS OF CAFFEINE TIMING AND SLEEP.
-          </div>
         </div>
+      </Card>
+
+      </>
+      ) : (
+      <>
+      <Card title="JANOS-SYS/14-NIGHTS" aside="STAGES · HOURS" flush>
+        <BarsPanel
+          id="sleep-14"
+          rev="SOMNO MOD 1.03"
+          bars={nights.map((n) => {
+            const gd = gByDay.get(n.day);
+            const h = n.night.mainSleepHours ?? 0;
+            const seg =
+              gd?.sleep.totalSec && gd.sleep.deepSec != null && gd.sleep.remSec != null && gd.sleep.lightSec != null
+                ? [
+                    { value: gd.sleep.deepSec / 3600, tone: "dbl" as const },
+                    { value: gd.sleep.lightSec / 3600, tone: "cya" as const },
+                    { value: gd.sleep.remSec / 3600, tone: "blu" as const },
+                  ]
+                : undefined;
+            return { label: String(parseISODate(n.day).day), value: h, segments: seg, tone: h && h < need - 1 ? ("am" as const) : undefined };
+          })}
+          format={(v) => v.toFixed(1)}
+          target={{ value: need, label: `NEED ${hm(need)}` }}
+          legend="■ DEEP ■ LIGHT ■ REM"
+          empty="NO NIGHTS YET"
+        />
+      </Card>
+
+      <Card
+        title="JANOS-SYS/REGULARITY"
+        aside={sri.sri !== null ? `SRI ${sri.sri.toFixed(0)}` : "NO DATA"}
+        help="SLEEP REGULARITY INDEX: CHANCE OF BEING IN THE SAME STATE (ASLEEP/AWAKE) 24 H APART, LAST 14 DAYS. STEADY BED AND WAKE TIMES MATTER AS MUCH AS DURATION."
+      >
+        {spread.n >= 3 ? (
+          <>
+            <div className="grid-3">
+              <Stat label="SRI (−100…100)" value={sri.sri !== null ? pad(sri.sri, 2) : "---"} sub={sri.sri !== null ? regularityWord(sri.sri) : `${sri.nights}/5 NIGHTS`} />
+              <Stat label="BEDTIME" value={spread.bedtimeMedianMin !== null ? clock(spread.bedtimeMedianMin) : "—"} sub={spread.bedtimeSdMin !== null ? `±${Math.round(spread.bedtimeSdMin)} MIN` : ""} />
+              <Stat label="WAKE" value={spread.wakeMedianMin !== null ? clock(spread.wakeMedianMin) : "—"} sub={spread.wakeSdMin !== null ? `±${Math.round(spread.wakeSdMin)} MIN` : ""} />
+            </div>
+          </>
+        ) : (
+          <div className="desc">WARN 031 INSUFFICIENT DATA · {spread.n}/5 GARMIN NIGHTS WITH BED AND WAKE TIMES.</div>
+        )}
       </Card>
 
       <Card title="JANOS-SYS/SLEEP-LOG" aside="30 D" flush>
@@ -260,6 +281,8 @@ export function SleepScreen() {
             );
           })}
       </Card>
+      </>
+      )}
     </div>
   );
 }

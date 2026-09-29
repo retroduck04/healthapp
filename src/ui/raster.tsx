@@ -827,7 +827,7 @@ export function PlotPanel(p: PlotProps) {
       fb.fill(px(d.x) - (dsF >> 1), py(d.y) - (dsF >> 1), dsF, dsF, C.red);
     }
     fb.noClip();
-    // marker ◀ pointing at a value
+    // marker ◄ pointing at a value
     let mk: { tx: number; ty: number; right: boolean } | null = null;
     if (q.marker && !empty) {
       const mx = px(q.marker.x);

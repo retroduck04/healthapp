@@ -48,6 +48,10 @@ const PAL = [
   ['dcya', '#0a3040'], // 19 unlit cyan
   ['dblu', '#0c1c44'], // 20 unlit blue
   ['bdim', '#1c3848'], // 21 unlit node blue
+  /* severity ramp (JANOS body map): hard cel bands, never blended; the top band is 'red' (7) */
+  ['r1', '#4a0c02'],   // 22 severity 1 LOW
+  ['r2', '#7a1204'],   // 23 severity 2 MOD
+  ['r3', '#b51906'],   // 24 severity 3 HIGH
 ];
 const C = {}; PAL.forEach(([n], i) => { C[n] = i; });
 const HEX = PAL.map(p => p[1]);

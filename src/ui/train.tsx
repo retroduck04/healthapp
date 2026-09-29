@@ -1,6 +1,6 @@
 // Training tab: strength (templates, live workout logger, history, exercise editor) and cardio.
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { del, get, put, uid, useLive } from "../db/db";
 import {
   activeWorkout,
@@ -21,7 +21,10 @@ import {
 import type { CardioModality, CardioSession, CardioType, Exercise, StrengthSet, Template, Workout } from "../db/types";
 import { detectRecords, sessionRecords, type RecordHit, type SetLite } from "../engine/records";
 import { adviseProgression, e1RM, type ProgressionAdvice } from "../engine/strength";
-import { MUSCLE_LABEL, MUSCLES, weeklySetsPerMuscle } from "../engine/volume";
+import { MUSCLE_LABEL, MUSCLES, musclesFor, weeklySetsPerMuscle } from "../engine/volume";
+import { buildHay, rank } from "../engine/foodsearch";
+import { FATIGUE_TAU_H, muscleFatigue, rankFatigue, type FatigueSet } from "../engine/fatigue";
+import { BodyMapPanel } from "./bodymap";
 import { fmt, formatMinSec } from "../engine/units";
 import { distFromDisplay, distToDisplay, shortDateTime, toLocalInputValue } from "./format";
 import { Card, Chips, confirmScreen, Field, NumInput, PageTitle, ProgressBar, Segmented, Sheet, Stat, Stepper, useUI } from "./kit";
@@ -29,17 +32,65 @@ import { loadLoadModel, pad, signed, type LoadModel } from "./models";
 import { BarsPanel, MeterPanel, PlotPanel, Seg7Panel } from "./raster";
 import { getAll } from "../db/db";
 
+type TrainMode = "strength" | "body" | "cardio";
+const TRAIN_MODES: { value: TrainMode; label: string }[] = [
+  { value: "strength", label: "STRENGTH" },
+  { value: "body", label: "BODY" },
+  { value: "cardio", label: "CARDIO" },
+];
+
 export function TrainScreen() {
-  const [mode, setMode] = useState<"strength" | "cardio">("strength");
+  const [mode, setMode] = useState<TrainMode>("strength");
   const active = useLive(activeWorkout, [], null as Workout | null);
   if (active && mode === "strength") return <WorkoutView workout={active} />;
   return (
     <div className="page">
-      <PageTitle sys="TRAIN" status={mode === "strength" ? "STRENGTH" : "CARDIO"} />
-      <Segmented options={[{ value: "strength", label: "STRENGTH" }, { value: "cardio", label: "CARDIO" }]} value={mode} onChange={setMode} />
+      <PageTitle sys="TRAIN" status={TRAIN_MODES.find((m) => m.value === mode)!.label} />
+      <Segmented options={TRAIN_MODES} value={mode} onChange={setMode} />
       <div style={{ height: 8 }} />
-      {mode === "strength" ? <StrengthHome /> : <CardioHome />}
+      {mode === "strength" ? <StrengthHome /> : mode === "body" ? <BodyHome /> : <CardioHome />}
     </div>
+  );
+}
+
+// ---- body: fatigue map, weekly volume, records ------------------------------------
+
+/** Logged sets in the shape the fatigue and volume models take. */
+function useFatigueSets(exercises: Exercise[]): FatigueSet[] {
+  const sets = useLive(() => getAll<StrengthSet>("sets"), [], [] as StrengthSet[]);
+  const byId = new Map(exercises.map((e) => [e.id, e]));
+  return sets
+    .filter((x) => byId.has(x.exerciseId))
+    .map((x) => ({ exerciseName: byId.get(x.exerciseId)!.name, group: byId.get(x.exerciseId)!.group, rir: x.rir, kind: x.kind, completedAt: x.completedAt }));
+}
+
+function BodyHome() {
+  const exercises = useLive(() => listExercises(true), [], [] as Exercise[]);
+  const workouts = useLive(listWorkouts, [], [] as Workout[]);
+  const sets = useFatigueSets(exercises);
+  return (
+    <>
+      <FatigueCard sets={sets} />
+      <VolumeCard sets={sets} />
+      <RecordsCard exercises={exercises} workouts={workouts} />
+    </>
+  );
+}
+
+/** Muscle fatigue now, on the front/back body map. */
+export function FatigueCard(props: { sets: FatigueSet[] }) {
+  const f = muscleFatigue(props.sets, Date.now());
+  const ranked = rankFatigue(f);
+  const ready = MUSCLES.filter((m) => f[m].lastTrainedMs !== null && f[m].readyInH === 0).length;
+  return (
+    <Card
+      title="JANOS-SYS/FATIGUE"
+      status={ranked.length ? `${ranked.length} RECOVERING` : "ALL FRESH"}
+      flush
+      help={`RED = TRAINING STRESS A MUSCLE IS STILL RECOVERING FROM. DEEP RED = LOW, BRIGHT RED = MAX, HOLLOW = FRESH. EVERY HARD SET ADDS STRESS (MORE WHEN TAKEN CLOSER TO FAILURE; SECONDARY MUSCLES COUNT HALF) AND IT FADES OVER ${FATIGUE_TAU_H.biceps}–${FATIGUE_TAU_H.chest} H DEPENDING ON MUSCLE SIZE. "READY" = BELOW MOD, FINE TO TRAIN HARD AGAIN.${ready ? ` ${ready} TRAINED GROUP${ready > 1 ? "S" : ""} READY NOW.` : ""}`}
+    >
+      <BodyMapPanel id="train-myomap" muscles={f} rev="MYOMAP R01" />
+    </Card>
   );
 }
 
@@ -64,7 +115,7 @@ function StrengthHome() {
             {t.exerciseIds.map((id) => names.get(id) ?? "?").join(" · ")}
           </div>
           <button className="btn block" onClick={() => startWorkout(t)}>
-            ▶ START <span className="uc">{t.name}</span>
+            ► START <span className="uc">{t.name}</span>
           </button>
         </Card>
       ))}
@@ -75,8 +126,6 @@ function StrengthHome() {
       <div style={{ height: 8 }} />
       <button className="btn plain block" onClick={() => setShowLibrary(true)}>EXERCISES + MACHINES</button>
 
-      <VolumeCard exercises={exercises} />
-      <RecordsCard exercises={exercises} workouts={workouts} />
 
       <h2>HISTORY</h2>
       <Card title="WORKOUT LOG" aside={workouts.length ? `${workouts.length} FILED` : null} flush>
@@ -91,7 +140,7 @@ function StrengthHome() {
                 {w.sessionRPE ? ` · EFFORT ${w.sessionRPE}/10` : ""}
               </div>
             </div>
-            <span className="go">▶</span>
+            <span className="go">►</span>
           </button>
         ))}
       </Card>
@@ -114,18 +163,16 @@ function StrengthHome() {
 }
 
 /** Hard sets per muscle over the last 7 days (working sets at ≤ 4 RIR; secondary muscles count half). */
-function VolumeCard(props: { exercises: Exercise[] }) {
-  const sets = useLive(() => getAll<StrengthSet>("sets"), [], [] as StrengthSet[]);
-  const byId = new Map(props.exercises.map((e) => [e.id, e]));
+function VolumeCard(props: { sets: FatigueSet[] }) {
   const to = Date.now();
-  const vol = weeklySetsPerMuscle(
-    sets.filter((x) => byId.has(x.exerciseId)).map((x) => ({ exerciseName: byId.get(x.exerciseId)!.name, group: byId.get(x.exerciseId)!.group, rir: x.rir, kind: x.kind, completedAt: x.completedAt })),
-    to - 7 * 86400000,
-    to,
-  );
+  const vol = weeklySetsPerMuscle(props.sets, to - 7 * 86400000, to);
   const total = MUSCLES.reduce((a, m) => a + vol[m], 0);
   return (
-    <Card title="JANOS-SYS/VOLUME" status={`${fmt(total, 1)} HARD SETS / 7 D`}>
+    <Card
+      title="JANOS-SYS/VOLUME"
+      status={`${fmt(total, 1)} HARD SETS / 7 D`}
+      help="HARD SET = WORKING SET AT ≤4 REPS IN RESERVE. 10–20 PER MUSCLE PER WEEK IS THE USUAL GROWTH RANGE (GREEN AT 10+); SECONDARY MUSCLES COUNT HALF."
+    >
       {total === 0 ? <div className="empty" style={{ padding: 0 }}>NO HARD SETS IN THE LAST 7 DAYS.</div> : null}
       {total > 0
         ? MUSCLES.map((m) => (
@@ -136,7 +183,6 @@ function VolumeCard(props: { exercises: Exercise[] }) {
             </div>
           ))
         : null}
-      <div className="desc">HARD SET = WORKING SET AT ≤4 REPS IN RESERVE. 10–20 PER MUSCLE PER WEEK IS THE USUAL GROWTH RANGE; SECONDARY MUSCLES COUNT HALF.</div>
     </Card>
   );
 }
@@ -619,29 +665,61 @@ function FinishSheet(props: { workout: Workout; setCount: number; onClose: () =>
   );
 }
 
+const GROUP_ORDER: Exercise["group"][] = ["push", "pull", "legs", "arms", "core", "other"];
+const GROUP_LABEL: Record<Exercise["group"], string> = {
+  push: "PUSH · CHEST, SHOULDERS",
+  pull: "PULL · BACK, REAR DELTS",
+  legs: "LEGS · GLUTES, CALVES",
+  arms: "ARMS",
+  core: "CORE",
+  other: "OTHER",
+};
+
+/** Search index for an exercise: its name, machine label, group, equipment and the muscles it works. */
+const exerciseHay = (e: Exercise) => {
+  const m = musclesFor(e.name, e.group);
+  return buildHay({ name: e.name, brand: e.machineLabel, category: `${e.group} ${e.equipment}`, aliases: [...m.primary, ...m.secondary] });
+};
+
+/** Exercise list: ranked matches while searching, otherwise grouped by body area. */
+function ExerciseRows(props: { exercises: Exercise[]; query: string; onPick: (e: Exercise) => void; detail?: (e: Exercise) => ReactNode }) {
+  const q = props.query.trim();
+  const row = (e: Exercise) => (
+    <button className="row" key={e.id} onClick={() => props.onPick(e)}>
+      <div className="grow">
+        <div className="name uc" style={e.archived ? { color: "var(--gry)" } : undefined}>{e.name}</div>
+        {props.detail ? <div className="muted small">{props.detail(e)}</div> : e.machineLabel ? <div className="muted small uc">{e.machineLabel}</div> : null}
+      </div>
+      <span className="go">►</span>
+    </button>
+  );
+  if (q) {
+    const hits = rank(props.exercises, exerciseHay, q, 80);
+    return hits.length ? <>{hits.map(row)}</> : <div className="empty">NO MATCH · TRY A MUSCLE (TRICEPS) OR A MACHINE (CABLE).</div>;
+  }
+  return (
+    <>
+      {GROUP_ORDER.flatMap((g) => {
+        const list = props.exercises.filter((e) => e.group === g);
+        return list.length ? [<div className="subhead" key={`h-${g}`}>{GROUP_LABEL[g]} · {list.length}</div>, ...list.map(row)] : [];
+      })}
+    </>
+  );
+}
+
 function ExercisePicker(props: { exercises: Exercise[]; onPick: (e: Exercise) => void; onClose: () => void }) {
   const [q, setQ] = useState("");
   const [creating, setCreating] = useState<Exercise | null>(null);
-  const shown = props.exercises.filter((e) => e.name.toLowerCase().includes(q.trim().toLowerCase()));
   if (creating) return <ExerciseEditor exercise={creating} onClose={() => setCreating(null)} onSaved={props.onPick} />;
   return (
     <Sheet title="ADD EXERCISE" onClose={props.onClose}>
-      <input className="input" placeholder="SEARCH" aria-label="search exercises" value={q} onChange={(e: any) => setQ(e.target.value)} />
+      <input className="input" placeholder="SEARCH · E.G. REVERSE CURL, TRICEPS, CABLE" aria-label="search exercises" autoComplete="off" value={q} onChange={(e: any) => setQ(e.target.value)} />
+      <div style={{ height: 12 }} />
+      <Card title="LIBRARY" aside={`${props.exercises.length}`} flush>
+        <ExerciseRows exercises={props.exercises} query={q} onPick={props.onPick} />
+      </Card>
       <div style={{ height: 10 }} />
       <button className="btn secondary block" onClick={() => setCreating(newExercise(q))}>[+] NEW EXERCISE</button>
-      <div style={{ height: 12 }} />
-      <Card title="LIBRARY" aside={`${shown.length}`} flush>
-        {shown.length === 0 ? <div className="empty">NO MATCH.</div> : null}
-        {shown.map((e) => (
-          <button className="row" key={e.id} onClick={() => props.onPick(e)}>
-            <div className="grow">
-              <div className="name uc">{e.name}</div>
-              {e.machineLabel ? <div className="muted small uc">{e.machineLabel}</div> : null}
-            </div>
-            <span className="go">▶</span>
-          </button>
-        ))}
-      </Card>
     </Sheet>
   );
 }
@@ -658,29 +736,24 @@ const newExercise = (name = ""): Exercise => ({
 });
 
 function ExerciseLibrary(props: { exercises: Exercise[]; onClose: () => void; onEdit: (e: Exercise) => void }) {
+  const [q, setQ] = useState("");
   return (
     <Sheet title="EXERCISES" onClose={props.onClose} right={<button className="link" onClick={() => props.onEdit(newExercise())}>[+] NEW</button>}>
-      <div className="desc" style={{ margin: "0 0 12px" }}>
-        EACH MACHINE KEEPS ITS OWN HISTORY. TWO DIFFERENT CHEST PRESS MACHINES = TWO EXERCISES.
-      </div>
+      <input className="input" placeholder="SEARCH EXERCISES" aria-label="search exercises" autoComplete="off" value={q} onChange={(e: any) => setQ(e.target.value)} />
+      <div className="desc" style={{ margin: "8px 0 12px" }}>EACH MACHINE KEEPS ITS OWN HISTORY: TWO DIFFERENT CHEST PRESS MACHINES = TWO EXERCISES.</div>
       <Card title="LIBRARY" aside={`${props.exercises.length}`} flush>
-        {props.exercises.map((e) => (
-          <button className="row" key={e.id} onClick={() => props.onEdit(e)}>
-            <div className="grow">
-              <div className="name uc" style={e.archived ? { color: "var(--gry)" } : undefined}>{e.name}</div>
-              <div className="muted small">
-                {e.machineLabel ? (
-                  <>
-                    <span className="uc">{e.machineLabel}</span> ·{" "}
-                  </>
-                ) : null}
-                {e.loads.min}–{e.loads.max} BY {e.loads.step} · {e.repMin}–{e.repMax} REPS
-                {e.archived ? " · HIDDEN" : ""}
-              </div>
-            </div>
-            <span className="go">▶</span>
-          </button>
-        ))}
+        <ExerciseRows
+          exercises={props.exercises}
+          query={q}
+          onPick={props.onEdit}
+          detail={(e) => (
+            <>
+              {e.machineLabel ? <span className="uc">{e.machineLabel} · </span> : null}
+              {e.loads.min}–{e.loads.max} BY {e.loads.step} · {e.repMin}–{e.repMax} REPS
+              {e.archived ? " · HIDDEN" : ""}
+            </>
+          )}
+        />
       </Card>
     </Sheet>
   );
@@ -873,7 +946,12 @@ function LoadCard() {
   const tot = f.lowMin + f.highMin + f.anaerobicMin;
   return (
     <>
-      <Card title="JANOS-SYS/LOAD" status={t?.ratio != null ? `RATIO ${t.ratio.toFixed(2)} ${m.band.toUpperCase().replace("-", " ")}` : "NO RATIO YET"} flush>
+      <Card
+        title="JANOS-SYS/LOAD"
+        status={t?.ratio != null ? `RATIO ${t.ratio.toFixed(2)} ${m.band.toUpperCase().replace("-", " ")}` : "NO RATIO YET"}
+        flush
+        help="LOAD = GARMIN TRAINING LOAD (EPOC) FOR WATCH-RECORDED ACTIVITIES; SESSIONS WITHOUT THE WATCH ARE ESTIMATED FROM HEART RATE OR EFFORT × MINUTES (RED DOTS). RATIO = 7-DAY ÷ 28-DAY LOAD: 0.8–1.4 IS THE USUAL SAFE BUILD ZONE, ≥1.5 IS A SPIKE. FORM BELOW −30 MEANS DEEP FATIGUE."
+      >
         <PlotPanel
           id="cardio-load"
           rev="LOAD MON 1.2"
@@ -895,14 +973,11 @@ function LoadCard() {
               <Stat label="FATIGUE" value={pad(t.atl, 3)} />
               <Stat label="FORM" value={signed(t.tsb)} sub={t.tsb < -30 ? "HEAVY FATIGUE" : t.tsb < -10 ? "PRODUCTIVE" : t.tsb > 15 ? "FRESH" : "NEUTRAL"} />
             </div>
-            <div className="desc">
-              RATIO = 7-DAY ÷ 28-DAY LOAD. 0.8–1.4 IS THE USUAL SAFE BUILD ZONE; ≥1.5 IS A SPIKE. FORM BELOW −30 MEANS DEEP FATIGUE. RED DOTS ARE ESTIMATED LOADS.
-            </div>
           </div>
         ) : null}
       </Card>
       {tot > 0 ? (
-        <Card title="JANOS-SYS/INTENSITY" status="HR ZONES · 28 D" flush>
+        <Card title="JANOS-SYS/INTENSITY" status="HR ZONES · 28 D" flush help="MOST ENDURANCE PLANS KEEP ROUGHLY 75–80 % OF TIME IN ZONES 1–2.">
           <MeterPanel
             id="cardio-focus"
             rev="ZONE MOD 1.0"
@@ -918,7 +993,6 @@ function LoadCard() {
             ]}
             srText={`Last 28 days: ${Math.round(f.lowMin)} min low aerobic, ${Math.round(f.highMin)} min high aerobic, ${Math.round(f.anaerobicMin)} min anaerobic.`}
           />
-          <div className="desc pad">MOST ENDURANCE PLANS KEEP ROUGHLY 75–80 % OF TIME IN ZONES 1–2.</div>
         </Card>
       ) : null}
     </>
@@ -961,11 +1035,10 @@ function CardioHome() {
                 {s.source === "garmin" ? <span className="blu"> · GARMIN</span> : null}
               </div>
             </div>
-            <span className="go">▶</span>
+            <span className="go">►</span>
           </button>
         ))}
       </Card>
-      <div className="desc">LOAD = GARMIN TRAINING LOAD (EPOC) FOR WATCH-RECORDED ACTIVITIES. SESSIONS WITHOUT THE WATCH ARE ESTIMATED FROM HEART RATE (TRIMP) OR EFFORT × MINUTES.</div>
     </>
   );
 }

@@ -4,7 +4,9 @@
 
 export type PaletteName =
   | "k" | "ink" | "or" | "orb" | "am" | "yel" | "grn" | "red" | "wht" | "gry" | "dgy" | "dim" | "dim2"
-  | "blu" | "cya" | "dbl" | "tea" | "dred" | "dgrn" | "dcya" | "dblu" | "bdim";
+  | "blu" | "cya" | "dbl" | "tea" | "dred" | "dgrn" | "dcya" | "dblu" | "bdim"
+  /** severity ramp (hard bands r1 < r2 < r3 < red) */
+  | "r1" | "r2" | "r3";
 
 /** Text options for FB.T / fitT / TD. y is the baseline. Sizes are design units. */
 export interface TextOpts {

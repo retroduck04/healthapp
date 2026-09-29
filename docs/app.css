@@ -13,6 +13,7 @@
   --k:#000000; --ink:#100a04; --or:#ff8000; --orb:#ffa31f; --am:#ffb800; --yel:#ffe000; --grn:#3ce07a; --red:#ff2000;
   --wht:#f2eee2; --gry:#8a877c; --dgy:#34322c; --dim:#4d2600; --dim2:#241200; --blu:#8cc8f0; --cya:#30b8e0; --dbl:#2f6be0; --tea:#00c8b4;
   --dred:#2a0600; --dgrn:#0c3a1e; --dcya:#0a3040; --dblu:#0c1c44; --bdim:#1c3848;
+  --r1:#4a0c02; --r2:#7a1204; --r3:#b51906; /* severity ramp: hard bands r1 < r2 < r3 < --red (body map), never blended */
   /* type roles (each falls back to an installed DejaVu face, then the platform) */
   --sys:"Roboto Condensed","Arial Narrow","Avenir Next Condensed","DejaVu Sans Condensed","Liberation Sans Narrow","Helvetica Neue",Arimo,sans-serif; /* system labels */
   --diag:"Share Tech Mono","DejaVu Sans Mono",Menlo,"SF Mono",ui-monospace,Consolas,monospace;                                            /* data, logs, inputs */
@@ -416,7 +417,7 @@ button.row .uc {
   counter-reset: mgpanel;
 }
 
-/* page title strip: "▶ JANOS-SYS/FOOD" + amber status */
+/* page title strip: "► JANOS-SYS/FOOD" + amber status */
 .page-title {
   display: flex;
   align-items: center;
@@ -446,7 +447,7 @@ button.row .uc {
   color: var(--am);
 }
 
-/* section heading: "▶ HISTORY" */
+/* section heading: "► HISTORY" */
 h2 {
   margin: 18px 0 8px;
   padding: 0;
@@ -460,7 +461,7 @@ h2 {
 }
 
 h2::before {
-  content: "▶ ";
+  content: "► ";
 }
 
 /* day stepper row (food) */
@@ -2029,3 +2030,49 @@ input.input::-webkit-calendar-picker-indicator {
 .notice-stack .mg-key {
   pointer-events: auto;
 }
+
+/* [?] key in a panel bar: the panel's explanation, hidden until asked for */
+.card > .mg-bar .help-key {
+  flex: none;
+  min-height: 18px;
+  padding: 0 5px;
+  line-height: 16px;
+  font-size: 12px;
+}
+.card > .mg-bar .t + .help-key {
+  margin-left: auto;
+}
+.card > .mg-bar .help-key.on {
+  background: var(--or);
+  color: var(--k);
+}
+.card.flush > .card-body > .desc.help {
+  padding: 8px 12px 10px;
+  margin: 0;
+  border-top: 1px solid var(--dgy);
+}
+
+/* Today → TRAINING: the most fatigued muscle groups, tinted by band (same red ramp as the body map) */
+.fatigue-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  font: 400 13px/18px var(--diag);
+}
+.fatigue-line .lab {
+  color: var(--or);
+  margin-right: 2px;
+}
+.fatigue-line .fat {
+  padding: 0 6px;
+  border: 1px solid var(--dgy);
+  color: var(--wht);
+  white-space: nowrap;
+}
+.fatigue-line .fat.b0 { color: var(--or); }
+.fatigue-line .fat.b1 { background: var(--r1); border-color: var(--r1); }
+.fatigue-line .fat.b2 { background: var(--r2); border-color: var(--r2); }
+.fatigue-line .fat.b3 { background: var(--r3); border-color: var(--r3); }
+.fatigue-line .fat.b4 { background: var(--red); border-color: var(--red); color: var(--k); }

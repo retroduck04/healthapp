@@ -85,7 +85,7 @@ function enterPressesPrimary(e: KeyboardEvent, primary: () => HTMLElement | null
 // ---- layout -----------------------------------------------------------------
 
 /**
- * Full-screen terminal screen (protocol §8.16): 40 px header "▶ JANOS-SYS/<TITLE>" with [ESC] BACK,
+ * Full-screen terminal screen (protocol §8.16): 40 px header "► JANOS-SYS/<TITLE>" with [ESC] BACK,
  * scrolling body, optional footer (its LAST enabled button is the [ENTER] key), 24 px key-hint strip.
  */
 export function Sheet(props: {
@@ -131,7 +131,7 @@ export function Sheet(props: {
   return (
     <div className={`mg-screen sheet${props.className ? ` ${props.className}` : ""}`} role="dialog" aria-modal="true" aria-label={props.title} tabIndex={-1} ref={ref}>
       <div className="mg-scr-h sheet-head">
-        <span className="ttl">▶ JANOS-SYS/{props.title}</span>
+        <span className="ttl">► JANOS-SYS/{props.title}</span>
         {props.status ? <span className="st">{props.status}</span> : null}
         <span className="sp" />
         {props.right}
@@ -154,11 +154,11 @@ export function Sheet(props: {
   );
 }
 
-/** Page title strip: "▶ JANOS-SYS/<SYS>" with an amber status on the right. */
+/** Page title strip: "► JANOS-SYS/<SYS>" with an amber status on the right. */
 export function PageTitle(props: { sys: string; status?: ReactNode; children?: ReactNode }) {
   return (
     <div className="page-title">
-      <h1>▶ JANOS-SYS/{props.sys}</h1>
+      <h1>► JANOS-SYS/{props.sys}</h1>
       {props.status != null && props.status !== false ? <span className="st">{props.status}</span> : null}
       {props.children}
     </div>
@@ -168,7 +168,8 @@ export function PageTitle(props: { sys: string; status?: ReactNode; children?: R
 /**
  * Subsystem panel (protocol §8.2). Backward compatible with the old card: title, aside, tight, onClick.
  * New: tone ("red" diagnostic identity, "dbl" double rule), status (alias of aside), flush (no body
- * padding; use it for raster hosts and log rows), rev (micro revision label, e.g. "BODYMASS MOD 1.04").
+ * padding; use it for raster hosts and log rows), rev (micro revision label, e.g. "BODYMASS MOD 1.04"),
+ * help (explanation kept out of the way behind a [?] key in the bar; shown at the bottom when opened).
  */
 export function Card(props: {
   title?: ReactNode;
@@ -183,8 +184,10 @@ export function Card(props: {
   className?: string;
   id?: string;
   ariaLabel?: string;
+  help?: ReactNode;
 }) {
   const aside = props.status ?? props.aside;
+  const [helpOpen, setHelpOpen] = useState(false);
   const cls = ["card", "mg-panel", "mg-brk", props.tone, props.tight || props.flush ? "flush" : "", props.onClick ? "click" : "", props.className]
     .filter(Boolean)
     .join(" ");
@@ -208,9 +211,27 @@ export function Card(props: {
           <b className="tag" aria-hidden="true" />
           <span className="t">{props.title}</span>
           {aside ? <span className="st">{aside}</span> : null}
+          {props.help ? (
+            <button
+              type="button"
+              className={helpOpen ? "link help-key on" : "link help-key"}
+              aria-expanded={helpOpen}
+              aria-label="explain this panel"
+              onClick={(e: any) => {
+                e.stopPropagation();
+                setHelpOpen(!helpOpen);
+              }}
+              onKeyDown={(e: any) => e.stopPropagation()}
+            >
+              ?
+            </button>
+          ) : null}
         </div>
       ) : null}
-      <div className="card-body">{props.children}</div>
+      <div className="card-body">
+        {props.children}
+        {props.help && helpOpen ? <div className={props.tight || props.flush ? "desc pad help" : "desc help"}>{props.help}</div> : null}
+      </div>
       {props.rev ? <div className="rev">{props.rev}</div> : null}
     </section>
   );
@@ -521,8 +542,8 @@ export const Icons = {
   sleep: "04",
   progress: "05",
   gear: "CONFIG",
-  chevron: "▶",
-  back: "◀",
+  chevron: "►",
+  back: "◄",
 };
 
 export const fmtKcal = (v: number) => Math.round(v).toLocaleString("en-CA");
@@ -565,7 +586,7 @@ function domScreen(title: string, backLabel: string, strip: string[], role = "di
   root.setAttribute("aria-label", title);
   root.tabIndex = -1;
   const head = h("div", "mg-scr-h sheet-head");
-  head.append(h("span", "ttl", `▶ JANOS-SYS/${title}`), h("span", "sp"));
+  head.append(h("span", "ttl", `► JANOS-SYS/${title}`), h("span", "sp"));
   const back = h("button", "mg-key", backLabel) as HTMLButtonElement;
   back.type = "button";
   head.append(back);
