@@ -25,7 +25,7 @@ import { addDays } from "../engine/dates";
 import { rank } from "../engine/foodsearch";
 import { fmt } from "../engine/units";
 import { BarcodeScanner } from "./barcode";
-import { freshFood, hayOfFood, kcalPerServing, loadFoodDb, rowsOfBrand, rowToFood, searchDb, type FoodDb } from "./fooddb";
+import { brandMatch, freshFood, hayOfFood, kcalPerServing, loadFoodDb, rowsOfBrand, rowToFood, searchDb, type FoodDb } from "./fooddb";
 import { dayLabel, longDate } from "./format";
 import { Card, Chips, Field, fmtKcal, NumInput, PageTitle, promptScreen, Segmented, Sheet, Stat, useUI } from "./kit";
 import { loadEnergyModel, pad, runWeeklyCheckIn, signed, type EnergyModel } from "./models";
@@ -360,7 +360,6 @@ function FoodRow(props: { f: Food; onPick: (f: Food) => void }) {
 function FoodList(props: { onPick: (f: Food) => void; onCreate: () => void }) {
   const foods = useLive(allFoods, [], [] as Food[]);
   const [q, setQ] = useState("");
-  const [chain, setChain] = useState<string | null>(null);
   const [db, setDb] = useState<FoodDb | null>(null);
   const [dbFailed, setDbFailed] = useState(false);
   useEffect(() => {
@@ -375,58 +374,43 @@ function FoodList(props: { onPick: (f: Food) => void; onCreate: () => void }) {
   }, []);
   const query = q.trim();
   const pick = (f: Food) => props.onPick(freshFood(db, f));
+  // Typing just a restaurant's name ("dominos", "timmies") lists its whole menu.
+  const chain = db && query ? brandMatch(db, query) : null;
 
   // The user's own foods first (recent when not searching), then the built-in database.
   const mine = useMemo(() => {
-    if (chain !== null) return [];
     if (!query) return foods.slice(0, 12);
     return rank(foods, (f) => hayOfFood(db, f), query, 15);
-  }, [foods, query, db, chain]);
+  }, [foods, query, db]);
   const fromDb = useMemo(() => {
-    if (!db || (!query && chain === null)) return [];
+    if (!db || !query) return [];
     const have = new Set(mine.map((f) => f.id));
-    const rows = chain !== null ? (query ? searchDb(db, query, 600).filter((r) => r[1] === chain) : rowsOfBrand(db, chain)) : searchDb(db, query, 40);
+    const rows = chain ? rowsOfBrand(db, chain) : searchDb(db, query, 40);
     return rows.filter((r) => !have.has(r[0])).map(rowToFood);
   }, [db, query, chain, mine]);
-
-  const chains = db ? (
-    <Card title="RESTAURANTS" aside={chain !== null ? <button className="link" onClick={() => setChain(null)}>ALL</button> : `${db.brands.length} CHAINS`}>
-      <Chips
-        options={[...db.brands.map((b) => ({ value: b.name, label: b.name.toUpperCase() })), { value: "", label: "STAPLES" }]}
-        value={chain}
-        onChange={(v) => setChain(v)}
-        allowNone
-      />
-    </Card>
-  ) : null;
 
   return (
     <>
       <input
         className="input"
-        placeholder={chain !== null ? `SEARCH ${chain || "STAPLES"}` : "SEARCH · E.G. DOMINOS 3 MEAT"}
+        placeholder="SEARCH A FOOD OR A RESTAURANT"
         aria-label="search foods"
         autoComplete="off"
         value={q}
         onChange={(e: any) => setQ(e.target.value)}
       />
       <div style={{ height: 10 }} />
-      {chain !== null ? chains : null}
       {mine.length ? (
         <Card title={query ? "YOUR FOODS" : "RECENT"} aside={`${mine.length}`} flush>
           {mine.map((f) => <FoodRow key={f.id} f={f} onPick={pick} />)}
         </Card>
       ) : null}
-      {chain === null && !query ? chains : null}
-      {query || chain !== null ? (
-        <Card title={chain !== null ? chain.toUpperCase() || "STAPLES" : "DATABASE"} aside={db ? `${fromDb.length}` : null} flush>
+      {query ? (
+        <Card title={chain ? chain.toUpperCase() : "DATABASE"} aside={db ? `${fromDb.length}` : null} flush>
           {!db ? <div className="empty">{dbFailed ? "DATABASE OFFLINE · OPEN THE APP ONLINE ONCE TO CACHE IT." : "LOADING DATABASE…"}</div> : null}
           {db && fromDb.length === 0 && mine.length === 0 ? <div className="empty">NO MATCH · TRY FEWER WORDS, SCAN THE BARCODE, OR USE QUICK.</div> : null}
           {fromDb.map((f) => <FoodRow key={f.id} f={f} onPick={pick} />)}
         </Card>
-      ) : null}
-      {!query && chain === null && !foods.length ? (
-        <div className="desc pad">SEARCH {db ? db.rows.length : "500+"} RESTAURANT ITEMS AND STAPLES, OR SCAN A BARCODE. FOODS YOU LOG ARE FILED UNDER RECENT.</div>
       ) : null}
       <button className="btn secondary block" onClick={props.onCreate}>[+] NEW FOOD FROM A LABEL</button>
     </>

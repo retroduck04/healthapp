@@ -33,14 +33,14 @@ export function normalize(s: string): string {
 const tokens = (s: string) => (s ? normalize(s).split(" ").filter(Boolean) : []);
 
 /** Nicknames people type for each chain (keys are normalized brand names). */
-const BRAND_NICK: Record<string, string> = {
-  mcdonalds: "mcd mcds maccas mcdonald mickey ds",
+export const BRAND_NICK: Record<string, string> = {
+  mcdonalds: "mcd mcds maccas mcdonald mickeyds",
   "tim hortons": "timmies timmys tims timhortons hortons",
   "burger king": "bk burgerking",
   kfc: "kentucky",
   starbucks: "sbux",
   "pizza pizza": "pizzapizza",
-  "little caesars": "caesars littlecaesars",
+  "little caesars": "littlecaesars",
   "papa johns": "papajohns",
   "pizza hut": "pizzahut",
   dominos: "dominoes domino",
@@ -57,7 +57,7 @@ const BRAND_NICK: Record<string, string> = {
   "mary browns": "marybrowns",
   "swiss chalet": "swisschalet",
   "second cup": "secondcup",
-  "freshii": "fresh",
+  freshii: "freshi",
   "st hubert": "sthubert",
 };
 

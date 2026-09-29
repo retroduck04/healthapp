@@ -3,7 +3,7 @@
 // loads on first search. Rows are converted to ordinary Food records when picked.
 
 import type { Food } from "../db/types";
-import { buildHay, rank, type Hay } from "../engine/foodsearch";
+import { BRAND_NICK, buildHay, normalize, rank, type Hay } from "../engine/foodsearch";
 
 declare const __FOODDB_URL__: string;
 
@@ -53,6 +53,18 @@ export function loadFoodDb(): Promise<FoodDb> {
 
 export function searchDb(db: FoodDb, q: string, limit = 40): DbRow[] {
   return rank(db.rows, (_r, i) => db.hays[i], q, limit);
+}
+
+/** The chain a query names on its own ("dominos", "mcd", "tim hortons menu"), or null. */
+export function brandMatch(db: FoodDb, q: string): string | null {
+  const c = normalize(q).replace(/\b(menu|restaurant|all)\b/g, "").replace(/ /g, "");
+  if (c.length < 2) return null;
+  for (const b of db.brands) {
+    const n = normalize(b.name);
+    const names = [n.replace(/ /g, ""), ...(BRAND_NICK[n] ?? "").split(" ").filter(Boolean)];
+    if (names.includes(c)) return b.name;
+  }
+  return null;
 }
 
 export function rowsOfBrand(db: FoodDb, brand: string): DbRow[] {

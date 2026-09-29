@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { normalize, parseQuery, buildHay, scoreHay } from "../src/engine/foodsearch";
-import { indexRows, rowToFood, searchDb, kcalPerServing, type DbRow } from "../src/ui/fooddb";
+import { brandMatch, indexRows, rowToFood, searchDb, kcalPerServing, type DbRow } from "../src/ui/fooddb";
 
 const rows: DbRow[] = JSON.parse(readFileSync(join(__dirname, "../src/data/fooddb.json"), "utf8")).rows;
 const db = indexRows(rows);
@@ -71,4 +71,16 @@ test("name matches rank above alias-only matches", () => {
   const byAlias = buildHay({ name: "Pacific Veggie", brand: "Domino's", aliases: ["pepperoni style"], category: "pizza" });
   const q = parseQuery("pepperoni");
   assert.ok(scoreHay(byName, q)!.s > scoreHay(byAlias, q)!.s);
+});
+
+test("a restaurant name on its own opens that chain's menu", () => {
+  assert.equal(brandMatch(db, "dominos"), "Domino's");
+  assert.equal(brandMatch(db, "Domino's"), "Domino's");
+  assert.equal(brandMatch(db, "timmies"), "Tim Hortons");
+  assert.equal(brandMatch(db, "tim hortons menu"), "Tim Hortons");
+  assert.equal(brandMatch(db, "mcd"), "McDonald's");
+  assert.equal(brandMatch(db, "kfc"), "KFC");
+  assert.equal(brandMatch(db, "chicken"), null, "food words stay a normal search");
+  assert.equal(brandMatch(db, "pizza"), null);
+  assert.equal(brandMatch(db, "dominos 3 meat"), null, "more words = item search");
 });
