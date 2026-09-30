@@ -19,7 +19,7 @@ export function mealByClock(ms = Date.now()): Meal {
   return h < 11 ? "breakfast" : h < 15 ? "lunch" : h < 21 ? "dinner" : "snacks";
 }
 
-function useFoodDb(): FoodDb | null {
+export function useFoodDb(): FoodDb | null {
   const [db, setDb] = useState<FoodDb | null>(null);
   useEffect(() => {
     let live = true;

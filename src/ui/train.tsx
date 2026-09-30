@@ -18,13 +18,14 @@ import {
   workingSets,
   type ExerciseSession,
 } from "../db/repo";
-import type { CardioModality, CardioSession, CardioType, Exercise, StrengthSet, Template, Workout } from "../db/types";
+import type { CardioModality, CardioSession, CardioType, Exercise, GarminDay, StrengthSet, Template, Workout } from "../db/types";
 import { detectRecords, sessionRecords, type RecordHit, type SetLite } from "../engine/records";
 import { adviseProgression, e1RM, type ProgressionAdvice } from "../engine/strength";
 import { MUSCLE_LABEL, MUSCLES, musclesFor, weeklySetsPerMuscle } from "../engine/volume";
 import { buildHay, rank } from "../engine/foodsearch";
 import { FATIGUE_TAU_H, muscleFatigue, rankFatigue, type FatigueSet } from "../engine/fatigue";
-import { BodyMapPanel } from "./bodymap";
+import { BodyMapPanel, type Vitals } from "./bodymap";
+import { listGarminDays } from "../db/garmin";
 import { fmt, formatMinSec } from "../engine/units";
 import { distFromDisplay, distToDisplay, shortDateTime, toLocalInputValue } from "./format";
 import { Card, Chips, confirmScreen, Field, NumInput, PageTitle, ProgressBar, Segmented, Sheet, Stat, Stepper, useUI } from "./kit";
@@ -77,19 +78,39 @@ function BodyHome() {
   );
 }
 
-/** Muscle fatigue now, on the front/back body map. */
+/** Latest Garmin vitals for the body map (each value from the most recent day that has it). */
+export function latestVitals(days: readonly GarminDay[]): Vitals {
+  const sorted = [...days].sort((a, b) => b.date.localeCompare(a.date));
+  const pick = (get: (d: GarminDay) => number | null | undefined) => {
+    for (const d of sorted) {
+      const x = get(d);
+      if (x != null && Number.isFinite(x) && x >= 0) return { v: x, date: d.date };
+    }
+    return null;
+  };
+  const hr = pick((d) => (d.restingHR && d.restingHR > 0 ? d.restingHR : null));
+  const hrv = pick((d) => (d.hrv?.lastNight && d.hrv.lastNight > 0 ? d.hrv.lastNight : null));
+  const resp = pick((d) => (d.sleep?.respiration && d.sleep.respiration > 0 ? d.sleep.respiration : null));
+  const stress = pick((d) => d.stressAvg);
+  const bb = pick((d) => d.bodyBatteryWake);
+  return { hr: hr?.v ?? null, hrv: hrv?.v ?? null, resp: resp?.v ?? null, stress: stress?.v ?? null, bb: bb?.v ?? null, date: hr?.date ?? hrv?.date ?? resp?.date ?? null };
+}
+
+/** Muscle fatigue now, on the front/back body map, with the Garmin vitals layer (heart, lungs, ECG). */
 export function FatigueCard(props: { sets: FatigueSet[] }) {
+  const garmin = useLive(listGarminDays, [], [] as GarminDay[]);
+  const vitals = latestVitals(garmin);
   const f = muscleFatigue(props.sets, Date.now());
   const ranked = rankFatigue(f);
   const ready = MUSCLES.filter((m) => f[m].lastTrainedMs !== null && f[m].readyInH === 0).length;
   return (
     <Card
-      title="JANOS-SYS/FATIGUE"
-      status={ranked.length ? `${ranked.length} RECOVERING` : "ALL FRESH"}
+      title="JANOS-SYS/BODY"
+      status={`${vitals.hr ? `HR ${vitals.hr} · ` : ""}${ranked.length ? `${ranked.length} RECOVERING` : "ALL FRESH"}`}
       flush
-      help={`RED = TRAINING STRESS A MUSCLE IS STILL RECOVERING FROM. DEEP RED = LOW, BRIGHT RED = MAX, HOLLOW = FRESH. EVERY HARD SET ADDS STRESS (MORE WHEN TAKEN CLOSER TO FAILURE; SECONDARY MUSCLES COUNT HALF) AND IT FADES OVER ${FATIGUE_TAU_H.biceps}–${FATIGUE_TAU_H.chest} H DEPENDING ON MUSCLE SIZE. "READY" = BELOW MOD, FINE TO TRAIN HARD AGAIN.${ready ? ` ${ready} TRAINED GROUP${ready > 1 ? "S" : ""} READY NOW.` : ""}`}
+      help={`MUSCLES: RED = TRAINING STRESS A MUSCLE IS STILL RECOVERING FROM. DEEP RED = LOW, BRIGHT RED = MAX, HOLLOW = FRESH. EVERY HARD SET ADDS STRESS (MORE WHEN TAKEN CLOSER TO FAILURE; SECONDARY MUSCLES COUNT HALF) AND IT FADES OVER ${FATIGUE_TAU_H.biceps}–${FATIGUE_TAU_H.chest} H DEPENDING ON MUSCLE SIZE. "READY" = BELOW MOD, FINE TO TRAIN HARD AGAIN.${ready ? ` ${ready} TRAINED GROUP${ready > 1 ? "S" : ""} READY NOW.` : ""} VITALS: THE HEART BEATS AT YOUR GARMIN RESTING HEART RATE, THE LUNGS BREATHE AT YOUR SLEEP BREATHING RATE, AND THE ECG SPACING WOBBLES WITH LAST NIGHT'S HRV. THE TRACE IS A SIMULATION FROM THOSE NUMBERS, NOT A MEDICAL ECG. IT TURNS AMBER WHEN AVERAGE STRESS IS 50+.`}
     >
-      <BodyMapPanel id="train-myomap" muscles={f} rev="MYOMAP R01" />
+      <BodyMapPanel id="train-myomap" muscles={f} vitals={vitals} rev="MYOMAP R02" />
     </Card>
   );
 }

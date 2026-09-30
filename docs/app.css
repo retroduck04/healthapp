@@ -2104,3 +2104,78 @@ textarea.input.describe {
 .bad-tag {
   color: var(--red);
 }
+
+/* add-food modes: two rows of three */
+.seg-grid .segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* OBESITY PROTOCOL: chain tiles and combo rows */
+.px-icon {
+  display: block;
+  flex: none;
+}
+.chain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.chain-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-height: 96px;
+  padding: 10px 4px 8px;
+  background: var(--k);
+  border: 1px solid var(--or);
+  color: var(--or);
+  text-transform: uppercase;
+}
+.chain-tile .nm {
+  font: 400 13px/15px var(--sys);
+  color: var(--wht);
+  text-align: center;
+}
+.chain-tile .ct {
+  font: 400 11px/13px var(--diag);
+  color: var(--or);
+}
+.chain-tile:active,
+.chain-tile:focus-visible {
+  background: var(--or);
+  color: var(--k);
+}
+.chain-tile:active .nm,
+.chain-tile:focus-visible .nm,
+.chain-tile:active .ct,
+.chain-tile:focus-visible .ct {
+  color: var(--k);
+}
+.combo-row .icons {
+  display: flex;
+  gap: 2px;
+  flex: none;
+  width: 72px;
+  flex-wrap: wrap;
+}
+.combo-row .name,
+.combo-head .ex-title {
+  text-transform: uppercase;
+}
+.dmg.grn { color: var(--grn); }
+.dmg.am { color: var(--am); }
+.dmg.red { color: var(--red); }
+.combo-head {
+  margin: 0 0 12px;
+}
+.combo-head .icons.big {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 8px;
+}
+.row.static .px-icon {
+  margin-right: 10px;
+}

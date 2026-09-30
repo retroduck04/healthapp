@@ -26,6 +26,7 @@ import { rank } from "../engine/foodsearch";
 import { fmt } from "../engine/units";
 import { BarcodeScanner } from "./barcode";
 import { DescribeMeal } from "./describe";
+import { ObesityBoard } from "./obesity";
 import { brandMatch, freshFood, hayOfFood, kcalPerServing, loadFoodDb, rowsOfBrand, rowToFood, searchDb, type FoodDb } from "./fooddb";
 import { dayLabel, longDate } from "./format";
 import { Card, Chips, Field, fmtKcal, NumInput, PageTitle, promptScreen, Segmented, Sheet, Stat, useUI } from "./kit";
@@ -286,7 +287,7 @@ function EntryEditor(props: { entry: FoodEntry; onClose: () => void }) {
 
 // ---- add-food sheet ---------------------------------------------------------
 
-type Mode = "describe" | "recent" | "saved" | "barcode" | "quick";
+type Mode = "describe" | "recent" | "saved" | "barcode" | "quick" | "obesity";
 
 export function FoodAddSheet(props: { day: string; meal: string }) {
   const { close, toast } = useUI();
@@ -314,19 +315,23 @@ export function FoodAddSheet(props: { day: string; meal: string }) {
       <div style={{ marginBottom: 10 }}>
         <Chips options={MEALS.map((m) => ({ value: m, label: mealName[m] }))} value={meal} onChange={(v) => v && setMeal(v)} />
       </div>
-      <Segmented
-        options={[
-          { value: "describe", label: "AI" },
-          { value: "recent", label: "SEARCH" },
-          { value: "barcode", label: "SCAN" },
-          { value: "saved", label: "MEALS" },
-          { value: "quick", label: "QUICK" },
-        ]}
-        value={mode}
-        onChange={setMode}
-      />
+      <div className="seg-grid">
+        <Segmented
+          options={[
+            { value: "describe", label: "AI" },
+            { value: "recent", label: "SEARCH" },
+            { value: "barcode", label: "SCAN" },
+            { value: "obesity", label: "OBESITY" },
+            { value: "saved", label: "MEALS" },
+            { value: "quick", label: "QUICK" },
+          ]}
+          value={mode}
+          onChange={setMode}
+        />
+      </div>
       <div style={{ height: 12 }} />
       {mode === "describe" ? <DescribeMeal day={props.day} meal={meal} onLogged={close} /> : null}
+      {mode === "obesity" ? <ObesityBoard day={props.day} meal={meal} onLogged={close} /> : null}
       {mode === "recent" ? <FoodList onPick={setPicked} onCreate={() => setCreating({})} /> : null}
       {mode === "barcode" ? <BarcodePanel onFound={setPicked} onCreate={setCreating} /> : null}
       {mode === "saved" ? (

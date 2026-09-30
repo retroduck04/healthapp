@@ -1,6 +1,6 @@
 // Small sheets: weigh-in, morning check-in, caffeine, quick log and settings (the config terminal).
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { del, get, persistenceStatus, put, restoreAll, uid, useLive, type Backup } from "../db/db";
 import { buildBackupJson, buildCsvZip, shareOrDownload } from "../db/exporters";
 import { createGarminKey, getGarminKey, getGarminStatus, setGarminKey, syncGarmin, type GarminStatus } from "../db/garmin";
@@ -42,12 +42,9 @@ export function WeightSheet() {
   const ref = trend.length ? weightToDisplay(trend.at(-1)!.trend, settings) : null;
   const [value, setValue] = useState<number | null>(null);
   const [warning, setWarning] = useState<{ reason: string; suggestion: number | null } | null>(null);
-  const touched = useRef(false);
-  useEffect(() => {
-    // Prefill the last weigh-in, but never over something the user already started typing.
-    if (!touched.current && value === null && last) setValue(Math.round(weightToDisplay(last.kg, settings) * 10) / 10);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [last?.id]);
+  // The last weigh-in is the placeholder: typing starts fresh, and SAVE on an empty box repeats it.
+  const suggested = last ? Math.round(weightToDisplay(last.kg, settings) * 10) / 10 : null;
+  const entry = value ?? suggested;
 
   const save = async (v: number, force = false) => {
     if (!force) {
@@ -67,13 +64,13 @@ export function WeightSheet() {
       title="WEIGH-IN"
       onClose={close}
       footer={
-        <button className="btn block xl" disabled={value === null} onClick={() => value !== null && save(value)}>
+        <button className="btn block xl" disabled={entry === null} onClick={() => entry !== null && save(entry)}>
           SAVE
         </button>
       }
     >
       <Field label={`WEIGHT (${settings.weightUnit})`}>
-        <NumInput big value={value} onChange={(v) => { touched.current = true; setValue(v); setWarning(null); }} ariaLabel="weight" autoFocus />
+        <NumInput big value={value} onChange={(v) => { setValue(v); setWarning(null); }} placeholder={suggested !== null ? String(suggested) : undefined} ariaLabel="weight" autoFocus />
       </Field>
       {ref !== null ? (
         <div className="desc" style={{ textAlign: "center" }}>
@@ -90,8 +87,8 @@ export function WeightSheet() {
                 USE {fmt(warning.suggestion)} {settings.weightUnit}
               </button>
             ) : null}
-            <button className="btn sm plain" onClick={() => value !== null && save(value, true)}>
-              SAVE {value} ANYWAY
+            <button className="btn sm plain" onClick={() => entry !== null && save(entry, true)}>
+              SAVE {entry} ANYWAY
             </button>
           </div>
         </div>

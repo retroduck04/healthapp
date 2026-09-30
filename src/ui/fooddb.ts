@@ -79,7 +79,7 @@ export function rowToFood(r: DbRow): Food {
       : `${brand.toUpperCase()} PUBLISHED NUTRITION${region === "US" ? " · US MENU (CANADIAN DATA NOT PUBLISHED)" : " · CANADA"}`;
   return {
     id,
-    name: variant ? `${name}, ${variant}` : name,
+    name: variant && !name.toLowerCase().includes(variant.toLowerCase()) ? `${name}, ${variant}` : name,
     brand: brand || undefined,
     source: "database",
     unitOnly,
