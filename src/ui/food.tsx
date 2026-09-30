@@ -25,6 +25,7 @@ import { addDays } from "../engine/dates";
 import { rank } from "../engine/foodsearch";
 import { fmt } from "../engine/units";
 import { BarcodeScanner } from "./barcode";
+import { DescribeMeal } from "./describe";
 import { brandMatch, freshFood, hayOfFood, kcalPerServing, loadFoodDb, rowsOfBrand, rowToFood, searchDb, type FoodDb } from "./fooddb";
 import { dayLabel, longDate } from "./format";
 import { Card, Chips, Field, fmtKcal, NumInput, PageTitle, promptScreen, Segmented, Sheet, Stat, useUI } from "./kit";
@@ -139,6 +140,14 @@ export function FoodScreen() {
         <button className="icon-btn" aria-label="next day" disabled={day >= todayISO} onClick={() => setDay(addDays(day, 1))}>►</button>
       </div>
 
+      <Card
+        title="JANOS-SYS/DESCRIBE"
+        status="AI"
+        help="TYPE WHAT YOU ATE IN PLAIN WORDS (AMOUNTS HELP: '2 SLICES', 'A BIG BOWL'). AN AI SPLITS IT INTO ITEMS AND ESTIMATES EACH ONE; RESTAURANT ITEMS AND BASICS IT RECOGNIZES USE THE BUILT-IN OFFICIAL NUMBERS. YOU CHECK THE LIST BEFORE ANYTHING IS LOGGED. THE MEAL IS PICKED FROM THE TIME OF DAY; CHANGE IT ON THE REVIEW SCREEN."
+      >
+        <DescribeMeal day={day} />
+      </Card>
+
       <Card title="JANOS-SYS/INTAKE" status={t.source === "NONE" ? <button className="link" onClick={() => open({ kind: "settings" })}>SET TARGET</button> : `${t.source} TARGETS`} flush>
         <MeterPanel
           id="food-intake"
@@ -168,6 +177,7 @@ export function FoodScreen() {
                 <div className="grow">
                   <div className="name uc">{e.name}</div>
                   <div className="muted small">
+                    {e.method === "ai" ? "AI · " : ""}
                     {e.amountLabel ? `${e.amountLabel} · ` : ""}P {Math.round(e.protein)} · C {Math.round(e.carbs)} · F {Math.round(e.fat)}
                   </div>
                 </div>
@@ -276,12 +286,12 @@ function EntryEditor(props: { entry: FoodEntry; onClose: () => void }) {
 
 // ---- add-food sheet ---------------------------------------------------------
 
-type Mode = "recent" | "saved" | "barcode" | "quick";
+type Mode = "describe" | "recent" | "saved" | "barcode" | "quick";
 
 export function FoodAddSheet(props: { day: string; meal: string }) {
   const { close, toast } = useUI();
   const [meal, setMeal] = useState<Meal>((MEALS as string[]).includes(props.meal) ? (props.meal as Meal) : "snacks");
-  const [mode, setMode] = useState<Mode>("recent");
+  const [mode, setMode] = useState<Mode>("describe");
   const [picked, setPicked] = useState<Food | null>(null);
   const [creating, setCreating] = useState<Partial<Food> | null>(null);
 
@@ -306,8 +316,9 @@ export function FoodAddSheet(props: { day: string; meal: string }) {
       </div>
       <Segmented
         options={[
+          { value: "describe", label: "AI" },
           { value: "recent", label: "SEARCH" },
-          { value: "barcode", label: "BARCODE" },
+          { value: "barcode", label: "SCAN" },
           { value: "saved", label: "MEALS" },
           { value: "quick", label: "QUICK" },
         ]}
@@ -315,6 +326,7 @@ export function FoodAddSheet(props: { day: string; meal: string }) {
         onChange={setMode}
       />
       <div style={{ height: 12 }} />
+      {mode === "describe" ? <DescribeMeal day={props.day} meal={meal} onLogged={close} /> : null}
       {mode === "recent" ? <FoodList onPick={setPicked} onCreate={() => setCreating({})} /> : null}
       {mode === "barcode" ? <BarcodePanel onFound={setPicked} onCreate={setCreating} /> : null}
       {mode === "saved" ? (
@@ -348,7 +360,7 @@ function FoodRow(props: { f: Food; onPick: (f: Food) => void }) {
       <div className="grow">
         <div className="name uc">{f.name}</div>
         <div className="muted small">
-          {f.brand ? <span className="uc">{f.brand} · </span> : f.source === "database" ? "STAPLE · " : null}
+          {f.brand ? <span className="uc">{f.brand} · </span> : f.source === "database" ? "GENERIC · " : null}
           <span className="uc">{s ? s.label : "100 g"}</span>
         </div>
       </div>

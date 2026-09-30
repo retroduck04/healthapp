@@ -1,0 +1,674 @@
+[
+ {
+  "name": "Chocolate milk (2%)",
+  "usda": "Chocolate milk, reduced fat (2%)",
+  "fdcId": 2705468,
+  "foodCode": "11511200",
+  "category": "drink",
+  "aliases": [
+   "chocolate milk",
+   "choc milk",
+   "2% chocolate milk",
+   "chocolate milk reduced fat"
+  ],
+  "kcal": 76,
+  "protein": 2.99,
+  "carbs": 12.13,
+  "fat": 1.9,
+  "fiber": 0.7,
+  "sugar": 9.55,
+  "sodiumMg": 66,
+  "servings": [
+   [
+    "1 cup",
+    248
+   ],
+   [
+    "1 school carton",
+    248
+   ]
+  ]
+ },
+ {
+  "name": "Hot chocolate (made with milk)",
+  "usda": "Hot chocolate / cocoa, made with whole or reduced fat (2%) milk",
+  "fdcId": 2705473,
+  "foodCode": "11512010",
+  "category": "drink",
+  "aliases": [
+   "hot chocolate",
+   "hot cocoa",
+   "cocoa",
+   "hot chocolate with milk"
+  ],
+  "kcal": 91,
+  "protein": 2.73,
+  "carbs": 16.53,
+  "fat": 1.54,
+  "fiber": 0,
+  "sugar": 15.18,
+  "sodiumMg": 60,
+  "servings": [
+   [
+    "1 cup",
+    248
+   ]
+  ]
+ },
+ {
+  "name": "Chocolate milkshake",
+  "usda": "Milk shake, home recipe, chocolate",
+  "fdcId": 2705503,
+  "foodCode": "11541110",
+  "category": "drink",
+  "aliases": [
+   "chocolate milkshake",
+   "milkshake",
+   "milk shake",
+   "chocolate shake",
+   "shake"
+  ],
+  "kcal": 120,
+  "protein": 3.47,
+  "carbs": 13.53,
+  "fat": 6.14,
+  "fiber": 0.5,
+  "sugar": 12.57,
+  "sodiumMg": 52,
+  "servings": [
+   [
+    "1 milkshake (10 fl oz)",
+    280
+   ],
+   [
+    "1 cup",
+    224
+   ]
+  ]
+ },
+ {
+  "name": "Fruit yogurt, low fat",
+  "usda": "Yogurt, low fat milk, fruit",
+  "fdcId": 2705427,
+  "foodCode": "11432000",
+  "category": "dairy",
+  "aliases": [
+   "fruit yogurt",
+   "yogurt",
+   "yoghurt",
+   "flavored yogurt",
+   "strawberry yogurt",
+   "low fat yogurt",
+   "fruit yoghurt"
+  ],
+  "kcal": 93,
+  "protein": 4.57,
+  "carbs": 15.69,
+  "fat": 1.34,
+  "fiber": 0.2,
+  "sugar": 12.84,
+  "sodiumMg": 65,
+  "servings": [
+   [
+    "1 container (6 oz)",
+    170
+   ],
+   [
+    "1 small container (4 oz)",
+    113
+   ],
+   [
+    "1 cup",
+    245
+   ]
+  ]
+ },
+ {
+  "name": "Vanilla ice cream",
+  "usda": "Ice cream, vanilla",
+  "fdcId": 2705630,
+  "foodCode": "13110100",
+  "category": "dessert",
+  "aliases": [
+   "ice cream",
+   "vanilla ice cream",
+   "icecream",
+   "scoop of ice cream"
+  ],
+  "kcal": 207,
+  "protein": 3.5,
+  "carbs": 23.6,
+  "fat": 11,
+  "fiber": 0.7,
+  "sugar": 21.22,
+  "sodiumMg": 80,
+  "servings": [
+   [
+    "1 cup",
+    135
+   ],
+   [
+    "1 scoop",
+    120
+   ],
+   [
+    "1 individual container",
+    75
+   ]
+  ]
+ },
+ {
+  "name": "Cream cheese",
+  "usda": "Cream cheese, regular, plain",
+  "fdcId": 2705760,
+  "foodCode": "14301010",
+  "category": "dairy",
+  "aliases": [
+   "cream cheese",
+   "philadelphia",
+   "philly cheese",
+   "cream cheese spread"
+  ],
+  "kcal": 343,
+  "protein": 5.79,
+  "carbs": 4.56,
+  "fat": 33.49,
+  "fiber": 0,
+  "sugar": 3.76,
+  "sodiumMg": 368,
+  "servings": [
+   [
+    "1 tbsp",
+    15
+   ],
+   [
+    "1 individual container (1 oz)",
+    28.35
+   ]
+  ]
+ },
+ {
+  "name": "Sour cream",
+  "usda": "Sour cream, regular",
+  "fdcId": 2705614,
+  "foodCode": "12310100",
+  "category": "dairy",
+  "aliases": [
+   "sour cream",
+   "soured cream"
+  ],
+  "kcal": 196,
+  "protein": 3.07,
+  "carbs": 5.56,
+  "fat": 17.99,
+  "fiber": 0,
+  "sugar": 3.41,
+  "sodiumMg": 50,
+  "servings": [
+   [
+    "1 tbsp",
+    15
+   ],
+   [
+    "1 individual container",
+    30
+   ],
+   [
+    "1 cup",
+    240
+   ]
+  ]
+ },
+ {
+  "name": "String cheese (mozzarella)",
+  "usda": "Cheese, Mozzarella, part skim",
+  "fdcId": 2705723,
+  "foodCode": "14107030",
+  "category": "dairy",
+  "aliases": [
+   "string cheese",
+   "cheese stick",
+   "mozzarella stick",
+   "mozzarella",
+   "part skim mozzarella",
+   "cheestring",
+   "cheese strings"
+  ],
+  "kcal": 296,
+  "protein": 23.7,
+  "carbs": 4.44,
+  "fat": 20.4,
+  "fiber": 0,
+  "sugar": 1.81,
+  "sodiumMg": 699,
+  "servings": [
+   [
+    "1 stick",
+    28.35
+   ],
+   [
+    "1 slice",
+    21
+   ],
+   [
+    "1 cup, shredded",
+    113
+   ]
+  ]
+ },
+ {
+  "name": "Pork chop",
+  "usda": "Pork, chop, NS as to fat eaten",
+  "fdcId": 2705866,
+  "foodCode": "22101000",
+  "category": "protein",
+  "aliases": [
+   "pork chop",
+   "pork chops",
+   "baked pork chop",
+   "grilled pork chop",
+   "broiled pork chop"
+  ],
+  "kcal": 183,
+  "protein": 27.5,
+  "carbs": 0,
+  "fat": 7.55,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 354,
+  "servings": [
+   [
+    "1 regular chop",
+    120
+   ],
+   [
+    "1 thin chop",
+    90
+   ],
+   [
+    "1 thick chop",
+    180
+   ]
+  ]
+ },
+ {
+  "name": "BBQ pork ribs",
+  "usda": "Pork, ribs",
+  "fdcId": 2705894,
+  "foodCode": "22701000",
+  "category": "protein",
+  "aliases": [
+   "ribs",
+   "pork ribs",
+   "bbq ribs",
+   "barbecue ribs",
+   "spare ribs",
+   "spareribs",
+   "baby back ribs"
+  ],
+  "kcal": 254,
+  "protein": 16.22,
+  "carbs": 12.13,
+  "fat": 15.12,
+  "fiber": 0.3,
+  "sugar": 9.89,
+  "sodiumMg": 678,
+  "servings": [
+   [
+    "1 rib (meat only)",
+    35
+   ],
+   [
+    "1 serving (3 ribs)",
+    105
+   ]
+  ]
+ },
+ {
+  "name": "Roast chicken with skin",
+  "usda": "Chicken, NS as to part, rotisserie, skin eaten",
+  "fdcId": 2705936,
+  "foodCode": "24102060",
+  "category": "protein",
+  "aliases": [
+   "roast chicken",
+   "rotisserie chicken",
+   "roasted chicken",
+   "baked chicken",
+   "chicken with skin",
+   "chicken"
+  ],
+  "kcal": 196,
+  "protein": 25.07,
+  "carbs": 0.1,
+  "fat": 10.65,
+  "fiber": 0,
+  "sugar": 0.1,
+  "sodiumMg": 343,
+  "servings": [
+   [
+    "1 piece",
+    60
+   ],
+   [
+    "1 cup, diced",
+    135
+   ],
+   [
+    "1/2 chicken (meat only)",
+    300
+   ]
+  ]
+ },
+ {
+  "name": "Fried chicken drumstick",
+  "usda": "Chicken drumstick, fried, coated, skin / coating eaten, from raw",
+  "fdcId": 2706018,
+  "foodCode": "24147300",
+  "category": "protein",
+  "aliases": [
+   "fried chicken",
+   "fried chicken drumstick",
+   "fried chicken leg",
+   "breaded drumstick",
+   "kfc style chicken",
+   "southern fried chicken"
+  ],
+  "kcal": 241,
+  "protein": 19.08,
+  "carbs": 5.98,
+  "fat": 15.07,
+  "fiber": 0.2,
+  "sugar": 0.1,
+  "sodiumMg": 363,
+  "servings": [
+   [
+    "1 medium drumstick",
+    85
+   ],
+   [
+    "1 small drumstick",
+    65
+   ],
+   [
+    "1 large drumstick",
+    110
+   ]
+  ]
+ },
+ {
+  "name": "Chicken wings (plain)",
+  "usda": "Chicken wing, baked, broiled, or roasted, from raw",
+  "fdcId": 2706057,
+  "foodCode": "24162130",
+  "category": "protein",
+  "aliases": [
+   "chicken wings",
+   "wings",
+   "baked wings",
+   "plain wings",
+   "naked wings",
+   "chicken wing"
+  ],
+  "kcal": 252,
+  "protein": 23.6,
+  "carbs": 0,
+  "fat": 16.74,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 404,
+  "servings": [
+   [
+    "1 wing",
+    35
+   ],
+   [
+    "1 drummette",
+    22
+   ],
+   [
+    "1 serving (2 wings)",
+    70
+   ]
+  ]
+ },
+ {
+  "name": "Chicken tenders / strips (breaded)",
+  "usda": "Chicken tenders or strips, NFS",
+  "fdcId": 2706098,
+  "foodCode": "24198739",
+  "category": "protein",
+  "aliases": [
+   "chicken tenders",
+   "chicken strips",
+   "chicken fingers",
+   "breaded chicken",
+   "chicken strips frozen",
+   "popcorn chicken"
+  ],
+  "kcal": 271,
+  "protein": 19.22,
+  "carbs": 17.25,
+  "fat": 13.95,
+  "fiber": 1.2,
+  "sugar": 0.4,
+  "sodiumMg": 769,
+  "servings": [
+   [
+    "1 tender or strip",
+    50
+   ],
+   [
+    "1 cup",
+    140
+   ],
+   [
+    "1 serving (2 strips)",
+    100
+   ]
+  ]
+ },
+ {
+  "name": "Ground turkey, cooked",
+  "usda": "Turkey, ground",
+  "fdcId": 2706133,
+  "foodCode": "24207000",
+  "category": "protein",
+  "aliases": [
+   "ground turkey",
+   "turkey mince",
+   "minced turkey",
+   "turkey burger meat",
+   "cooked ground turkey"
+  ],
+  "kcal": 211,
+  "protein": 26.87,
+  "carbs": 0,
+  "fat": 11.5,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 412,
+  "servings": [
+   [
+    "1 cup, cooked",
+    130
+   ],
+   [
+    "1 patty",
+    60
+   ],
+   [
+    "1 serving (3 oz)",
+    85
+   ]
+  ]
+ },
+ {
+  "name": "Hot dog (beef wiener)",
+  "usda": "Hot dog, beef",
+  "fdcId": 2706167,
+  "foodCode": "25210210",
+  "category": "protein",
+  "aliases": [
+   "hot dog",
+   "wiener",
+   "weiner",
+   "frank",
+   "frankfurter",
+   "beef hot dog",
+   "beef frank"
+  ],
+  "kcal": 310,
+  "protein": 11.7,
+  "carbs": 2.89,
+  "fat": 28,
+  "fiber": 0,
+  "sugar": 1.26,
+  "sodiumMg": 828,
+  "servings": [
+   [
+    "1 hot dog",
+    57
+   ],
+   [
+    "1 footlong",
+    88
+   ]
+  ]
+ },
+ {
+  "name": "Breakfast sausage links (pork)",
+  "usda": "Pork sausage",
+  "fdcId": 2706191,
+  "foodCode": "25221405",
+  "category": "protein",
+  "aliases": [
+   "breakfast sausage",
+   "sausage links",
+   "pork sausage",
+   "sausage patty",
+   "breakfast links",
+   "sausage"
+  ],
+  "kcal": 325,
+  "protein": 18.53,
+  "carbs": 1.42,
+  "fat": 27.25,
+  "fiber": 0,
+  "sugar": 1.09,
+  "sodiumMg": 814,
+  "servings": [
+   [
+    "1 breakfast link",
+    20
+   ],
+   [
+    "1 patty",
+    35
+   ],
+   [
+    "1 bun-size link",
+    75
+   ]
+  ]
+ },
+ {
+  "name": "Italian sausage",
+  "usda": "Italian sausage",
+  "fdcId": 2706189,
+  "foodCode": "25221350",
+  "category": "protein",
+  "aliases": [
+   "italian sausage",
+   "hot italian sausage",
+   "mild italian sausage",
+   "sausage link"
+  ],
+  "kcal": 317,
+  "protein": 18.2,
+  "carbs": 2.15,
+  "fat": 26.2,
+  "fiber": 0,
+  "sugar": 1.46,
+  "sodiumMg": 766,
+  "servings": [
+   [
+    "1 link",
+    75
+   ],
+   [
+    "1 slice",
+    15
+   ],
+   [
+    "1 cup",
+    138
+   ]
+  ]
+ },
+ {
+  "name": "Deli ham, sliced",
+  "usda": "Ham, prepackaged or deli, luncheon meat",
+  "fdcId": 2706206,
+  "foodCode": "25230210",
+  "category": "protein",
+  "aliases": [
+   "ham",
+   "deli ham",
+   "sliced ham",
+   "ham slices",
+   "lunch meat ham",
+   "black forest ham",
+   "cold cuts ham"
+  ],
+  "kcal": 101,
+  "protein": 16.7,
+  "carbs": 0.27,
+  "fat": 3.73,
+  "fiber": 0,
+  "sugar": 0,
+  "sodiumMg": 890,
+  "servings": [
+   [
+    "1 slice",
+    28
+   ],
+   [
+    "sandwich portion (2 slices)",
+    56
+   ]
+  ]
+ },
+ {
+  "name": "Deli turkey, sliced",
+  "usda": "Turkey, prepackaged or deli, luncheon meat",
+  "fdcId": 2706215,
+  "foodCode": "25230780",
+  "category": "protein",
+  "aliases": [
+   "deli turkey",
+   "sliced turkey",
+   "turkey slices",
+   "turkey lunch meat",
+   "turkey breast deli",
+   "cold cuts turkey"
+  ],
+  "kcal": 106,
+  "protein": 14.81,
+  "carbs": 2.2,
+  "fat": 3.77,
+  "fiber": 0,
+  "sugar": 0.91,
+  "sodiumMg": 810,
+  "servings": [
+   [
+    "1 slice",
+    28
+   ],
+   [
+    "sandwich portion (2 slices)",
+    56
+   ]
+  ]
+ }
+]

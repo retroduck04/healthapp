@@ -1,4 +1,5 @@
-"""Builds src/data/fooddb.json: official restaurant items (per serving) + everyday staples (per 100 g).
+"""Builds src/data/fooddb.json: official restaurant items (per serving), everyday staples and USDA FNDDS
+household dishes (per 100 g).
 
 Inputs: the research JSON files (fooddb-A/B/C.json, one object per menu item, per serving, with source URL)
 and generic.py. Output rows are compact; the app converts them to its Food records on demand.
@@ -25,8 +26,25 @@ def add(row):
 
 r1 = lambda v: None if v is None else round(float(v), 1)
 
+def add_household(x):
+    """USDA FNDDS item (per 100 g, servings with grams), collected from fdc.nal.usda.gov."""
+    k, p, c, f = x["kcal"], x["protein"], x["carbs"], x["fat"]
+    if k >= 30 and abs(4 * p + 4 * c + 9 * f - k) / k > 0.2:
+        dropped.append(x["name"]); return
+    servings = [[str(l), round(float(g), 1)] for l, g in x["servings"] if g and g > 0] or [["100 g", 100]]
+    add([f"db-home-{slug(x['name'])}", "", x["name"], None, x.get("category") or "meal",
+         sorted({a.lower() for a in (x.get("aliases") or [])}), servings, False,
+         r1(k), r1(p), r1(c), r1(f), r1(x["fiber"]) if x.get("fiber") is not None else None,
+         r1(x["sugar"]) if x.get("sugar") is not None else None,
+         round(x["sodiumMg"]) if x.get("sodiumMg") is not None else None,
+         "FNDDS", f"USDA FoodData Central FNDDS 2021-2023, fdcId {x['fdcId']} ({x.get('usda', '')})"])
+
 for path in sys.argv[1:]:
-    for x in json.load(open(path)):
+    data = json.load(open(path))
+    if data and "fdcId" in data[0]:
+        for x in data: add_household(x)
+        continue
+    for x in data:
         k, p, c, f = x["kcal"], x["protein"], x["carbs"], x["fat"]
         est = 4 * p + 4 * c + 9 * f
         if k >= 30 and abs(est - k) / k > 0.2:

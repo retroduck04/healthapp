@@ -193,6 +193,9 @@ export async function delMany(store: StoreName, keys: readonly IDBValidKey[]): P
 
 // ---- export / restore -----------------------------------------------------
 
+/** meta rows that belong to this device only (never exported, kept across a restore) */
+const LOCAL_ONLY_META = ["ai"];
+
 export interface Backup {
   app: "janos-health";
   schemaVersion: number;
@@ -205,6 +208,8 @@ export async function exportAll(): Promise<Backup> {
   const tx = db.transaction(STORES);
   const data: Partial<Record<StoreName, unknown[]>> = {};
   for (const s of STORES) data[s] = (await wrap(tx.objectStore(s).getAll())) as unknown[];
+  // Device secrets stay on the device: the AI key is never written into a backup file.
+  data.meta = (data.meta ?? []).filter((r) => !LOCAL_ONLY_META.includes((r as { key?: string }).key ?? ""));
   return { app: "janos-health", schemaVersion: SCHEMA_VERSION, exportedAt: new Date().toISOString(), data };
 }
 
@@ -213,12 +218,14 @@ export async function restoreAll(backup: Backup): Promise<void> {
   if (backup.app !== "janos-health" || typeof backup.schemaVersion !== "number") throw new Error("This file is not a Janos Health backup.");
   if (backup.schemaVersion > SCHEMA_VERSION) throw new Error("This backup comes from a newer version of the app. Update the app first.");
   const db = await openDb();
+  const keep = (await Promise.all(LOCAL_ONLY_META.map((k) => get<{ key: string }>("meta", k)))).filter(Boolean);
   const tx = db.transaction(STORES, "readwrite");
   for (const s of STORES) {
     const store = tx.objectStore(s);
     store.clear();
-    for (const v of backup.data[s] ?? []) store.put(v);
+    for (const v of backup.data[s] ?? []) if (!(s === "meta" && LOCAL_ONLY_META.includes((v as { key?: string }).key ?? ""))) store.put(v);
   }
+  for (const v of keep) tx.objectStore("meta").put(v);
   await done(tx);
   notifyChange();
 }

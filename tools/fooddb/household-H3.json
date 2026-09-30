@@ -1,0 +1,1124 @@
+[
+ {
+  "name": "Beef taco (corn tortilla)",
+  "usda": "Taco, corn tortilla, beef, cheese",
+  "fdcId": 2708515,
+  "foodCode": "58102010",
+  "category": "meal",
+  "aliases": [
+   "beef taco",
+   "taco",
+   "hard shell taco",
+   "crunchy taco",
+   "ground beef taco"
+  ],
+  "kcal": 249,
+  "protein": 15.47,
+  "carbs": 15.3,
+  "fat": 13.94,
+  "fiber": 2.1,
+  "sugar": 0.34,
+  "sodiumMg": 375,
+  "servings": [
+   [
+    "1 taco",
+    105
+   ],
+   [
+    "1 large taco",
+    160
+   ]
+  ]
+ },
+ {
+  "name": "Chicken taco (flour tortilla)",
+  "usda": "Taco, flour tortilla, chicken, cheese",
+  "fdcId": 2708526,
+  "foodCode": "58102150",
+  "category": "meal",
+  "aliases": [
+   "chicken taco",
+   "soft taco",
+   "soft chicken taco",
+   "flour tortilla taco"
+  ],
+  "kcal": 220,
+  "protein": 17.48,
+  "carbs": 18.87,
+  "fat": 7.91,
+  "fiber": 1.3,
+  "sugar": 1.45,
+  "sodiumMg": 446,
+  "servings": [
+   [
+    "1 taco",
+    105
+   ],
+   [
+    "1 large taco",
+    160
+   ]
+  ]
+ },
+ {
+  "name": "Beef and bean burrito",
+  "usda": "Burrito, beef, with beans, cheese",
+  "fdcId": 2708537,
+  "foodCode": "58102330",
+  "category": "meal",
+  "aliases": [
+   "beef burrito",
+   "bean and beef burrito",
+   "burrito"
+  ],
+  "kcal": 219,
+  "protein": 11.12,
+  "carbs": 23.87,
+  "fat": 8.54,
+  "fiber": 2.5,
+  "sugar": 1.68,
+  "sodiumMg": 486,
+  "servings": [
+   [
+    "1 burrito",
+    220
+   ],
+   [
+    "1 large burrito",
+    330
+   ]
+  ]
+ },
+ {
+  "name": "Bean and cheese burrito",
+  "usda": "Burrito, with beans, cheese",
+  "fdcId": 2708548,
+  "foodCode": "58102610",
+  "category": "meal",
+  "aliases": [
+   "bean burrito",
+   "bean & cheese burrito",
+   "vegetarian burrito"
+  ],
+  "kcal": 196,
+  "protein": 8.1,
+  "carbs": 29.49,
+  "fat": 5.16,
+  "fiber": 4.9,
+  "sugar": 1.69,
+  "sodiumMg": 449,
+  "servings": [
+   [
+    "1 burrito",
+    190
+   ],
+   [
+    "1 large burrito",
+    285
+   ]
+  ]
+ },
+ {
+  "name": "Chicken burrito",
+  "usda": "Burrito, chicken, cheese",
+  "fdcId": 2708543,
+  "foodCode": "58102510",
+  "category": "meal",
+  "aliases": [
+   "chicken burrito",
+   "burrito"
+  ],
+  "kcal": 244,
+  "protein": 13.74,
+  "carbs": 28.33,
+  "fat": 8.06,
+  "fiber": 2.0,
+  "sugar": 2.16,
+  "sodiumMg": 456,
+  "servings": [
+   [
+    "1 burrito",
+    220
+   ],
+   [
+    "1 large burrito",
+    330
+   ]
+  ]
+ },
+ {
+  "name": "Chicken enchilada",
+  "usda": "Enchilada, chicken",
+  "fdcId": 2708568,
+  "foodCode": "58102830",
+  "category": "meal",
+  "aliases": [
+   "chicken enchiladas",
+   "enchilada",
+   "enchiladas"
+  ],
+  "kcal": 178,
+  "protein": 10.03,
+  "carbs": 14.64,
+  "fat": 9.02,
+  "fiber": 2.3,
+  "sugar": 0.79,
+  "sodiumMg": 459,
+  "servings": [
+   [
+    "1 enchilada",
+    150
+   ],
+   [
+    "1 cup",
+    170
+   ]
+  ]
+ },
+ {
+  "name": "Nachos with cheese",
+  "usda": "Nachos, cheese only",
+  "fdcId": 2708577,
+  "foodCode": "58104120",
+  "category": "snack",
+  "aliases": [
+   "nachos",
+   "cheese nachos",
+   "nachos and cheese",
+   "tortilla chips with cheese"
+  ],
+  "kcal": 266,
+  "protein": 4.46,
+  "carbs": 27.83,
+  "fat": 15.74,
+  "fiber": 2.0,
+  "sugar": 0.45,
+  "sodiumMg": 547,
+  "servings": [
+   [
+    "1 order",
+    250
+   ],
+   [
+    "1 cup",
+    135
+   ]
+  ]
+ },
+ {
+  "name": "Cheese quesadilla",
+  "usda": "Quesadilla, cheese only",
+  "fdcId": 2708591,
+  "foodCode": "58104710",
+  "category": "meal",
+  "aliases": [
+   "quesadilla",
+   "cheese quesadilla"
+  ],
+  "kcal": 316,
+  "protein": 13.36,
+  "carbs": 28.62,
+  "fat": 16.21,
+  "fiber": 2.0,
+  "sugar": 2.41,
+  "sodiumMg": 676,
+  "servings": [
+   [
+    "1 quesadilla",
+    120
+   ],
+   [
+    "1 half quesadilla",
+    60
+   ]
+  ]
+ },
+ {
+  "name": "Chicken quesadilla",
+  "usda": "Quesadilla, chicken",
+  "fdcId": 2708593,
+  "foodCode": "58104740",
+  "category": "meal",
+  "aliases": [
+   "chicken quesadilla",
+   "quesadilla"
+  ],
+  "kcal": 287,
+  "protein": 14.45,
+  "carbs": 27.32,
+  "fat": 12.99,
+  "fiber": 1.9,
+  "sugar": 2.15,
+  "sodiumMg": 601,
+  "servings": [
+   [
+    "1 quesadilla",
+    140
+   ],
+   [
+    "1 half quesadilla",
+    70
+   ]
+  ]
+ },
+ {
+  "name": "Chicken fajita",
+  "usda": "Fajita, chicken",
+  "fdcId": 2708604,
+  "foodCode": "58105000",
+  "category": "meal",
+  "aliases": [
+   "chicken fajitas",
+   "fajita",
+   "fajitas"
+  ],
+  "kcal": 206,
+  "protein": 11.33,
+  "carbs": 17.99,
+  "fat": 9.8,
+  "fiber": 1.5,
+  "sugar": 2.44,
+  "sodiumMg": 451,
+  "servings": [
+   [
+    "1 fajita",
+    95
+   ],
+   [
+    "1 cup",
+    120
+   ]
+  ]
+ },
+ {
+  "name": "Breakfast burrito (egg, sausage)",
+  "usda": "Egg burrito, with sausage",
+  "fdcId": 2707344,
+  "foodCode": "34003120",
+  "category": "breakfast",
+  "aliases": [
+   "breakfast burrito",
+   "egg burrito",
+   "sausage egg burrito",
+   "sausage and egg burrito"
+  ],
+  "kcal": 257,
+  "protein": 11.27,
+  "carbs": 18.88,
+  "fat": 14.96,
+  "fiber": 1.3,
+  "sugar": 1.7,
+  "sodiumMg": 484,
+  "servings": [
+   [
+    "1 burrito",
+    190
+   ]
+  ]
+ },
+ {
+  "name": "Cheese pizza",
+  "usda": "Pizza, cheese, from restaurant or fast food, medium crust",
+  "fdcId": 2708616,
+  "foodCode": "58106225",
+  "category": "meal",
+  "aliases": [
+   "pizza",
+   "cheese pizza",
+   "slice of pizza",
+   "pizza slice",
+   "plain pizza"
+  ],
+  "kcal": 266,
+  "protein": 11.39,
+  "carbs": 33.33,
+  "fat": 9.69,
+  "fiber": 2.3,
+  "sugar": 3.58,
+  "sodiumMg": 540,
+  "servings": [
+   [
+    "1 slice (large pizza)",
+    119
+   ],
+   [
+    "1 slice (medium pizza)",
+    86
+   ],
+   [
+    "1 personal pizza",
+    175
+   ]
+  ]
+ },
+ {
+  "name": "Frozen cheese pizza (thin crust)",
+  "usda": "Pizza, cheese, from frozen, thin crust",
+  "fdcId": 2708612,
+  "foodCode": "58106200",
+  "category": "meal",
+  "aliases": [
+   "frozen pizza",
+   "frozen cheese pizza",
+   "thin crust pizza"
+  ],
+  "kcal": 263,
+  "protein": 11.91,
+  "carbs": 28.8,
+  "fat": 11.07,
+  "fiber": 3.0,
+  "sugar": 3.71,
+  "sodiumMg": 471,
+  "servings": [
+   [
+    "1 slice",
+    97
+   ],
+   [
+    "1 personal pizza",
+    209
+   ]
+  ]
+ },
+ {
+  "name": "Pepperoni pizza",
+  "usda": "Pizza with pepperoni, from restaurant or fast food, medium crust",
+  "fdcId": 2708640,
+  "foodCode": "58106555",
+  "category": "meal",
+  "aliases": [
+   "pepperoni pizza",
+   "pizza",
+   "pepperoni slice",
+   "slice of pizza"
+  ],
+  "kcal": 282,
+  "protein": 11.74,
+  "carbs": 31.98,
+  "fat": 11.91,
+  "fiber": 2.3,
+  "sugar": 3.26,
+  "sodiumMg": 620,
+  "servings": [
+   [
+    "1 slice (large pizza)",
+    124
+   ],
+   [
+    "1 slice (medium pizza)",
+    88
+   ],
+   [
+    "1 personal pizza",
+    184
+   ]
+  ]
+ },
+ {
+  "name": "Egg roll",
+  "usda": "Egg roll, with beef and/or pork",
+  "fdcId": 2708702,
+  "foodCode": "58110130",
+  "category": "snack",
+  "aliases": [
+   "egg roll",
+   "egg rolls",
+   "pork egg roll",
+   "spring roll"
+  ],
+  "kcal": 272,
+  "protein": 7.58,
+  "carbs": 27.02,
+  "fat": 14.7,
+  "fiber": 2.0,
+  "sugar": 5.07,
+  "sodiumMg": 447,
+  "servings": [
+   [
+    "1 egg roll",
+    64
+   ],
+   [
+    "1 mini egg roll",
+    13
+   ]
+  ]
+ },
+ {
+  "name": "Pierogies",
+  "usda": "Pierogi",
+  "fdcId": 2708720,
+  "foodCode": "58121610",
+  "category": "meal",
+  "aliases": [
+   "pierogi",
+   "perogies",
+   "perogy",
+   "pierogies",
+   "potato and cheese pierogi",
+   "varenyky"
+  ],
+  "kcal": 195,
+  "protein": 5.26,
+  "carbs": 29.64,
+  "fat": 6.14,
+  "fiber": 0.9,
+  "sugar": 1.75,
+  "sodiumMg": 474,
+  "servings": [
+   [
+    "1 pierogi",
+    40
+   ],
+   [
+    "1 cup",
+    80
+   ]
+  ]
+ },
+ {
+  "name": "Lasagna with meat",
+  "usda": "Lasagna with meat",
+  "fdcId": 2708750,
+  "foodCode": "58130011",
+  "category": "pasta",
+  "aliases": [
+   "lasagna",
+   "lasagne",
+   "meat lasagna",
+   "beef lasagna"
+  ],
+  "kcal": 139,
+  "protein": 7.45,
+  "carbs": 16.17,
+  "fat": 4.97,
+  "fiber": 1.6,
+  "sugar": 3.33,
+  "sodiumMg": 390,
+  "servings": [
+   [
+    "1 piece",
+    206
+   ],
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 large piece",
+    232
+   ]
+  ]
+ },
+ {
+  "name": "Ravioli with meat sauce",
+  "usda": "Ravioli, meat-filled, with tomato sauce or meat sauce",
+  "fdcId": 2708764,
+  "foodCode": "58131320",
+  "category": "pasta",
+  "aliases": [
+   "ravioli",
+   "meat ravioli",
+   "beef ravioli",
+   "ravioli with sauce"
+  ],
+  "kcal": 148,
+  "protein": 8.74,
+  "carbs": 14.46,
+  "fat": 6.25,
+  "fiber": 1.0,
+  "sugar": 1.73,
+  "sodiumMg": 593,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 piece",
+    35
+   ]
+  ]
+ },
+ {
+  "name": "Macaroni and cheese (homemade)",
+  "usda": "Macaroni or noodles with cheese",
+  "fdcId": 2708811,
+  "foodCode": "58145110",
+  "category": "pasta",
+  "aliases": [
+   "mac and cheese",
+   "mac n cheese",
+   "macaroni and cheese",
+   "homemade mac and cheese",
+   "baked mac and cheese"
+  ],
+  "kcal": 223,
+  "protein": 8.68,
+  "carbs": 23.08,
+  "fat": 10.5,
+  "fiber": 1.2,
+  "sugar": 2.44,
+  "sodiumMg": 358,
+  "servings": [
+   [
+    "1 cup",
+    230
+   ]
+  ]
+ },
+ {
+  "name": "Macaroni and cheese (boxed)",
+  "usda": "Macaroni or noodles with cheese, made from packaged mix",
+  "fdcId": 2708813,
+  "foodCode": "58145112",
+  "category": "pasta",
+  "aliases": [
+   "kraft dinner",
+   "kd",
+   "kraft mac and cheese",
+   "boxed mac and cheese",
+   "mac and cheese",
+   "kraft dinner prepared"
+  ],
+  "kcal": 179,
+  "protein": 4.64,
+  "carbs": 22.16,
+  "fat": 8.04,
+  "fiber": 1.0,
+  "sugar": 3.45,
+  "sodiumMg": 161,
+  "servings": [
+   [
+    "1 cup",
+    230
+   ]
+  ]
+ },
+ {
+  "name": "Chicken lo mein",
+  "usda": "Lo mein, with chicken",
+  "fdcId": 2708803,
+  "foodCode": "58136160",
+  "category": "pasta",
+  "aliases": [
+   "lo mein",
+   "chicken lo mein",
+   "chinese noodles",
+   "stir fry noodles"
+  ],
+  "kcal": 130,
+  "protein": 9.15,
+  "carbs": 16.15,
+  "fat": 3.15,
+  "fiber": 1.0,
+  "sugar": 2.11,
+  "sodiumMg": 413,
+  "servings": [
+   [
+    "1 cup",
+    200
+   ]
+  ]
+ },
+ {
+  "name": "Pad thai with chicken",
+  "usda": "Pad Thai with chicken",
+  "fdcId": 2708806,
+  "foodCode": "58137230",
+  "category": "pasta",
+  "aliases": [
+   "pad thai",
+   "chicken pad thai",
+   "thai noodles",
+   "phad thai"
+  ],
+  "kcal": 154,
+  "protein": 8.13,
+  "carbs": 14.36,
+  "fat": 7.5,
+  "fiber": 1.2,
+  "sugar": 4.06,
+  "sodiumMg": 384,
+  "servings": [
+   [
+    "1 cup",
+    200
+   ]
+  ]
+ },
+ {
+  "name": "Spaghetti with meat sauce",
+  "usda": "Pasta with tomato-based sauce and meat, home recipe",
+  "fdcId": 2708838,
+  "foodCode": "58146322",
+  "category": "pasta",
+  "aliases": [
+   "spaghetti bolognese",
+   "spag bol",
+   "spaghetti",
+   "pasta with meat sauce",
+   "bolognese",
+   "spaghetti and meat sauce"
+  ],
+  "kcal": 125,
+  "protein": 5.86,
+  "carbs": 19.15,
+  "fat": 2.58,
+  "fiber": 1.6,
+  "sugar": 2.44,
+  "sodiumMg": 199,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 plate (2 cups)",
+    500
+   ]
+  ]
+ },
+ {
+  "name": "Spaghetti with tomato sauce",
+  "usda": "Pasta with tomato-based sauce, home recipe",
+  "fdcId": 2708831,
+  "foodCode": "58146222",
+  "category": "pasta",
+  "aliases": [
+   "spaghetti marinara",
+   "pasta marinara",
+   "pasta with tomato sauce",
+   "spaghetti",
+   "meatless spaghetti",
+   "pasta pomodoro"
+  ],
+  "kcal": 106,
+  "protein": 3.69,
+  "carbs": 19.88,
+  "fat": 1.2,
+  "fiber": 1.8,
+  "sugar": 2.94,
+  "sodiumMg": 202,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 plate (2 cups)",
+    500
+   ]
+  ]
+ },
+ {
+  "name": "Fettuccine alfredo",
+  "usda": "Pasta with cream sauce, home recipe",
+  "fdcId": 2708856,
+  "foodCode": "58146382",
+  "category": "pasta",
+  "aliases": [
+   "alfredo",
+   "fettuccine alfredo",
+   "fettucine alfredo",
+   "pasta alfredo",
+   "pasta with cream sauce"
+  ],
+  "kcal": 154,
+  "protein": 4.03,
+  "carbs": 16.85,
+  "fat": 7.7,
+  "fiber": 0.9,
+  "sugar": 0.72,
+  "sodiumMg": 266,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 plate (2 cups)",
+    500
+   ]
+  ]
+ },
+ {
+  "name": "Chicken alfredo",
+  "usda": "Pasta with cream sauce and poultry, home recipe",
+  "fdcId": 2708868,
+  "foodCode": "58146422",
+  "category": "pasta",
+  "aliases": [
+   "chicken alfredo",
+   "chicken fettuccine alfredo",
+   "chicken fettucine",
+   "creamy chicken pasta"
+  ],
+  "kcal": 157,
+  "protein": 6.32,
+  "carbs": 16.69,
+  "fat": 7.03,
+  "fiber": 0.9,
+  "sugar": 0.64,
+  "sodiumMg": 250,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 plate (2 cups)",
+    500
+   ]
+  ]
+ },
+ {
+  "name": "Baked ziti",
+  "usda": "Pasta with tomato-based sauce and cheese",
+  "fdcId": 2708826,
+  "foodCode": "58146150",
+  "category": "pasta",
+  "aliases": [
+   "baked ziti",
+   "ziti",
+   "baked pasta",
+   "pasta with tomato sauce and cheese",
+   "baked penne"
+  ],
+  "kcal": 119,
+  "protein": 3.74,
+  "carbs": 14.98,
+  "fat": 4.83,
+  "fiber": 1.7,
+  "sugar": 3.54,
+  "sodiumMg": 403,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ]
+  ]
+ },
+ {
+  "name": "Baked ziti with meat",
+  "usda": "Pasta with tomato-based sauce, cheese and meat",
+  "fdcId": 2708825,
+  "foodCode": "58146120",
+  "category": "pasta",
+  "aliases": [
+   "baked ziti with meat",
+   "meat baked ziti",
+   "pasta bake",
+   "baked pasta with meat",
+   "cannelloni"
+  ],
+  "kcal": 147,
+  "protein": 7.61,
+  "carbs": 13.34,
+  "fat": 7.1,
+  "fiber": 0.8,
+  "sugar": 1.29,
+  "sodiumMg": 325,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 cannelloni",
+    86
+   ]
+  ]
+ },
+ {
+  "name": "Pasta salad (Italian dressing)",
+  "usda": "Macaroni or pasta salad, made with Italian dressing",
+  "fdcId": 2708936,
+  "foodCode": "58148114",
+  "category": "salad",
+  "aliases": [
+   "pasta salad",
+   "italian pasta salad",
+   "cold pasta salad",
+   "rotini salad"
+  ],
+  "kcal": 133,
+  "protein": 3.7,
+  "carbs": 20.9,
+  "fat": 3.72,
+  "fiber": 1.6,
+  "sugar": 2.37,
+  "sodiumMg": 226,
+  "servings": [
+   [
+    "1 cup",
+    204
+   ]
+  ]
+ },
+ {
+  "name": "Macaroni salad",
+  "usda": "Macaroni or pasta salad, made with mayonnaise",
+  "fdcId": 2708932,
+  "foodCode": "58148110",
+  "category": "salad",
+  "aliases": [
+   "macaroni salad",
+   "mac salad",
+   "creamy pasta salad",
+   "pasta salad with mayo"
+  ],
+  "kcal": 221,
+  "protein": 4.46,
+  "carbs": 24.65,
+  "fat": 11.52,
+  "fiber": 1.4,
+  "sugar": 1.85,
+  "sodiumMg": 204,
+  "servings": [
+   [
+    "1 cup",
+    204
+   ]
+  ]
+ },
+ {
+  "name": "Chicken fried rice",
+  "usda": "Rice, fried, with chicken",
+  "fdcId": 2708953,
+  "foodCode": "58150320",
+  "category": "rice",
+  "aliases": [
+   "chicken fried rice",
+   "fried rice",
+   "chinese fried rice"
+  ],
+  "kcal": 173,
+  "protein": 7.28,
+  "carbs": 27.62,
+  "fat": 3.66,
+  "fiber": 0.9,
+  "sugar": 0.53,
+  "sodiumMg": 359,
+  "servings": [
+   [
+    "1 cup",
+    198
+   ]
+  ]
+ },
+ {
+  "name": "Vegetable fried rice",
+  "usda": "Rice, fried, meatless",
+  "fdcId": 2708951,
+  "foodCode": "58150110",
+  "category": "rice",
+  "aliases": [
+   "vegetable fried rice",
+   "veggie fried rice",
+   "fried rice",
+   "egg fried rice",
+   "meatless fried rice"
+  ],
+  "kcal": 174,
+  "protein": 3.84,
+  "carbs": 32.5,
+  "fat": 3.19,
+  "fiber": 1.1,
+  "sugar": 0.62,
+  "sodiumMg": 361,
+  "servings": [
+   [
+    "1 cup",
+    166
+   ]
+  ]
+ },
+ {
+  "name": "California roll",
+  "usda": "Sushi roll, California",
+  "fdcId": 2708961,
+  "foodCode": "58151180",
+  "category": "meal",
+  "aliases": [
+   "california roll",
+   "sushi",
+   "sushi roll",
+   "crab roll"
+  ],
+  "kcal": 94,
+  "protein": 2.92,
+  "carbs": 18.39,
+  "fat": 0.67,
+  "fiber": 1.0,
+  "sugar": 2.13,
+  "sodiumMg": 428,
+  "servings": [
+   [
+    "6 pieces",
+    180
+   ],
+   [
+    "1 piece",
+    30
+   ],
+   [
+    "1 cup",
+    150
+   ]
+  ]
+ },
+ {
+  "name": "Rice and beans",
+  "usda": "Beans and white rice",
+  "fdcId": 2708990,
+  "foodCode": "58160110",
+  "category": "rice",
+  "aliases": [
+   "rice and beans",
+   "beans and rice",
+   "red beans and rice",
+   "rice & beans"
+  ],
+  "kcal": 164,
+  "protein": 6.5,
+  "carbs": 25.19,
+  "fat": 4.21,
+  "fiber": 3.7,
+  "sugar": 0.21,
+  "sodiumMg": 231,
+  "servings": [
+   [
+    "1 cup",
+    170
+   ]
+  ]
+ },
+ {
+  "name": "Chicken and rice",
+  "usda": "Chicken or turkey and rice, no sauce",
+  "fdcId": 2706537,
+  "foodCode": "27243000",
+  "category": "rice",
+  "aliases": [
+   "chicken and rice",
+   "chicken with rice",
+   "chicken rice",
+   "turkey and rice",
+   "chicken and rice casserole"
+  ],
+  "kcal": 149,
+  "protein": 6.46,
+  "carbs": 16.97,
+  "fat": 5.84,
+  "fiber": 0.2,
+  "sugar": 0.03,
+  "sodiumMg": 353,
+  "servings": [
+   [
+    "1 cup",
+    196
+   ]
+  ]
+ },
+ {
+  "name": "Chicken noodle soup",
+  "usda": "Soup, chicken noodle",
+  "fdcId": 2709149,
+  "foodCode": "58403040",
+  "category": "soup",
+  "aliases": [
+   "chicken noodle soup",
+   "chicken soup",
+   "homemade chicken noodle soup",
+   "noodle soup"
+  ],
+  "kcal": 53,
+  "protein": 3.84,
+  "carbs": 6.21,
+  "fat": 1.4,
+  "fiber": 0.7,
+  "sugar": 0.81,
+  "sodiumMg": 248,
+  "servings": [
+   [
+    "1 cup",
+    245
+   ]
+  ]
+ },
+ {
+  "name": "Chicken noodle soup (canned)",
+  "usda": "Soup, chicken noodle, canned",
+  "fdcId": 2709148,
+  "foodCode": "58403010",
+  "category": "soup",
+  "aliases": [
+   "canned chicken noodle soup",
+   "campbells chicken noodle",
+   "chicken noodle soup"
+  ],
+  "kcal": 42,
+  "protein": 2.38,
+  "carbs": 6.02,
+  "fat": 0.98,
+  "fiber": 0.8,
+  "sugar": 1.2,
+  "sodiumMg": 267,
+  "servings": [
+   [
+    "1 cup",
+    245
+   ],
+   [
+    "1 can",
+    525
+   ]
+  ]
+ },
+ {
+  "name": "Ramen noodle soup (instant)",
+  "usda": "Soup, ramen noodles, water added",
+  "fdcId": 2709152,
+  "foodCode": "58407030",
+  "category": "soup",
+  "aliases": [
+   "ramen",
+   "instant ramen",
+   "cup noodles",
+   "cup of noodles",
+   "mr noodles",
+   "instant noodles",
+   "ramen noodles"
+  ],
+  "kcal": 66,
+  "protein": 1.53,
+  "carbs": 9.04,
+  "fat": 2.64,
+  "fiber": 0.4,
+  "sugar": 0.3,
+  "sodiumMg": 282,
+  "servings": [
+   [
+    "1 cup",
+    245
+   ],
+   [
+    "1 container",
+    440
+   ]
+  ]
+ },
+ {"name": "Minestrone soup", "usda": "Soup, minestrone", "fdcId": 2710114, "foodCode": "75651000", "category": "soup",
+  "aliases": ["minestrone", "minestrone soup", "italian vegetable soup"],
+  "kcal": 40, "protein": 1.71, "carbs": 7.3, "fat": 0.5, "fiber": 1.5, "sugar": 1.04, "sodiumMg": 241,
+  "servings": [["1 cup", 245], ["1 can", 525]]},
+ {"name": "Vegetable beef soup", "usda": "Soup, vegetable, with meat", "fdcId": 2710116, "foodCode": "75656060", "category": "soup",
+  "aliases": ["vegetable beef soup", "beef vegetable soup", "vegetable soup with meat", "beef and vegetable soup"],
+  "kcal": 44, "protein": 3.36, "carbs": 4.04, "fat": 1.6, "fiber": 0.8, "sugar": 1.1, "sodiumMg": 249,
+  "servings": [["1 cup", 245], ["1 can", 525]]},
+ {"name": "Cream of mushroom soup", "usda": "Soup, cream of mushroom", "fdcId": 2710107, "foodCode": "75607060", "category": "soup",
+  "aliases": ["cream of mushroom", "mushroom soup", "cream of mushroom soup"],
+  "kcal": 74, "protein": 2.1, "carbs": 5.7, "fat": 4.76, "fiber": 1.2, "sugar": 1.74, "sodiumMg": 242,
+  "servings": [["1 cup", 255], ["1 can", 525]]}
+]

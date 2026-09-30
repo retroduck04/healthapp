@@ -1,0 +1,973 @@
+[
+ {
+  "name": "Baked beans",
+  "usda": "Baked beans",
+  "fdcId": 2707390,
+  "foodCode": "41201010",
+  "category": "side",
+  "aliases": [
+   "baked beans",
+   "canned baked beans",
+   "pork and beans",
+   "beans in tomato sauce",
+   "heinz beans"
+  ],
+  "kcal": 105,
+  "protein": 4.52,
+  "carbs": 21.57,
+  "fat": 0.89,
+  "fiber": 4.4,
+  "sugar": 8.23,
+  "sodiumMg": 391,
+  "servings": [
+   [
+    "1 cup",
+    260
+   ],
+   [
+    "1/2 cup",
+    130
+   ]
+  ]
+ },
+ {
+  "name": "Refried beans",
+  "usda": "Refried beans",
+  "fdcId": 2707396,
+  "foodCode": "41205010",
+  "category": "side",
+  "aliases": [
+   "refried beans",
+   "frijoles refritos",
+   "refritos",
+   "canned refried beans"
+  ],
+  "kcal": 90,
+  "protein": 4.98,
+  "carbs": 13.55,
+  "fat": 2.01,
+  "fiber": 3.7,
+  "sugar": 0.54,
+  "sodiumMg": 370,
+  "servings": [
+   [
+    "1 cup",
+    260
+   ],
+   [
+    "1/2 cup",
+    130
+   ]
+  ]
+ },
+ {
+  "name": "Peanut butter sandwich",
+  "usda": "Peanut butter sandwich, with regular peanut butter, on white bread",
+  "fdcId": 2707550,
+  "foodCode": "42301015",
+  "category": "sandwich",
+  "aliases": [
+   "pb sandwich",
+   "peanut butter sandwich",
+   "peanut butter on bread",
+   "peanut butter toast sandwich"
+  ],
+  "kcal": 382,
+  "protein": 13.88,
+  "carbs": 39.85,
+  "fat": 20.21,
+  "fiber": 3.2,
+  "sugar": 7.13,
+  "sodiumMg": 442,
+  "servings": [
+   [
+    "1 sandwich",
+    92
+   ],
+   [
+    "1 half sandwich (1 slice bread)",
+    46
+   ]
+  ]
+ },
+ {
+  "name": "Peanut butter and jelly sandwich",
+  "usda": "Peanut butter and jelly sandwich, with regular peanut butter, regular jelly, on white bread",
+  "fdcId": 2707555,
+  "foodCode": "42302015",
+  "category": "sandwich",
+  "aliases": [
+   "pbj",
+   "pb&j",
+   "pb and j",
+   "peanut butter and jam sandwich",
+   "peanut butter jelly sandwich",
+   "pbj sandwich"
+  ],
+  "kcal": 361,
+  "protein": 11.42,
+  "carbs": 45.22,
+  "fat": 16.6,
+  "fiber": 2.8,
+  "sugar": 15,
+  "sodiumMg": 368,
+  "servings": [
+   [
+    "1 sandwich",
+    112
+   ],
+   [
+    "1 half sandwich (1 slice bread)",
+    56
+   ]
+  ]
+ },
+ {
+  "name": "Trail mix",
+  "usda": "Trail mix with nuts and fruit",
+  "fdcId": 2707576,
+  "foodCode": "42501000",
+  "category": "snack",
+  "aliases": [
+   "trail mix",
+   "gorp",
+   "nuts and raisins",
+   "student mix",
+   "nut and fruit mix"
+  ],
+  "kcal": 454,
+  "protein": 10.9,
+  "carbs": 51.06,
+  "fat": 26.83,
+  "fiber": 6.4,
+  "sugar": 36.48,
+  "sodiumMg": 134,
+  "servings": [
+   [
+    "1 package",
+    50
+   ],
+   [
+    "1 cup",
+    140
+   ],
+   [
+    "1 small handful (1 oz)",
+    28
+   ]
+  ]
+ },
+ {
+  "name": "White toast",
+  "usda": "Bread, white, toasted",
+  "fdcId": 2707599,
+  "foodCode": "51101010",
+  "category": "grain",
+  "aliases": [
+   "toast",
+   "white toast",
+   "toasted white bread",
+   "slice of toast",
+   "buttered toast",
+   "toast with butter"
+  ],
+  "kcal": 293,
+  "protein": 10.36,
+  "carbs": 54.07,
+  "fat": 3.94,
+  "fiber": 2.5,
+  "sugar": 5.87,
+  "sodiumMg": 495,
+  "servings": [
+   [
+    "1 slice",
+    25
+   ],
+   [
+    "1 thick slice",
+    39
+   ],
+   [
+    "2 slices",
+    50
+   ]
+  ]
+ },
+ {
+  "name": "Garlic bread",
+  "usda": "Garlic bread, NFS",
+  "fdcId": 2707626,
+  "foodCode": "51121015",
+  "category": "side",
+  "aliases": [
+   "garlic bread",
+   "garlic toast",
+   "texas toast",
+   "cheesy bread",
+   "garlic baguette"
+  ],
+  "kcal": 349,
+  "protein": 8.34,
+  "carbs": 41.64,
+  "fat": 16.58,
+  "fiber": 2.5,
+  "sugar": 3.68,
+  "sodiumMg": 620,
+  "servings": [
+   [
+    "1 medium slice",
+    79
+   ],
+   [
+    "1 small slice",
+    39
+   ],
+   [
+    "1 Texas toast slice",
+    41
+   ]
+  ]
+ },
+ {
+  "name": "Dinner roll",
+  "usda": "Roll, white, soft",
+  "fdcId": 2707654,
+  "foodCode": "51150000",
+  "category": "grain",
+  "aliases": [
+   "dinner roll",
+   "bun",
+   "white roll",
+   "soft roll",
+   "bread roll",
+   "kaiser roll",
+   "slider bun"
+  ],
+  "kcal": 279,
+  "protein": 9.77,
+  "carbs": 50.12,
+  "fat": 3.91,
+  "fiber": 1.8,
+  "sugar": 7.28,
+  "sodiumMg": 494,
+  "servings": [
+   [
+    "1 roll",
+    43
+   ],
+   [
+    "1 small roll",
+    28
+   ],
+   [
+    "1 large roll",
+    52
+   ]
+  ]
+ },
+ {
+  "name": "Cinnamon roll",
+  "usda": "Roll, sweet, cinnamon bun, frosted",
+  "fdcId": 2707668,
+  "foodCode": "51160110",
+  "category": "dessert",
+  "aliases": [
+   "cinnamon roll",
+   "cinnamon bun",
+   "cinnabon",
+   "sticky bun",
+   "iced cinnamon roll"
+  ],
+  "kcal": 452,
+  "protein": 4.45,
+  "carbs": 48.6,
+  "fat": 26.61,
+  "fiber": 1.2,
+  "sugar": 25.7,
+  "sodiumMg": 305,
+  "servings": [
+   [
+    "1 medium roll",
+    90
+   ],
+   [
+    "1 large roll",
+    153
+   ],
+   [
+    "1 bakery-size roll (Cinnabon)",
+    240
+   ]
+  ]
+ },
+ {
+  "name": "Croissant",
+  "usda": "Croissant",
+  "fdcId": 2707678,
+  "foodCode": "51166000",
+  "category": "breakfast",
+  "aliases": [
+   "croissant",
+   "butter croissant",
+   "plain croissant",
+   "crescent roll"
+  ],
+  "kcal": 406,
+  "protein": 8.2,
+  "carbs": 45.8,
+  "fat": 21,
+  "fiber": 2.6,
+  "sugar": 11.26,
+  "sodiumMg": 300,
+  "servings": [
+   [
+    "1 medium croissant",
+    57
+   ],
+   [
+    "1 large croissant",
+    73
+   ],
+   [
+    "1 mini croissant",
+    28
+   ]
+  ]
+ },
+ {
+  "name": "English muffin",
+  "usda": "Muffin, English",
+  "fdcId": 2707698,
+  "foodCode": "51186010",
+  "category": "breakfast",
+  "aliases": [
+   "english muffin",
+   "english muffins",
+   "toasted english muffin",
+   "crumpet"
+  ],
+  "kcal": 227,
+  "protein": 8.87,
+  "carbs": 44.17,
+  "fat": 1.69,
+  "fiber": 3.5,
+  "sugar": 3.53,
+  "sodiumMg": 425,
+  "servings": [
+   [
+    "1 muffin",
+    58
+   ],
+   [
+    "1 sandwich-size muffin",
+    92
+   ]
+  ]
+ },
+ {
+  "name": "Bagel",
+  "usda": "Bagel",
+  "fdcId": 2707684,
+  "foodCode": "51180010",
+  "category": "breakfast",
+  "aliases": [
+   "bagel",
+   "plain bagel",
+   "white bagel",
+   "bagel thin"
+  ],
+  "kcal": 264,
+  "protein": 10.56,
+  "carbs": 52.38,
+  "fat": 1.32,
+  "fiber": 1.6,
+  "sugar": 8.43,
+  "sodiumMg": 422,
+  "servings": [
+   [
+    "1 bagel",
+    105
+   ],
+   [
+    "1 large bagel",
+    131
+   ],
+   [
+    "1 small bagel",
+    69
+   ]
+  ]
+ },
+ {
+  "name": "Pita bread",
+  "usda": "Bread, pita",
+  "fdcId": 2707616,
+  "foodCode": "51109100",
+  "category": "grain",
+  "aliases": [
+   "pita",
+   "pita bread",
+   "pita pocket",
+   "pitta"
+  ],
+  "kcal": 275,
+  "protein": 9.1,
+  "carbs": 55.7,
+  "fat": 1.2,
+  "fiber": 2.2,
+  "sugar": 1.3,
+  "sodiumMg": 536,
+  "servings": [
+   [
+    "1 medium pita",
+    57
+   ],
+   [
+    "1 large pita",
+    85
+   ],
+   [
+    "1 small pita",
+    28
+   ]
+  ]
+ },
+ {
+  "name": "Naan",
+  "usda": "Bread, naan",
+  "fdcId": 2707613,
+  "foodCode": "51108100",
+  "category": "grain",
+  "aliases": [
+   "naan",
+   "naan bread",
+   "nan bread",
+   "garlic naan"
+  ],
+  "kcal": 311,
+  "protein": 11.09,
+  "carbs": 50.23,
+  "fat": 7.28,
+  "fiber": 5.2,
+  "sugar": 3.7,
+  "sodiumMg": 508,
+  "servings": [
+   [
+    "1 naan (10\")",
+    177
+   ],
+   [
+    "1 piece (1/4 naan)",
+    44
+   ]
+  ]
+ },
+ {
+  "name": "Biscuit",
+  "usda": "Biscuit, NFS",
+  "fdcId": 2707801,
+  "foodCode": "52101000",
+  "category": "grain",
+  "aliases": [
+   "biscuit",
+   "buttermilk biscuit",
+   "baking powder biscuit",
+   "tea biscuit",
+   "southern biscuit"
+  ],
+  "kcal": 370,
+  "protein": 7.08,
+  "carbs": 42.82,
+  "fat": 18.92,
+  "fiber": 2.5,
+  "sugar": 3.88,
+  "sodiumMg": 979,
+  "servings": [
+   [
+    "1 biscuit",
+    45
+   ]
+  ]
+ },
+ {
+  "name": "Blueberry muffin",
+  "usda": "Muffin, fruit",
+  "fdcId": 2707830,
+  "foodCode": "52302010",
+  "category": "breakfast",
+  "aliases": [
+   "blueberry muffin",
+   "muffin",
+   "fruit muffin",
+   "raspberry muffin",
+   "cranberry muffin",
+   "apple muffin"
+  ],
+  "kcal": 375,
+  "protein": 4.49,
+  "carbs": 53,
+  "fat": 16.07,
+  "fiber": 1.1,
+  "sugar": 31.47,
+  "sodiumMg": 336,
+  "servings": [
+   [
+    "1 medium muffin",
+    130
+   ],
+   [
+    "1 small muffin",
+    70
+   ],
+   [
+    "1 large muffin",
+    180
+   ]
+  ]
+ },
+ {
+  "name": "Banana bread",
+  "usda": "Bread, fruit",
+  "fdcId": 2707850,
+  "foodCode": "52405010",
+  "category": "dessert",
+  "aliases": [
+   "banana bread",
+   "banana loaf",
+   "fruit bread",
+   "loaf cake",
+   "date bread",
+   "cranberry bread"
+  ],
+  "kcal": 374,
+  "protein": 6.01,
+  "carbs": 47.34,
+  "fat": 18.1,
+  "fiber": 1.2,
+  "sugar": 25.24,
+  "sodiumMg": 302,
+  "servings": [
+   [
+    "1 slice",
+    41
+   ],
+   [
+    "1 mini loaf",
+    57
+   ]
+  ]
+ },
+ {
+  "name": "Cheesecake",
+  "usda": "Cheesecake, plain",
+  "fdcId": 2707861,
+  "foodCode": "53104500",
+  "category": "dessert",
+  "aliases": [
+   "cheesecake",
+   "new york cheesecake",
+   "plain cheesecake",
+   "cheese cake"
+  ],
+  "kcal": 399,
+  "protein": 5.29,
+  "carbs": 34.82,
+  "fat": 26.52,
+  "fiber": 0.5,
+  "sugar": 26.64,
+  "sodiumMg": 277,
+  "servings": [
+   [
+    "1 slice",
+    175
+   ]
+  ]
+ },
+ {
+  "name": "Chocolate cake with frosting",
+  "usda": "Cake or cupcake, chocolate with chocolate icing, from mix",
+  "fdcId": 2707867,
+  "foodCode": "53105272",
+  "category": "dessert",
+  "aliases": [
+   "chocolate cake",
+   "chocolate cupcake",
+   "birthday cake",
+   "chocolate frosted cake",
+   "devils food cake",
+   "cupcake"
+  ],
+  "kcal": 341,
+  "protein": 3.49,
+  "carbs": 51.25,
+  "fat": 14.98,
+  "fiber": 1.7,
+  "sugar": 35.99,
+  "sodiumMg": 305,
+  "servings": [
+   [
+    "1 slice (layer cake)",
+    150
+   ],
+   [
+    "1 cupcake",
+    75
+   ],
+   [
+    "1 large slice (layer cake)",
+    225
+   ]
+  ]
+ },
+ {
+  "name": "Brownie",
+  "usda": "Cookie, brownie, without icing",
+  "fdcId": 2707904,
+  "foodCode": "53204010",
+  "category": "dessert",
+  "aliases": [
+   "brownie",
+   "brownies",
+   "chocolate brownie",
+   "fudge brownie"
+  ],
+  "kcal": 405,
+  "protein": 4.8,
+  "carbs": 63.9,
+  "fat": 16.3,
+  "fiber": 2.1,
+  "sugar": 36.61,
+  "sodiumMg": 286,
+  "servings": [
+   [
+    "1 medium brownie",
+    50
+   ],
+   [
+    "1 small brownie",
+    30
+   ],
+   [
+    "1 large brownie",
+    90
+   ]
+  ]
+ },
+ {
+  "name": "Chocolate chip cookie",
+  "usda": "Cookie, chocolate chip",
+  "fdcId": 2707909,
+  "foodCode": "53206000",
+  "category": "dessert",
+  "aliases": [
+   "chocolate chip cookie",
+   "choc chip cookie",
+   "cookie",
+   "chips ahoy",
+   "cookies"
+  ],
+  "kcal": 492,
+  "protein": 5.1,
+  "carbs": 65.36,
+  "fat": 24.72,
+  "fiber": 2,
+  "sugar": 32.9,
+  "sodiumMg": 311,
+  "servings": [
+   [
+    "1 medium cookie",
+    30
+   ],
+   [
+    "1 large cookie",
+    45
+   ],
+   [
+    "1 small cookie",
+    20
+   ]
+  ]
+ },
+ {
+  "name": "Apple pie",
+  "usda": "Pie, apple",
+  "fdcId": 2707995,
+  "foodCode": "53301000",
+  "category": "dessert",
+  "aliases": [
+   "apple pie",
+   "slice of apple pie",
+   "pie",
+   "homemade apple pie"
+  ],
+  "kcal": 296,
+  "protein": 2.7,
+  "carbs": 37.55,
+  "fat": 15.28,
+  "fiber": 1.8,
+  "sugar": 15.92,
+  "sodiumMg": 217,
+  "servings": [
+   [
+    "1 slice",
+    150
+   ],
+   [
+    "1 small slice",
+    75
+   ],
+   [
+    "1 large slice",
+    250
+   ]
+  ]
+ },
+ {
+  "name": "Glazed donut",
+  "usda": "Doughnut, yeast type",
+  "fdcId": 2708072,
+  "foodCode": "53521110",
+  "category": "dessert",
+  "aliases": [
+   "donut",
+   "doughnut",
+   "glazed donut",
+   "glazed doughnut",
+   "honey dip",
+   "yeast donut",
+   "timbits"
+  ],
+  "kcal": 421,
+  "protein": 6.14,
+  "carbs": 47.93,
+  "fat": 22.7,
+  "fiber": 2.1,
+  "sugar": 22.75,
+  "sodiumMg": 316,
+  "servings": [
+   [
+    "1 donut",
+    60
+   ],
+   [
+    "1 mini donut (timbit)",
+    15
+   ]
+  ]
+ },
+ {
+  "name": "Chewy granola bar",
+  "usda": "Cereal or granola bar (Quaker Chewy Granola Bar)",
+  "fdcId": 2708095,
+  "foodCode": "53711000",
+  "category": "snack",
+  "aliases": [
+   "granola bar",
+   "chewy granola bar",
+   "quaker chewy",
+   "chewy bar",
+   "cereal bar"
+  ],
+  "kcal": 418,
+  "protein": 5.65,
+  "carbs": 70.2,
+  "fat": 16.57,
+  "fiber": 3.8,
+  "sugar": 28.92,
+  "sodiumMg": 291,
+  "servings": [
+   [
+    "1 bar",
+    24
+   ]
+  ]
+ },
+ {
+  "name": "Saltine crackers",
+  "usda": "Crackers, saltine",
+  "fdcId": 2708167,
+  "foodCode": "54325000",
+  "category": "snack",
+  "aliases": [
+   "saltines",
+   "saltine crackers",
+   "soda crackers",
+   "premium plus",
+   "crackers",
+   "oyster crackers"
+  ],
+  "kcal": 418,
+  "protein": 9.46,
+  "carbs": 74.05,
+  "fat": 8.64,
+  "fiber": 2.8,
+  "sugar": 1.29,
+  "sodiumMg": 941,
+  "servings": [
+   [
+    "5 crackers",
+    15
+   ],
+   [
+    "1 cracker",
+    3
+   ],
+   [
+    "1 sleeve",
+    115
+   ]
+  ]
+ },
+ {
+  "name": "Cheese crackers (Goldfish)",
+  "usda": "Crackers, cheese (Goldfish)",
+  "fdcId": 2708152,
+  "foodCode": "54304020",
+  "category": "snack",
+  "aliases": [
+   "goldfish",
+   "goldfish crackers",
+   "cheese crackers",
+   "cheez-it",
+   "cheez its",
+   "cheese nips"
+  ],
+  "kcal": 489,
+  "protein": 10.93,
+  "carbs": 59.42,
+  "fat": 22.74,
+  "fiber": 2.3,
+  "sugar": 4.53,
+  "sodiumMg": 973,
+  "servings": [
+   [
+    "1 snack bag",
+    45
+   ],
+   [
+    "1 cup",
+    50
+   ],
+   [
+    "1 100-calorie pack",
+    21
+   ]
+  ]
+ },
+ {
+  "name": "Tortilla chips",
+  "usda": "Tortilla chips, plain",
+  "fdcId": 2708202,
+  "foodCode": "54401075",
+  "category": "snack",
+  "aliases": [
+   "tortilla chips",
+   "nacho chips",
+   "corn chips",
+   "tostitos",
+   "chips and salsa"
+  ],
+  "kcal": 472,
+  "protein": 7.1,
+  "carbs": 67.78,
+  "fat": 20.68,
+  "fiber": 5.4,
+  "sugar": 0.78,
+  "sodiumMg": 328,
+  "servings": [
+   [
+    "1 cup (about 10 chips)",
+    30
+   ],
+   [
+    "1 medium bag",
+    57
+   ],
+   [
+    "1 small bag",
+    28
+   ]
+  ]
+ },
+ {
+  "name": "Doritos (nacho cheese)",
+  "usda": "Tortilla chips, nacho cheese flavor (Doritos)",
+  "fdcId": 2708206,
+  "foodCode": "54401110",
+  "category": "snack",
+  "aliases": [
+   "doritos",
+   "nacho cheese doritos",
+   "nacho chips",
+   "flavored tortilla chips"
+  ],
+  "kcal": 519,
+  "protein": 7.36,
+  "carbs": 60.81,
+  "fat": 27.42,
+  "fiber": 5.1,
+  "sugar": 2.59,
+  "sodiumMg": 691,
+  "servings": [
+   [
+    "1 cup (about 10 chips)",
+    30
+   ],
+   [
+    "1 small bag",
+    28
+   ],
+   [
+    "1 medium bag",
+    57
+   ]
+  ]
+ },
+ {
+  "name": "Cheetos",
+  "usda": "Cheese flavored corn snacks (Cheetos)",
+  "fdcId": 2708203,
+  "foodCode": "54401081",
+  "category": "snack",
+  "aliases": [
+   "cheetos",
+   "cheezies",
+   "cheese puffs",
+   "cheese curls",
+   "cheese snacks"
+  ],
+  "kcal": 567,
+  "protein": 5.46,
+  "carbs": 54.54,
+  "fat": 36.54,
+  "fiber": 0.8,
+  "sugar": 3.57,
+  "sodiumMg": 928,
+  "servings": [
+   [
+    "1 small bag",
+    28
+   ],
+   [
+    "1 cup",
+    35
+   ],
+   [
+    "1 medium bag",
+    57
+   ]
+  ]
+ },
+ {"name": "Microwave popcorn (butter)", "usda": "Popcorn, microwave, butter flavored", "fdcId": 2708227, "foodCode": "54403056", "category": "snack",
+  "aliases": ["popcorn", "microwave popcorn", "butter popcorn", "movie popcorn", "buttered popcorn", "orville redenbacher", "pop secret"],
+  "kcal": 518, "protein": 9.13, "carbs": 54.99, "fat": 30.57, "fiber": 10.2, "sugar": 0.61, "sodiumMg": 764,
+  "servings": [["1 regular microwave bag", 85], ["1 cup popped", 14], ["1 mini microwave bag", 43]]},
+ {"name": "Pretzels", "usda": "Pretzels, hard, plain, salted", "fdcId": 2708249, "foodCode": "54408016", "category": "snack",
+  "aliases": ["pretzels", "pretzel twists", "pretzel sticks", "hard pretzels", "salted pretzels"],
+  "kcal": 384, "protein": 10.04, "carbs": 80.39, "fat": 2.93, "fiber": 3.4, "sugar": 2.21, "sodiumMg": 1120,
+  "servings": [["1 small bag", 28], ["1 cup", 40], ["1 medium bag", 57]]},
+ {"name": "Pancake", "usda": "Pancakes, plain", "fdcId": 2708304, "foodCode": "55101000", "category": "breakfast",
+  "aliases": ["pancake", "pancakes", "buttermilk pancakes", "flapjacks", "hotcakes", "plain pancakes"],
+  "kcal": 282, "protein": 7.41, "carbs": 35.32, "fat": 12.07, "fiber": 2.1, "sugar": 7.05, "sodiumMg": 508,
+  "servings": [["1 pancake", 50], ["3 pancakes", 150], ["1 large pancake", 90]]}
+]

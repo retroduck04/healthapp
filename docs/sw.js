@@ -1,5 +1,5 @@
-const CACHE = "janos-85cac15e4f";
-const SHELL = ["./","index.html","app.js?v=85cac15e4f","app.css?v=85cac15e4f","fooddb.json?v=b083a98a27","manifest.webmanifest","icon-180.png","icon-192.png","icon-512.png"];
+const CACHE = "janos-c3f8425816";
+const SHELL = ["./","index.html","app.js?v=c3f8425816","app.css?v=c3f8425816","fooddb.json?v=c1361e3c40","manifest.webmanifest","icon-180.png","icon-192.png","icon-512.png"];
 const RUNTIME = "janos-runtime";
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)));

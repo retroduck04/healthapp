@@ -109,7 +109,7 @@ export interface FoodEntry extends Nutrients {
   foodId?: string;
   grams?: number | null;
   amountLabel?: string; // "1.5 × 1 bar" or "150 g"
-  method: "search" | "barcode" | "quick" | "saved" | "copy" | "custom" | "database";
+  method: "search" | "barcode" | "quick" | "saved" | "copy" | "custom" | "database" | "ai";
 }
 
 export interface DayStatus {

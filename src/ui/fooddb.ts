@@ -74,8 +74,8 @@ export function rowsOfBrand(db: FoodDb, brand: string): DbRow[] {
 export function rowToFood(r: DbRow): Food {
   const [id, brand, name, variant, category, , servings, unitOnly, kcal, protein, carbs, fat, fiber, sugar, sodiumMg, region] = r;
   const attribution =
-    region === "USDA"
-      ? "USDA FOODDATA CENTRAL"
+    region === "USDA" || region === "FNDDS"
+      ? `USDA FOODDATA CENTRAL${region === "FNDDS" ? " · TYPICAL HOME RECIPE" : ""}`
       : `${brand.toUpperCase()} PUBLISHED NUTRITION${region === "US" ? " · US MENU (CANADIAN DATA NOT PUBLISHED)" : " · CANADA"}`;
   return {
     id,

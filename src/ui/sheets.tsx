@@ -1,6 +1,6 @@
 // Small sheets: weigh-in, morning check-in, caffeine, quick log and settings (the config terminal).
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { del, get, persistenceStatus, put, restoreAll, uid, useLive, type Backup } from "../db/db";
 import { buildBackupJson, buildCsvZip, shareOrDownload } from "../db/exporters";
 import { createGarminKey, getGarminKey, getGarminStatus, setGarminKey, syncGarmin, type GarminStatus } from "../db/garmin";
@@ -11,6 +11,8 @@ import { DEFAULT_RATE_PCT } from "../engine/energy";
 import { caffeineRemaining, mifflinStJeor } from "../engine/sleep";
 import { fmt } from "../engine/units";
 import { checkWeightEntry, weightTrend } from "../engine/weight";
+import { totalOf } from "../engine/aimeal";
+import { AI_DEFAULTS, analyzeMeal, getAiConfig, maskKey, setAiConfig, type AiConfig } from "./ai";
 import { dayLabel, durationFromClock, hoursText, shortDateTime, weightFromDisplay, weightText, weightToDisplay } from "./format";
 import {
   Card,
@@ -40,8 +42,10 @@ export function WeightSheet() {
   const ref = trend.length ? weightToDisplay(trend.at(-1)!.trend, settings) : null;
   const [value, setValue] = useState<number | null>(null);
   const [warning, setWarning] = useState<{ reason: string; suggestion: number | null } | null>(null);
+  const touched = useRef(false);
   useEffect(() => {
-    if (value === null && last) setValue(Math.round(weightToDisplay(last.kg, settings) * 10) / 10);
+    // Prefill the last weigh-in, but never over something the user already started typing.
+    if (!touched.current && value === null && last) setValue(Math.round(weightToDisplay(last.kg, settings) * 10) / 10);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [last?.id]);
 
@@ -69,7 +73,7 @@ export function WeightSheet() {
       }
     >
       <Field label={`WEIGHT (${settings.weightUnit})`}>
-        <NumInput big value={value} onChange={(v) => { setValue(v); setWarning(null); }} ariaLabel="weight" autoFocus />
+        <NumInput big value={value} onChange={(v) => { touched.current = true; setValue(v); setWarning(null); }} ariaLabel="weight" autoFocus />
       </Field>
       {ref !== null ? (
         <div className="desc" style={{ textAlign: "center" }}>
@@ -331,7 +335,7 @@ export function QuickSheet() {
   const meal = hour < 11 ? "breakfast" : hour < 15 ? "lunch" : hour < 21 ? "dinner" : "snacks";
   const items: { label: string; sub: string; go: () => void }[] = [
     { label: "WEIGH-IN", sub: "LOG BODYWEIGHT", go: () => open({ kind: "weight" }) },
-    { label: "FOOD", sub: `ADD TO ${meal.toUpperCase()}`, go: () => open({ kind: "food", day: today(settings), meal }) },
+    { label: "FOOD", sub: `DESCRIBE OR SEARCH · ${meal.toUpperCase()}`, go: () => open({ kind: "food", day: today(settings), meal }) },
     { label: "CHECK-IN", sub: "SLEEP + STATUS", go: () => open({ kind: "checkin" }) },
     { label: "WORKOUT", sub: "START OR CONTINUE", go: () => { close(); goTab("train"); } },
     { label: "CARDIO", sub: "LOG A SESSION", go: () => open({ kind: "cardio" }) },
@@ -535,7 +539,12 @@ export function SettingsSheet() {
       </fieldset>
 
       <fieldset className="mg-fs">
-        <legend>7. DATA</legend>
+        <legend>7. AI FOOD LOGGING</legend>
+        <AiSection />
+      </fieldset>
+
+      <fieldset className="mg-fs">
+        <legend>8. DATA</legend>
         <p className="mg-hint">
           ALL DATA IS STORED ONLY ON THIS IPHONE. EXPORT A BACKUP REGULARLY AND SAVE IT TO <b>FILES</b> OR <b>ICLOUD DRIVE</b>.
         </p>
@@ -703,6 +712,110 @@ function GarminSyncSection() {
           </button>
         </div>
       ) : null}
+    </>
+  );
+}
+
+// ---- AI food logging -----------------------------------------------------------
+
+function AiSection() {
+  const { toast } = useUI();
+  const cfg = useLive(getAiConfig, [], null as AiConfig | null);
+  const [key, setKey] = useState("");
+  const [other, setOther] = useState(false);
+  const [baseUrl, setBaseUrl] = useState("");
+  const [model, setModel] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [result, setResult] = useState<string | null>(null);
+
+  const save = async () => {
+    const k = key.trim() || cfg?.key || "";
+    if (!k) return;
+    await setAiConfig({ key: k, baseUrl: baseUrl.trim() || cfg?.baseUrl || AI_DEFAULTS.baseUrl, model: model.trim() || cfg?.model || AI_DEFAULTS.model });
+    setKey("");
+    setResult(null);
+    toast(">> 061 AI KEY SAVED · TAP TEST");
+  };
+  const test = async () => {
+    if (!cfg) return;
+    setBusy(true);
+    setResult(null);
+    try {
+      const r = await analyzeMeal("1 medium banana", cfg, null);
+      setResult(`>> 016 AI LINK OK · 1 MEDIUM BANANA ≈ ${Math.round(totalOf(r.items).kcal)} KCAL`);
+    } catch (e) {
+      setResult((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <>
+      {cfg ? (
+        <>
+          <div className="kv">
+            <span>KEY</span>
+            <b>{maskKey(cfg.key)}</b>
+          </div>
+          <div className="kv" style={{ marginBottom: 10 }}>
+            <span>MODEL</span>
+            <b className="uc">{cfg.model}</b>
+          </div>
+          <div className="grid-2">
+            <button className="btn" disabled={busy} onClick={test}>{busy ? "TESTING…" : "TEST"}</button>
+            <button
+              className="btn plain"
+              onClick={async () => {
+                const ok = await confirmScreen({ title: "AI KEY", message: "REMOVE THE AI KEY FROM THIS PHONE?", confirmLabel: "REMOVE", danger: true, alarm: false });
+                if (ok) {
+                  await setAiConfig(null);
+                  setResult(null);
+                  toast("AI KEY REMOVED");
+                }
+              }}
+            >
+              REMOVE KEY
+            </button>
+          </div>
+          {result ? (
+            <div className={result.startsWith(">>") ? "notice ok" : result.startsWith("ERR") ? "notice err" : "notice warn"} style={{ marginTop: 10 }}>
+              <span className="msg">{result}</span>
+            </div>
+          ) : null}
+        </>
+      ) : (
+        <>
+          <p className="mg-hint">
+            TYPE WHAT YOU ATE ON THE FOOD TAB AND AN AI WORKS OUT THE MACROS. ONE-TIME SETUP WITH A FREE <b>GROQ</b> KEY:
+            <br />1. OPEN <b>CONSOLE.GROQ.COM/KEYS</b> AND SIGN IN (GOOGLE WORKS).
+            <br />2. TAP <b>CREATE API KEY</b>, NAME IT JANOS, COPY THE KEY.
+            <br />3. PASTE IT BELOW, TAP <b>SAVE</b>, THEN <b>TEST</b>.
+          </p>
+          <a className="btn secondary block" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer">
+            OPEN GROQ CONSOLE
+          </a>
+          <div className="gap" />
+        </>
+      )}
+      <Field label={cfg ? "REPLACE KEY" : "GROQ API KEY"}>
+        <input className="input" type="password" autoComplete="off" spellCheck={false} placeholder="gsk_…" aria-label="ai key" value={key} onChange={(e: any) => setKey(e.target.value)} />
+      </Field>
+      <Check checked={other} onChange={setOther} label="OTHER PROVIDER OR MODEL (OPENAI-COMPATIBLE)" />
+      {other ? (
+        <>
+          <Field label="BASE URL">
+            <input className="input" autoComplete="off" spellCheck={false} placeholder={cfg?.baseUrl ?? AI_DEFAULTS.baseUrl} aria-label="ai base url" value={baseUrl} onChange={(e: any) => setBaseUrl(e.target.value)} />
+          </Field>
+          <Field label="MODEL">
+            <input className="input" autoComplete="off" spellCheck={false} placeholder={cfg?.model ?? AI_DEFAULTS.model} aria-label="ai model" value={model} onChange={(e: any) => setModel(e.target.value)} />
+          </Field>
+        </>
+      ) : null}
+      <button className="btn block" disabled={!key.trim() && !(cfg && (baseUrl.trim() || model.trim()))} onClick={save}>SAVE</button>
+      <p className="mg-hint">
+        WHAT YOU TYPE IS SENT TO THE AI SERVICE TO BE ANALYZED. THE KEY STAYS ON THIS PHONE AND IS <b>NOT</b> PUT IN BACKUPS.
+      </p>
     </>
   );
 }

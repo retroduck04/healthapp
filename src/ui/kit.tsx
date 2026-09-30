@@ -287,6 +287,11 @@ export function NumInput(props: {
       placeholder={props.placeholder}
       autoFocus={props.autoFocus}
       aria-label={props.ariaLabel}
+      onFocus={(e: any) => {
+        // Typing replaces a prefilled number instead of appending to it (iOS needs the deferred select).
+        const el = e.target as HTMLInputElement;
+        setTimeout(() => el.select?.(), 0);
+      }}
       onChange={(e: any) => {
         setText(e.target.value);
         props.onChange(parseNum(e.target.value));

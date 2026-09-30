@@ -1852,3 +1852,31 @@ input.input::-webkit-calendar-picker-indicator {
 .fatigue-line .fat.b2 { background: var(--r2); border-color: var(--r2); }
 .fatigue-line .fat.b3 { background: var(--r3); border-color: var(--r3); }
 .fatigue-line .fat.b4 { background: var(--red); border-color: var(--red); color: var(--k); }
+
+/* a link drawn as a key (e.g. OPEN GROQ CONSOLE) */
+a.btn {
+  text-decoration: none;
+}
+
+/* AI meal logging */
+textarea.input.describe {
+  min-height: 64px;
+  resize: vertical;
+}
+.ai-edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 12px;
+  border-bottom: 1px solid var(--dim);
+}
+.ai-edit .chips {
+  flex: 1 1 auto;
+}
+.est-tag {
+  color: var(--am);
+}
+.bad-tag {
+  color: var(--red);
+}

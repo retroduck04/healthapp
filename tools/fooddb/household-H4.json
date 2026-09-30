@@ -1,0 +1,906 @@
+[
+ {
+  "name": "Applesauce (sweetened)",
+  "usda": "Applesauce, regular",
+  "fdcId": 2709216,
+  "foodCode": "63101110",
+  "category": "fruit",
+  "aliases": [
+   "applesauce",
+   "apple sauce",
+   "sweetened applesauce",
+   "apple puree"
+  ],
+  "kcal": 75,
+  "protein": 0.25,
+  "carbs": 17.97,
+  "fat": 0.17,
+  "fiber": 1,
+  "sugar": 15.56,
+  "sodiumMg": 1,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 snack cup",
+    113
+   ],
+   [
+    "1 pouch",
+    90
+   ]
+  ]
+ },
+ {
+  "name": "Raisins",
+  "usda": "Raisins",
+  "fdcId": 2709212,
+  "foodCode": "62125100",
+  "category": "fruit",
+  "aliases": [
+   "raisin",
+   "sultanas",
+   "box of raisins"
+  ],
+  "kcal": 299,
+  "protein": 3.3,
+  "carbs": 79.32,
+  "fat": 0.25,
+  "fiber": 4.5,
+  "sugar": 65.18,
+  "sodiumMg": 26,
+  "servings": [
+   [
+    "1 small box (1.5 oz)",
+    43
+   ],
+   [
+    "1 mini box (0.5 oz)",
+    14
+   ],
+   [
+    "1 cup",
+    160
+   ]
+  ]
+ },
+ {
+  "name": "Cantaloupe",
+  "usda": "Cantaloupe, raw",
+  "fdcId": 2709226,
+  "foodCode": "63109010",
+  "category": "fruit",
+  "aliases": [
+   "cantaloupe",
+   "melon",
+   "rockmelon",
+   "muskmelon"
+  ],
+  "kcal": 38,
+  "protein": 0.82,
+  "carbs": 8.16,
+  "fat": 0.18,
+  "fiber": 0.8,
+  "sugar": 7.88,
+  "sodiumMg": 30,
+  "servings": [
+   [
+    "1 cup",
+    155
+   ],
+   [
+    "1 medium wedge",
+    70
+   ],
+   [
+    "1 large wedge",
+    105
+   ]
+  ]
+ },
+ {
+  "name": "Mango",
+  "usda": "Mango, raw",
+  "fdcId": 2709242,
+  "foodCode": "63129010",
+  "category": "fruit",
+  "aliases": [
+   "mango",
+   "mangoes",
+   "fresh mango"
+  ],
+  "kcal": 60,
+  "protein": 0.82,
+  "carbs": 14.98,
+  "fat": 0.38,
+  "fiber": 1.6,
+  "sugar": 13.66,
+  "sodiumMg": 1,
+  "servings": [
+   [
+    "1 mango",
+    210
+   ],
+   [
+    "1 cup",
+    165
+   ],
+   [
+    "1 slice",
+    25
+   ]
+  ]
+ },
+ {
+  "name": "Peach",
+  "usda": "Peach, raw",
+  "fdcId": 2709249,
+  "foodCode": "63135010",
+  "category": "fruit",
+  "aliases": [
+   "peach",
+   "peaches",
+   "fresh peach"
+  ],
+  "kcal": 46,
+  "protein": 0.91,
+  "carbs": 10.1,
+  "fat": 0.27,
+  "fiber": 1.5,
+  "sugar": 8.39,
+  "sodiumMg": 13,
+  "servings": [
+   [
+    "1 peach",
+    150
+   ],
+   [
+    "1 cup",
+    155
+   ],
+   [
+    "1 slice",
+    20
+   ]
+  ]
+ },
+ {
+  "name": "Pear",
+  "usda": "Pear, raw",
+  "fdcId": 2709254,
+  "foodCode": "63137010",
+  "category": "fruit",
+  "aliases": [
+   "pear",
+   "pears",
+   "fresh pear"
+  ],
+  "kcal": 59,
+  "protein": 0.37,
+  "carbs": 15.18,
+  "fat": 0.15,
+  "fiber": 3.1,
+  "sugar": 9.73,
+  "sodiumMg": 3,
+  "servings": [
+   [
+    "1 pear",
+    180
+   ],
+   [
+    "1 cup",
+    125
+   ],
+   [
+    "1 slice",
+    25
+   ]
+  ]
+ },
+ {
+  "name": "Pineapple",
+  "usda": "Pineapple, raw",
+  "fdcId": 2709260,
+  "foodCode": "63141010",
+  "category": "fruit",
+  "aliases": [
+   "pineapple",
+   "fresh pineapple",
+   "pineapple chunks"
+  ],
+  "kcal": 60,
+  "protein": 0.46,
+  "carbs": 14.09,
+  "fat": 0.21,
+  "fiber": 0.9,
+  "sugar": 11.42,
+  "sodiumMg": 0,
+  "servings": [
+   [
+    "1 cup",
+    165
+   ],
+   [
+    "1 slice",
+    56
+   ],
+   [
+    "1 chunk",
+    15
+   ]
+  ]
+ },
+ {
+  "name": "Watermelon",
+  "usda": "Watermelon, raw",
+  "fdcId": 2709270,
+  "foodCode": "63149010",
+  "category": "fruit",
+  "aliases": [
+   "watermelon",
+   "water melon"
+  ],
+  "kcal": 30,
+  "protein": 0.61,
+  "carbs": 7.55,
+  "fat": 0.15,
+  "fiber": 0.4,
+  "sugar": 6.2,
+  "sodiumMg": 1,
+  "servings": [
+   [
+    "1 cup",
+    155
+   ],
+   [
+    "1 small wedge",
+    218
+   ],
+   [
+    "1 medium wedge",
+    325
+   ]
+  ]
+ },
+ {
+  "name": "Fruit salad (fresh)",
+  "usda": "Fruit salad, fresh or raw, excluding citrus fruits, no dressing",
+  "fdcId": 2709287,
+  "foodCode": "63311000",
+  "category": "fruit",
+  "aliases": [
+   "fruit salad",
+   "fresh fruit salad",
+   "fruit cup",
+   "mixed fruit"
+  ],
+  "kcal": 59,
+  "protein": 0.64,
+  "carbs": 13.94,
+  "fat": 0.21,
+  "fiber": 1.5,
+  "sugar": 10.45,
+  "sodiumMg": 4,
+  "servings": [
+   [
+    "1 cup",
+    150
+   ]
+  ]
+ },
+ {
+  "name": "Fruit cocktail (canned)",
+  "usda": "Fruit cocktail, canned, NFS",
+  "fdcId": 2709289,
+  "foodCode": "63311110",
+  "category": "fruit",
+  "aliases": [
+   "fruit cocktail",
+   "canned fruit",
+   "fruit cup",
+   "canned fruit salad"
+  ],
+  "kcal": 55,
+  "protein": 0.41,
+  "carbs": 14.1,
+  "fat": 0.08,
+  "fiber": 0.9,
+  "sugar": 13.08,
+  "sodiumMg": 5,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1 snack cup",
+    113
+   ],
+   [
+    "1 pouch",
+    90
+   ]
+  ]
+ },
+ {
+  "name": "Apple juice",
+  "usda": "Apple juice, 100%",
+  "fdcId": 2709320,
+  "foodCode": "64104010",
+  "category": "drink",
+  "aliases": [
+   "apple juice",
+   "juice box",
+   "apple juice box"
+  ],
+  "kcal": 48,
+  "protein": 0.09,
+  "carbs": 11.34,
+  "fat": 0.25,
+  "fiber": 0.2,
+  "sugar": 10.13,
+  "sodiumMg": 5,
+  "servings": [
+   [
+    "1 glass (8 fl oz)",
+    248
+   ],
+   [
+    "1 juice box (6.75 fl oz)",
+    209
+   ],
+   [
+    "1 bottle (10 fl oz)",
+    310
+   ]
+  ]
+ },
+ {
+  "name": "Fruit smoothie",
+  "usda": "Fruit smoothie, with whole fruit, no dairy",
+  "fdcId": 2709334,
+  "foodCode": "64134015",
+  "category": "drink",
+  "aliases": [
+   "smoothie",
+   "fruit smoothie",
+   "berry smoothie",
+   "mango smoothie",
+   "strawberry banana smoothie"
+  ],
+  "kcal": 54,
+  "protein": 0.61,
+  "carbs": 12.67,
+  "fat": 0.35,
+  "fiber": 1.5,
+  "sugar": 8.78,
+  "sodiumMg": 2,
+  "servings": [
+   [
+    "1 cup",
+    216
+   ],
+   [
+    "1 small (shop size)",
+    540
+   ]
+  ]
+ },
+ {
+  "name": "Mashed potatoes (homemade)",
+  "usda": "Potato, mashed, from fresh, made with milk",
+  "fdcId": 2709496,
+  "foodCode": "71501010",
+  "category": "side",
+  "aliases": [
+   "mashed potatoes",
+   "mashed potato",
+   "mash",
+   "potato mash",
+   "homemade mashed potatoes",
+   "mashed potatoes with butter"
+  ],
+  "kcal": 114,
+  "protein": 2.15,
+  "carbs": 17.6,
+  "fat": 4.07,
+  "fiber": 1.2,
+  "sugar": 2.13,
+  "sodiumMg": 210,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1/2 cup",
+    125
+   ]
+  ]
+ },
+ {
+  "name": "French fries (oven-baked, frozen)",
+  "usda": "Potato, french fries, from frozen, baked",
+  "fdcId": 2709460,
+  "foodCode": "71401020",
+  "category": "side",
+  "aliases": [
+   "french fries",
+   "fries",
+   "chips",
+   "oven fries",
+   "frozen fries",
+   "baked fries",
+   "mccain fries"
+  ],
+  "kcal": 158,
+  "protein": 2.75,
+  "carbs": 25.55,
+  "fat": 5.48,
+  "fiber": 2,
+  "sugar": 0.37,
+  "sodiumMg": 324,
+  "servings": [
+   [
+    "1 serving",
+    110
+   ],
+   [
+    "1 cup",
+    60
+   ],
+   [
+    "1 fry",
+    5
+   ]
+  ]
+ },
+ {
+  "name": "Home fries",
+  "usda": "Potato, home fries, NFS",
+  "fdcId": 2709472,
+  "foodCode": "71403020",
+  "category": "side",
+  "aliases": [
+   "home fries",
+   "roasted potatoes",
+   "roast potatoes",
+   "breakfast potatoes",
+   "fried potatoes",
+   "pan fried potatoes"
+  ],
+  "kcal": 197,
+  "protein": 1.92,
+  "carbs": 18.4,
+  "fat": 13.03,
+  "fiber": 1.6,
+  "sugar": 1.24,
+  "sodiumMg": 340,
+  "servings": [
+   [
+    "1 cup",
+    200
+   ],
+   [
+    "1 potato",
+    100
+   ]
+  ]
+ },
+ {
+  "name": "Hash browns",
+  "usda": "Potato, hash brown, NFS",
+  "fdcId": 2709477,
+  "foodCode": "71404000",
+  "category": "side",
+  "aliases": [
+   "hash browns",
+   "hash brown",
+   "hashbrown",
+   "hash brown patty"
+  ],
+  "kcal": 217,
+  "protein": 2.62,
+  "carbs": 28.23,
+  "fat": 11.48,
+  "fiber": 3.2,
+  "sugar": 0.27,
+  "sodiumMg": 398,
+  "servings": [
+   [
+    "1 patty",
+    55
+   ],
+   [
+    "1 cup",
+    160
+   ]
+  ]
+ },
+ {
+  "name": "Tater tots",
+  "usda": "Potato tots, frozen, baked",
+  "fdcId": 2709515,
+  "foodCode": "71505040",
+  "category": "side",
+  "aliases": [
+   "tater tots",
+   "tots",
+   "potato tots",
+   "potato puffs"
+  ],
+  "kcal": 187,
+  "protein": 2.03,
+  "carbs": 26.1,
+  "fat": 9.17,
+  "fiber": 2.4,
+  "sugar": 0.3,
+  "sodiumMg": 451,
+  "servings": [
+   [
+    "1 serving",
+    65
+   ],
+   [
+    "1 cup",
+    130
+   ],
+   [
+    "1 tot",
+    8
+   ]
+  ]
+ },
+ {
+  "name": "Baked potato with sour cream",
+  "usda": "Potato, baked, peel eaten, with sour cream",
+  "fdcId": 2709526,
+  "foodCode": "71508010",
+  "category": "side",
+  "aliases": [
+   "baked potato",
+   "baked potato with sour cream",
+   "jacket potato",
+   "loaded baked potato"
+  ],
+  "kcal": 131,
+  "protein": 2.47,
+  "carbs": 18.7,
+  "fat": 5.46,
+  "fiber": 1.9,
+  "sugar": 1.35,
+  "sodiumMg": 189,
+  "servings": [
+   [
+    "1 medium potato",
+    315
+   ],
+   [
+    "1 small potato",
+    260
+   ],
+   [
+    "1 large potato",
+    445
+   ]
+  ]
+ },
+ {
+  "name": "Potato salad",
+  "usda": "Potato salad with egg, made with mayonnaise",
+  "fdcId": 2709532,
+  "foodCode": "71601010",
+  "category": "salad",
+  "aliases": [
+   "potato salad",
+   "potato salad with egg",
+   "creamy potato salad"
+  ],
+  "kcal": 157,
+  "protein": 1.96,
+  "carbs": 16.18,
+  "fat": 9.4,
+  "fiber": 1.3,
+  "sugar": 4.95,
+  "sodiumMg": 329,
+  "servings": [
+   [
+    "1 cup",
+    275
+   ],
+   [
+    "1/2 cup",
+    138
+   ]
+  ]
+ },
+ {
+  "name": "Scalloped potatoes",
+  "usda": "Potato, scalloped, from fresh",
+  "fdcId": 2709450,
+  "foodCode": "71305030",
+  "category": "side",
+  "aliases": [
+   "scalloped potatoes",
+   "potatoes au gratin",
+   "au gratin potatoes",
+   "potato bake",
+   "gratin"
+  ],
+  "kcal": 168,
+  "protein": 7.13,
+  "carbs": 13.51,
+  "fat": 9.63,
+  "fiber": 0.8,
+  "sugar": 2.13,
+  "sodiumMg": 322,
+  "servings": [
+   [
+    "1 cup",
+    250
+   ],
+   [
+    "1/2 cup",
+    125
+   ]
+  ]
+ },
+ {
+  "name": "Guacamole",
+  "usda": "Guacamole with tomatoes",
+  "fdcId": 2709308,
+  "foodCode": "63409015",
+  "category": "snack",
+  "aliases": [
+   "guacamole",
+   "guac",
+   "avocado dip"
+  ],
+  "kcal": 145,
+  "protein": 1.87,
+  "carbs": 8.09,
+  "fat": 13.09,
+  "fiber": 6.1,
+  "sugar": 0.87,
+  "sodiumMg": 317,
+  "servings": [
+   [
+    "1/4 cup",
+    60
+   ],
+   [
+    "1 tbsp",
+    15
+   ],
+   [
+    "1 individual container",
+    70
+   ]
+  ]
+ },
+ {
+  "name": "Garden salad (no dressing)",
+  "usda": "Lettuce, salad with assorted vegetables including tomatoes and/or carrots, no dressing",
+  "fdcId": 2709822,
+  "foodCode": "75143000",
+  "category": "salad",
+  "aliases": [
+   "garden salad",
+   "side salad",
+   "green salad",
+   "tossed salad",
+   "salad",
+   "house salad",
+   "mixed greens"
+  ],
+  "kcal": 24,
+  "protein": 1.07,
+  "carbs": 4.58,
+  "fat": 0.2,
+  "fiber": 1.5,
+  "sugar": 1.9,
+  "sodiumMg": 39,
+  "servings": [
+   [
+    "1 cup",
+    73
+   ],
+   [
+    "1 side salad",
+    94
+   ]
+  ]
+ },
+ {
+  "name": "Coleslaw",
+  "usda": "Coleslaw",
+  "fdcId": 2709815,
+  "foodCode": "75141000",
+  "category": "salad",
+  "aliases": [
+   "coleslaw",
+   "cole slaw",
+   "slaw",
+   "creamy coleslaw"
+  ],
+  "kcal": 117,
+  "protein": 0.94,
+  "carbs": 10.45,
+  "fat": 7.98,
+  "fiber": 1.9,
+  "sugar": 7.44,
+  "sodiumMg": 280,
+  "servings": [
+   [
+    "1 cup",
+    220
+   ],
+   [
+    "1/2 cup",
+    110
+   ],
+   [
+    "1 single-serve container",
+    150
+   ]
+  ]
+ },
+ {
+  "name": "Greek salad (no dressing)",
+  "usda": "Greek Salad, no dressing",
+  "fdcId": 2709830,
+  "foodCode": "75146000",
+  "category": "salad",
+  "aliases": [
+   "greek salad",
+   "horiatiki",
+   "salad with feta"
+  ],
+  "kcal": 48,
+  "protein": 2.75,
+  "carbs": 4.35,
+  "fat": 2.26,
+  "fiber": 1.5,
+  "sugar": 1.43,
+  "sodiumMg": 246,
+  "servings": [
+   [
+    "1 cup",
+    105
+   ]
+  ]
+ },
+ {
+  "name": "Corn on the cob with butter",
+  "usda": "Corn, fresh, cooked with butter or margarine",
+  "fdcId": 2709918,
+  "foodCode": "75216135",
+  "category": "veg",
+  "aliases": [
+   "corn on the cob",
+   "corn on cob",
+   "buttered corn",
+   "sweet corn",
+   "corn with butter",
+   "ear of corn"
+  ],
+  "kcal": 103,
+  "protein": 3.18,
+  "carbs": 18.11,
+  "fat": 3.5,
+  "fiber": 1.9,
+  "sugar": 6.07,
+  "sodiumMg": 144,
+  "servings": [
+   [
+    "1 ear",
+    108
+   ],
+   [
+    "1 mini ear",
+    57
+   ],
+   [
+    "1 cup",
+    170
+   ]
+  ]
+ },
+ {
+  "name": "Mixed vegetables (frozen, cooked)",
+  "usda": "Classic mixed vegetables, frozen, cooked, no added fat",
+  "fdcId": 2710013,
+  "foodCode": "75311012",
+  "category": "veg",
+  "aliases": [
+   "mixed vegetables",
+   "mixed veg",
+   "frozen vegetables",
+   "frozen mixed vegetables",
+   "peas and carrots",
+   "veggies"
+  ],
+  "kcal": 65,
+  "protein": 2.85,
+  "carbs": 13.05,
+  "fat": 0.15,
+  "fiber": 4.4,
+  "sugar": 3.11,
+  "sodiumMg": 151,
+  "servings": [
+   [
+    "1 cup",
+    180
+   ],
+   [
+    "1/2 cup",
+    90
+   ]
+  ]
+ },
+ {
+  "name": "Stir-fried vegetables",
+  "usda": "Chow mein or chop suey, meatless, no noodles",
+  "fdcId": 2710064,
+  "foodCode": "75439500",
+  "category": "veg",
+  "aliases": [
+   "stir fry",
+   "stir fried vegetables",
+   "stir fry vegetables",
+   "veggie stir fry",
+   "vegetable stir fry",
+   "chop suey",
+   "vegetable chop suey"
+  ],
+  "kcal": 43,
+  "protein": 1.34,
+  "carbs": 5.74,
+  "fat": 1.68,
+  "fiber": 1.2,
+  "sugar": 2.63,
+  "sodiumMg": 344,
+  "servings": [
+   [
+    "1 cup",
+    220
+   ]
+  ]
+ },
+ {
+  "name": "Salsa",
+  "usda": "Salsa, red",
+  "fdcId": 2709738,
+  "foodCode": "74402150",
+  "category": "snack",
+  "aliases": [
+   "salsa",
+   "tomato salsa",
+   "red salsa",
+   "chunky salsa"
+  ],
+  "kcal": 34,
+  "protein": 1.44,
+  "carbs": 6.74,
+  "fat": 0.19,
+  "fiber": 1.8,
+  "sugar": 3.81,
+  "sodiumMg": 656,
+  "servings": [
+   [
+    "2 tbsp",
+    32
+   ],
+   [
+    "1 tbsp",
+    16
+   ],
+   [
+    "1 cup",
+    256
+   ]
+  ]
+ }
+]
